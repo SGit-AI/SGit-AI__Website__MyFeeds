@@ -1,0 +1,93 @@
+<p class="kicker">The argument</p>
+<h1>Feeds are replaceable. Your reading is not.</h1>
+
+<p class="lede">A feed reader holds two data sets with opposite properties, and treats them
+identically. One of them can be reconstructed from the public internet at any time. The
+other exists once, nowhere else, and is destroyed by the same event that ends your
+subscription.</p>
+
+<h2 id="two-sets">The two data sets</h2>
+
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>The items</th><th>The reading</th></tr></thead>
+<tbody>
+<tr><th>What it is</th><td>Titles, bodies, links, dates, fetched from a feed URL</td>
+<td>What you read, when you first read it, what you starred, what you noted, what you
+deliberately skipped</td></tr>
+<tr><th>Who else has it</th><td>The publisher, every other subscriber, the Internet
+Archive, often Google</td><td>Nobody</td></tr>
+<tr><th>If you lose it</th><td>Re-fetch it</td><td>It is gone</td></tr>
+<tr><th>What it says about you</th><td>Nothing</td><td>What you follow, how closely, at
+what hours, and what you stopped reading and when</td></tr>
+<tr><th>Where readers keep it</th><td>A local cache, cheerfully disposable</td>
+<td>The same database, in a private schema, with the same disposability</td></tr>
+</tbody></table></div>
+
+<p>Read the last row twice. The column that cannot be reconstructed is stored with exactly
+the care given to the column that can.</p>
+
+<h2 id="shutdown">What a shutdown actually takes</h2>
+
+<p>Google Reader was announced for shutdown on 13 March 2013 and closed on 1 July 2013.
+It was, by the standards of the time, a well-behaved exit: Takeout produced an OPML file of
+subscriptions, and JSON for starred, liked, shared and noted items. <span class="tag
+unverified">unverified</span> — the shape of those export files is stated here from memory
+and is <a href="../team/board.html#todo">card 003</a>, to be checked against the
+archived documentation rather than left as a confident sentence.</p>
+
+<p>What the export did <em>not</em> carry, and what no reader's export has carried since,
+is the per-item read record: the flags on the hundreds of thousands of items you had
+worked through. The stars survived because a star is a small, deliberate, countable thing
+somebody thought to serialise. The reading did not, because it is large, incidental, and
+looks like cache.</p>
+
+<blockquote>
+<p>Everyone who migrated in 2013 has the same memory: the subscriptions came across in a
+minute, and then every feed was full of unread items going back months, and the only way
+out was to mark everything read and start again. That is the loss this site is about. It
+was not treated as a loss at the time; it was treated as an inconvenience, which is how
+you can tell nobody thought the data was theirs.</p>
+</blockquote>
+
+<h2 id="profile">A reading history is a profile</h2>
+
+<p>The reason this matters beyond nostalgia: the record a reader accumulates about you is
+more revealing than the subscription list it is derived from. A subscription list says what
+you were curious about once. A read record says what you actually consume, at what hours,
+how quickly you abandoned a source, which topics you open immediately and which you let
+pile up for three weeks and then bulk-dismiss.</p>
+
+<p>That is a behavioural profile, built continuously, and in the hosted model it is held by
+a party whose business is often advertising. Even where it is not, it is a plaintext
+asset in somebody else's breach.</p>
+
+<p class="thesis">If you would not hand someone a list of everything you read last year,
+with timestamps, you should not be comfortable that a reader holds one and you do not.</p>
+
+<h2 id="objections">The three honest objections</h2>
+
+<h3>"Self-hosting already solves this"</h3>
+<p>It moves the database and solves nothing about the format. A self-hosted reader's state
+is still a private schema in one application; you can back it up, and you still cannot read
+it without running that application, and you still cannot move it to a different reader.
+Ownership of the disk is not ownership of the data. <span class="tag argued">argued</span></p>
+
+<h3>"Nobody uses RSS any more"</h3>
+<p>Partly true and beside the point. The argument here is about the shape of a personal
+consumption record, and feeds are simply the cleanest case: an open content format, a
+well-understood item identity, and an existing portable format for half the problem. If
+the argument holds for feeds it generalises to every other reading surface, most of which
+are worse. <span class="tag argued">argued</span></p>
+
+<h3>"Read state is not worth the engineering"</h3>
+<p>This is the strongest objection, and the answer is that it is nearly free. Read state is
+the single easiest distributed data structure there is — a grow-only set, described on the
+<a href="../read-state/index.html">next page</a>, that needs no conflict resolution, no
+vector clocks and no server. The engineering that is not free is the reader; the state
+contract is a weekend and a schema.</p>
+
+<div class="next">
+<a href="../read-state/index.html">The contract →</a>
+<a href="../vault/index.html">The container →</a>
+<a href="../index.html">← Home</a>
+</div>

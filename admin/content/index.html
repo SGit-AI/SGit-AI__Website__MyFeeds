@@ -1,0 +1,101 @@
+<p class="kicker">One question, taken further than a section could</p>
+<h1>Feeds are replaceable.<br>Your reading is not.</h1>
+
+<p class="lede">Every feed reader ever built treats those two sentences the other way
+round. It works hard to keep a copy of the articles — which the publisher will happily
+serve again tomorrow — and keeps the record of what you actually read, when, and what you
+skipped, in a database you cannot open, in a format nobody has ever standardised, at a
+company that may not exist in three years.</p>
+
+<p>This site argues that the record of your reading is the valuable half, that it belongs
+in an encrypted vault you hold, and that the contract for it should be published before
+anybody writes the reader. It publishes that contract. It does not yet publish the reader —
+<a href="build-order/index.html">what does not exist yet is listed, in order</a>.</p>
+
+<div class="band">
+<h3>The whole argument in four steps</h3>
+<ol>
+<li><strong>Subscriptions are portable.</strong> OPML has moved a feed list between
+readers for two decades. That problem is solved.</li>
+<li><strong>Read state never was.</strong> There is no interchange format for <em>which
+items you have read</em>. Not in OPML, not in RSS, not in Atom, not anywhere. Each reader
+invented its own and kept it.</li>
+<li><strong>That asymmetry is the lock-in.</strong> You can leave with your subscriptions
+and you arrive at the new reader with twelve thousand unread items and no history. Most
+people just stay.</li>
+<li><strong>Read state is the one shape that merges without conflict.</strong> It is a
+grow-only set of <code>(item, first read at)</code> pairs; two devices union cleanly and
+nothing is ever overwritten. Which means it can live in a version-controlled encrypted
+vault you own, synced between your own machines, with no server that needs to be able to
+read it.</li>
+</ol>
+</div>
+
+<h2 id="why-here">Why this is a vault problem and not an app problem</h2>
+
+<p>The obvious fix — "just self-host a reader" — moves the database from someone else's
+machine to yours and leaves everything else in place. The state is still a private schema
+inside one application, still unreadable without running that application, still gone when
+you stop running it.</p>
+
+<p>The interesting move is to make the state a <em>document</em>: files with a published
+shape, versioned, encrypted before they leave your machine, and readable by any program
+that implements the contract. Then the reader becomes replaceable too — which is the point,
+because a format that outlives its first implementation is the only kind worth writing
+down.</p>
+
+<p class="thesis">A reading history is a profile of a person. It should be encrypted at
+rest, held by its subject, and portable by design — and none of that requires anything
+cleverer than agreeing on a file layout.</p>
+
+<div class="grid">
+<a class="card" href="thesis/index.html">
+<p class="k">The argument</p><h3>Feeds are replaceable</h3>
+<p>Why the durability of the two data sets is backwards in every reader, and what that
+costs at the moment a service shuts down.</p></a>
+<a class="card" href="read-state/index.html">
+<p class="k">The contract</p><h3>The part nobody exports</h3>
+<p>What read state actually is, why OPML never carried it, and <code>read-state/v1</code>
+written out in full.</p></a>
+<a class="card" href="vault/index.html">
+<p class="k">The container</p><h3>What a feeds vault holds</h3>
+<p>The folder layout, the separation of cache from state, and the merge rule that makes
+two devices safe.</p></a>
+<a class="card" href="build-order/index.html">
+<p class="k">Honest edges</p><h3>What does not exist yet</h3>
+<p>Every item this site argues for, in build order, each marked shipped, argued or
+unverified.</p></a>
+</div>
+
+<h2 id="status">What this site is worth today</h2>
+
+<p>Published before the code, on purpose, so that the commitments are checkable later by
+anyone — including someone who would like them to have failed. Specifically:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Thing</th><th>Status</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>The argument</td><td><span class="tag shipped">shipped</span></td>
+<td>These pages, and their markdown twins for agents</td></tr>
+<tr><td>The <code>read-state/v1</code> shape</td><td><span class="tag argued">argued</span></td>
+<td><a href="read-state/index.html">/read-state/</a> — prose and a worked example; the
+JSON Schema is <a href="team/board.html#todo">board card 001</a></td></tr>
+<tr><td>The vault layout</td><td><span class="tag argued">argued</span></td>
+<td><a href="vault/index.html">/vault/</a></td></tr>
+<tr><td>An importer, a reader, a fetcher</td><td><span class="tag">not started</span></td>
+<td><a href="build-order/index.html">/build-order/</a></td></tr>
+<tr><td>Claims about what named readers export</td>
+<td><span class="tag unverified">unverified</span></td>
+<td>Marked in place, with <a href="team/board.html#todo">card 003</a> open to check them
+against each vendor's own documentation</td></tr>
+</tbody></table></div>
+
+<p>The site is built and run by a small team of AI agents with one human owner, in the
+open: <a href="team/index.html">seven roles as files</a>, each with the failure condition
+it is judged on, and <a href="team/board.html">a board</a> that says what is not done.</p>
+
+<div class="next">
+<a href="thesis/index.html">Start with the argument →</a>
+<a href="read-state/index.html">Go straight to the contract →</a>
+<a href="llms.txt">llms.txt</a>
+</div>

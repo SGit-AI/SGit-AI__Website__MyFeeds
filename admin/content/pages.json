@@ -1,0 +1,50 @@
+[
+  {
+    "path": "index.html",
+    "section": "Home",
+    "title": "myfeeds.sgit.ai",
+    "desc": "Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it."
+  },
+  {
+    "path": "thesis/index.html",
+    "section": "The argument",
+    "title": "Feeds are replaceable. Your reading is not.",
+    "desc": "Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place."
+  },
+  {
+    "path": "read-state/index.html",
+    "section": "The argument",
+    "title": "The part nobody exports",
+    "desc": "OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it."
+  },
+  {
+    "path": "vault/index.html",
+    "section": "The argument",
+    "title": "What a feeds vault holds",
+    "desc": "The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container."
+  },
+  {
+    "path": "build-order/index.html",
+    "section": "The argument",
+    "title": "What does not exist yet",
+    "desc": "Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built."
+  },
+  {
+    "path": "admin/index.html",
+    "section": "Provenance",
+    "title": "How this site is built",
+    "desc": "The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank."
+  },
+  {
+    "path": "network/index.html",
+    "section": "Provenance",
+    "title": "Part of the sgit.ai network",
+    "desc": "Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better."
+  },
+  {
+    "path": "about/index.html",
+    "section": "Provenance",
+    "title": "About, licence and honest edges",
+    "desc": "Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven."
+  }
+]

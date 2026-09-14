@@ -1,0 +1,56 @@
+# myfeeds.sgit.ai
+
+> Feeds are replaceable. Your reading is not. Your subscriptions are portable and your reading never was. myfeeds.sgit.ai argues that the record of what you read belongs in an encrypted vault you hold — and publishes the read-state contract before the reader that would implement it.
+
+Site version: v0.1.0. A site in the [sgit.ai](https://sgit.ai) network.
+Every page below is markdown, generated from the same source as the HTML page at
+the same path (swap `.md` for `.html`). Links inside the markdown point at
+markdown, so you can traverse the whole site without parsing HTML.
+
+Notes for agents:
+- Nothing here is a running service. This site publishes contracts and an
+  argument; what does not exist yet is listed, in order, at /build-order/index.md
+- Claims carry a status: `shipped` (in this repository, runnable), `argued` (a
+  position, reasoning shown), `unverified` (believed, not yet checked against a
+  primary source). Treat `unverified` as a lead, not a fact.
+- The site is run by an agentic team: /team/index.md, with one file per role at
+  team/roles/<slug>/ROLE.md in the repository and the roster as data at
+  /data/team.json
+- To change a page, edit admin/content/ and run admin/build/build_pages.py. The
+  tree at the repository root is output.
+
+If your tooling cannot follow links out of this file, fetch /llms-full.txt —
+every page of this site concatenated into one document.
+
+## Home
+- [myfeeds.sgit.ai](/index.md): Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.
+
+## The argument
+- [Feeds are replaceable. Your reading is not.](/thesis/index.md): Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
+- [The part nobody exports](/read-state/index.md): OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
+- [What a feeds vault holds](/vault/index.md): The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
+- [What does not exist yet](/build-order/index.md): Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
+
+## Provenance
+- [How this site is built](/admin/index.md): The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
+- [Part of the sgit.ai network](/network/index.md): Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
+- [About, licence and honest edges](/about/index.md): Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
+- [Release history](/admin/versions.md): Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
+
+## How this site is run
+- [How this site is run](/team/index.md): The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
+- [The board](/team/board.md): Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
+- [Starting prompts](/team/prompts.md): One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
+
+## Roles (one page per role, generated from its ROLE.md)
+- [Conductor](/team/roles/conductor.md): Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
+- [Architect](/team/roles/architect.md): Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them. Fails when: If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.
+- [Dev](/team/roles/dev.md): Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
+- [DevOps](/team/roles/devops.md): DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
+- [QA](/team/roles/qa.md): QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
+- [Librarian](/team/roles/librarian.md): Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
+- [Historian](/team/roles/historian.md): Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
+
+## Licence
+
+CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).

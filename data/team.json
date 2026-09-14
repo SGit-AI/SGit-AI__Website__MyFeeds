@@ -1,0 +1,205 @@
+{
+  "site": "myfeeds.sgit.ai",
+  "version": "v0.1.0",
+  "generated": "2026-09-14",
+  "source": "team/roles/*/ROLE.md",
+  "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
+  "totals": {
+    "roles": 7,
+    "falsifiable_claims": 7,
+    "board_cards": 5,
+    "open_cards": 5,
+    "pages": 19
+  },
+  "roles": [
+    {
+      "name": "Conductor",
+      "slug": "conductor",
+      "group": "Direction",
+      "order": 1,
+      "mission": "Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns.",
+      "claim": "If work happened on this site and no role owned it, the Conductor has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Writing page content, writing build code, running the validator, deploying, making architecture decisions, or judging whether a claim is true.",
+      "owns": [
+        "the board (team/board/)",
+        "release scope and the decision to hold or ship",
+        "the order roles run in",
+        "this roster"
+      ],
+      "tools": [
+        "team/board/*.md",
+        "team/roles/*/ROLE.md"
+      ],
+      "file": "team/roles/conductor/ROLE.md"
+    },
+    {
+      "name": "Architect",
+      "slug": "architect",
+      "group": "Build",
+      "order": 2,
+      "mission": "Own the contracts this site publishes \u2014 the read-state schema, the vault layout, the merge rule \u2014 and keep them separable from any reader that implements them.",
+      "claim": "If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Writing the build code, writing page copy, running tests, deploying, or choosing which release something lands in.",
+      "owns": [
+        "the read-state schema (read-state/v1)",
+        "the vault folder layout",
+        "the merge rule for read state",
+        "the boundary between fetched content and recorded state"
+      ],
+      "tools": [
+        "admin/content/read-state/",
+        "admin/content/vault/"
+      ],
+      "file": "team/roles/architect/ROLE.md"
+    },
+    {
+      "name": "Dev",
+      "slug": "dev",
+      "group": "Build",
+      "order": 3,
+      "mission": "Turn contracts and cards into pages and generators \u2014 the page bodies in admin/content/ and the engine in admin/build/ \u2014 following the authoring contract exactly.",
+      "claim": "If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Deciding what the site argues, defining the contracts it publishes, deciding release scope, running the release, or signing off the validator.",
+      "owns": [
+        "admin/content/ (page bodies and pages.json)",
+        "admin/build/build_pages.py",
+        "assets/site.css and assets/site.js"
+      ],
+      "tools": [
+        "python3 admin/build/build_pages.py"
+      ],
+      "file": "team/roles/dev/ROLE.md"
+    },
+    {
+      "name": "DevOps",
+      "slug": "devops",
+      "group": "Build",
+      "order": 4,
+      "mission": "Own the path from a content edit to myfeeds.sgit.ai serving it \u2014 the build gate, both remotes, and the refusal to call a release done before the live site says so.",
+      "claim": "If a release is reported as shipped and the live site is not serving that version, DevOps has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Writing page content, defining contracts, deciding release scope, or writing the assertions the validator runs.",
+      "owns": [
+        "the release procedure and the version bump",
+        "admin/build/validate.js as a gate",
+        "the CI workflow and the staleness check",
+        "both remotes (git mirror and the encrypted vault)"
+      ],
+      "tools": [
+        "node admin/build/validate.js",
+        "git push -u origin <branch>"
+      ],
+      "file": "team/roles/devops/ROLE.md"
+    },
+    {
+      "name": "QA",
+      "slug": "qa",
+      "group": "Assurance",
+      "order": 5,
+      "mission": "Decide whether what this site claims can be checked, and write the check \u2014 in the validator where it is mechanical, on the page where it is not.",
+      "claim": "If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Writing page content, writing the generator, running the release, or deciding what the site argues.",
+      "owns": [
+        "the assertions in admin/build/validate.js",
+        "the claim-status vocabulary (shipped / argued / unverified)",
+        "the negative controls"
+      ],
+      "tools": [
+        "node admin/build/validate.js"
+      ],
+      "file": "team/roles/qa/ROLE.md"
+    },
+    {
+      "name": "Librarian",
+      "slug": "librarian",
+      "group": "Assurance",
+      "order": 6,
+      "mission": "Keep everything this site knows findable \u2014 the machine index, the markdown twins, the cross-references \u2014 so that an agent arriving with no context can reach any fact in one hop.",
+      "claim": "If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Writing original content, defining contracts, writing the generator, deploying, or deciding what the site argues.",
+      "owns": [
+        "llms.txt and llms-full.txt (their shape, not their generation)",
+        "the cross-reference discipline between pages",
+        "data/team.json as a stable address"
+      ],
+      "tools": [
+        "llms.txt",
+        "llms-full.txt",
+        "data/team.json"
+      ],
+      "file": "team/roles/librarian/ROLE.md"
+    },
+    {
+      "name": "Historian",
+      "slug": "historian",
+      "group": "Assurance",
+      "order": 7,
+      "mission": "Record what each release did, what it got wrong, and why a decision was taken \u2014 so that no decision on this site is made twice and no correction is quietly absorbed.",
+      "claim": "If a decision was taken on this site and its rationale is not written down, the Historian has failed \u2014 the team will re-litigate it.",
+      "claim_form": "falsifiable",
+      "not_responsible_for": "Making decisions, writing page content, writing the generator, running the release, or recommending an architecture.",
+      "owns": [
+        "VERSION_LOG in admin/build/build_pages.py",
+        "the corrections convention",
+        "the record of what was argued before it was built"
+      ],
+      "tools": [
+        "admin/build/build_pages.py (VERSION_LOG)",
+        "team/board/"
+      ],
+      "file": "team/roles/historian/ROLE.md"
+    }
+  ],
+  "board": [
+    {
+      "id": "001",
+      "title": "Publish read-state/v1 as a versioned schema with a validator",
+      "status": "todo",
+      "owner": "architect",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/001-read-state-schema.md"
+    },
+    {
+      "id": "002",
+      "title": "OPML to vault importer",
+      "status": "todo",
+      "owner": "dev",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/002-opml-importer.md"
+    },
+    {
+      "id": "003",
+      "title": "Check what each named reader actually exports, against its own docs",
+      "status": "todo",
+      "owner": "qa",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/003-verify-reader-exports.md"
+    },
+    {
+      "id": "004",
+      "title": "myfeeds.sgit.ai does not resolve yet",
+      "status": "need",
+      "owner": "devops",
+      "kind": "need",
+      "opened": "2026-09-14",
+      "file": "team/board/004-domain.md"
+    },
+    {
+      "id": "005",
+      "title": "Send the sibling-site entry upstream to sgit.ai",
+      "status": "todo",
+      "owner": "librarian",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/005-network-entry.md"
+    }
+  ]
+}

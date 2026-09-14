@@ -1,0 +1,125 @@
+<p class="kicker">Provenance</p>
+<h1>How this site is built</h1>
+
+<p class="lede">Not hosted on a web server in the usual sense. The published tree is a
+static mirror and, equally, a <strong>vault app</strong> — a set of pages that can live
+inside an encrypted vault and be decrypted and rendered in the reader's browser. That
+second target is what makes the authoring contract below non-negotiable.</p>
+
+<h2 id="tree">The tree</h2>
+
+<pre><code># output — generated, never hand-edited
+├── index.html · index.md            # every page has a markdown twin at the same path
+├── thesis/ · read-state/ · vault/ · build-order/
+├── team/index.html · team/board.html · team/prompts.html · team/roles/&lt;slug&gt;.html
+├── admin/index.html · admin/versions.html
+├── llms.txt · llms-full.txt · sitemap.xml · robots.txt · CNAME · app.json
+├── data/team.json                   # the roster, as data, at a stable address
+└── assets/site.css · assets/site.js
+
+# source — what you edit
+├── admin/content/                   # one body per page, plus pages.json
+├── admin/build/build_pages.py       # the generator: one shell, all pages
+├── admin/build/validate.js          # the gate
+└── team/roles/&lt;slug&gt;/ROLE.md        # the roles; the team pages are generated from these
+    team/board/*.md · team/prompts.md</code></pre>
+
+<h2 id="adding">Adding a page</h2>
+
+<pre><code># 1. write the body — just the &lt;main&gt; fragment: no head, no nav, no footer
+$ vim admin/content/case-studies/my-study.html
+# 2. register it: { "path", "section", "title", "desc" }
+$ vim admin/content/pages.json
+# 3. build and check
+$ python3 admin/build/build_pages.py && node admin/build/validate.js</code></pre>
+
+<p>The build then produces, without further work: the page with its navigation, footer and
+version stamp; its <code>.md</code> twin with every link rewritten to markdown; its row in
+<code>llms.txt</code>; its section in <code>llms-full.txt</code>; its entry in
+<code>sitemap.xml</code>; and its canonical, Open Graph and JSON-LD tags.</p>
+
+<h2 id="contract">The authoring contract</h2>
+
+<p>Four rules. The first two are not style preferences — breaking them produces a page that
+is blank for a visitor rather than one that looks wrong.</p>
+
+<ol>
+<li><strong>No declarative reference to a vault path.</strong> No <code>&lt;link
+href&gt;</code>, <code>&lt;script src&gt;</code> or <code>&lt;img src&gt;</code> pointing
+at a file in the vault. Inside a sandboxed vault frame those requests 404 before the bridge
+installs. The validator scans for this and fails the build.</li>
+<li><strong>Assets arrive over the bridge.</strong> Every page carries a small critical
+style block inline and a twenty-line bootstrap that waits for <code>window.sg</code>,
+tries <code>sg.loadCss</code>/<code>sg.loadJs</code>, falls back to
+<code>sg.vfs.readText</code> and injection, and falls back again to plain
+<code>fetch</code> for the static mirror. Worst case the page is unstyled and readable.</li>
+<li><strong>JavaScript adds style, never content.</strong> Every page must be complete with
+scripting disabled. <code>assets/site.js</code> highlights the current nav item, wraps
+tables for narrow screens and adds heading anchors — nothing a reader would miss.</li>
+<li><strong>Output is never hand-edited.</strong> Editing <code>index.html</code> is a
+change the next build silently erases and the validator cannot catch, because it checks the
+output against the content rather than against your intention.</li>
+</ol>
+
+<h2 id="generated">Generated from the repository, not described beside it</h2>
+
+<p>The team section is not written prose about the roles. <code>/team/</code>, every role
+page, and <code>data/team.json</code> are all generated from
+<code>team/roles/&lt;slug&gt;/ROLE.md</code>; the board is generated from
+<code>team/board/*.md</code>; the release history is generated from
+<code>VERSION_LOG</code> in the generator itself. So the site cannot describe a role the
+repository does not carry, quote a count that has drifted, or list a card that was closed
+three releases ago.</p>
+
+<p>Two deliberate divergences from the house pattern elsewhere in the estate, recorded
+because a reader comparing sites will notice them:</p>
+
+<ul>
+<li><strong>Front matter rather than prose fields.</strong> The estate's <code>ROLE.md</code>
+files carry their identity fields as markdown. Here they are YAML front matter, because
+these files are parsed at build time and a parse failure should be a build error rather
+than a page with a missing sentence. The markdown body below the front matter follows the
+house sections.</li>
+<li><strong>The generated team pages sit under <code>team/</code> beside their own
+sources.</strong> <code>team/roles/dev.html</code> is output;
+<code>team/roles/dev/ROLE.md</code> is source. The URL was worth more than the tidiness,
+and the validator knows which is which.</li>
+</ul>
+
+<h2 id="validation">Validation before every push</h2>
+
+<ul>
+<li>Every internal link is resolved against the real file tree — a broken link fails the
+build, not the reader.</li>
+<li>Every page has a markdown twin, and the twin is not empty.</li>
+<li>The contract scan: no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code>
+or <code>&lt;img src&gt;</code> pointing at a relative path.</li>
+<li>Every page carries a canonical URL, a description and JSON-LD structured data.</li>
+<li>Every page is reachable from the navigation or from a page that is — no orphans.</li>
+<li>Every inline script and <code>assets/site.js</code> is parse-checked.</li>
+<li>Every status claim uses one of the three permitted markers and nothing else.</li>
+<li>The roster served at <code>data/team.json</code> matches the files on disk.</li>
+</ul>
+
+<h2 id="release">Release</h2>
+
+<pre><code># 1. bump SITE_VERSION and add its VERSION_LOG row in admin/build/build_pages.py
+# 2. regenerate and validate
+$ python3 admin/build/build_pages.py && node admin/build/validate.js
+# 3. commit the whole tree — source and output together
+$ git add -A && git commit && git push -u origin &lt;branch&gt;
+# 4. verify live: the version string has to come back from the site itself</code></pre>
+
+<p>Step 4 is the one that exists because of a failure elsewhere in this estate: two
+releases pushed cleanly, reported success, and never reached the site, with every check
+green because the failure was in a place none of them could see. Both remotes in sync is
+not the same as deployed. The
+<a href="../team/roles/devops.html">DevOps role</a> owns that rule and CI runs a
+staleness check — a fresh build on a clean checkout, compared byte for byte against what
+was committed — so that the published tree cannot drift from its source unnoticed.</p>
+
+<div class="next">
+<a href="versions.html">Release history →</a>
+<a href="../team/index.html">The team →</a>
+<a href="../index.html">← Home</a>
+</div>

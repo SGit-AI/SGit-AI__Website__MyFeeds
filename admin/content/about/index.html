@@ -1,0 +1,88 @@
+<p class="kicker">Provenance</p>
+<h1>About, licence and honest edges</h1>
+
+<p class="lede">A site arguing that people should be sceptical about who holds their data
+owes its readers the same scepticism about itself. This page says who wrote it, how, what
+it is worth, and what it is currently getting away with.</p>
+
+<h2 id="whose">Whose site this is</h2>
+
+<dl class="fields">
+<dt>Owner</dt><dd>Dinis Cruz</dd>
+<dt>Written by</dt><dd>A team of AI agents under one human owner, in the open. The roles,
+the rules each enforces and the prompts that start them are published at
+<a href="../team/index.html">/team/</a>.</dd>
+<dt>Licence</dt><dd>CC BY 4.0. Quote it, fork it, argue with it; attribution is the only
+condition.</dd>
+<dt>Source</dt><dd>The repository carries both the source and the generated site. Nothing
+on the published tree was hand-written.</dd>
+<dt>Part of</dt><dd>The <a href="../network/index.html">sgit.ai network</a>.</dd>
+</dl>
+
+<h2 id="disclosure">Participant disclosure</h2>
+
+<p>This site argues for a design that is a natural fit for sgit and SG/Send, which are
+products of the same estate that publishes this site. That is a conflict of interest and it
+is disclosed rather than managed: the argument on
+<a href="../vault/index.html#why-vault">/vault/</a> for an encrypted vault over a synced
+folder should be read knowing that the author sells the vault.</p>
+
+<p>The defence offered is that the argument is written so it can be taken elsewhere. The
+<a href="../read-state/index.html#contract">read-state contract</a> names no vendor and
+would work in a git repository, a synced folder, or a proprietary service; the properties
+it needs — a union merge and encryption at rest — are stated as requirements rather than as
+a product. If the contract is only useful with one company's software, it is a bad
+contract and that is a fair criticism to make of it.</p>
+
+<h2 id="edges">Honest edges</h2>
+
+<p>The complete list of things this site currently asserts without having proven:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Claim</th><th>Status</th><th>What would settle it</th></tr></thead>
+<tbody>
+<tr><td>No mainstream reader exports per-item read state</td>
+<td><span class="tag unverified">unverified</span></td>
+<td>Reading each vendor's own export documentation — <a href="../team/board.html#todo">card
+003</a></td></tr>
+<tr><td>What Google Takeout carried for Reader in 2013</td>
+<td><span class="tag unverified">unverified</span></td>
+<td>The archived documentation; written here from memory</td></tr>
+<tr><td>The sgit vault's security properties, as summarised on /vault/</td>
+<td><span class="tag unverified">unverified</span></td>
+<td>An independent audit. This site has run none and is repeating the platform's own
+published model</td></tr>
+<tr><td>Item identity under <code>read-state/v1</code> is stable enough to be useful</td>
+<td><span class="tag argued">argued</span></td>
+<td>Measured churn across a few hundred real feeds over weeks —
+<a href="../build-order/index.html#obligations">obligation 2</a></td></tr>
+<tr><td>Read state merges without conflict</td><td><span class="tag argued">argued</span></td>
+<td>A published two-device transcript — <a href="../build-order/index.html#order">build
+order item 5</a></td></tr>
+<tr><td>The site is live at myfeeds.sgit.ai</td><td><span class="tag need">not yet</span></td>
+<td>The subdomain does not resolve at the time of this release —
+<a href="../team/board.html#need">card 004</a></td></tr>
+</tbody></table></div>
+
+<h2 id="worth">What this site is worth</h2>
+
+<p>It is an argument with a contract attached and no implementation. That is worth
+something — it is cheap to disagree with now and expensive to disagree with after the code
+exists, which is the entire reason for publishing in this order. It is not worth treating
+as a description of working software, and the
+<a href="../build-order/index.html">build order</a> exists so that nobody has to guess
+which parts are which.</p>
+
+<h2 id="contact">Corrections</h2>
+
+<p>A correction is published above the claim it corrects, and the claim stays, because
+deleting a wrong claim destroys the only evidence that the process works. If something here
+is wrong — particularly one of the <span class="tag unverified">unverified</span> rows
+above — the useful form of that is the primary source, and it will be quoted and dated on
+the page rather than absorbed.</p>
+
+<div class="next">
+<a href="../build-order/index.html">What does not exist yet →</a>
+<a href="../team/index.html">How this site is run →</a>
+<a href="../index.html">← Home</a>
+</div>

@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- this repository is a website, not a Python package -----------------------------
+# The Python template above hides build/, lib/, dist/, share/ and var/ at ANY depth.
+# The site's generator and its gate live in admin/build/, and were silently excluded
+# from the first commit until this was noticed. Negate the directory before its
+# contents, or git never descends into it.
+!admin/build/
+!admin/build/**

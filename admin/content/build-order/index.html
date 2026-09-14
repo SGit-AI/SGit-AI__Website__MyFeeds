@@ -1,0 +1,107 @@
+<p class="kicker">Honest edges</p>
+<h1>What does not exist yet</h1>
+
+<p class="lede">This site publishes its argument before the thing it argues for. The cost
+of doing that is this page: every commitment, in the order it has to be built, with what it
+blocks — so that in six months anyone can check what was claimed against what exists,
+including the parts that were quietly dropped.</p>
+
+<div class="note">
+<p><strong>Status vocabulary.</strong>
+<span class="tag shipped">shipped</span> it is in this repository and you can run it ·
+<span class="tag argued">argued</span> a position, with its reasoning shown, and no code ·
+<span class="tag unverified">unverified</span> believed but not checked against a primary
+source. Nothing on this site is <span class="tag shipped">shipped</span> except the site
+itself.</p>
+</div>
+
+<h2 id="order">The order</h2>
+
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Item</th><th>Status</th><th>Blocks</th></tr></thead>
+<tbody>
+<tr><td>0</td><td><strong>The argument</strong> — these pages and their markdown twins</td>
+<td><span class="tag shipped">shipped</span> v0.1.0</td><td>Nothing. It is the thing that
+lets the rest be criticised before it is written.</td></tr>
+<tr><td>1</td><td><strong><code>read-state/v1</code> as a JSON Schema</strong>, with the
+worked example validated against it in CI</td>
+<td><span class="tag argued">argued</span></td><td>Everything below. A contract in prose
+is a conversation; a contract with a validator is a dependency.</td></tr>
+<tr><td>2</td><td><strong>The OPML importer</strong> — an export from any reader becomes
+<code>feeds/feeds.json</code></td><td><span class="tag">not started</span></td>
+<td>The fetcher. Also the first point at which a real user has a vault at all.</td></tr>
+<tr><td>3</td><td><strong>The fetcher</strong> — the only component that touches the
+network, writing <code>feeds/&lt;id&gt;/items/</code></td>
+<td><span class="tag">not started</span></td><td>The reader has nothing to read without
+it.</td></tr>
+<tr><td>4</td><td><strong>The reader as a vault app</strong> — renders
+<code>feeds/</code>, writes <code>state/read.json</code></td>
+<td><span class="tag">not started</span></td><td>Nothing downstream, but it is the first
+release where the argument is testable by using it.</td></tr>
+<tr><td>5</td><td><strong>Two-device merge, demonstrated</strong> — two branches, a union
+merge, a published transcript</td><td><span class="tag">not started</span></td>
+<td>Nothing. It is the proof obligation for the central claim on
+<a href="../read-state/index.html#contract">/read-state/</a>.</td></tr>
+<tr><td>6</td><td><strong>A published vault with a read key</strong> — a curated reading
+list somebody else can open with one string</td><td><span class="tag">not started</span></td>
+<td>Nothing. It is the estate's own standard of proof and this site does not meet it
+yet.</td></tr>
+</tbody></table></div>
+
+<h2 id="obligations">The proof obligations</h2>
+
+<p>Three claims on this site are the kind that can be shown false. They are written here
+together so that nobody has to assemble the list themselves.</p>
+
+<h3>1. Read state merges without conflict</h3>
+<p>Claimed on <a href="../read-state/index.html#contract">/read-state/</a>. Falsified by a
+single realistic case where two devices produce a read record that cannot be unioned
+without losing a fact or requiring a policy decision. Item 5 above is the demonstration
+that would support it; until then it is arithmetic on a page.</p>
+
+<h3>2. Item identity is stable enough to be useful</h3>
+<p>The weakest part of <code>read-state/v1</code>, and the one most likely to be wrong.
+Falsified by measurement: take a few hundred real feeds, fetch them over some weeks, and
+count how often the derived <code>item_id</code> changes for an item that a human would say
+is the same article. That measurement has not been done. If the churn is high, v1's
+identity rule is wrong and should be replaced rather than defended.</p>
+
+<h3>3. No reader exports per-item read state</h3>
+<p>The claim the whole site rests on, and the one it is least entitled to make right now,
+because it was written from memory. <a href="../team/board.html#todo">Card 003</a> is open
+against it. One counter-example — a mainstream reader whose export carries per-item read
+flags in a documented format — does not destroy the argument, but it does mean this site
+has to say so at the top of the page rather than in a footnote.</p>
+
+<h2 id="not-doing">Deliberately not doing</h2>
+
+<ul>
+<li><strong>A hosted service.</strong> There is no server in this design and adding one
+would undo the reason for it.</li>
+<li><strong>Cross-feed deduplication.</strong> Tempting, and it turns a rule you can
+compute into a heuristic you have to tune. Out of scope for v1 and named as such in the
+contract.</li>
+<li><strong>Recommendation, ranking, or any read of the history for the user's
+"benefit".</strong> The entire argument is that this data is sensitive. A feature that
+mines it, however locally, is a feature that makes the data worth attacking.</li>
+<li><strong>A Google Reader API compatibility layer.</strong> It would be the fastest route
+to working with existing clients and it would import the exact model this site is arguing
+against: read state as a server's business rather than a file's. Reconsider only if item 4
+proves too slow to matter.</li>
+</ul>
+
+<h2 id="honest">What would make this site wrong</h2>
+
+<p>Not "incomplete" — wrong. If item 2 above turns out to be true and identity churn makes
+a portable read record unreliable in practice, then the correct conclusion is that read
+state is inherently reader-local and the whole argument collapses to "keep better backups".
+That outcome would be published on this page, above the claim it corrects, with the
+measurement that produced it. The
+<a href="../team/roles/historian.html">Historian role</a> exists to make sure that
+happens rather than the page quietly changing.</p>
+
+<div class="next">
+<a href="../team/board.html">The board →</a>
+<a href="../about/index.html">Honest edges in full →</a>
+<a href="../index.html">← Home</a>
+</div>

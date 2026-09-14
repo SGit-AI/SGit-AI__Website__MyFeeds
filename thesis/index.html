@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feeds are replaceable. Your reading is not. · myfeeds.sgit.ai</title>
+<meta name="description" content="Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.">
+<meta name="generator" content="admin/build/build_pages.py v0.1.0">
+<link rel="canonical" href="https://myfeeds.sgit.ai/thesis/index.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="myfeeds.sgit.ai">
+<meta property="og:title" content="Feeds are replaceable. Your reading is not. · myfeeds.sgit.ai">
+<meta property="og:description" content="Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.">
+<meta property="og:url" content="https://myfeeds.sgit.ai/thesis/index.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Feeds are replaceable. Your reading is not.","description":"Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.","url":"https://myfeeds.sgit.ai/thesis/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.0","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
+--dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--wide:1180px;--measure:74ch}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14151a;--panel:#1b1d23;
+--panel2:#22242b;--line:#2c2f38;--fg:#e8e6e0;--dim:#a3a7b0;--dim2:#767b86;--accent:#2dd4bf;
+--accent-dk:#5eead4}}
+*,*::before,*::after{box-sizing:border-box}
+.skip{position:absolute;left:-9999px;top:0;background:var(--panel);padding:.6rem 1rem;z-index:99}
+.skip:focus{left:.5rem;top:.5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;
+line-height:1.62}
+img{max-width:100%;height:auto}
+a{color:var(--accent-dk);text-decoration:none}
+main{max-width:var(--wide);margin:0 auto;padding:0 20px 5rem}
+main>*{max-width:var(--measure)}
+main>.grid,main>.band,main>.tablewrap,main>.wide{max-width:none}
+h1{font-size:clamp(1.95rem,1.3rem + 2.4vw,3rem);line-height:1.1;margin:.4rem 0 .6rem}
+h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .bar{max-width:var(--wide);margin:0 auto;padding:.7rem 20px;display:flex;
+align-items:baseline;gap:1rem;flex-wrap:wrap}
+.site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
+.site-nav a{color:var(--dim);padding:.22rem .55rem}
+.site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+.site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
+gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
+.site-foot ul{list-style:none;margin:0;padding:0}
+pre{overflow-x:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="bar">
+<a class="brand" href="../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
+<span class="ver">v0.1.0</span>
+<nav class="site-nav" aria-label="Sections"><a href="../thesis/index.html">Thesis</a><a href="../read-state/index.html">Read state</a><a href="../vault/index.html">The vault</a><a href="../build-order/index.html">Build order</a><a href="../team/index.html">Team</a><a href="../admin/index.html">Admin</a></nav>
+</div></header>
+<main id="main">
+<p class="crumb"><a href="../index.html">myfeeds.sgit.ai</a> / The argument</p>
+<p class="kicker">The argument</p>
+<h1>Feeds are replaceable. Your reading is not.</h1>
+
+<p class="lede">A feed reader holds two data sets with opposite properties, and treats them
+identically. One of them can be reconstructed from the public internet at any time. The
+other exists once, nowhere else, and is destroyed by the same event that ends your
+subscription.</p>
+
+<h2 id="two-sets">The two data sets</h2>
+
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>The items</th><th>The reading</th></tr></thead>
+<tbody>
+<tr><th>What it is</th><td>Titles, bodies, links, dates, fetched from a feed URL</td>
+<td>What you read, when you first read it, what you starred, what you noted, what you
+deliberately skipped</td></tr>
+<tr><th>Who else has it</th><td>The publisher, every other subscriber, the Internet
+Archive, often Google</td><td>Nobody</td></tr>
+<tr><th>If you lose it</th><td>Re-fetch it</td><td>It is gone</td></tr>
+<tr><th>What it says about you</th><td>Nothing</td><td>What you follow, how closely, at
+what hours, and what you stopped reading and when</td></tr>
+<tr><th>Where readers keep it</th><td>A local cache, cheerfully disposable</td>
+<td>The same database, in a private schema, with the same disposability</td></tr>
+</tbody></table></div>
+
+<p>Read the last row twice. The column that cannot be reconstructed is stored with exactly
+the care given to the column that can.</p>
+
+<h2 id="shutdown">What a shutdown actually takes</h2>
+
+<p>Google Reader was announced for shutdown on 13 March 2013 and closed on 1 July 2013.
+It was, by the standards of the time, a well-behaved exit: Takeout produced an OPML file of
+subscriptions, and JSON for starred, liked, shared and noted items. <span class="tag
+unverified">unverified</span> — the shape of those export files is stated here from memory
+and is <a href="../team/board.html#todo">card 003</a>, to be checked against the
+archived documentation rather than left as a confident sentence.</p>
+
+<p>What the export did <em>not</em> carry, and what no reader's export has carried since,
+is the per-item read record: the flags on the hundreds of thousands of items you had
+worked through. The stars survived because a star is a small, deliberate, countable thing
+somebody thought to serialise. The reading did not, because it is large, incidental, and
+looks like cache.</p>
+
+<blockquote>
+<p>Everyone who migrated in 2013 has the same memory: the subscriptions came across in a
+minute, and then every feed was full of unread items going back months, and the only way
+out was to mark everything read and start again. That is the loss this site is about. It
+was not treated as a loss at the time; it was treated as an inconvenience, which is how
+you can tell nobody thought the data was theirs.</p>
+</blockquote>
+
+<h2 id="profile">A reading history is a profile</h2>
+
+<p>The reason this matters beyond nostalgia: the record a reader accumulates about you is
+more revealing than the subscription list it is derived from. A subscription list says what
+you were curious about once. A read record says what you actually consume, at what hours,
+how quickly you abandoned a source, which topics you open immediately and which you let
+pile up for three weeks and then bulk-dismiss.</p>
+
+<p>That is a behavioural profile, built continuously, and in the hosted model it is held by
+a party whose business is often advertising. Even where it is not, it is a plaintext
+asset in somebody else's breach.</p>
+
+<p class="thesis">If you would not hand someone a list of everything you read last year,
+with timestamps, you should not be comfortable that a reader holds one and you do not.</p>
+
+<h2 id="objections">The three honest objections</h2>
+
+<h3>"Self-hosting already solves this"</h3>
+<p>It moves the database and solves nothing about the format. A self-hosted reader's state
+is still a private schema in one application; you can back it up, and you still cannot read
+it without running that application, and you still cannot move it to a different reader.
+Ownership of the disk is not ownership of the data. <span class="tag argued">argued</span></p>
+
+<h3>"Nobody uses RSS any more"</h3>
+<p>Partly true and beside the point. The argument here is about the shape of a personal
+consumption record, and feeds are simply the cleanest case: an open content format, a
+well-understood item identity, and an existing portable format for half the problem. If
+the argument holds for feeds it generalises to every other reading surface, most of which
+are worse. <span class="tag argued">argued</span></p>
+
+<h3>"Read state is not worth the engineering"</h3>
+<p>This is the strongest objection, and the answer is that it is nearly free. Read state is
+the single easiest distributed data structure there is — a grow-only set, described on the
+<a href="../read-state/index.html">next page</a>, that needs no conflict resolution, no
+vector clocks and no server. The engineering that is not free is the reader; the state
+contract is a weekend and a schema.</p>
+
+<div class="next">
+<a href="../read-state/index.html">The contract →</a>
+<a href="../vault/index.html">The container →</a>
+<a href="../index.html">← Home</a>
+</div>
+</main>
+<footer class="site-foot"><div class="inner">
+<div><h4>The argument</h4><ul><li><a href="../thesis/index.html">Feeds are replaceable</a></li><li><a href="../read-state/index.html">The part nobody exports</a></li><li><a href="../vault/index.html">What a feeds vault holds</a></li><li><a href="../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../team/index.html">The team</a></li><li><a href="../team/board.html">The board</a></li><li><a href="../admin/index.html">How this site is built</a></li><li><a href="../admin/versions.html">Release history</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../network/index.html">The sgit.ai network</a></li><li><a href="../about/index.html">About &amp; licence</a></li><li><a href="../llms.txt">llms.txt</a></li><li><a href="../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>This site</h4><p>Feeds are replaceable. Your reading is not.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.0. Part of the
+<a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
+</div></footer>
+<script>(function(){var B="../",n=0,t;
+function applied(){try{return getComputedStyle(document.documentElement)
+.getPropertyValue('--site-css').trim()==='1'}catch(e){return false}}
+function inject(tag,c){if(!c)return;var e=document.createElement(tag);e.textContent=c;
+(tag==='style'?document.head:document.body).appendChild(e);}
+function viaFetch(){fetch(B+'assets/site.css').then(function(r){return r.ok?r.text():''})
+.then(function(c){if(!applied())inject('style',c)}).catch(function(){});
+fetch(B+'assets/site.js').then(function(r){return r.ok?r.text():''})
+.then(function(c){inject('script',c)}).catch(function(){});}
+function viaBridge(sg){if(sg.loadCss&&sg.loadJs){try{sg.loadCss('assets/site.css');
+sg.loadJs('assets/site.js');return true}catch(e){}}
+if(sg.vfs&&sg.vfs.readText){try{Promise.resolve(sg.vfs.readText('assets/site.css'))
+.then(function(c){if(!applied())inject('style',c)});
+Promise.resolve(sg.vfs.readText('assets/site.js')).then(function(c){inject('script',c)});
+return true}catch(e){}}return false;}
+// The two transports are tried concurrently and both are idempotent: fetch starts now so
+// the static mirror is never unstyled, and the bridge is used the moment it appears. The
+// --site-css sentinel in site.css stops the second arrival applying anything twice.
+if(window.sg&&viaBridge(window.sg))return;
+viaFetch();
+window.addEventListener('sg-ready',function(){if(!applied()&&window.sg)viaBridge(window.sg)},
+{once:true});
+t=setInterval(function(){if(window.sg){clearInterval(t);if(!applied())viaBridge(window.sg);}
+else if(++n>40){clearInterval(t);if(!applied())viaFetch();}},50);})();</script>
+</body>
+</html>

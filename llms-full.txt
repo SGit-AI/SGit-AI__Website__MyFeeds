@@ -1,0 +1,1593 @@
+# myfeeds.sgit.ai — every page, v0.1.0
+
+> Feeds are replaceable. Your reading is not.
+
+Generated 2026-09-14 from https://myfeeds.sgit.ai/. Sections below are
+the markdown twins of every page, in navigation order.
+
+
+==============================================================================
+# /index.html
+==============================================================================
+
+# myfeeds.sgit.ai
+
+> Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.
+
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+One question, taken further than a section could
+
+# Feeds are replaceable. Your reading is not.
+
+Every feed reader ever built treats those two sentences the other way round. It works hard to keep a copy of the articles — which the publisher will happily serve again tomorrow — and keeps the record of what you actually read, when, and what you skipped, in a database you cannot open, in a format nobody has ever standardised, at a company that may not exist in three years.
+
+This site argues that the record of your reading is the valuable half, that it belongs in an encrypted vault you hold, and that the contract for it should be published before anybody writes the reader. It publishes that contract. It does not yet publish the reader — [what does not exist yet is listed, in order](build-order/index.md).
+
+### The whole argument in four steps
+
+1. **Subscriptions are portable.** OPML has moved a feed list between readers for two decades. That problem is solved.
+
+2. **Read state never was.** There is no interchange format for *which items you have read*. Not in OPML, not in RSS, not in Atom, not anywhere. Each reader invented its own and kept it.
+
+3. **That asymmetry is the lock-in.** You can leave with your subscriptions and you arrive at the new reader with twelve thousand unread items and no history. Most people just stay.
+
+4. **Read state is the one shape that merges without conflict.** It is a grow-only set of `(item, first read at)` pairs; two devices union cleanly and nothing is ever overwritten. Which means it can live in a version-controlled encrypted vault you own, synced between your own machines, with no server that needs to be able to read it.
+
+## Why this is a vault problem and not an app problem
+
+The obvious fix — "just self-host a reader" — moves the database from someone else's machine to yours and leaves everything else in place. The state is still a private schema inside one application, still unreadable without running that application, still gone when you stop running it.
+
+The interesting move is to make the state a *document*: files with a published shape, versioned, encrypted before they leave your machine, and readable by any program that implements the contract. Then the reader becomes replaceable too — which is the point, because a format that outlives its first implementation is the only kind worth writing down.
+
+A reading history is a profile of a person. It should be encrypted at rest, held by its subject, and portable by design — and none of that requires anything cleverer than agreeing on a file layout.
+
+- [The argument — Feeds are replaceable — Why the durability of the two data sets is backwards in every reader, and what that costs at the moment a service shuts down.](thesis/index.md)
+
+- [The contract — The part nobody exports — What read state actually is, why OPML never carried it, and `read-state/v1` written out in full.](read-state/index.md)
+
+- [The container — What a feeds vault holds — The folder layout, the separation of cache from state, and the merge rule that makes two devices safe.](vault/index.md)
+
+- [Honest edges — What does not exist yet — Every item this site argues for, in build order, each marked shipped, argued or unverified.](build-order/index.md)
+
+## What this site is worth today
+
+Published before the code, on purpose, so that the commitments are checkable later by anyone — including someone who would like them to have failed. Specifically:
+
+| Thing | Status | Where |
+|---|---|---|
+| The argument | shipped | These pages, and their markdown twins for agents |
+| The `read-state/v1` shape | argued | [/read-state/](read-state/index.md) — prose and a worked example; the JSON Schema is [board card 001](team/board.md#todo) |
+| The vault layout | argued | [/vault/](vault/index.md) |
+| An importer, a reader, a fetcher | not started | [/build-order/](build-order/index.md) |
+| Claims about what named readers export | unverified | Marked in place, with [card 003](team/board.md#todo) open to check them against each vendor's own documentation |
+
+The site is built and run by a small team of AI agents with one human owner, in the open: [seven roles as files](team/index.md), each with the failure condition it is judged on, and [a board](team/board.md) that says what is not done.
+
+[Start with the argument →](thesis/index.md) [Go straight to the contract →](read-state/index.md) [llms.txt](llms.txt)
+
+---
+
+*[Site index for agents](llms.txt) · [HTML version](https://myfeeds.sgit.ai/index.html)*
+
+
+==============================================================================
+# /thesis/index.html
+==============================================================================
+
+# Feeds are replaceable. Your reading is not.
+
+> Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
+
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The argument
+
+# Feeds are replaceable. Your reading is not.
+
+A feed reader holds two data sets with opposite properties, and treats them identically. One of them can be reconstructed from the public internet at any time. The other exists once, nowhere else, and is destroyed by the same event that ends your subscription.
+
+## The two data sets
+
+|  | The items | The reading |
+|---|---|---|
+| What it is | Titles, bodies, links, dates, fetched from a feed URL | What you read, when you first read it, what you starred, what you noted, what you deliberately skipped |
+| Who else has it | The publisher, every other subscriber, the Internet Archive, often Google | Nobody |
+| If you lose it | Re-fetch it | It is gone |
+| What it says about you | Nothing | What you follow, how closely, at what hours, and what you stopped reading and when |
+| Where readers keep it | A local cache, cheerfully disposable | The same database, in a private schema, with the same disposability |
+
+Read the last row twice. The column that cannot be reconstructed is stored with exactly the care given to the column that can.
+
+## What a shutdown actually takes
+
+Google Reader was announced for shutdown on 13 March 2013 and closed on 1 July 2013. It was, by the standards of the time, a well-behaved exit: Takeout produced an OPML file of subscriptions, and JSON for starred, liked, shared and noted items. unverified — the shape of those export files is stated here from memory and is [card 003](../team/board.md#todo), to be checked against the archived documentation rather than left as a confident sentence.
+
+What the export did *not* carry, and what no reader's export has carried since, is the per-item read record: the flags on the hundreds of thousands of items you had worked through. The stars survived because a star is a small, deliberate, countable thing somebody thought to serialise. The reading did not, because it is large, incidental, and looks like cache.
+
+> Everyone who migrated in 2013 has the same memory: the subscriptions came across in a minute, and then every feed was full of unread items going back months, and the only way out was to mark everything read and start again. That is the loss this site is about. It was not treated as a loss at the time; it was treated as an inconvenience, which is how you can tell nobody thought the data was theirs.
+
+## A reading history is a profile
+
+The reason this matters beyond nostalgia: the record a reader accumulates about you is more revealing than the subscription list it is derived from. A subscription list says what you were curious about once. A read record says what you actually consume, at what hours, how quickly you abandoned a source, which topics you open immediately and which you let pile up for three weeks and then bulk-dismiss.
+
+That is a behavioural profile, built continuously, and in the hosted model it is held by a party whose business is often advertising. Even where it is not, it is a plaintext asset in somebody else's breach.
+
+If you would not hand someone a list of everything you read last year, with timestamps, you should not be comfortable that a reader holds one and you do not.
+
+## The three honest objections
+
+### "Self-hosting already solves this"
+
+It moves the database and solves nothing about the format. A self-hosted reader's state is still a private schema in one application; you can back it up, and you still cannot read it without running that application, and you still cannot move it to a different reader. Ownership of the disk is not ownership of the data. argued
+
+### "Nobody uses RSS any more"
+
+Partly true and beside the point. The argument here is about the shape of a personal consumption record, and feeds are simply the cleanest case: an open content format, a well-understood item identity, and an existing portable format for half the problem. If the argument holds for feeds it generalises to every other reading surface, most of which are worse. argued
+
+### "Read state is not worth the engineering"
+
+This is the strongest objection, and the answer is that it is nearly free. Read state is the single easiest distributed data structure there is — a grow-only set, described on the [next page](../read-state/index.md), that needs no conflict resolution, no vector clocks and no server. The engineering that is not free is the reader; the state contract is a weekend and a schema.
+
+[The contract →](../read-state/index.md) [The container →](../vault/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/thesis/index.html)*
+
+
+==============================================================================
+# /read-state/index.html
+==============================================================================
+
+# The part nobody exports
+
+> OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
+
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The contract
+
+# The part nobody exports
+
+OPML has moved subscription lists between readers since 2000. Nothing has ever moved read state, because nothing has ever described it. This page describes it — before any implementation exists, so the description can be judged on its own terms rather than as documentation of whatever got built.
+
+## What OPML carries, and what it does not
+
+An OPML subscription list is a tree of `<outline>` elements. A feed is an element with an `xmlUrl`; a folder is an element with children. In practice the fields that survive a move between readers are the feed URL, a title, and the folder it sat in.
+
+```
+<outline text="Security" title="Security">
+  <outline type="rss" text="Krebs on Security"
+           xmlUrl="https://krebsonsecurity.com/feed/"
+           htmlUrl="https://krebsonsecurity.com/" />
+</outline>
+```
+
+That is the whole interchange surface. There is no element for an item, so there is nowhere to put whether you read one. argued — OPML is a subscription format and was never intended to carry per-item state; the complaint is not that OPML is deficient but that the gap it leaves was never filled by anything else.
+
+**Claims about specific products on this page are marked unverified.** They were written from working memory rather than from each vendor's own export documentation. [Card 003](../team/board.md#todo) is open to check every one of them and either source it or correct it. Until that card closes, treat them as leads.
+
+## What read state actually is
+
+Strip away the product features and a reading record is a set of facts of one shape:
+
+This item, first read at this time.
+
+Everything else a reader stores about an item is either derived from that (unread counts, "keep unread", per-feed progress) or is a separate, smaller, deliberate act: a star, a tag, a note. The deliberate acts are already treated as valuable — they are what the exports carry. The reading itself is not, and it is the large one.
+
+### Why the shape matters more than the fields
+
+Because of what it lets you do without a server. A set of `(item, first read at)` pairs is a **grow-only set**: entries are added and never removed or changed. Two copies of it merge by union. There is no conflict to resolve, because if your phone says you read something at 07:14 and your laptop says 07:16, both are true and the earlier one wins by simple comparison — not by a policy, by arithmetic.
+
+That single property is why this belongs in a version-controlled encrypted vault rather than behind a sync API. A sync API exists to arbitrate conflicting writes. Read state has no conflicting writes. All it needs is somewhere to put files and a merge that means union.
+
+## read-state/v1
+
+argued — published as a contract, not as documentation of an implementation. The JSON Schema and its validator are [card 001](../team/board.md#todo); until that ships, this prose and the example below are the whole specification, and any disagreement with it is cheap to act on, which is the reason for publishing it this early.
+
+### The file
+
+```
+{
+  "schema": "read-state/v1",
+  "generated": "2026-09-14T09:12:04Z",
+  "device": "laptop",
+  "entries": {
+    "sha256:9f2a1c…": { "read": "2026-09-13T07:14:22Z" },
+    "sha256:4b77e0…": { "read": "2026-09-13T07:16:03Z", "star": "2026-09-13T07:16:19Z" },
+    "sha256:0ad913…": { "read": "2026-09-12T22:40:11Z", "note": "notes/0ad913.md" }
+  }
+}
+```
+
+| Field | Rule |
+|---|---|
+| `schema` | Exact string `read-state/v1`. A reader that does not recognise it must not write to the file. |
+| `entries` | Keyed by item identity (below). Add-only: an entry is never deleted and an existing timestamp is never moved later. |
+| `read` | RFC 3339, UTC, the *first* time this item was read. Required on every entry — an entry with no `read` is not read state. |
+| `star`, `note` | Optional. Present because they are already portable in practice, and cheap to carry in the same place. |
+| `device` | A free label, for a human debugging a merge. It carries no semantics and no two devices are required to differ. |
+
+### Item identity
+
+The hard part, and the part most likely to be wrong in v1. An item's identity must be stable across re-fetches, stable across readers, and computable without a server. The rule:
+
+```
+item_id = "sha256:" + sha256( feed_url + "\n" + guid )
+
+where guid is, in order of preference:
+  RSS   <guid>            if present
+  Atom  <id>              if present
+  else  <link>            normalised (scheme+host lowercased, fragment dropped)
+  else  sha256(<title> + <pubDate>)
+```
+
+**What this does not cover, stated plainly:**
+
+- A feed that changes its `guid` scheme orphans every prior entry. The old entries remain and become unreachable; nothing breaks, but the history is silently split. No mitigation is proposed in v1.
+
+- The same article in two feeds is two items. Cross-feed deduplication is out of scope.
+
+- A feed served from two URLs (http/https, with and without `www`) produces two identities. Normalisation of the feed URL itself is deliberately not specified in v1, because guessing it wrong is worse than leaving it.
+
+- There is no "unread" — removing an entry is not permitted, so marking something unread again is a reader-local affair and does not belong in this file.
+
+### The merge rule
+
+```
+merge(A, B):
+  for each item_id in A ∪ B:
+    read  = min(A.read,  B.read)     # first read wins; both were true
+    star  = min(A.star,  B.star)     # first star wins
+    note  = A.note or B.note         # divergent notes are a vault-level conflict
+```
+
+Note the shape of that: it is commutative, associative and idempotent, so it does not matter what order devices sync in, how many times, or whether one was offline for a month. The one case it does not settle — two devices writing different notes for the same item — is pushed up to the vault, where a real merge with a human in the loop already exists. argued
+
+## What existing readers do instead
+
+Every one of the rows below is unverified and is the subject of [card 003](../team/board.md#todo). They are recorded here as the shape of the problem, not as findings.
+
+| Approach | What is claimed, pending verification |
+|---|---|
+| The Google Reader API, after 2013 | Several self-hosted readers implement a compatible API, which makes it the closest thing to a de-facto read-state protocol — a protocol for a product that no longer exists, never standardised, and defined by whatever its clients happened to need. |
+| Per-product export | Typically OPML for subscriptions, and a separate dump of starred or saved items. The per-item read flags are generally not included. |
+| Direct database access | Available for self-hosted readers, and the shape is per-product. It is a backup, not an interchange format. |
+
+If any of that is wrong, it is wrong in public with a card open against it, which is the intended behaviour of this site rather than an embarrassment about it.
+
+[Where the file lives →](../vault/index.md) [What is not built yet →](../build-order/index.md) [← The argument](../thesis/index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/read-state/index.html)*
+
+
+==============================================================================
+# /vault/index.html
+==============================================================================
+
+# What a feeds vault holds
+
+> The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
+
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The container
+
+# What a feeds vault holds
+
+A layout, not an application. If two programs agree on this folder shape, either can be thrown away without taking the reading history with it — which is the whole point, and the reason the layout is published before either program exists.
+
+## The layout
+
+```
+myfeeds-vault/
+├── app.json                    # vault app manifest — entry point, no write grant needed to read
+├── index.html                  # the reader, if one is present. Replaceable.
+├── feeds/
+│   ├── feeds.json              # subscriptions: id, xmlUrl, title, folder, added, active
+│   └── <feed-id>/
+│       ├── meta.json           # title, htmlUrl, last fetch, last etag
+│       └── items/2026/09/<item-id>.json
+├── state/
+│   ├── read.json               # read-state/v1 — the file that cannot be rebuilt
+│   ├── devices/<device>.json   # optional per-device shard, merged into read.json
+│   └── notes/<item-id>.md      # one note per file, so two devices conflict per note
+└── sources/
+    └── 2026-09-14-subscriptions.opml   # what you imported, kept verbatim, never rewritten
+```
+
+## Why `feeds/` and `state/` are separate trees
+
+This is the only structural decision on the page, and everything else follows from it.
+
+|  | `feeds/` | `state/` |
+|---|---|---|
+| Origin | Fetched from the public internet | Produced by you, once |
+| If deleted | Re-fetch | Unrecoverable |
+| Growth | Unbounded; prune freely | Small; never prune |
+| Merge | Last fetch wins, nothing is lost | Union, nothing is overwritten |
+| Backup priority | Convenience | The reason the vault exists |
+
+Keeping them apart means a user can delete `feeds/` entirely — after a laptop fills up, or to shrink a vault before handing a read key to somebody — and lose nothing that matters. A reader that interleaves read flags into the cached item files makes that impossible, and every reader interleaves them, because when you are writing the code they are obviously the same object.
+
+Store the thing you cannot get back in a different tree from the thing you can. Everything else about this design is a consequence.
+
+## Why an encrypted vault rather than a folder in Dropbox
+
+Three properties, in the order they matter:
+
+1. **The host cannot read it.** A reading history is a behavioural profile; it should be ciphertext everywhere it is at rest and everywhere it is in transit. In an [sgit vault](https://sgit.ai/security/index.md) the client encrypts before anything leaves the machine, and the server holds opaque objects — it does not see file names, contents or commit messages. unverified as stated here: this is a summary of the platform's published security model, not an independent audit of it, and this site has run no such audit.
+
+2. **It has real branches and a real merge.** Two devices are two branches; the union merge from [read-state/v1](../read-state/index.md#contract) is what a merge of `state/` means. File sync gives you last-writer-wins and a folder full of *file (conflicted copy).json*, which for a grow-only set is data loss with extra steps.
+
+3. **It is handed over with one string.** A vault has a read key that is a complete credential — no account, nothing installed for the reader. That matters less for your own reading history and a great deal for the thing one layer up: publishing a curated feed to somebody else is the same mechanism, with a different key.
+
+## The reader is a vault app, and is the replaceable part
+
+A vault can carry its own front end: an `index.html` inside the vault that the host renders, reading the vault's files through a bridge rather than over the network. That makes a reader that ships *with* the data instead of owning it.
+
+The constraint it puts on the design is the useful one. A vault app has no server, so it cannot fetch feeds itself in the general case — cross-origin requests to arbitrary publishers will not survive the browser. So fetching is a separate job on a machine you trust, writing into `feeds/`, and the app is a pure reader over the vault plus a writer of `state/`. That split is a nuisance for one afternoon and correct forever: the component that touches the network never touches your reading record.
+
+None of this is built. The layout above is a contract with no implementation behind it today — see [the build order](../build-order/index.md), where the fetcher, the importer and the reader are listed in the order they have to be written and with what each one blocks.
+
+## The property that falls out for free
+
+Once the reading record is a set of files with a published shape rather than rows in an application, three things stop being features and start being consequences: you can `grep` your own reading history; you can hand a year of it to a program you wrote this morning; and you can give somebody a read key to a curated subset without giving them an account on anything. None of those were design goals. They are what happens when state is a document.
+
+[What does not exist yet →](../build-order/index.md) [← The contract](../read-state/index.md) [sgit.ai ↗](https://sgit.ai/)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/vault/index.html)*
+
+
+==============================================================================
+# /build-order/index.html
+==============================================================================
+
+# What does not exist yet
+
+> Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
+
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Honest edges
+
+# What does not exist yet
+
+This site publishes its argument before the thing it argues for. The cost of doing that is this page: every commitment, in the order it has to be built, with what it blocks — so that in six months anyone can check what was claimed against what exists, including the parts that were quietly dropped.
+
+**Status vocabulary.** shipped it is in this repository and you can run it · argued a position, with its reasoning shown, and no code · unverified believed but not checked against a primary source. Nothing on this site is shipped except the site itself.
+
+## The order
+
+| # | Item | Status | Blocks |
+|---|---|---|---|
+| 0 | **The argument** — these pages and their markdown twins | shipped v0.1.0 | Nothing. It is the thing that lets the rest be criticised before it is written. |
+| 1 | **`read-state/v1` as a JSON Schema**, with the worked example validated against it in CI | argued | Everything below. A contract in prose is a conversation; a contract with a validator is a dependency. |
+| 2 | **The OPML importer** — an export from any reader becomes `feeds/feeds.json` | not started | The fetcher. Also the first point at which a real user has a vault at all. |
+| 3 | **The fetcher** — the only component that touches the network, writing `feeds/<id>/items/` | not started | The reader has nothing to read without it. |
+| 4 | **The reader as a vault app** — renders `feeds/`, writes `state/read.json` | not started | Nothing downstream, but it is the first release where the argument is testable by using it. |
+| 5 | **Two-device merge, demonstrated** — two branches, a union merge, a published transcript | not started | Nothing. It is the proof obligation for the central claim on [/read-state/](../read-state/index.md#contract). |
+| 6 | **A published vault with a read key** — a curated reading list somebody else can open with one string | not started | Nothing. It is the estate's own standard of proof and this site does not meet it yet. |
+
+## The proof obligations
+
+Three claims on this site are the kind that can be shown false. They are written here together so that nobody has to assemble the list themselves.
+
+### 1. Read state merges without conflict
+
+Claimed on [/read-state/](../read-state/index.md#contract). Falsified by a single realistic case where two devices produce a read record that cannot be unioned without losing a fact or requiring a policy decision. Item 5 above is the demonstration that would support it; until then it is arithmetic on a page.
+
+### 2. Item identity is stable enough to be useful
+
+The weakest part of `read-state/v1`, and the one most likely to be wrong. Falsified by measurement: take a few hundred real feeds, fetch them over some weeks, and count how often the derived `item_id` changes for an item that a human would say is the same article. That measurement has not been done. If the churn is high, v1's identity rule is wrong and should be replaced rather than defended.
+
+### 3. No reader exports per-item read state
+
+The claim the whole site rests on, and the one it is least entitled to make right now, because it was written from memory. [Card 003](../team/board.md#todo) is open against it. One counter-example — a mainstream reader whose export carries per-item read flags in a documented format — does not destroy the argument, but it does mean this site has to say so at the top of the page rather than in a footnote.
+
+## Deliberately not doing
+
+- **A hosted service.** There is no server in this design and adding one would undo the reason for it.
+
+- **Cross-feed deduplication.** Tempting, and it turns a rule you can compute into a heuristic you have to tune. Out of scope for v1 and named as such in the contract.
+
+- **Recommendation, ranking, or any read of the history for the user's "benefit".** The entire argument is that this data is sensitive. A feature that mines it, however locally, is a feature that makes the data worth attacking.
+
+- **A Google Reader API compatibility layer.** It would be the fastest route to working with existing clients and it would import the exact model this site is arguing against: read state as a server's business rather than a file's. Reconsider only if item 4 proves too slow to matter.
+
+## What would make this site wrong
+
+Not "incomplete" — wrong. If item 2 above turns out to be true and identity churn makes a portable read record unreliable in practice, then the correct conclusion is that read state is inherently reader-local and the whole argument collapses to "keep better backups". That outcome would be published on this page, above the claim it corrects, with the measurement that produced it. The [Historian role](../team/roles/historian.md) exists to make sure that happens rather than the page quietly changing.
+
+[The board →](../team/board.md) [Honest edges in full →](../about/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/build-order/index.html)*
+
+
+==============================================================================
+# /admin/index.html
+==============================================================================
+
+# How this site is built
+
+> The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
+
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Provenance
+
+# How this site is built
+
+Not hosted on a web server in the usual sense. The published tree is a static mirror and, equally, a **vault app** — a set of pages that can live inside an encrypted vault and be decrypted and rendered in the reader's browser. That second target is what makes the authoring contract below non-negotiable.
+
+## The tree
+
+```
+# output — generated, never hand-edited
+├── index.html · index.md            # every page has a markdown twin at the same path
+├── thesis/ · read-state/ · vault/ · build-order/
+├── team/index.html · team/board.html · team/prompts.html · team/roles/<slug>.html
+├── admin/index.html · admin/versions.html
+├── llms.txt · llms-full.txt · sitemap.xml · robots.txt · CNAME · app.json
+├── data/team.json                   # the roster, as data, at a stable address
+└── assets/site.css · assets/site.js
+
+# source — what you edit
+├── admin/content/                   # one body per page, plus pages.json
+├── admin/build/build_pages.py       # the generator: one shell, all pages
+├── admin/build/validate.js          # the gate
+└── team/roles/<slug>/ROLE.md        # the roles; the team pages are generated from these
+    team/board/*.md · team/prompts.md
+```
+
+## Adding a page
+
+```
+# 1. write the body — just the <main> fragment: no head, no nav, no footer
+$ vim admin/content/case-studies/my-study.html
+# 2. register it: { "path", "section", "title", "desc" }
+$ vim admin/content/pages.json
+# 3. build and check
+$ python3 admin/build/build_pages.py && node admin/build/validate.js
+```
+
+The build then produces, without further work: the page with its navigation, footer and version stamp; its `.md` twin with every link rewritten to markdown; its row in `llms.txt`; its section in `llms-full.txt`; its entry in `sitemap.xml`; and its canonical, Open Graph and JSON-LD tags.
+
+## The authoring contract
+
+Four rules. The first two are not style preferences — breaking them produces a page that is blank for a visitor rather than one that looks wrong.
+
+1. **No declarative reference to a vault path.** No `<link href>`, `<script src>` or `<img src>` pointing at a file in the vault. Inside a sandboxed vault frame those requests 404 before the bridge installs. The validator scans for this and fails the build.
+
+2. **Assets arrive over the bridge.** Every page carries a small critical style block inline and a twenty-line bootstrap that waits for `window.sg`, tries `sg.loadCss`/`sg.loadJs`, falls back to `sg.vfs.readText` and injection, and falls back again to plain `fetch` for the static mirror. Worst case the page is unstyled and readable.
+
+3. **JavaScript adds style, never content.** Every page must be complete with scripting disabled. `assets/site.js` highlights the current nav item, wraps tables for narrow screens and adds heading anchors — nothing a reader would miss.
+
+4. **Output is never hand-edited.** Editing `index.html` is a change the next build silently erases and the validator cannot catch, because it checks the output against the content rather than against your intention.
+
+## Generated from the repository, not described beside it
+
+The team section is not written prose about the roles. `/team/`, every role page, and `data/team.json` are all generated from `team/roles/<slug>/ROLE.md`; the board is generated from `team/board/*.md`; the release history is generated from `VERSION_LOG` in the generator itself. So the site cannot describe a role the repository does not carry, quote a count that has drifted, or list a card that was closed three releases ago.
+
+Two deliberate divergences from the house pattern elsewhere in the estate, recorded because a reader comparing sites will notice them:
+
+- **Front matter rather than prose fields.** The estate's `ROLE.md` files carry their identity fields as markdown. Here they are YAML front matter, because these files are parsed at build time and a parse failure should be a build error rather than a page with a missing sentence. The markdown body below the front matter follows the house sections.
+
+- **The generated team pages sit under `team/` beside their own sources.** `team/roles/dev.html` is output; `team/roles/dev/ROLE.md` is source. The URL was worth more than the tidiness, and the validator knows which is which.
+
+## Validation before every push
+
+- Every internal link is resolved against the real file tree — a broken link fails the build, not the reader.
+
+- Every page has a markdown twin, and the twin is not empty.
+
+- The contract scan: no `<link href>`, `<script src>` or `<img src>` pointing at a relative path.
+
+- Every page carries a canonical URL, a description and JSON-LD structured data.
+
+- Every page is reachable from the navigation or from a page that is — no orphans.
+
+- Every inline script and `assets/site.js` is parse-checked.
+
+- Every status claim uses one of the three permitted markers and nothing else.
+
+- The roster served at `data/team.json` matches the files on disk.
+
+## Release
+
+```
+# 1. bump SITE_VERSION and add its VERSION_LOG row in admin/build/build_pages.py
+# 2. regenerate and validate
+$ python3 admin/build/build_pages.py && node admin/build/validate.js
+# 3. commit the whole tree — source and output together
+$ git add -A && git commit && git push -u origin <branch>
+# 4. verify live: the version string has to come back from the site itself
+```
+
+Step 4 is the one that exists because of a failure elsewhere in this estate: two releases pushed cleanly, reported success, and never reached the site, with every check green because the failure was in a place none of them could see. Both remotes in sync is not the same as deployed. The [DevOps role](../team/roles/devops.md) owns that rule and CI runs a staleness check — a fresh build on a clean checkout, compared byte for byte against what was committed — so that the published tree cannot drift from its source unnoticed.
+
+[Release history →](versions.md) [The team →](../team/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/admin/index.html)*
+
+
+==============================================================================
+# /network/index.html
+==============================================================================
+
+# Part of the sgit.ai network
+
+> Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
+
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Provenance
+
+# Part of the sgit.ai network
+
+A family of focused sites on `*.sgit.ai` subdomains, each taking one question further than a section on the main site could. They share a design, a discipline — sourced claims, a stated status, honest edges — and the convention of publishing an argument before the thing it argues for.
+
+## The question this site owns
+
+Who should hold the record of what you read?
+
+Everything here follows from that one question, and anything that does not follow from it belongs on a sibling site instead. That is the deconfliction rule, and it is the practical reason the network exists: nineteen sites each answering one question is legible, and one site answering nineteen is not.
+
+| Question | Belongs to |
+|---|---|
+| Who should hold the record of what you read? | **This site** |
+| What is an encrypted vault, and how does version control work on one? | [sgit.ai ↗](https://sgit.ai/) |
+| How do you compose a team of agents with more than one role? | [teams.sgit.ai ↗](https://teams.sgit.ai/) |
+| How do you keep issues in the repository they track, as files? | [issues-fs.sgit.ai ↗](https://issues-fs.sgit.ai/) |
+| How should an app call a language model without holding an API key? | [llms.sgit.ai ↗](https://llms.sgit.ai/) |
+
+## What this site inherits rather than invents
+
+- **The vault, and its security model.** Client-side encryption, branches and merges, a read key that is a complete credential. Owned and documented at [sgit.ai](https://sgit.ai/security/index.md); summarised here only where a reader needs it, and marked unverified where this site is repeating rather than checking.
+
+- **Roles as files.** The `ROLE.md` format, the exclusion list that makes a role a role, and the finding that a Central Claim should be written as a failure condition — all measured and argued at [teams.sgit.ai](https://teams.sgit.ai/role-format/index.html). This site applies it; it does not re-derive it.
+
+- **Issues as files in the repository.** The board here is the smallest useful version of the argument made at length by [issues-fs.sgit.ai](https://issues-fs.sgit.ai/).
+
+- **Publishing before building.** The estate convention that a commitment published early is checkable later, applied most visibly by [pki.sgit.ai](https://pki.sgit.ai/), which published its registry's design before the registry existed.
+
+## Corrections go upstream
+
+The network directory on sgit.ai carries one entry per sibling site, written in that site's own words, and a sibling corrects the directory when it is wrong about it rather than the other way round. This site does not appear in that directory yet — [card 005](../team/board.md#todo) is open to send the entry, and until it closes the network is, from the outside, correct not to list a site that serves nothing.
+
+[The full network ↗](https://sgit.ai/network/index.html) [About this site →](../about/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/network/index.html)*
+
+
+==============================================================================
+# /about/index.html
+==============================================================================
+
+# About, licence and honest edges
+
+> Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
+
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Provenance
+
+# About, licence and honest edges
+
+A site arguing that people should be sceptical about who holds their data owes its readers the same scepticism about itself. This page says who wrote it, how, what it is worth, and what it is currently getting away with.
+
+## Whose site this is
+
+**Owner**
+
+: Dinis Cruz
+
+**Written by**
+
+: A team of AI agents under one human owner, in the open. The roles, the rules each enforces and the prompts that start them are published at [/team/](../team/index.md).
+
+**Licence**
+
+: CC BY 4.0. Quote it, fork it, argue with it; attribution is the only condition.
+
+**Source**
+
+: The repository carries both the source and the generated site. Nothing on the published tree was hand-written.
+
+**Part of**
+
+: The [sgit.ai network](../network/index.md).
+
+## Participant disclosure
+
+This site argues for a design that is a natural fit for sgit and SG/Send, which are products of the same estate that publishes this site. That is a conflict of interest and it is disclosed rather than managed: the argument on [/vault/](../vault/index.md#why-vault) for an encrypted vault over a synced folder should be read knowing that the author sells the vault.
+
+The defence offered is that the argument is written so it can be taken elsewhere. The [read-state contract](../read-state/index.md#contract) names no vendor and would work in a git repository, a synced folder, or a proprietary service; the properties it needs — a union merge and encryption at rest — are stated as requirements rather than as a product. If the contract is only useful with one company's software, it is a bad contract and that is a fair criticism to make of it.
+
+## Honest edges
+
+The complete list of things this site currently asserts without having proven:
+
+| Claim | Status | What would settle it |
+|---|---|---|
+| No mainstream reader exports per-item read state | unverified | Reading each vendor's own export documentation — [card 003](../team/board.md#todo) |
+| What Google Takeout carried for Reader in 2013 | unverified | The archived documentation; written here from memory |
+| The sgit vault's security properties, as summarised on /vault/ | unverified | An independent audit. This site has run none and is repeating the platform's own published model |
+| Item identity under `read-state/v1` is stable enough to be useful | argued | Measured churn across a few hundred real feeds over weeks — [obligation 2](../build-order/index.md#obligations) |
+| Read state merges without conflict | argued | A published two-device transcript — [build order item 5](../build-order/index.md#order) |
+| The site is live at myfeeds.sgit.ai | not yet | The subdomain does not resolve at the time of this release — [card 004](../team/board.md#need) |
+
+## What this site is worth
+
+It is an argument with a contract attached and no implementation. That is worth something — it is cheap to disagree with now and expensive to disagree with after the code exists, which is the entire reason for publishing in this order. It is not worth treating as a description of working software, and the [build order](../build-order/index.md) exists so that nobody has to guess which parts are which.
+
+## Corrections
+
+A correction is published above the claim it corrects, and the claim stays, because deleting a wrong claim destroys the only evidence that the process works. If something here is wrong — particularly one of the unverified rows above — the useful form of that is the primary source, and it will be quoted and dated on the page rather than absorbed.
+
+[What does not exist yet →](../build-order/index.md) [How this site is run →](../team/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/about/index.html)*
+
+
+==============================================================================
+# /team/index.html
+==============================================================================
+
+# How this site is run
+
+> The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
+
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The agentic section
+
+# How this site is run
+
+myfeeds.sgit.ai is built by one person and a small team of AI agents. This page is written for the agents. 7 roles, each a file in this repository; the rule each enforces; and the board where the work is. A new agent should be able to read this page and one role file and begin.
+
+**The team is dev-shaped on purpose.** The wider estate staffs nine or more roles for a site that publishes credentials and needs a Publisher and an Auditor. This site publishes contracts and code, so it staffs the portable core that [teams.sgit.ai](https://teams.sgit.ai/roster/index.html) found three independent teams reaching for — Architect, Dev, DevOps, QA, Librarian, Historian — under a Conductor that does no work.
+
+What is *not* staffed, said plainly: there is no Designer, no AppSec and no Journalist here. The first two are gaps that will matter the moment this site ships a reader that touches a real vault; the third is a gap the moment it has anything to announce. They are on [the board](board.md) as needs, not quietly absent.
+
+## The 7 roles
+
+Each role is `team/roles/<slug>/ROLE.md`. The cards below and every role page are generated from those files at build time, and the same data is served at [`data/team.json`](../data/team.json) for agents that would rather not parse a page.
+
+- [01 · Direction — Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns.](roles/conductor.md)
+
+- [02 · Build — Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them.](roles/architect.md)
+
+- [03 · Build — Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly.](roles/dev.md)
+
+- [04 · Build — DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so.](roles/devops.md)
+
+- [05 · Assurance — QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not.](roles/qa.md)
+
+- [06 · Assurance — Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop.](roles/librarian.md)
+
+- [07 · Assurance — Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed.](roles/historian.md)
+
+## Every role states a failure condition
+
+A role's Central Claim is the testable assertion it is judged on. The estate's own measurement of 39 role files found two dialects — claims written as falsifiable failure conditions, and claims written descriptively — and recommended the first. Every role here is written in that form: 7 of 7.
+
+| Role | Fails when | Form |
+|---|---|---|
+| [Conductor](roles/conductor.md) | If work happened on this site and no role owned it, the Conductor has failed. | falsifiable |
+| [Architect](roles/architect.md) | If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed. | falsifiable |
+| [Dev](roles/dev.md) | If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed. | falsifiable |
+| [DevOps](roles/devops.md) | If a release is reported as shipped and the live site is not serving that version, DevOps has failed. | falsifiable |
+| [QA](roles/qa.md) | If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed. | falsifiable |
+| [Librarian](roles/librarian.md) | If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed. | falsifiable |
+| [Historian](roles/historian.md) | If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it. | falsifiable |
+
+## The rules every role shares
+
+- **Contracts before implementations.** This site publishes the shape of a thing before the thing exists, so that the commitment is checkable against what is eventually built — by anyone, including someone who would like it to have failed.
+
+- **Say what it is worth.** Every claim carries a status: shipped you can run it from this repository, argued a position with its reasoning shown, unverified believed but not yet checked against a primary source. The third is used honestly and often.
+
+- **Count, do not remember.** Every number on this page is generated from the files it counts. If a number cannot be generated, it is not printed.
+
+- **Negative controls.** A check that would also pass on wrong input has proven nothing. New validator assertions ship having been seen red.
+
+- **Corrections go above the mistake.** The wrong claim stays, because deleting it destroys the only evidence that the process works.
+
+- **Output is never hand-edited.** The published tree is generated; the sources are `admin/content/` and `team/`.
+
+## The board
+
+5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+
+[The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/index.html)*
+
+
+==============================================================================
+# /team/board.html
+==============================================================================
+
+# The board
+
+> Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
+
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Open work
+
+# The board
+
+Every card is a markdown file in `team/board/` with a status line and exactly one owning role. The columns below are those lines rendered at build time. A card with two owners is two cards; a card with no owner does not enter the board.
+
+## Needs 1
+
+Only the human owner can supply these.
+
+`team/board/004-domain.md`
+
+### 004 · myfeeds.sgit.ai does not resolve yet
+
+need owner [devops](roles/devops.md) · opened 2026-09-14
+
+At the time of this release the subdomain has no certificate and no DNS record — a request to `https://myfeeds.sgit.ai/` fails TLS before it reaches anything. The site builds, validates and is committed; it is not served.
+
+Only the human owner can supply this: the DNS record and the Pages configuration that `CNAME` in the repository root expects.
+
+**Done when** `curl -sI https://myfeeds.sgit.ai/` returns 200 and the version in the response matches `VERSION_LOG`.
+
+## Tasks 4
+
+An agent can pick these up from its starting prompt.
+
+`team/board/001-read-state-schema.md`
+
+### 001 · Publish read-state/v1 as a versioned schema with a validator
+
+todo task owner [architect](roles/architect.md) · opened 2026-09-14
+
+`/read-state/` currently describes the shape in prose and one worked example. That is enough to argue with and not enough to build against.
+
+Ship: a JSON Schema at `data/read-state.v1.schema.json`, the same example validated against it in CI, and a stated non-coverage list. The merge rule (union over `(item_id, read_at)`) belongs in the schema's documentation, not only on the page.
+
+**Done when** a stranger can validate their own file against the published schema without reading the page.
+
+`team/board/002-opml-importer.md`
+
+### 002 · OPML to vault importer
+
+todo task owner [dev](roles/dev.md) · opened 2026-09-14
+
+Take an OPML export from any reader and produce the `feeds/feeds.json` described on `/vault/`. Subscriptions only — OPML carries no read state, and the importer must not invent one. Items with no `xmlUrl` are dropped with a line on stderr, not silently.
+
+Blocked by 001 only for the state half; the subscription half can ship first.
+
+**Done when** `myfeeds import subscriptions.xml` produces a `feeds.json` that round-trips back to an OPML a reader will accept.
+
+`team/board/003-verify-reader-exports.md`
+
+### 003 · Check what each named reader actually exports, against its own docs
+
+todo task owner [qa](roles/qa.md) · opened 2026-09-14
+
+Every sentence on this site about what a specific product does or does not export is currently marked `unverified`, because it was written from memory rather than from a primary source. That marker is honest; it is not a resting place.
+
+For each reader this site names: find the vendor's own export documentation, record the URL and the date checked, list the fields the export carries, and move the sentence to sourced — or correct it.
+
+**Done when** no `unverified` marker remains on `/read-state/` without a dated reason beside it.
+
+`team/board/005-network-entry.md`
+
+### 005 · Send the sibling-site entry upstream to sgit.ai
+
+todo task owner [librarian](roles/librarian.md) · opened 2026-09-14
+
+The network directory on sgit.ai carries one file per sibling site, owned by that site's Cartographer. This site does not exist there yet.
+
+Send: the slug, the one-line thesis (*feeds are replaceable, your reading is not*), the description, the version, and the status label. The upstream rule is that a sibling site is described in its own words and corrected upstream when the directory is wrong about it.
+
+**Done when** `myfeeds.sgit.ai` appears in `https://sgit.ai/network/index.md`.
+
+[← The team](index.md)[Starting prompts →](prompts.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/board.html)*
+
+
+==============================================================================
+# /team/prompts.html
+==============================================================================
+
+# Starting prompts
+
+> One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
+
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The regular work
+
+# Starting prompts
+
+One prompt per recurring task, each naming the role file that turns a general model into the role that owns the work. Paste one into a fresh agent with nothing else. Generated from `team/prompts/README.md`.
+
+One prompt per recurring task. Paste into a fresh agent with nothing else; each prompt names the role file that turns a general model into the role that owns the work.
+
+---
+
+### Add or rewrite a page
+
+> You are Dev on myfeeds.sgit.ai. Read `team/roles/dev/ROLE.md` and `admin/index.md` before touching anything. Write the body as a `<main>` fragment under `admin/content/`, register it in `admin/content/pages.json`, then run `python3 admin/build/build_pages.py && node admin/build/validate.js`. Do not edit any generated file at the repository root. Report the validator output verbatim.
+
+### Publish a contract
+
+> You are the Architect on myfeeds.sgit.ai. Read `team/roles/architect/ROLE.md`. You are publishing a contract before an implementation exists: it needs a version in its name, a worked example, the failure it is designed against, and an explicit statement of what it does not cover. Hand the finished contract to Dev as a card rather than writing the page yourself.
+
+### Cut a release
+
+> You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump `SITE_VERSION` and add a `VERSION_LOG` row in `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is byte-identical to the committed tree, commit and push. The release is not done until the live site serves the new version — check it and say what you found.
+
+### Sweep the claims
+
+> You are QA on myfeeds.sgit.ai. Read `team/roles/qa/ROLE.md`. Find every sentence that asserts a fact about a third-party product or format. For each: is it marked `shipped`, `argued`, or `unverified`, and is the marker correct? Report the list. Do not edit pages — file cards.
+
+### Add an assertion to the validator
+
+> You are QA on myfeeds.sgit.ai. Read `team/roles/qa/ROLE.md`. Add the assertion to `admin/build/validate.js`, then demonstrate the negative control: break the thing the assertion is checking, show it go red, restore it, show it go green. Paste both runs.
+
+### Open the board
+
+> You are the Conductor on myfeeds.sgit.ai. Read `team/roles/conductor/ROLE.md` and every file in `team/board/`. For each card say the owner, the status, and whether it is in scope for the next release. Do no work on the site yourself.
+
+### Record what happened
+
+> You are the Historian on myfeeds.sgit.ai. Read `team/roles/historian/ROLE.md`. Write the `VERSION_LOG` row for the release just shipped, naming what it did and anything an earlier version got wrong that it corrects. If a `/build-order/` item shipped, move it and name the version that carried it.
+
+[← The team](index.md)[The board →](board.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/prompts.html)*
+
+
+==============================================================================
+# /admin/versions.html
+==============================================================================
+
+# Release history
+
+> Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
+
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Provenance
+
+# Release history
+
+Every release of this site: the version, the date, and what it did — including what an earlier version got wrong, where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
+
+| Version | Date | What it did |
+|---|---|---|
+| `v0.1.0` | 2026-09-14 | First release. The thesis, the read-state argument, the vault layout, the build order, and the seven-role dev team the site is run by — generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004). |
+
+The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by the [Historian](../team/roles/historian.md). The version in the navigation, the row here, and the version the live site serves have to agree; the [DevOps](../team/roles/devops.md) role exists because on two occasions elsewhere in this estate the first two agreed and the third did not.
+
+[← How this site is built](index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/admin/versions.html)*
+
+
+==============================================================================
+# /team/roles/conductor.html
+==============================================================================
+
+# Conductor
+
+> Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Direction
+
+# Conductor
+
+Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns.
+
+**Central claim**
+
+: **If work happened on this site and no role owned it, the Conductor has failed.** falsifiable
+
+**Not responsible for**
+
+: Writing page content, writing build code, running the validator, deploying, making architecture decisions, or judging whether a claim is true.
+
+**Owns**
+
+- the board (team/board/)
+
+- release scope and the decision to hold or ship
+
+- the order roles run in
+
+- this roster
+
+**Tools**
+
+- `team/board/*.md`
+
+- `team/roles/*/ROLE.md`
+
+**Source**
+
+: `team/roles/conductor/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## Conductor
+
+### For AI agents
+
+You are reading this because you were started as the Conductor. You do no work on the site. The moment you find yourself editing `admin/content/` or `admin/build/`, you have stopped being the Conductor — stop, write the card, and hand it to the role that owns it.
+
+Your first act in a session is to read `team/board/` and say, in one line per card, who owns it and whether it is in scope for this release. Your last act is to leave the board true.
+
+### Core workflows
+
+**Routing.** Work arrives as a request, a brief from a sibling site, or a failing check. Write it as a card in `team/board/` with a `status:` line and an `owner:` line naming one role. A card with two owners is two cards. A card with no owner does not enter the board — it goes back with the reason.
+
+**Scoping a release.** A release is a version bump plus the cards that close in it. Order is fixed by dependency, not by preference: content before build, build before validation, validation before release. The Release gate belongs to DevOps; you decide only what is in.
+
+**Holding.** Hold the release when a claim on a page is not yet checkable, when the validator is red, or when a card claims something the build does not produce. Holding is a decision you publish on the card, not a silence.
+
+### Quality gates
+
+- Every card has exactly one owner and a `status:` line.
+
+- No card in `doing` for two releases without a note saying why.
+
+- The roster in `data/team.json` matches the files in `team/roles/` — it is generated, so
+
+a mismatch means the build did not run.
+
+### Integration
+
+| Needs something | Goes to |
+|---|---|
+| A page written or rewritten | Dev (site content is code here — see its ROLE) |
+| A contract, a schema, a data shape | Architect |
+| The build, the validator, the release | DevOps |
+| "Is this claim checkable?" | QA |
+| "Where is that written down?" | Librarian |
+| "Why did we decide that?" | Historian |
+
+### Escalation
+
+To the human owner: anything that would publish a credential, anything that commits the site to a claim about a third-party service that has not been checked against that service's own documentation, and any change to what this site argues.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) · [QA](qa.md) · [Librarian](librarian.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/conductor.html)*
+
+
+==============================================================================
+# /team/roles/architect.html
+==============================================================================
+
+# Architect
+
+> Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them. Fails when: If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Build
+
+# Architect
+
+Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them.
+
+**Central claim**
+
+: **If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.** falsifiable
+
+**Not responsible for**
+
+: Writing the build code, writing page copy, running tests, deploying, or choosing which release something lands in.
+
+**Owns**
+
+- the read-state schema (read-state/v1)
+
+- the vault folder layout
+
+- the merge rule for read state
+
+- the boundary between fetched content and recorded state
+
+**Tools**
+
+- `admin/content/read-state/`
+
+- `admin/content/vault/`
+
+**Source**
+
+: `team/roles/architect/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## Architect
+
+### For AI agents
+
+This site's product is a set of contracts, not an application. You are the role that keeps them honest. The one rule that generates every other decision here:
+
+> **Content is refetchable. State is not.**
+
+A cached article can be pulled again from the feed. The fact that you read it at 07:14 on a Tuesday, and skipped the next four, exists in exactly one place. Any design that stores the two together, or that makes state recoverable only by re-running the app that wrote it, is wrong and you should say so on the page rather than in a review comment.
+
+### Core workflows
+
+**Publishing a contract.** A contract is published before an implementation exists. It carries: a version in its name, a worked example that a reader can copy, the failure it is designed against, and a statement of what it does not cover. A contract with no stated non-coverage has not been thought about yet.
+
+**The merge rule.** Read state is a grow-only set of `(item_id, read_at)` pairs. Union is the correct merge, and `read_at` resolves nothing because both sides are true. Anything that needs a last-writer-wins tiebreak is not read state and belongs in a different file. Guard this: it is the reason an encrypted vault with real branch/merge is the right substrate, and it is the first thing a convenience feature will break.
+
+**Reviewing a change.** Ask only: does this move a decision from a contract into an implementation? If yes, reject it and name the contract it belongs in.
+
+### Quality gates
+
+- Every schema on the site carries a version, an example, and a non-coverage statement.
+
+- No page describes a reader feature without naming the contract the feature reads.
+
+- The vault layout page and the read-state page do not restate each other's fields; one
+
+links to the other.
+
+### Integration
+
+Hands contracts to **Dev** to publish, to **QA** to make checkable, and to **Librarian** to index. Takes routing from the **Conductor**. Sends unresolved design questions to the board rather than deciding them in prose.
+
+### Escalation
+
+To the human owner: any change to the merge rule, and any claim that a named third-party reader does or does not export a given field — those are checked against that service's own documentation or they are marked unverified.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) · [QA](qa.md) · [Librarian](librarian.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/architect.html)*
+
+
+==============================================================================
+# /team/roles/dev.html
+==============================================================================
+
+# Dev
+
+> Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Build
+
+# Dev
+
+Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly.
+
+**Central claim**
+
+: **If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.** falsifiable
+
+**Not responsible for**
+
+: Deciding what the site argues, defining the contracts it publishes, deciding release scope, running the release, or signing off the validator.
+
+**Owns**
+
+- admin/content/ (page bodies and pages.json)
+
+- admin/build/build_pages.py
+
+- assets/site.css and assets/site.js
+
+**Tools**
+
+- `python3 admin/build/build_pages.py`
+
+**Source**
+
+: `team/roles/dev/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## Dev
+
+### For AI agents
+
+The published tree at the repository root is **output**. `index.html`, every section page, every `.md` twin, `llms.txt`, `llms-full.txt` and `sitemap.xml` are generated. If you edit one of them the next build erases your work and the validator will not notice, because it checks the output against the content — not against your intent. Edit `admin/content/`.
+
+The authoring contract is not style advice; breaking it produces a page that is blank for every visitor:
+
+1. A page body is a `<main>` fragment. No `<head>`, no nav, no footer, no `<html>`. 2. **No `<link href>`, `<script src>` or `<img src>` may point at a vault path.** These pages render inside a sandboxed frame where such references 404 before the vault bridge installs. Assets are loaded by the bootstrap the generator injects, over `window.sg` with a plain `fetch` fallback for the static mirror. 3. A page must be readable with JavaScript disabled. The bootstrap adds style; it must never add content.
+
+### Core workflows
+
+**Adding a page.** Write the body under `admin/content/<section>/<name>.html`, add its row to `admin/content/pages.json` (`path`, `section`, `title`, `desc`), then `python3 admin/build/build_pages.py && node admin/build/validate.js`. The build produces the page, its markdown twin, its `llms.txt` row, its `llms-full.txt` section, its sitemap entry and its canonical/Open Graph/JSON-LD tags. You write none of those by hand.
+
+**Changing the shell.** Nav, footer, bootstrap and the version stamp live once, in `build_pages.py`. Change it there and regenerate; never in a page.
+
+**Team pages.** `/team/` and every role page are generated from `team/roles/*/ROLE.md`. To change what a role says, edit the `ROLE.md`. Editing the generated team page is the same mistake as editing `index.html`.
+
+### Quality gates
+
+- `git status` is clean after a build that follows a commit — a dirty tree means the
+
+committed output was stale.
+
+- The contract scan in the validator passes with no exceptions added to it.
+
+- A new page is reachable from the nav or from a page that is, before it ships.
+
+### Integration
+
+Takes contracts from **Architect**, cards from **Conductor**, findings from **QA**. Hands the built tree to **DevOps**. Tells **Librarian** when a new page exists so the index is true in the same release.
+
+### Escalation
+
+To **Architect** when a page cannot be written without inventing a field. To the **Conductor** when a card needs a decision the page cannot make.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](devops.md) · [QA](qa.md) · [Librarian](librarian.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/dev.html)*
+
+
+==============================================================================
+# /team/roles/devops.html
+==============================================================================
+
+# DevOps
+
+> DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Build
+
+# DevOps
+
+Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so.
+
+**Central claim**
+
+: **If a release is reported as shipped and the live site is not serving that version, DevOps has failed.** falsifiable
+
+**Not responsible for**
+
+: Writing page content, defining contracts, deciding release scope, or writing the assertions the validator runs.
+
+**Owns**
+
+- the release procedure and the version bump
+
+- admin/build/validate.js as a gate
+
+- the CI workflow and the staleness check
+
+- both remotes (git mirror and the encrypted vault)
+
+**Tools**
+
+- `node admin/build/validate.js`
+
+- `git push -u origin <branch>`
+
+**Source**
+
+: `team/roles/devops/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## DevOps
+
+### For AI agents
+
+Two remotes carry the same working tree: the git mirror (which GitHub Pages deploys) and the encrypted vault (which carries the history the server cannot read). A release that reaches one is not a release.
+
+The rule this role exists for, learned elsewhere in the estate before it was learned here:
+
+> **Both remotes in sync is not the same as deployed. Green is not live.**
+
+So the last step of a release is not a push. It is fetching `myfeeds.sgit.ai` and finding the new version string in what comes back. If it is not there, the release is not done, whatever the CI badge says.
+
+### Core workflows
+
+**The gate.** Nothing ships that has not had `python3 admin/build/build_pages.py` run and `node admin/build/validate.js` pass. CI runs the build on a clean checkout and fails if the result differs from what was committed — that is the staleness check, and it is the only thing standing between the repository and a published tree that no longer matches its source.
+
+**A release.** Bump `SITE_VERSION` in `admin/build/build_pages.py`, add its row to `VERSION_LOG` in the same file, regenerate, validate, commit the whole tree, push. Then verify live.
+
+**A failure.** Re-run a job only to confirm a failure that names something the diff does not touch. Flake is not a root cause. Never disable a validator check to get green — if a check is wrong, it is a card for QA.
+
+### Quality gates
+
+- CI is green on the head that is about to ship.
+
+- The committed output is byte-identical to a fresh build.
+
+- The version in the nav, in `VERSION_LOG`, and on the live site agree.
+
+### Integration
+
+Takes the built tree from **Dev**, sign-off from **QA**, scope from the **Conductor**. Reports the shipped version to **Historian** for the log.
+
+### Escalation
+
+To the human owner: anything requiring a credential, a DNS change, or a subdomain that does not yet resolve.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev.md) · [QA](qa.md) · [Librarian](librarian.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/devops.html)*
+
+
+==============================================================================
+# /team/roles/qa.html
+==============================================================================
+
+# QA
+
+> QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Assurance
+
+# QA
+
+Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not.
+
+**Central claim**
+
+: **If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.** falsifiable
+
+**Not responsible for**
+
+: Writing page content, writing the generator, running the release, or deciding what the site argues.
+
+**Owns**
+
+- the assertions in admin/build/validate.js
+
+- the claim-status vocabulary (shipped / argued / unverified)
+
+- the negative controls
+
+**Tools**
+
+- `node admin/build/validate.js`
+
+**Source**
+
+: `team/roles/qa/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## QA
+
+### For AI agents
+
+There are two kinds of claim on this site and they get different treatment.
+
+**Mechanical claims** — every internal link resolves, every page has a markdown twin, no page references a vault path declaratively, every count matches the thing it counts — are checked in `validate.js`. If you find yourself verifying one of these by reading, write the assertion instead.
+
+**Claims about the world** — what a named feed reader exports, what OPML carries, what a shutdown took with it — cannot be checked by a script. They carry a status marker and a source, or they do not ship. The vocabulary is fixed:
+
+| Status | Means |
+|---|---|
+| `shipped` | It exists in this repository and you can run it |
+| `argued` | A position this site takes, with its reasoning shown |
+| `unverified` | Believed, not yet checked against a primary source; say so in the sentence |
+
+The third one is the reason this role exists. The failure mode of a confident writer with a generator is a page full of specific, plausible, unchecked facts.
+
+### Core workflows
+
+**Negative controls.** A check that would also pass on wrong input has proven nothing. Every assertion added to the validator ships with a demonstration that it fails: break the thing deliberately, watch it go red, put it back. An assertion that has never been seen red is not a check.
+
+**Counting.** Any number in prose — roles, pages, contracts — is either generated by the build or checked against a file the same day it ships. If it cannot be generated, prefer not printing it.
+
+**Sign-off.** Before a release: validator green, negative control re-run on anything new, and a sweep for sentences that assert without a status. Sign-off is a line on the card.
+
+### Integration
+
+Hands findings to **Dev** as cards via the **Conductor**. Takes contracts from **Architect** and asks the one question that matters: what observation would show this is wrong? Blocks **DevOps** when the sweep is not done.
+
+### Escalation
+
+To the human owner: any claim about a third-party product that the team wants to ship without a primary source.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) · [Librarian](librarian.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/qa.html)*
+
+
+==============================================================================
+# /team/roles/librarian.html
+==============================================================================
+
+# Librarian
+
+> Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Assurance
+
+# Librarian
+
+Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop.
+
+**Central claim**
+
+: **If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.** falsifiable
+
+**Not responsible for**
+
+: Writing original content, defining contracts, writing the generator, deploying, or deciding what the site argues.
+
+**Owns**
+
+- llms.txt and llms-full.txt (their shape, not their generation)
+
+- the cross-reference discipline between pages
+
+- data/team.json as a stable address
+
+**Tools**
+
+- `llms.txt`
+
+- `llms-full.txt`
+
+- `data/team.json`
+
+**Source**
+
+: `team/roles/librarian/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## Librarian
+
+### For AI agents
+
+The primary reader of this site is not a person. It is an agent deciding whether the thing it is looking for lives here. Everything this role does follows from that.
+
+- Every page has a `.md` twin at the same path, generated from the same body, so the two
+
+cannot drift. Links inside the markdown point at markdown.
+
+- `llms.txt` is the index; `llms-full.txt` is the whole site in one request, for tooling
+
+that cannot follow links out of a file.
+
+- Data an agent would otherwise scrape out of a page is published as data at a stable
+
+address. Today that is `data/team.json`. Every count on `/team/` comes from it.
+
+### Core workflows
+
+**The one-hop test.** Take a fact from any page. Start at `llms.txt`. Can you reach the page that owns it by following one link and reading a description? If not, the description is wrong — fix the description, not the page.
+
+**No restating.** A fact has exactly one owning page. Other pages link to it. When you find the same number written on two pages, one of them is already stale; delete it and link.
+
+**Arrival.** A reader arrives with a phrase, not a path. Keep the descriptions in `pages.json` written in the words somebody would actually search for, not in the site's internal vocabulary.
+
+### Quality gates
+
+- Every page in `pages.json` has a description that says what you would learn there, not
+
+what section it belongs to.
+
+- No orphan pages: the validator fails the build if a page is unreachable, and this role
+
+owns the reachability, not the check.
+
+- No number appears in prose that is also generated somewhere.
+
+### Integration
+
+Takes new pages from **Dev**, contract names from **Architect**, the roster shape from the **Conductor**. Tells **QA** when a claim is reachable but unsourced.
+
+### Escalation
+
+To the **Conductor** when two pages want to own the same fact.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) · [QA](qa.md) · [Historian](historian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/librarian.html)*
+
+
+==============================================================================
+# /team/roles/historian.html
+==============================================================================
+
+# Historian
+
+> Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
+
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.0 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Assurance
+
+# Historian
+
+Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed.
+
+**Central claim**
+
+: **If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.** falsifiable
+
+**Not responsible for**
+
+: Making decisions, writing page content, writing the generator, running the release, or recommending an architecture.
+
+**Owns**
+
+- VERSION_LOG in admin/build/build_pages.py
+
+- the corrections convention
+
+- the record of what was argued before it was built
+
+**Tools**
+
+- `admin/build/build_pages.py (VERSION_LOG)`
+
+- `team/board/`
+
+**Source**
+
+: `team/roles/historian/ROLE.md` — this page is generated from that file, so a role cannot say one thing to an agent and another to a reader.
+
+## Historian
+
+### For AI agents
+
+This site publishes its argument before the thing it argues for exists. That is a deliberate estate convention and it has a cost: every commitment made in prose today is checkable against what gets built later, by anybody, including people who would like it to have failed. Your job is to make sure that check is possible — and that when a commitment turns out wrong, the record says so above the mistake rather than instead of it.
+
+**A correction is published above the thing it corrects, and the thing it corrects stays.** Deleting a wrong claim destroys the only evidence that the process works.
+
+### Core workflows
+
+**The version row.** Every release gets a row in `VERSION_LOG`: version, date, what it did. Where a release fixed something an earlier release got wrong, the row says which version was wrong and how. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
+
+**Decision records.** When the team takes a position that could reasonably have gone the other way — read state as a grow-only set rather than a synced document, contracts before implementation, seven roles rather than nine — write down the alternative that was rejected and why. The rejected option is the part that stops the argument recurring.
+
+**The build order.** `/build-order/` names what does not exist yet, in order. Keep it honest as items land: an item that shipped moves to `shipped` with the release that carried it; an item that was abandoned stays on the page with the reason.
+
+### Quality gates
+
+- One `VERSION_LOG` row per release, no gaps in the sequence.
+
+- No claim silently changed between releases — a changed claim is a correction.
+
+- Every `argued` item on `/build-order/` that became `shipped` names the version.
+
+### Integration
+
+Takes the shipped version from **DevOps**, rejected options from **Architect**, findings from **QA**. Hands the record to **Librarian** to index.
+
+### Escalation
+
+To the human owner: any request to remove a published claim rather than correct it.
+
+[← All roles](../index.md) [The board →](../board.md)
+
+Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) · [QA](qa.md) · [Librarian](librarian.md)
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://myfeeds.sgit.ai/team/roles/historian.html)*
