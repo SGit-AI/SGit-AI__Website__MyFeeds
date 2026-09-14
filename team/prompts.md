@@ -2,7 +2,7 @@
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -28,7 +28,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 ### Cut a release
 
-> You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump `SITE_VERSION` and add a `VERSION_LOG` row in `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is byte-identical to the committed tree, commit and push. The release is not done until the live site serves the new version — check it and say what you found.
+> You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump `admin/build/version.txt` and add its `VERSION_LOG` entry in `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is byte-identical to the committed tree, then commit with the version in the commit SUBJECT (`site vX.Y.Z: ...` — CI reads it to decide this is a release) and push to `dev`. The release is not done until the live site serves the new version: run `admin/build/verify-live.sh` and say what it reported.
 
 ### Sweep the claims
 

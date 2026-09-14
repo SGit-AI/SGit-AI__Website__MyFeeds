@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DevOps · myfeeds.sgit.ai</title>
 <meta name="description" content="DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.0">
+<meta name="generator" content="admin/build/build_pages.py v0.1.1">
 <link rel="canonical" href="https://myfeeds.sgit.ai/team/roles/devops.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/team/roles/devops.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DevOps","description":"DevOps \u2014 Own the path from a content edit to myfeeds.sgit.ai serving it \u2014 the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.","url":"https://myfeeds.sgit.ai/team/roles/devops.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.0","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DevOps","description":"DevOps \u2014 Own the path from a content edit to myfeeds.sgit.ai serving it \u2014 the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.","url":"https://myfeeds.sgit.ai/team/roles/devops.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.1","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -51,7 +51,8 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<span class="ver">v0.1.0</span>
+<a class="ver" href="../../admin/versions.html#v0-1-1"
+title="What changed in v0.1.1">v0.1.1</a>
 <nav class="site-nav" aria-label="Sections"><a href="../../thesis/index.html">Thesis</a><a href="../../read-state/index.html">Read state</a><a href="../../vault/index.html">The vault</a><a href="../../build-order/index.html">Build order</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
@@ -64,7 +65,7 @@ table{border-collapse:collapse;width:100%}</style>
 <dt>Central claim</dt><dd><strong>If a release is reported as shipped and the live site is not serving that version, DevOps has failed.</strong>
 <span class="tag">falsifiable</span></dd>
 <dt>Not responsible for</dt><dd>Writing page content, defining contracts, deciding release scope, or writing the assertions the validator runs.</dd>
-<dt>Owns</dt><dd><ul><li>the release procedure and the version bump</li><li>admin/build/validate.js as a gate</li><li>the CI workflow and the staleness check</li><li>both remotes (git mirror and the encrypted vault)</li></ul></dd>
+<dt>Owns</dt><dd><ul><li>the release procedure and admin/build/version.txt</li><li>admin/build/validate.js as a gate</li><li>.github/workflows/deploy-pages.yml and the staleness check</li><li>admin/build/verify-live.sh</li><li>both remotes (git mirror and the encrypted vault)</li></ul></dd>
 <dt>Tools</dt><dd><ul><li><code>node admin/build/validate.js</code></li><li><code>git push -u origin &lt;branch&gt;</code></li></ul></dd>
 <dt>Source</dt><dd><code>team/roles/devops/ROLE.md</code> — this page is generated from
 that file, so a role cannot say one thing to an agent and another to a reader.</dd>
@@ -77,8 +78,9 @@ that file, so a role cannot say one thing to an agent and another to a reader.</
 <blockquote><p><strong>Both remotes in sync is not the same as deployed. Green is not live.</strong></p></blockquote>
 <p>So the last step of a release is not a push. It is fetching <code>myfeeds.sgit.ai</code> and finding the new version string in what comes back. If it is not there, the release is not done, whatever the CI badge says.</p>
 <h3 id="core-workflows">Core workflows</h3>
-<p><strong>The gate.</strong> Nothing ships that has not had <code>python3 admin/build/build_pages.py</code> run and <code>node admin/build/validate.js</code> pass. CI runs the build on a clean checkout and fails if the result differs from what was committed — that is the staleness check, and it is the only thing standing between the repository and a published tree that no longer matches its source.</p>
-<p><strong>A release.</strong> Bump <code>SITE_VERSION</code> in <code>admin/build/build_pages.py</code>, add its row to <code>VERSION_LOG</code> in the same file, regenerate, validate, commit the whole tree, push. Then verify live.</p>
+<p><strong>The gate.</strong> Nothing ships that has not had <code>python3 admin/build/build_pages.py</code> run and <code>node admin/build/validate.js</code> pass. <code>deploy-pages.yml</code> is the shared estate pipeline — validate, tag, publish — in that order, and the deploy job is gated on validate. Its staleness check rebuilds on a clean checkout and fails if the result differs from what was committed; it is the only thing standing between the repository and a published tree that no longer matches its source.</p>
+<p>The workflow is the estate&#x27;s, not this site&#x27;s invention: it is taken from <code>SGit-AI__Website__Teams</code>, which carries fixes this site has not had to learn — reading <code>git log</code> once because piping it into an early-exiting reader dies of SIGPIPE under <code>pipefail</code>, anchoring the release commit to the newest versioned subject because a merged pull request makes HEAD a merge commit, and checking the remote before pushing backfill tags. Do not diverge from it without a reason written on the board; a fix that lands upstream should land here.</p>
+<p><strong>A release.</strong> Bump <code>admin/build/version.txt</code>, add its <code>VERSION_LOG</code> entry in <code>admin/build/build_pages.py</code>, regenerate, validate, commit the whole tree with the version in the commit SUBJECT — <code>site vX.Y.Z: ...</code> — and push to <code>dev</code>. The subject is not cosmetic: it is what tells CI this push is a release, and <code>tag-release</code> fails the release if it disagrees with <code>version.txt</code>. Then run <code>admin/build/verify-live.sh</code>.</p>
 <p><strong>A failure.</strong> Re-run a job only to confirm a failure that names something the diff does not touch. Flake is not a root cause. Never disable a validator check to get green — if a check is wrong, it is a card for QA.</p>
 <h3 id="quality-gates">Quality gates</h3>
 <ul><li>CI is green on the head that is about to ship.</li><li>The committed output is byte-identical to a fresh build.</li><li>The version in the nav, in <code>VERSION_LOG</code>, and on the live site agree.</li></ul>
@@ -93,8 +95,11 @@ that file, so a role cannot say one thing to an agent and another to a reader.</
 </main>
 <footer class="site-foot"><div class="inner">
 <div><h4>The argument</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
-<div><h4>This site</h4><p>Feeds are replaceable. Your reading is not.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.0. Part of the
+<div><h4>This page</h4>
+<p><a href="devops.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>Feeds are replaceable. Your reading is not.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.1. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../../",n=0,t;

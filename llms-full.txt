@@ -1,4 +1,4 @@
-# myfeeds.sgit.ai — every page, v0.1.0
+# myfeeds.sgit.ai — every page, v0.1.1
 
 > Feeds are replaceable. Your reading is not.
 
@@ -14,7 +14,7 @@ the markdown twins of every page, in navigation order.
 
 > Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -83,7 +83,7 @@ The site is built and run by a small team of AI agents with one human owner, in 
 
 > Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -152,7 +152,7 @@ This is the strongest objection, and the answer is that it is nearly free. Read 
 
 > OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -284,7 +284,7 @@ If any of that is wrong, it is wrong in public with a card open against it, whic
 
 > The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -368,7 +368,7 @@ Once the reading record is a set of files with a published shape rather than row
 
 > Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -439,7 +439,7 @@ Not "incomplete" — wrong. If item 2 above turns out to be true and identity ch
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -524,18 +524,35 @@ Two deliberate divergences from the house pattern elsewhere in the estate, recor
 
 - The roster served at `data/team.json` matches the files on disk.
 
-## Release
+## Release and deploy
+
+The deploy pipeline is the estate's, shared by every `*.sgit.ai` site and taken from `SGit-AI__Website__Teams` rather than reinvented here. One workflow, three jobs, in this order:
+
+| Job | Does | Gate |
+|---|---|---|
+| `validate` | Runs the validator, rebuilds on a clean checkout, and fails if the committed tree differs by a byte | Runs on pull requests too, so branch work is gated before it reaches the release branch. A failure means no tag and no publish. |
+| `tag-release` | Tags the release commit `v{major}.{minor}.{patch}`, backfilling any historical release that has no tag | Only on a push to `dev`. The version is owned by `admin/build/version.txt` and must also appear in the release commit's *subject* — `site vX.Y.Z: …` — and CI fails if the two disagree, if the version was reused, or if the bump is not the next minor. |
+| `deploy` | Assembles the tree (excluding `.git`, `.github` and `.sg_vault`) and publishes it to GitHub Pages | Never from a pull request, and never when validation failed. Publishes even when `tag-release` skipped, because a missing tag is a bookkeeping gap and a blocked deploy is an outage. |
+
+That last distinction is not hypothetical. On the main site an earlier version of `tag-release` tagged unconditionally, so two good commits landing on top of a release failed the job and took the publish down with them — with an error that said the version had not been bumped when the truth was that this was not a release. The estate's current workflow carries that fix and several others this site has not had to learn the hard way; the standing instruction in the [DevOps role](../team/roles/devops.md) is not to diverge from it without a reason on the board.
 
 ```
-# 1. bump SITE_VERSION and add its VERSION_LOG row in admin/build/build_pages.py
+# 1. bump admin/build/version.txt and add its VERSION_LOG entry in build_pages.py
 # 2. regenerate and validate
 $ python3 admin/build/build_pages.py && node admin/build/validate.js
-# 3. commit the whole tree — source and output together
-$ git add -A && git commit && git push -u origin <branch>
-# 4. verify live: the version string has to come back from the site itself
+# 3. commit the whole tree — source and output — with the version in the SUBJECT
+$ git commit -m "site vX.Y.Z: what this release did" && git push origin dev
+# 4. verify live — the version string has to come back from the site itself
+$ ./admin/build/verify-live.sh
 ```
 
-Step 4 is the one that exists because of a failure elsewhere in this estate: two releases pushed cleanly, reported success, and never reached the site, with every check green because the failure was in a place none of them could see. Both remotes in sync is not the same as deployed. The [DevOps role](../team/roles/devops.md) owns that rule and CI runs a staleness check — a fresh build on a clean checkout, compared byte for byte against what was committed — so that the published tree cannot drift from its source unnoticed.
+Step 4 is separate from the workflow on purpose, because it is the one thing CI cannot tell you. A green deploy job means GitHub accepted an artifact; it does not mean the site is serving it. Elsewhere in this estate two releases pushed cleanly, reported success and never reached the site — `actions/configure-pages` got a 429 and the deploy job died before running a step, and a two-release-old page was served for forty minutes with every check green, because the failure was in a job neither remote knows about. So the last act of a release is to ask the live site what version it is serving, and `verify-live.sh` exits non-zero until it answers correctly.
+
+## Versions are data
+
+The version appears in the navigation of every page and **is a link** — to that version's own entry, not to a generic changelog, because a reader who clicks `v0.1.1` wants to know what v0.1.1 was. The same history is served as data at `/versions/index.json` and one file per version, so a script can check a claim about a release without rendering a page. Each entry's `title` is a sentence rather than a label, and a release that corrects an earlier one says which and how.
+
+One honest note on that contract: the estate's shape includes the commit a version was built from, and this site records the tag reference rather than a hash. The commit that carries a version cannot be known while that version is being built — it does not exist yet — and CI tags the release commit at publish time, so `refs/tags/v0.1.1` is the durable pointer and a hash written at build time would either be wrong or change on every rebuild.
 
 [Release history →](versions.md) [The team →](../team/index.md) [← Home](../index.md)
 
@@ -552,7 +569,7 @@ Step 4 is the one that exists because of a failure elsewhere in this estate: two
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -607,7 +624,7 @@ The network directory on sgit.ai carries one entry per sibling site, written in 
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -683,7 +700,7 @@ A correction is published above the claim it corrects, and the claim stays, beca
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -747,7 +764,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 ## The board
 
-5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+6 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
 
 [The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
 
@@ -764,7 +781,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -792,7 +809,7 @@ Only the human owner can supply this: the DNS record and the Pages configuration
 
 **Done when** `curl -sI https://myfeeds.sgit.ai/` returns 200 and the version in the response matches `VERSION_LOG`.
 
-## Tasks 4
+## Tasks 5
 
 An agent can pick these up from its starting prompt.
 
@@ -844,6 +861,36 @@ Send: the slug, the one-line thesis (*feeds are replaceable, your reading is not
 
 **Done when** `myfeeds.sgit.ai` appears in `https://sgit.ai/network/index.md`.
 
+`team/board/006-workflow-upstream.md`
+
+### 006 · Keep deploy-pages.yml in step with the estate's copy
+
+todo task owner [devops](roles/devops.md) · opened 2026-09-14
+
+`.github/workflows/deploy-pages.yml` is not this site's invention. It is the pipeline every `*.sgit.ai` site runs, taken from `SGit-AI__Website__Teams`, and it carries fixes this site has not had to learn: reading `git log` once because piping it into an early-exiting reader dies of SIGPIPE under `pipefail`; anchoring the release commit to the newest versioned subject because a merged pull request makes HEAD a merge commit; checking the remote before pushing backfill tags.
+
+Two adaptations were made here and should be reviewed against upstream rather than preserved by default: the `validate` job rebuilds and diffs instead of running several per-generator `--check` steps (this site has one generator), and the release-commit regexes accept both quote styles for the version, because the main site writes `SITE_VERSION` with single quotes and this one reads a `version.txt`.
+
+**Done when** a periodic diff against the upstream workflow is part of the release routine, and any upstream fix since has been ported or its absence noted here.
+
+## Held 1
+
+Deliberately not shipping, with the reason on the card.
+
+`team/board/007-version-commit-hash.md`
+
+### 007 · Record the commit a version was built from, not just its tag
+
+held task owner [historian](roles/historian.md) · opened 2026-09-14
+
+The estate's versions contract says a version must name the commit it was built from, or it cannot be verified later. `versions/<version>.json` currently carries `commit: null` and `commit_ref: refs/tags/<version>` instead.
+
+The reason is real: the commit that *carries* a version cannot be known while that version is being built — it does not exist yet — and CI tags the release commit at publish time, so the tag is a durable pointer while a hash written at build time would either be wrong or change on every rebuild and break the staleness check.
+
+**Held**, not open, because the obvious fixes are worse than the gap: capturing `git rev-parse HEAD` at build time records the *previous* commit under a field that claims to be this one, and having CI write the hash back means a CI-authored commit that exists only on the git side, which breaks the both-remotes-in-sync invariant.
+
+**Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
+
 [← The team](index.md)[Starting prompts →](prompts.md)
 
 ---
@@ -859,7 +906,7 @@ Send: the slug, the one-line thesis (*feeds are replaceable, your reading is not
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -885,7 +932,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 ### Cut a release
 
-> You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump `SITE_VERSION` and add a `VERSION_LOG` row in `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is byte-identical to the committed tree, commit and push. The release is not done until the live site serves the new version — check it and say what you found.
+> You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump `admin/build/version.txt` and add its `VERSION_LOG` entry in `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is byte-identical to the committed tree, then commit with the version in the commit SUBJECT (`site vX.Y.Z: ...` — CI reads it to decide this is a release) and push to `dev`. The release is not done until the live site serves the new version: run `admin/build/verify-live.sh` and say what it reported.
 
 ### Sweep the claims
 
@@ -918,7 +965,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -928,13 +975,51 @@ Provenance
 
 # Release history
 
-Every release of this site: the version, the date, and what it did — including what an earlier version got wrong, where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
+Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
-| Version | Date | What it did |
-|---|---|---|
-| `v0.1.0` | 2026-09-14 | First release. The thesis, the read-state argument, the vault layout, the build order, and the seven-role dev team the site is run by — generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004). |
+Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
 
-The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by the [Historian](../team/roles/historian.md). The version in the navigation, the row here, and the version the live site serves have to agree; the [DevOps](../team/roles/devops.md) role exists because on two occasions elsewhere in this estate the first two agreed and the third did not.
+`v0.1.1` · 2026-09-14 · [as data](../versions/v0.1.1.json)
+
+### the site gets the deploy workflow every other *.sgit.ai site has, and the four version and provenance practices it was missing
+
+v0.1.0 shipped a build gate and called it done, which was wrong: it never published anything. This release replaces it with the estate's shared deploy-pages pipeline (validate, tag, publish to GitHub Pages) taken from the sibling sites rather than reinvented, moves version ownership to admin/build/version.txt so that workflow can read it, and closes four gaps against sgit.ai/docs/guidance: the version badge is now a link to that version's own details, versions are served as data, app.json denies by default with its reason written down, and every page is one click from the bytes it was rendered from.
+
+**Corrects.** v0.1.0 described a four-step release ending in a live check, and shipped neither a deploy workflow nor anything to check with. The description was accurate about the intent and wrong about the repository.
+
+#### Changes
+
+- .github/workflows/deploy-pages.yml — replaces build.yml; validate -> tag -> deploy, matching SGit-AI__Website__Teams
+
+- admin/build/version.txt — now owns the version; build_pages.py reads it
+
+- admin/build/verify-live.sh — asks the live site what it is serving, because both remotes in sync is not the same as deployed
+
+- versions/index.json + versions/<version>.json — the versions contract
+
+- admin/build/build_pages.py — version badge links to its own entry; every page links its markdown twin; app.json declares permissions {}
+
+- admin/build/validate.js — assertions for each of the above
+
+`v0.1.0` · 2026-09-14 · [as data](../versions/v0.1.0.json)
+
+### the argument, the read-state contract, and the team that runs it
+
+First release. The thesis that feeds are replaceable and reading is not, read-state/v1 published as a contract before any implementation, the vault layout, the build order, and the seven-role dev team the site is run by — generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004).
+
+#### Changes
+
+- admin/build/build_pages.py — the generator: one shell, 19 pages, twins, llms.txt, llms-full.txt, sitemap.xml, data/team.json
+
+- admin/build/validate.js — the gate
+
+- admin/content/ — the eight authored page bodies and pages.json
+
+- team/roles/*/ROLE.md — seven roles; team/board/*.md — five cards
+
+- assets/site.css, assets/site.js
+
+The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by the [Historian](../team/roles/historian.md); the version number itself is owned by `admin/build/version.txt`, because that is the file the deploy workflow shared across the [*.sgit.ai sites](../network/index.md) reads. The version in the navigation, the entry here, and the version the live site serves have to agree — [DevOps](../team/roles/devops.md) exists because on two occasions elsewhere in this estate the first two agreed and the third did not.
 
 [← How this site is built](index.md)
 
@@ -951,7 +1036,7 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1049,7 +1134,7 @@ Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them. Fails when: If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1142,7 +1227,7 @@ Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1231,7 +1316,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1253,11 +1338,13 @@ Own the path from a content edit to myfeeds.sgit.ai serving it — the build gat
 
 **Owns**
 
-- the release procedure and the version bump
+- the release procedure and admin/build/version.txt
 
 - admin/build/validate.js as a gate
 
-- the CI workflow and the staleness check
+- .github/workflows/deploy-pages.yml and the staleness check
+
+- admin/build/verify-live.sh
 
 - both remotes (git mirror and the encrypted vault)
 
@@ -1285,9 +1372,11 @@ So the last step of a release is not a push. It is fetching `myfeeds.sgit.ai` an
 
 ### Core workflows
 
-**The gate.** Nothing ships that has not had `python3 admin/build/build_pages.py` run and `node admin/build/validate.js` pass. CI runs the build on a clean checkout and fails if the result differs from what was committed — that is the staleness check, and it is the only thing standing between the repository and a published tree that no longer matches its source.
+**The gate.** Nothing ships that has not had `python3 admin/build/build_pages.py` run and `node admin/build/validate.js` pass. `deploy-pages.yml` is the shared estate pipeline — validate, tag, publish — in that order, and the deploy job is gated on validate. Its staleness check rebuilds on a clean checkout and fails if the result differs from what was committed; it is the only thing standing between the repository and a published tree that no longer matches its source.
 
-**A release.** Bump `SITE_VERSION` in `admin/build/build_pages.py`, add its row to `VERSION_LOG` in the same file, regenerate, validate, commit the whole tree, push. Then verify live.
+The workflow is the estate's, not this site's invention: it is taken from `SGit-AI__Website__Teams`, which carries fixes this site has not had to learn — reading `git log` once because piping it into an early-exiting reader dies of SIGPIPE under `pipefail`, anchoring the release commit to the newest versioned subject because a merged pull request makes HEAD a merge commit, and checking the remote before pushing backfill tags. Do not diverge from it without a reason written on the board; a fix that lands upstream should land here.
+
+**A release.** Bump `admin/build/version.txt`, add its `VERSION_LOG` entry in `admin/build/build_pages.py`, regenerate, validate, commit the whole tree with the version in the commit SUBJECT — `site vX.Y.Z: ...` — and push to `dev`. The subject is not cosmetic: it is what tells CI this push is a release, and `tag-release` fails the release if it disagrees with `version.txt`. Then run `admin/build/verify-live.sh`.
 
 **A failure.** Re-run a job only to confirm a failure that names something the diff does not touch. Flake is not a root cause. Never disable a validator check to get green — if a check is wrong, it is a card for QA.
 
@@ -1324,7 +1413,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1411,7 +1500,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1514,7 +1603,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

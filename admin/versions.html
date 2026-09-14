@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Release history · myfeeds.sgit.ai</title>
 <meta name="description" content="Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.0">
+<meta name="generator" content="admin/build/build_pages.py v0.1.1">
 <link rel="canonical" href="https://myfeeds.sgit.ai/admin/versions.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/admin/versions.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Release history","description":"Every release of this site: version, date, and what it did \u2014 including what an earlier version got wrong, where one did.","url":"https://myfeeds.sgit.ai/admin/versions.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.0","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Release history","description":"Every release of this site: version, date, and what it did \u2014 including what an earlier version got wrong, where one did.","url":"https://myfeeds.sgit.ai/admin/versions.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.1","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -51,30 +51,41 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<span class="ver">v0.1.0</span>
+<a class="ver" href="../admin/versions.html#v0-1-1"
+title="What changed in v0.1.1">v0.1.1</a>
 <nav class="site-nav" aria-label="Sections"><a href="../thesis/index.html">Thesis</a><a href="../read-state/index.html">Read state</a><a href="../vault/index.html">The vault</a><a href="../build-order/index.html">Build order</a><a href="../team/index.html">Team</a><a href="../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
 <p class="crumb"><a href="../index.html">myfeeds.sgit.ai</a> / Provenance</p>
 <p class="kicker">Provenance</p>
 <h1>Release history</h1>
-<p class="lede">Every release of this site: the version, the date, and what it did —
-including what an earlier version got wrong, where one did. A version log that reads as an
-unbroken sequence of improvements is a version log that is lying.</p>
-<div class="tablewrap"><table>
-<thead><tr><th>Version</th><th>Date</th><th>What it did</th></tr></thead>
-<tbody><tr><td><code>v0.1.0</code></td><td>2026-09-14</td><td>First release. The thesis, the read-state argument, the vault layout, the build order, and the seven-role dev team the site is run by — generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004).</td></tr></tbody></table></div>
+<p class="lede">Every release of this site: the version, the date, what it did, and what
+an earlier version got wrong where one did. A version log that reads as an unbroken
+sequence of improvements is a version log that is lying.</p>
+
+<p>Each entry is also served as data at <code>/versions/&lt;version&gt;.json</code>, indexed
+by <a href="../versions/index.json"><code>/versions/index.json</code></a>, so a script can
+check a claim about a release without rendering a page. The version badge in the navigation
+links to the entry for the version you are looking at, not to this page generally.</p>
+
+<div class="band" id="v0-1-1"><p class="k"><code>v0.1.1</code> · 2026-09-14 · <a href="../versions/v0.1.1.json">as data</a></p><h3>the site gets the deploy workflow every other *.sgit.ai site has, and the four version and provenance practices it was missing</h3><p>v0.1.0 shipped a build gate and called it done, which was wrong: it never published anything. This release replaces it with the estate&#x27;s shared deploy-pages pipeline (validate, tag, publish to GitHub Pages) taken from the sibling sites rather than reinvented, moves version ownership to admin/build/version.txt so that workflow can read it, and closes four gaps against sgit.ai/docs/guidance: the version badge is now a link to that version&#x27;s own details, versions are served as data, app.json denies by default with its reason written down, and every page is one click from the bytes it was rendered from.</p><div class="note"><p><strong>Corrects.</strong> v0.1.0 described a four-step release ending in a live check, and shipped neither a deploy workflow nor anything to check with. The description was accurate about the intent and wrong about the repository.</p></div><h4>Changes</h4><ul><li>.github/workflows/deploy-pages.yml — replaces build.yml; validate -&gt; tag -&gt; deploy, matching SGit-AI__Website__Teams</li><li>admin/build/version.txt — now owns the version; build_pages.py reads it</li><li>admin/build/verify-live.sh — asks the live site what it is serving, because both remotes in sync is not the same as deployed</li><li>versions/index.json + versions/&lt;version&gt;.json — the versions contract</li><li>admin/build/build_pages.py — version badge links to its own entry; every page links its markdown twin; app.json declares permissions {}</li><li>admin/build/validate.js — assertions for each of the above</li></ul></div><div class="band" id="v0-1-0"><p class="k"><code>v0.1.0</code> · 2026-09-14 · <a href="../versions/v0.1.0.json">as data</a></p><h3>the argument, the read-state contract, and the team that runs it</h3><p>First release. The thesis that feeds are replaceable and reading is not, read-state/v1 published as a contract before any implementation, the vault layout, the build order, and the seven-role dev team the site is run by — generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004).</p><h4>Changes</h4><ul><li>admin/build/build_pages.py — the generator: one shell, 19 pages, twins, llms.txt, llms-full.txt, sitemap.xml, data/team.json</li><li>admin/build/validate.js — the gate</li><li>admin/content/ — the eight authored page bodies and pages.json</li><li>team/roles/<em>/ROLE.md — seven roles; team/board/</em>.md — five cards</li><li>assets/site.css, assets/site.js</li></ul></div>
+
 <p>The log lives in <code>VERSION_LOG</code> in <code>admin/build/build_pages.py</code> and
-is owned by the <a href="../team/roles/historian.html">Historian</a>. The version in the
-navigation, the row here, and the version the live site serves have to agree; the
-<a href="../team/roles/devops.html">DevOps</a> role exists because on two occasions
-elsewhere in this estate the first two agreed and the third did not.</p>
+is owned by the <a href="../team/roles/historian.html">Historian</a>; the version number
+itself is owned by <code>admin/build/version.txt</code>, because that is the file the
+deploy workflow shared across the <a href="../network/index.html">*.sgit.ai sites</a>
+reads. The version in the navigation, the entry here, and the version the live site serves
+have to agree — <a href="../team/roles/devops.html">DevOps</a> exists because on two
+occasions elsewhere in this estate the first two agreed and the third did not.</p>
 <div class="next"><a href="index.html">← How this site is built</a></div>
 </main>
 <footer class="site-foot"><div class="inner">
 <div><h4>The argument</h4><ul><li><a href="../thesis/index.html">Feeds are replaceable</a></li><li><a href="../read-state/index.html">The part nobody exports</a></li><li><a href="../vault/index.html">What a feeds vault holds</a></li><li><a href="../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../team/index.html">The team</a></li><li><a href="../team/board.html">The board</a></li><li><a href="../admin/index.html">How this site is built</a></li><li><a href="../admin/versions.html">Release history</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../network/index.html">The sgit.ai network</a></li><li><a href="../about/index.html">About &amp; licence</a></li><li><a href="../llms.txt">llms.txt</a></li><li><a href="../llms-full.txt">llms-full.txt</a></li></ul></div>
-<div><h4>This site</h4><p>Feeds are replaceable. Your reading is not.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.0. Part of the
+<div><h4>This page</h4>
+<p><a href="versions.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>Feeds are replaceable. Your reading is not.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.1. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../",n=0,t;

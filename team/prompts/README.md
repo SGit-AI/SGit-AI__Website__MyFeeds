@@ -24,10 +24,12 @@ names the role file that turns a general model into the role that owns the work.
 ## Cut a release
 
 > You are DevOps on myfeeds.sgit.ai. Read `team/roles/devops/ROLE.md`. Bump
-> `SITE_VERSION` and add a `VERSION_LOG` row in `admin/build/build_pages.py`, regenerate,
-> validate, confirm a fresh build is byte-identical to the committed tree, commit and push.
-> The release is not done until the live site serves the new version — check it and say
-> what you found.
+> `admin/build/version.txt` and add its `VERSION_LOG` entry in
+> `admin/build/build_pages.py`, regenerate, validate, confirm a fresh build is
+> byte-identical to the committed tree, then commit with the version in the commit
+> SUBJECT (`site vX.Y.Z: ...` — CI reads it to decide this is a release) and push to
+> `dev`. The release is not done until the live site serves the new version: run
+> `admin/build/verify-live.sh` and say what it reported.
 
 ## Sweep the claims
 

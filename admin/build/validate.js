@@ -222,6 +222,114 @@ if (exists('data/team.json')) {
   }
 }
 
+// ------------------------------------------------ version, versions/ and the deploy gate
+
+// The version is owned by one file, and the workflow every *.sgit.ai site shares reads
+// it. If the pages, the log and that file disagree, a release tags one version and
+// publishes another.
+const VERSION = read('admin/build/version.txt').trim();
+check(/^v\d+\.\d+\.\d+$/.test(VERSION),
+  `admin/build/version.txt: "${VERSION}" is not vMAJOR.MINOR.PATCH`);
+
+if (exists('versions/index.json')) {
+  const idx = JSON.parse(read('versions/index.json'));
+  check(idx.current === VERSION,
+    `versions/index.json: current is ${idx.current}, version.txt says ${VERSION}`);
+  check(idx.versions.length > 0 && idx.versions[0].version === VERSION,
+    'versions/index.json: the newest entry is not the current version');
+  for (const v of idx.versions) {
+    const f = `versions/${v.version}.json`;
+    check(exists(f), `${f}: indexed but missing`);
+    if (!exists(f)) continue;
+    const entry = JSON.parse(read(f));
+    check(entry.version === v.version, `${f}: version field disagrees with the index`);
+    check(/^\d{4}-\d{2}-\d{2}$/.test(entry.date), `${f}: date is not YYYY-MM-DD`);
+    // "title is a sentence, not a label" — the estate's own guidance. A label is short
+    // and says nothing; there is no way to check prose, but there is a way to catch
+    // "UI improvements".
+    check(typeof entry.title === 'string' && entry.title.length >= 25,
+      `${f}: title "${entry.title}" reads as a label — it should be a sentence saying what changed`);
+    check(Array.isArray(entry.changes) && entry.changes.length > 0,
+      `${f}: no changes listed`);
+    check(!!entry.commit_ref, `${f}: no commit reference — a version that does not name what it was built from cannot be verified later`);
+  }
+}
+
+// The version badge must be a LINK, to THAT version's own entry.
+for (const [p, html] of bodies) {
+  const m = html.match(/<a class="ver" href="([^"]+)"/);
+  check(!!m, `${p}: the version badge is not a link — a reader who clicks ${VERSION} wants to know what ${VERSION} was`);
+  if (m) {
+    const [target, frag] = m[1].split('#');
+    const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(p), target));
+    check(exists(resolved), `${p}: version badge points at a missing page (${resolved})`);
+    check(frag === VERSION.replace(/\./g, '-'),
+      `${p}: version badge links to #${frag}, expected the anchor for ${VERSION}`);
+    if (exists(resolved)) {
+      check(read(resolved).includes(`id="${frag}"`),
+        `admin/versions.html: no entry with id="${frag}" for the badge to land on`);
+    }
+  }
+  check(html.includes(`>${VERSION}<`), `${p}: does not show ${VERSION}`);
+}
+
+// "Anything rendered stays one click from its bytes."
+for (const [p, html] of bodies) {
+  const twin = p.replace(/\.html$/, '.md');
+  const dir = path.posix.dirname(p);
+  // Resolve every link on the page rather than matching one spelling: "index.md" and
+  // "../thesis/index.md" are both correct from thesis/index.html, and a check that
+  // accepts only one of them tests the generator's style, not the site's property.
+  const linksToTwin = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((h) => !/^(https?:|mailto:|#)/.test(h))
+    .some((h) => path.posix.normalize(path.posix.join(dir, h.split('#')[0])) === twin);
+  check(linksToTwin,
+    `${p}: does not link its own markdown twin (${twin}) — a page that only shows its own interpretation asks to be trusted`);
+}
+
+// Deny by default in app.json, with the reason for any grant written down.
+if (exists('app.json')) {
+  const app = JSON.parse(read('app.json'));
+  check(app.version === VERSION, `app.json: version is ${app.version}, expected ${VERSION}`);
+  check(Object.prototype.hasOwnProperty.call(app, 'permissions'),
+    'app.json: no permissions key — declare the narrowest set that works, even if that is {}');
+  check(!!app.permissions_note,
+    'app.json: permissions carry no note saying why each grant exists');
+}
+
+// The canonical host and CNAME have to agree, or the site publishes canonical URLs
+// pointing at a domain it is not served from.
+if (exists('CNAME')) {
+  const host = read('CNAME').trim();
+  for (const [p, html] of bodies) {
+    check(html.includes(`<link rel="canonical" href="https://${host}/`),
+      `${p}: canonical host disagrees with CNAME (${host})`);
+  }
+}
+
+// The deploy pipeline itself: it is the estate's, and the release contract depends on
+// the three jobs existing in order.
+if (exists('.github/workflows/deploy-pages.yml')) {
+  const wf = read('.github/workflows/deploy-pages.yml');
+  for (const job of ['validate:', 'tag-release:', 'deploy:']) {
+    check(wf.includes(`  ${job}`), `deploy-pages.yml: no ${job.slice(0, -1)} job`);
+  }
+  check(wf.includes('actions/deploy-pages@v4'), 'deploy-pages.yml: does not deploy');
+  check(wf.includes("--exclude '.sg_vault'"),
+    'deploy-pages.yml: the artifact does not exclude .sg_vault');
+  check(/needs:\s*\[validate, tag-release\]/.test(wf),
+    'deploy-pages.yml: deploy is not gated on validate');
+  // The workflow reads version.txt; if the generator stopped owning it there, a release
+  // would tag one version and publish another.
+  check(wf.includes('admin/build/version.txt'),
+    'deploy-pages.yml: does not read admin/build/version.txt');
+  check(read('admin/build/build_pages.py').includes('VERSION_FILE'),
+    'build_pages.py: no longer reads version.txt, which the deploy workflow depends on');
+} else {
+  failures.push('.github/workflows/deploy-pages.yml: missing — nothing publishes this site');
+}
+
 // --------------------------------------------------------------- assets parse-checked
 
 if (exists('assets/site.js')) {

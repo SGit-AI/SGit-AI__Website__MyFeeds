@@ -1,14 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.0",
+  "version": "v0.1.1",
   "generated": "2026-09-14",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {
     "roles": 7,
     "falsifiable_claims": 7,
-    "board_cards": 5,
-    "open_cards": 5,
+    "board_cards": 7,
+    "open_cards": 6,
     "pages": 19
   },
   "roles": [
@@ -83,9 +83,10 @@
       "claim_form": "falsifiable",
       "not_responsible_for": "Writing page content, defining contracts, deciding release scope, or writing the assertions the validator runs.",
       "owns": [
-        "the release procedure and the version bump",
+        "the release procedure and admin/build/version.txt",
         "admin/build/validate.js as a gate",
-        "the CI workflow and the staleness check",
+        ".github/workflows/deploy-pages.yml and the staleness check",
+        "admin/build/verify-live.sh",
         "both remotes (git mirror and the encrypted vault)"
       ],
       "tools": [
@@ -200,6 +201,24 @@
       "kind": "task",
       "opened": "2026-09-14",
       "file": "team/board/005-network-entry.md"
+    },
+    {
+      "id": "006",
+      "title": "Keep deploy-pages.yml in step with the estate's copy",
+      "status": "todo",
+      "owner": "devops",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/006-workflow-upstream.md"
+    },
+    {
+      "id": "007",
+      "title": "Record the commit a version was built from, not just its tag",
+      "status": "held",
+      "owner": "historian",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/007-version-commit-hash.md"
     }
   ]
 }

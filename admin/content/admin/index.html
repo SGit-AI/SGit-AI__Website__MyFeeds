@@ -101,22 +101,73 @@ or <code>&lt;img src&gt;</code> pointing at a relative path.</li>
 <li>The roster served at <code>data/team.json</code> matches the files on disk.</li>
 </ul>
 
-<h2 id="release">Release</h2>
+<h2 id="release">Release and deploy</h2>
 
-<pre><code># 1. bump SITE_VERSION and add its VERSION_LOG row in admin/build/build_pages.py
+<p>The deploy pipeline is the estate's, shared by every <code>*.sgit.ai</code> site and
+taken from <code>SGit-AI__Website__Teams</code> rather than reinvented here. One workflow,
+three jobs, in this order:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Job</th><th>Does</th><th>Gate</th></tr></thead>
+<tbody>
+<tr><td><code>validate</code></td><td>Runs the validator, rebuilds on a clean checkout,
+and fails if the committed tree differs by a byte</td><td>Runs on pull requests too, so
+branch work is gated before it reaches the release branch. A failure means no tag and no
+publish.</td></tr>
+<tr><td><code>tag-release</code></td><td>Tags the release commit
+<code>v{major}.{minor}.{patch}</code>, backfilling any historical release that has no
+tag</td><td>Only on a push to <code>dev</code>. The version is owned by
+<code>admin/build/version.txt</code> and must also appear in the release commit's
+<em>subject</em> — <code>site vX.Y.Z: …</code> — and CI fails if the two disagree, if the
+version was reused, or if the bump is not the next minor.</td></tr>
+<tr><td><code>deploy</code></td><td>Assembles the tree (excluding <code>.git</code>,
+<code>.github</code> and <code>.sg_vault</code>) and publishes it to GitHub
+Pages</td><td>Never from a pull request, and never when validation failed. Publishes even
+when <code>tag-release</code> skipped, because a missing tag is a bookkeeping gap and a
+blocked deploy is an outage.</td></tr>
+</tbody></table></div>
+
+<p>That last distinction is not hypothetical. On the main site an earlier version of
+<code>tag-release</code> tagged unconditionally, so two good commits landing on top of a
+release failed the job and took the publish down with them — with an error that said the
+version had not been bumped when the truth was that this was not a release. The estate's
+current workflow carries that fix and several others this site has not had to learn the
+hard way; the standing instruction in the
+<a href="../team/roles/devops.html">DevOps role</a> is not to diverge from it without a
+reason on the board.</p>
+
+<pre><code># 1. bump admin/build/version.txt and add its VERSION_LOG entry in build_pages.py
 # 2. regenerate and validate
-$ python3 admin/build/build_pages.py && node admin/build/validate.js
-# 3. commit the whole tree — source and output together
-$ git add -A && git commit && git push -u origin &lt;branch&gt;
-# 4. verify live: the version string has to come back from the site itself</code></pre>
+$ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js
+# 3. commit the whole tree — source and output — with the version in the SUBJECT
+$ git commit -m "site vX.Y.Z: what this release did" &amp;&amp; git push origin dev
+# 4. verify live — the version string has to come back from the site itself
+$ ./admin/build/verify-live.sh</code></pre>
 
-<p>Step 4 is the one that exists because of a failure elsewhere in this estate: two
-releases pushed cleanly, reported success, and never reached the site, with every check
-green because the failure was in a place none of them could see. Both remotes in sync is
-not the same as deployed. The
-<a href="../team/roles/devops.html">DevOps role</a> owns that rule and CI runs a
-staleness check — a fresh build on a clean checkout, compared byte for byte against what
-was committed — so that the published tree cannot drift from its source unnoticed.</p>
+<p>Step 4 is separate from the workflow on purpose, because it is the one thing CI cannot
+tell you. A green deploy job means GitHub accepted an artifact; it does not mean the site
+is serving it. Elsewhere in this estate two releases pushed cleanly, reported success and
+never reached the site — <code>actions/configure-pages</code> got a 429 and the deploy job
+died before running a step, and a two-release-old page was served for forty minutes with
+every check green, because the failure was in a job neither remote knows about. So the last
+act of a release is to ask the live site what version it is serving, and
+<code>verify-live.sh</code> exits non-zero until it answers correctly.</p>
+
+<h2 id="versions">Versions are data</h2>
+
+<p>The version appears in the navigation of every page and <strong>is a link</strong> —
+to that version's own entry, not to a generic changelog, because a reader who clicks
+<code>v0.1.1</code> wants to know what v0.1.1 was. The same history is served as data at
+<code>/versions/index.json</code> and one file per version, so a script can check a claim
+about a release without rendering a page. Each entry's <code>title</code> is a sentence
+rather than a label, and a release that corrects an earlier one says which and how.</p>
+
+<p>One honest note on that contract: the estate's shape includes the commit a version was
+built from, and this site records the tag reference rather than a hash. The commit that
+carries a version cannot be known while that version is being built — it does not exist
+yet — and CI tags the release commit at publish time, so
+<code>refs/tags/v0.1.1</code> is the durable pointer and a hash written at build time would
+either be wrong or change on every rebuild.</p>
 
 <div class="next">
 <a href="versions.html">Release history →</a>

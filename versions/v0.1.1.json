@@ -1,0 +1,22 @@
+{
+  "version": "v0.1.1",
+  "date": "2026-09-14",
+  "commit": null,
+  "commit_ref": "refs/tags/v0.1.1",
+  "vault": null,
+  "reconstructed": false,
+  "title": "the site gets the deploy workflow every other *.sgit.ai site has, and the four version and provenance practices it was missing",
+  "summary": "v0.1.0 shipped a build gate and called it done, which was wrong: it never published anything. This release replaces it with the estate's shared deploy-pages pipeline (validate, tag, publish to GitHub Pages) taken from the sibling sites rather than reinvented, moves version ownership to admin/build/version.txt so that workflow can read it, and closes four gaps against sgit.ai/docs/guidance: the version badge is now a link to that version's own details, versions are served as data, app.json denies by default with its reason written down, and every page is one click from the bytes it was rendered from.",
+  "changes": [
+    ".github/workflows/deploy-pages.yml \u2014 replaces build.yml; validate -> tag -> deploy, matching SGit-AI__Website__Teams",
+    "admin/build/version.txt \u2014 now owns the version; build_pages.py reads it",
+    "admin/build/verify-live.sh \u2014 asks the live site what it is serving, because both remotes in sync is not the same as deployed",
+    "versions/index.json + versions/<version>.json \u2014 the versions contract",
+    "admin/build/build_pages.py \u2014 version badge links to its own entry; every page links its markdown twin; app.json declares permissions {}",
+    "admin/build/validate.js \u2014 assertions for each of the above"
+  ],
+  "corrects": "v0.1.0 described a four-step release ending in a live check, and shipped neither a deploy workflow nor anything to check with. The description was accurate about the intent and wrong about the repository.",
+  "basis": [],
+  "site": "myfeeds.sgit.ai",
+  "url": "https://myfeeds.sgit.ai/admin/versions.html#v0-1-1"
+}

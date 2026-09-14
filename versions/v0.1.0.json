@@ -1,0 +1,21 @@
+{
+  "version": "v0.1.0",
+  "date": "2026-09-14",
+  "commit": null,
+  "commit_ref": "refs/tags/v0.1.0",
+  "vault": null,
+  "reconstructed": false,
+  "title": "the argument, the read-state contract, and the team that runs it",
+  "summary": "First release. The thesis that feeds are replaceable and reading is not, read-state/v1 published as a contract before any implementation, the vault layout, the build order, and the seven-role dev team the site is run by \u2014 generated from the ROLE.md files rather than described beside them. Nothing is served yet: the subdomain does not resolve (board card 004).",
+  "changes": [
+    "admin/build/build_pages.py \u2014 the generator: one shell, 19 pages, twins, llms.txt, llms-full.txt, sitemap.xml, data/team.json",
+    "admin/build/validate.js \u2014 the gate",
+    "admin/content/ \u2014 the eight authored page bodies and pages.json",
+    "team/roles/*/ROLE.md \u2014 seven roles; team/board/*.md \u2014 five cards",
+    "assets/site.css, assets/site.js"
+  ],
+  "corrects": null,
+  "basis": [],
+  "site": "myfeeds.sgit.ai",
+  "url": "https://myfeeds.sgit.ai/admin/versions.html#v0-1-0"
+}

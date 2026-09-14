@@ -1,0 +1,19 @@
+{
+  "site": "myfeeds.sgit.ai",
+  "current": "v0.1.1",
+  "source": "VERSION_LOG in admin/build/build_pages.py",
+  "versions": [
+    {
+      "version": "v0.1.1",
+      "date": "2026-09-14",
+      "title": "the site gets the deploy workflow every other *.sgit.ai site has, and the four version and provenance practices it was missing",
+      "href": "v0.1.1.json"
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2026-09-14",
+      "title": "the argument, the read-state contract, and the team that runs it",
+      "href": "v0.1.0.json"
+    }
+  ]
+}

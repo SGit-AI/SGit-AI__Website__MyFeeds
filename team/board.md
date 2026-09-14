@@ -2,7 +2,7 @@
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -30,7 +30,7 @@ Only the human owner can supply this: the DNS record and the Pages configuration
 
 **Done when** `curl -sI https://myfeeds.sgit.ai/` returns 200 and the version in the response matches `VERSION_LOG`.
 
-## Tasks 4
+## Tasks 5
 
 An agent can pick these up from its starting prompt.
 
@@ -81,6 +81,36 @@ The network directory on sgit.ai carries one file per sibling site, owned by tha
 Send: the slug, the one-line thesis (*feeds are replaceable, your reading is not*), the description, the version, and the status label. The upstream rule is that a sibling site is described in its own words and corrected upstream when the directory is wrong about it.
 
 **Done when** `myfeeds.sgit.ai` appears in `https://sgit.ai/network/index.md`.
+
+`team/board/006-workflow-upstream.md`
+
+### 006 · Keep deploy-pages.yml in step with the estate's copy
+
+todo task owner [devops](roles/devops.md) · opened 2026-09-14
+
+`.github/workflows/deploy-pages.yml` is not this site's invention. It is the pipeline every `*.sgit.ai` site runs, taken from `SGit-AI__Website__Teams`, and it carries fixes this site has not had to learn: reading `git log` once because piping it into an early-exiting reader dies of SIGPIPE under `pipefail`; anchoring the release commit to the newest versioned subject because a merged pull request makes HEAD a merge commit; checking the remote before pushing backfill tags.
+
+Two adaptations were made here and should be reviewed against upstream rather than preserved by default: the `validate` job rebuilds and diffs instead of running several per-generator `--check` steps (this site has one generator), and the release-commit regexes accept both quote styles for the version, because the main site writes `SITE_VERSION` with single quotes and this one reads a `version.txt`.
+
+**Done when** a periodic diff against the upstream workflow is part of the release routine, and any upstream fix since has been ported or its absence noted here.
+
+## Held 1
+
+Deliberately not shipping, with the reason on the card.
+
+`team/board/007-version-commit-hash.md`
+
+### 007 · Record the commit a version was built from, not just its tag
+
+held task owner [historian](roles/historian.md) · opened 2026-09-14
+
+The estate's versions contract says a version must name the commit it was built from, or it cannot be verified later. `versions/<version>.json` currently carries `commit: null` and `commit_ref: refs/tags/<version>` instead.
+
+The reason is real: the commit that *carries* a version cannot be known while that version is being built — it does not exist yet — and CI tags the release commit at publish time, so the tag is a durable pointer while a hash written at build time would either be wrong or change on every rebuild and break the staleness check.
+
+**Held**, not open, because the obvious fixes are worse than the gap: capturing `git rev-parse HEAD` at build time records the *previous* commit under a field that claims to be this one, and having CI write the hash back means a CI-authored commit that exists only on the git side, which breaks the both-remotes-in-sync invariant.
+
+**Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
 
 [← The team](index.md)[Starting prompts →](prompts.md)
 

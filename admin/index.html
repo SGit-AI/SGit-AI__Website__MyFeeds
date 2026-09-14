@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>How this site is built · myfeeds.sgit.ai</title>
 <meta name="description" content="The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.0">
+<meta name="generator" content="admin/build/build_pages.py v0.1.1">
 <link rel="canonical" href="https://myfeeds.sgit.ai/admin/index.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/admin/index.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How this site is built","description":"The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.","url":"https://myfeeds.sgit.ai/admin/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.0","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How this site is built","description":"The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.","url":"https://myfeeds.sgit.ai/admin/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.1","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -51,7 +51,8 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<span class="ver">v0.1.0</span>
+<a class="ver" href="../admin/versions.html#v0-1-1"
+title="What changed in v0.1.1">v0.1.1</a>
 <nav class="site-nav" aria-label="Sections"><a href="../thesis/index.html">Thesis</a><a href="../read-state/index.html">Read state</a><a href="../vault/index.html">The vault</a><a href="../build-order/index.html">Build order</a><a href="../team/index.html">Team</a><a href="../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
@@ -159,22 +160,73 @@ or <code>&lt;img src&gt;</code> pointing at a relative path.</li>
 <li>The roster served at <code>data/team.json</code> matches the files on disk.</li>
 </ul>
 
-<h2 id="release">Release</h2>
+<h2 id="release">Release and deploy</h2>
 
-<pre><code># 1. bump SITE_VERSION and add its VERSION_LOG row in admin/build/build_pages.py
+<p>The deploy pipeline is the estate's, shared by every <code>*.sgit.ai</code> site and
+taken from <code>SGit-AI__Website__Teams</code> rather than reinvented here. One workflow,
+three jobs, in this order:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Job</th><th>Does</th><th>Gate</th></tr></thead>
+<tbody>
+<tr><td><code>validate</code></td><td>Runs the validator, rebuilds on a clean checkout,
+and fails if the committed tree differs by a byte</td><td>Runs on pull requests too, so
+branch work is gated before it reaches the release branch. A failure means no tag and no
+publish.</td></tr>
+<tr><td><code>tag-release</code></td><td>Tags the release commit
+<code>v{major}.{minor}.{patch}</code>, backfilling any historical release that has no
+tag</td><td>Only on a push to <code>dev</code>. The version is owned by
+<code>admin/build/version.txt</code> and must also appear in the release commit's
+<em>subject</em> — <code>site vX.Y.Z: …</code> — and CI fails if the two disagree, if the
+version was reused, or if the bump is not the next minor.</td></tr>
+<tr><td><code>deploy</code></td><td>Assembles the tree (excluding <code>.git</code>,
+<code>.github</code> and <code>.sg_vault</code>) and publishes it to GitHub
+Pages</td><td>Never from a pull request, and never when validation failed. Publishes even
+when <code>tag-release</code> skipped, because a missing tag is a bookkeeping gap and a
+blocked deploy is an outage.</td></tr>
+</tbody></table></div>
+
+<p>That last distinction is not hypothetical. On the main site an earlier version of
+<code>tag-release</code> tagged unconditionally, so two good commits landing on top of a
+release failed the job and took the publish down with them — with an error that said the
+version had not been bumped when the truth was that this was not a release. The estate's
+current workflow carries that fix and several others this site has not had to learn the
+hard way; the standing instruction in the
+<a href="../team/roles/devops.html">DevOps role</a> is not to diverge from it without a
+reason on the board.</p>
+
+<pre><code># 1. bump admin/build/version.txt and add its VERSION_LOG entry in build_pages.py
 # 2. regenerate and validate
-$ python3 admin/build/build_pages.py && node admin/build/validate.js
-# 3. commit the whole tree — source and output together
-$ git add -A && git commit && git push -u origin &lt;branch&gt;
-# 4. verify live: the version string has to come back from the site itself</code></pre>
+$ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js
+# 3. commit the whole tree — source and output — with the version in the SUBJECT
+$ git commit -m "site vX.Y.Z: what this release did" &amp;&amp; git push origin dev
+# 4. verify live — the version string has to come back from the site itself
+$ ./admin/build/verify-live.sh</code></pre>
 
-<p>Step 4 is the one that exists because of a failure elsewhere in this estate: two
-releases pushed cleanly, reported success, and never reached the site, with every check
-green because the failure was in a place none of them could see. Both remotes in sync is
-not the same as deployed. The
-<a href="../team/roles/devops.html">DevOps role</a> owns that rule and CI runs a
-staleness check — a fresh build on a clean checkout, compared byte for byte against what
-was committed — so that the published tree cannot drift from its source unnoticed.</p>
+<p>Step 4 is separate from the workflow on purpose, because it is the one thing CI cannot
+tell you. A green deploy job means GitHub accepted an artifact; it does not mean the site
+is serving it. Elsewhere in this estate two releases pushed cleanly, reported success and
+never reached the site — <code>actions/configure-pages</code> got a 429 and the deploy job
+died before running a step, and a two-release-old page was served for forty minutes with
+every check green, because the failure was in a job neither remote knows about. So the last
+act of a release is to ask the live site what version it is serving, and
+<code>verify-live.sh</code> exits non-zero until it answers correctly.</p>
+
+<h2 id="versions">Versions are data</h2>
+
+<p>The version appears in the navigation of every page and <strong>is a link</strong> —
+to that version's own entry, not to a generic changelog, because a reader who clicks
+<code>v0.1.1</code> wants to know what v0.1.1 was. The same history is served as data at
+<code>/versions/index.json</code> and one file per version, so a script can check a claim
+about a release without rendering a page. Each entry's <code>title</code> is a sentence
+rather than a label, and a release that corrects an earlier one says which and how.</p>
+
+<p>One honest note on that contract: the estate's shape includes the commit a version was
+built from, and this site records the tag reference rather than a hash. The commit that
+carries a version cannot be known while that version is being built — it does not exist
+yet — and CI tags the release commit at publish time, so
+<code>refs/tags/v0.1.1</code> is the durable pointer and a hash written at build time would
+either be wrong or change on every rebuild.</p>
 
 <div class="next">
 <a href="versions.html">Release history →</a>
@@ -184,8 +236,11 @@ was committed — so that the published tree cannot drift from its source unnoti
 </main>
 <footer class="site-foot"><div class="inner">
 <div><h4>The argument</h4><ul><li><a href="../thesis/index.html">Feeds are replaceable</a></li><li><a href="../read-state/index.html">The part nobody exports</a></li><li><a href="../vault/index.html">What a feeds vault holds</a></li><li><a href="../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../team/index.html">The team</a></li><li><a href="../team/board.html">The board</a></li><li><a href="../admin/index.html">How this site is built</a></li><li><a href="../admin/versions.html">Release history</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../network/index.html">The sgit.ai network</a></li><li><a href="../about/index.html">About &amp; licence</a></li><li><a href="../llms.txt">llms.txt</a></li><li><a href="../llms-full.txt">llms-full.txt</a></li></ul></div>
-<div><h4>This site</h4><p>Feeds are replaceable. Your reading is not.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.0. Part of the
+<div><h4>This page</h4>
+<p><a href="index.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>Feeds are replaceable. Your reading is not.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.1. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../",n=0,t;

@@ -28,7 +28,18 @@ CONTENT = ROOT / "admin" / "content"
 ROLES_DIR = ROOT / "team" / "roles"
 BOARD_DIR = ROOT / "team" / "board"
 
-SITE_VERSION = "v0.1.0"
+# The version is owned by admin/build/version.txt — the estate convention, so that the
+# deploy workflow every *.sgit.ai site shares can read it without knowing anything about
+# this generator. It is bumped exactly once per release and must also appear in that
+# release's commit subject ("site vX.Y.Z: ..."); CI fails the release if the two disagree.
+VERSION_FILE = Path(__file__).resolve().parent / "version.txt"
+try:
+    SITE_VERSION = VERSION_FILE.read_text(encoding="utf-8").strip()
+except FileNotFoundError:  # pragma: no cover - a checkout without it is broken
+    raise SystemExit(f"build: {VERSION_FILE} is missing — it owns the site version")
+if not re.fullmatch(r"v\d+\.\d+\.\d+", SITE_VERSION):
+    raise SystemExit(f"build: {VERSION_FILE} holds {SITE_VERSION!r}, expected vMAJOR.MINOR.PATCH")
+
 SITE_HOST = "myfeeds.sgit.ai"
 SITE_ORIGIN = f"https://{SITE_HOST}"
 SITE_NAME = "myfeeds.sgit.ai"
@@ -40,16 +51,68 @@ SITE_DESC = (
 )
 LICENCE = "CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic)."
 
-# version · date · what it did — one row per release, appended, never rewritten.
+# One entry per release, appended, never rewritten. The shape is the estate's
+# versions/ contract (sgit.ai/docs/guidance): `title` is a SENTENCE, not a label —
+# "the settings move into the right-hand column" tells a reader more than "UI
+# improvements" ever will — `changes` names files, and a version that corrects an
+# earlier one says which and how. Rendered to /admin/versions.html and served as data
+# at /versions/index.json + /versions/<version>.json.
 VERSION_LOG = [
-    (
-        "v0.1.0",
-        "2026-09-14",
-        "First release. The thesis, the read-state argument, the vault layout, the build "
-        "order, and the seven-role dev team the site is run by — generated from the "
-        "ROLE.md files rather than described beside them. Nothing is served yet: the "
-        "subdomain does not resolve (board card 004).",
-    ),
+    {
+        "version": "v0.1.0",
+        "date": "2026-09-14",
+        "title": "the argument, the read-state contract, and the team that runs it",
+        "summary": (
+            "First release. The thesis that feeds are replaceable and reading is not, "
+            "read-state/v1 published as a contract before any implementation, the vault "
+            "layout, the build order, and the seven-role dev team the site is run by — "
+            "generated from the ROLE.md files rather than described beside them. Nothing "
+            "is served yet: the subdomain does not resolve (board card 004)."
+        ),
+        "changes": [
+            "admin/build/build_pages.py — the generator: one shell, 19 pages, twins, "
+            "llms.txt, llms-full.txt, sitemap.xml, data/team.json",
+            "admin/build/validate.js — the gate",
+            "admin/content/ — the eight authored page bodies and pages.json",
+            "team/roles/*/ROLE.md — seven roles; team/board/*.md — five cards",
+            "assets/site.css, assets/site.js",
+        ],
+    },
+    {
+        "version": "v0.1.1",
+        "date": "2026-09-14",
+        "title": (
+            "the site gets the deploy workflow every other *.sgit.ai site has, and the "
+            "four version and provenance practices it was missing"
+        ),
+        "summary": (
+            "v0.1.0 shipped a build gate and called it done, which was wrong: it never "
+            "published anything. This release replaces it with the estate's shared "
+            "deploy-pages pipeline (validate, tag, publish to GitHub Pages) taken from "
+            "the sibling sites rather than reinvented, moves version ownership to "
+            "admin/build/version.txt so that workflow can read it, and closes four gaps "
+            "against sgit.ai/docs/guidance: the version badge is now a link to that "
+            "version's own details, versions are served as data, app.json denies by "
+            "default with its reason written down, and every page is one click from the "
+            "bytes it was rendered from."
+        ),
+        "changes": [
+            ".github/workflows/deploy-pages.yml — replaces build.yml; validate -> tag "
+            "-> deploy, matching SGit-AI__Website__Teams",
+            "admin/build/version.txt — now owns the version; build_pages.py reads it",
+            "admin/build/verify-live.sh — asks the live site what it is serving, "
+            "because both remotes in sync is not the same as deployed",
+            "versions/index.json + versions/<version>.json — the versions contract",
+            "admin/build/build_pages.py — version badge links to its own entry; every "
+            "page links its markdown twin; app.json declares permissions {}",
+            "admin/build/validate.js — assertions for each of the above",
+        ],
+        "corrects": (
+            "v0.1.0 described a four-step release ending in a live check, and shipped "
+            "neither a deploy workflow nor anything to check with. The description was "
+            "accurate about the intent and wrong about the repository."
+        ),
+    },
 ]
 
 NAV = [
@@ -538,7 +601,8 @@ def render_page(page: dict, body: str) -> str:
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="{base}index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<span class="ver">{SITE_VERSION}</span>
+<a class="ver" href="{base}admin/versions.html#{version_anchor(SITE_VERSION)}"
+title="What changed in {SITE_VERSION}">{SITE_VERSION}</a>
 <nav class="site-nav" aria-label="Sections">{nav}</nav>
 </div></header>
 <main id="main">
@@ -547,7 +611,10 @@ def render_page(page: dict, body: str) -> str:
 </main>
 <footer class="site-foot"><div class="inner">
 {cols}
-<div><h4>This site</h4><p>{html.escape(SITE_THESIS)}</p>
+<div><h4>This page</h4>
+<p><a href="{path.rsplit("/", 1)[-1][:-5]}.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>{html.escape(SITE_THESIS)}</p>
 <p><small>{html.escape(LICENCE)}<br>Site {SITE_VERSION}. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
@@ -886,25 +953,50 @@ def prompts_body() -> str:
     )
 
 
+def version_anchor(version: str) -> str:
+    return version.replace(".", "-")
+
+
 def versions_body() -> str:
-    rows = "".join(
-        f"<tr><td><code>{v}</code></td><td>{d}</td><td>{md_inline(what)}</td></tr>"
-        for v, d, what in reversed(VERSION_LOG)
-    )
+    blocks = []
+    for e in reversed(VERSION_LOG):
+        anchor = version_anchor(e["version"])
+        changes = "".join(f"<li>{md_inline(c)}</li>" for c in e.get("changes", []))
+        corrects = (
+            f'<div class="note"><p><strong>Corrects.</strong> '
+            f'{md_inline(e["corrects"])}</p></div>'
+            if e.get("corrects") else ""
+        )
+        blocks.append(
+            f'<div class="band" id="{anchor}">'
+            f'<p class="k"><code>{e["version"]}</code> · {e["date"]} · '
+            f'<a href="../versions/{e["version"]}.json">as data</a></p>'
+            f'<h3>{md_inline(e["title"])}</h3>'
+            f'<p>{md_inline(e["summary"])}</p>'
+            f"{corrects}"
+            f"<h4>Changes</h4><ul>{changes}</ul></div>"
+        )
     return f"""
 <p class="kicker">Provenance</p>
 <h1>Release history</h1>
-<p class="lede">Every release of this site: the version, the date, and what it did —
-including what an earlier version got wrong, where one did. A version log that reads as an
-unbroken sequence of improvements is a version log that is lying.</p>
-<div class="tablewrap"><table>
-<thead><tr><th>Version</th><th>Date</th><th>What it did</th></tr></thead>
-<tbody>{rows}</tbody></table></div>
+<p class="lede">Every release of this site: the version, the date, what it did, and what
+an earlier version got wrong where one did. A version log that reads as an unbroken
+sequence of improvements is a version log that is lying.</p>
+
+<p>Each entry is also served as data at <code>/versions/&lt;version&gt;.json</code>, indexed
+by <a href="../versions/index.json"><code>/versions/index.json</code></a>, so a script can
+check a claim about a release without rendering a page. The version badge in the navigation
+links to the entry for the version you are looking at, not to this page generally.</p>
+
+{"".join(blocks)}
+
 <p>The log lives in <code>VERSION_LOG</code> in <code>admin/build/build_pages.py</code> and
-is owned by the <a href="../team/roles/historian.html">Historian</a>. The version in the
-navigation, the row here, and the version the live site serves have to agree; the
-<a href="../team/roles/devops.html">DevOps</a> role exists because on two occasions
-elsewhere in this estate the first two agreed and the third did not.</p>
+is owned by the <a href="../team/roles/historian.html">Historian</a>; the version number
+itself is owned by <code>admin/build/version.txt</code>, because that is the file the
+deploy workflow shared across the <a href="../network/index.html">*.sgit.ai sites</a>
+reads. The version in the navigation, the entry here, and the version the live site serves
+have to agree — <a href="../team/roles/devops.html">DevOps</a> exists because on two
+occasions elsewhere in this estate the first two agreed and the third did not.</p>
 <div class="next"><a href="index.html">← How this site is built</a></div>
 """
 
@@ -1087,10 +1179,78 @@ def build() -> int:
         f"User-agent: *\nAllow: /\n\nSitemap: {SITE_ORIGIN}/sitemap.xml\n", encoding="utf-8"
     )
     (ROOT / "CNAME").write_text(f"{SITE_HOST}\n", encoding="utf-8")
+    # Deny by default. The narrowest permission that works, and why each grant exists —
+    # here there are no grants at all, which is a real answer and the right one: every
+    # page on this site is static content read out of the vault, and reads need no grant.
+    # Nothing on this site can modify the vault it is served from.
     (ROOT / "app.json").write_text(
         json.dumps(
-            {"entry": "index.html", "present": True, "auto_open": True,
-             "title": SITE_NAME, "version": SITE_VERSION, "write": False},
+            {
+                "entry": "index.html",
+                "present": True,
+                "auto_open": True,
+                "title": SITE_NAME,
+                "version": SITE_VERSION,
+                "permissions": {},
+                "permissions_note": (
+                    "Deny by default: this app requests nothing. It renders static pages "
+                    "read from the vault, and reads require no grant. If a future release "
+                    "needs a permission, add it here with the reason it exists."
+                ),
+            },
+            indent=2,
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+    # versions/ — the estate's versions contract (sgit.ai/docs/guidance): an index plus
+    # one file per version, so an app can render it, a script can check it, and an agent
+    # can read it without running anything.
+    versions_dir = ROOT / "versions"
+    versions_dir.mkdir(exist_ok=True)
+    for e in VERSION_LOG:
+        (versions_dir / f"{e['version']}.json").write_text(
+            json.dumps(
+                {
+                    "version": e["version"],
+                    "date": e["date"],
+                    # The commit that CARRIES a version cannot be known while building
+                    # that version — it does not exist yet. CI tags the release commit
+                    # v<version> at publish time, so the tag is the durable pointer and
+                    # is recorded here instead of a hash that would be wrong or would
+                    # change on every rebuild.
+                    "commit": None,
+                    "commit_ref": f"refs/tags/{e['version']}",
+                    "vault": None,
+                    "reconstructed": False,
+                    "title": e["title"],
+                    "summary": e["summary"],
+                    "changes": e.get("changes", []),
+                    "corrects": e.get("corrects"),
+                    "basis": e.get("basis", []),
+                    "site": SITE_NAME,
+                    "url": f"{SITE_ORIGIN}/admin/versions.html#{version_anchor(e['version'])}",
+                },
+                indent=2,
+            ) + "\n",
+            encoding="utf-8",
+        )
+    (versions_dir / "index.json").write_text(
+        json.dumps(
+            {
+                "site": SITE_NAME,
+                "current": SITE_VERSION,
+                "source": "VERSION_LOG in admin/build/build_pages.py",
+                "versions": [
+                    {
+                        "version": e["version"],
+                        "date": e["date"],
+                        "title": e["title"],
+                        "href": f"{e['version']}.json",
+                    }
+                    for e in reversed(VERSION_LOG)
+                ],
+            },
             indent=2,
         ) + "\n",
         encoding="utf-8",
@@ -1137,7 +1297,8 @@ def build() -> int:
           f"({len(visible)} in the index, {len(role_pages)} role pages) · "
           f"{len(roles)} roles · {len(cards)} board cards")
     print(f"build: wrote {len(written)} page files + llms.txt, llms-full.txt, "
-          f"sitemap.xml, robots.txt, CNAME, app.json, data/team.json")
+          f"sitemap.xml, robots.txt, CNAME, app.json, data/team.json, "
+          f"versions/index.json + {len(VERSION_LOG)} version file(s)")
     return 0
 
 

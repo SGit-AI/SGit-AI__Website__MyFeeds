@@ -2,7 +2,7 @@
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.0 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.1 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -24,11 +24,13 @@ Own the path from a content edit to myfeeds.sgit.ai serving it — the build gat
 
 **Owns**
 
-- the release procedure and the version bump
+- the release procedure and admin/build/version.txt
 
 - admin/build/validate.js as a gate
 
-- the CI workflow and the staleness check
+- .github/workflows/deploy-pages.yml and the staleness check
+
+- admin/build/verify-live.sh
 
 - both remotes (git mirror and the encrypted vault)
 
@@ -56,9 +58,11 @@ So the last step of a release is not a push. It is fetching `myfeeds.sgit.ai` an
 
 ### Core workflows
 
-**The gate.** Nothing ships that has not had `python3 admin/build/build_pages.py` run and `node admin/build/validate.js` pass. CI runs the build on a clean checkout and fails if the result differs from what was committed — that is the staleness check, and it is the only thing standing between the repository and a published tree that no longer matches its source.
+**The gate.** Nothing ships that has not had `python3 admin/build/build_pages.py` run and `node admin/build/validate.js` pass. `deploy-pages.yml` is the shared estate pipeline — validate, tag, publish — in that order, and the deploy job is gated on validate. Its staleness check rebuilds on a clean checkout and fails if the result differs from what was committed; it is the only thing standing between the repository and a published tree that no longer matches its source.
 
-**A release.** Bump `SITE_VERSION` in `admin/build/build_pages.py`, add its row to `VERSION_LOG` in the same file, regenerate, validate, commit the whole tree, push. Then verify live.
+The workflow is the estate's, not this site's invention: it is taken from `SGit-AI__Website__Teams`, which carries fixes this site has not had to learn — reading `git log` once because piping it into an early-exiting reader dies of SIGPIPE under `pipefail`, anchoring the release commit to the newest versioned subject because a merged pull request makes HEAD a merge commit, and checking the remote before pushing backfill tags. Do not diverge from it without a reason written on the board; a fix that lands upstream should land here.
+
+**A release.** Bump `admin/build/version.txt`, add its `VERSION_LOG` entry in `admin/build/build_pages.py`, regenerate, validate, commit the whole tree with the version in the commit SUBJECT — `site vX.Y.Z: ...` — and push to `dev`. The subject is not cosmetic: it is what tells CI this push is a release, and `tag-release` fails the release if it disagrees with `version.txt`. Then run `admin/build/verify-live.sh`.
 
 **A failure.** Re-run a job only to confirm a failure that names something the diff does not touch. Flake is not a root cause. Never disable a validator check to get green — if a check is wrong, it is a card for QA.
 

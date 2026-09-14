@@ -23,12 +23,15 @@ team/index.html · team/board.html · team/prompts.html · team/roles/<slug>.htm
 admin/index.html · admin/versions.html
 llms.txt · llms-full.txt · sitemap.xml · robots.txt · CNAME · app.json
 data/team.json                             the roster, as data, at a stable address
+versions/index.json · versions/<v>.json    the release history, as data
 assets/site.css · assets/site.js
 
 # source — what you edit
 admin/content/                             one body per page, plus pages.json
 admin/build/build_pages.py                 the generator
 admin/build/validate.js                    the gate
+admin/build/version.txt                    owns the version; the deploy workflow reads it
+admin/build/verify-live.sh                 asks the live site what it is serving
 team/roles/<slug>/ROLE.md                  the roles; the team pages generate from these
 team/board/*.md                            the board
 team/prompts/README.md                     the starting prompts
@@ -46,6 +49,32 @@ would render blank inside a vault frame, a status marker outside the fixed vocab
 orphan page, a role without an exclusion list, or a board card owned by a role that does
 not exist. CI additionally rebuilds on a clean checkout and fails if the committed output
 differs by a byte.
+
+## Deploy
+
+`.github/workflows/deploy-pages.yml` is the estate's shared pipeline, taken from
+`SGit-AI__Website__Teams` rather than reinvented: **validate → tag → publish**. Every push
+to `dev` is a minor release; the version is owned by `admin/build/version.txt` and must
+also appear in the release commit's *subject* (`site vX.Y.Z: ...`), which is how CI knows a
+push is a release. A commit carrying neither is tagged nothing and published anyway — a
+missing tag is a bookkeeping gap, a blocked deploy is an outage. The artifact excludes
+`.git`, `.github` and `.sg_vault`.
+
+Do not diverge from that workflow without a reason on the board; a fix that lands upstream
+should land here.
+
+```bash
+# release
+vim admin/build/version.txt                       # bump
+vim admin/build/build_pages.py                    # add the VERSION_LOG entry
+python3 admin/build/build_pages.py && node admin/build/validate.js
+git commit -am "site vX.Y.Z: what this release did" && git push origin dev
+./admin/build/verify-live.sh                      # green CI is not the same as live
+```
+
+That last line exists because elsewhere in this estate two releases pushed cleanly,
+reported success, and never reached the site — every check green, because the failure was
+in a job neither remote knows about.
 
 **Do not edit the generated tree.** Editing `index.html` is a change the next build erases
 and the validator cannot catch, because it checks the output against the content rather
