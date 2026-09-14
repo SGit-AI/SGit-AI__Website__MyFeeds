@@ -1,0 +1,441 @@
+{
+  "domain": "mvp.myfeeds.ai",
+  "recovered_at": "2026-09-14T23:47:37+00:00",
+  "tool": "admin/tools/wayback_archive.py",
+  "captures_indexed": 675,
+  "resources": [
+    {
+      "url": "https://mvp.myfeeds.ai/",
+      "timestamp": "20260110184859",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110184859/https://mvp.myfeeds.ai/",
+      "file": "mvp.myfeeds.ai/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/.ghost/activitypub/nodeinfo/2.1",
+      "timestamp": "20260110192246",
+      "status": "200",
+      "mimetype": "application/json",
+      "wayback": "https://web.archive.org/web/20260110192246/https://mvp.myfeeds.ai/.ghost/activitypub/nodeinfo/2.1",
+      "file": "mvp.myfeeds.ai/.ghost/activitypub/nodeinfo/2.1",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/.well-known/nodeinfo",
+      "timestamp": "20260110154137",
+      "status": "200",
+      "mimetype": "application/jrd+json",
+      "wayback": "https://web.archive.org/web/20260110154137/https://mvp.myfeeds.ai/.well-known/nodeinfo",
+      "file": "mvp.myfeeds.ai/.well-known/nodeinfo",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/",
+      "timestamp": "20250831014227",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20250831014227/https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/",
+      "file": "mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/ceo-19-feb/?trk=article-ssr-frontend-pulse_little-text-block",
+      "timestamp": "20260111015441",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260111015441/https://mvp.myfeeds.ai/ceo-19-feb/?trk=article-ssr-frontend-pulse_little-text-block",
+      "file": "mvp.myfeeds.ai/ceo-19-feb/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-private-on-feb-2025/",
+      "timestamp": "20260110154138",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154138/https://mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-private-on-feb-2025/",
+      "file": "mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-private-on-feb-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-public-on-feb-2025/",
+      "timestamp": "20260110154117",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154117/https://mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-public-on-feb-2025/",
+      "file": "mvp.myfeeds.ai/cybersecurity-news-for-persona-board-member-public-on-feb-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ceo-on-feb-2025/",
+      "timestamp": "20260110154116",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154116/https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ceo-on-feb-2025/",
+      "file": "mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ceo-on-feb-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ciso-on-feb-2025/",
+      "timestamp": "20260110154135",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154135/https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ciso-on-feb-2025/",
+      "file": "mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ciso-on-feb-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-cto-on-feb-2025/",
+      "timestamp": "20260110154132",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154132/https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-cto-on-feb-2025/",
+      "file": "mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-cto-on-feb-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/",
+      "timestamp": "20260110154125",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154125/https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/",
+      "file": "mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/for-cisos-19-26-march-2025/",
+      "timestamp": "20251113205219",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20251113205219/https://mvp.myfeeds.ai/for-cisos-19-26-march-2025/",
+      "file": "mvp.myfeeds.ai/for-cisos-19-26-march-2025/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/",
+      "timestamp": "20260110154131",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20260110154131/https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/",
+      "file": "mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/members/api/comments/counts/",
+      "timestamp": "20250831013841",
+      "status": "200",
+      "mimetype": "application/json",
+      "wayback": "https://web.archive.org/web/20250831013841/https://mvp.myfeeds.ai/members/api/comments/counts/",
+      "file": "mvp.myfeeds.ai/members/api/comments/counts/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/",
+      "timestamp": "20250831012646",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20250831012646/https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/",
+      "file": "mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/index.html",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/rss/",
+      "timestamp": "20260110182651",
+      "status": "200",
+      "mimetype": "application/rss+xml",
+      "wayback": "https://web.archive.org/web/20260110182651/https://mvp.myfeeds.ai/rss/",
+      "file": "mvp.myfeeds.ai/rss/index.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/sitemap-authors.xml",
+      "timestamp": "20260110154538",
+      "status": "200",
+      "mimetype": "text/xml",
+      "wayback": "https://web.archive.org/web/20260110154538/https://mvp.myfeeds.ai/sitemap-authors.xml",
+      "file": "mvp.myfeeds.ai/sitemap-authors.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/sitemap-pages.xml",
+      "timestamp": "20260110154544",
+      "status": "200",
+      "mimetype": "text/xml",
+      "wayback": "https://web.archive.org/web/20260110154544/https://mvp.myfeeds.ai/sitemap-pages.xml",
+      "file": "mvp.myfeeds.ai/sitemap-pages.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/sitemap-posts.xml",
+      "timestamp": "20260110154544",
+      "status": "200",
+      "mimetype": "text/xml",
+      "wayback": "https://web.archive.org/web/20260110154544/https://mvp.myfeeds.ai/sitemap-posts.xml",
+      "file": "mvp.myfeeds.ai/sitemap-posts.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/sitemap-tags.xml",
+      "timestamp": "20260110154538",
+      "status": "200",
+      "mimetype": "text/xml",
+      "wayback": "https://web.archive.org/web/20260110154538/https://mvp.myfeeds.ai/sitemap-tags.xml",
+      "file": "mvp.myfeeds.ai/sitemap-tags.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/sitemap.xml",
+      "timestamp": "20260110154137",
+      "status": "200",
+      "mimetype": "text/xml",
+      "wayback": "https://web.archive.org/web/20260110154137/https://mvp.myfeeds.ai/sitemap.xml",
+      "file": "mvp.myfeeds.ai/sitemap.xml",
+      "note": "already present, not re-fetched"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/how-it-works/",
+      "timestamp": "20251031060457",
+      "status": "200",
+      "mimetype": "text/html",
+      "wayback": "https://web.archive.org/web/20251031060457/https://mvp.myfeeds.ai/tag/how-it-works/",
+      "file": "mvp.myfeeds.ai/tag/how-it-works/index.html",
+      "note": "already present, not re-fetched"
+    }
+  ],
+  "feed_posts": [
+    {
+      "title": "for Board Member (Public)",
+      "slug": "for-board-member-public",
+      "url": "https://mvp.myfeeds.ai/for-board-member-public/",
+      "published": "Tue, 15 Apr 2025 22:21:24 GMT",
+      "author": "Athena",
+      "tags": [
+        "Board Member (Public)"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 870
+    },
+    {
+      "title": "for Board Member (Private)",
+      "slug": "for-board-member-private",
+      "url": "https://mvp.myfeeds.ai/for-board-member-private/",
+      "published": "Tue, 15 Apr 2025 22:16:00 GMT",
+      "author": "Athena",
+      "tags": [
+        "Board Member (Private)"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 981
+    },
+    {
+      "title": "for CISOs | 19-26 March 2025",
+      "slug": "for-cisos-19-26-march-2025",
+      "url": "https://mvp.myfeeds.ai/for-cisos-19-26-march-2025/",
+      "published": "Tue, 15 Apr 2025 22:08:06 GMT",
+      "author": "Athena",
+      "tags": [
+        "CISO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 857
+    },
+    {
+      "title": "for CTOs | 19-26 March 2025",
+      "slug": "for-ceos-19-26-march-2025-2",
+      "url": "https://mvp.myfeeds.ai/for-ceos-19-26-march-2025-2/",
+      "published": "Tue, 15 Apr 2025 21:56:50 GMT",
+      "author": "Athena",
+      "tags": [
+        "CTO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 582
+    },
+    {
+      "title": "for CEOs | 19-26 March 2025",
+      "slug": "for-ceos-19-26-march-2025",
+      "url": "https://mvp.myfeeds.ai/for-ceos-19-26-march-2025/",
+      "published": "Tue, 15 Apr 2025 21:45:19 GMT",
+      "author": "Athena",
+      "tags": [
+        "CEO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 882
+    },
+    {
+      "title": "How I'm Building Personalised News Feeds with Semantic Graphs - Part 2",
+      "slug": "how-im-building-personalised-news-feeds-with-semantic-graphs-part-2",
+      "url": "https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/",
+      "published": "Wed, 26 Mar 2025 17:59:24 GMT",
+      "author": "Dinis Cruz",
+      "tags": [
+        "How it works"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 1551
+    },
+    {
+      "title": "How I'm Building Personalised News Feeds with Semantic Graphs - Part 1",
+      "slug": "publishing-a-new-personalised-set-of-posts-part-1",
+      "url": "https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/",
+      "published": "Wed, 26 Mar 2025 15:46:36 GMT",
+      "author": "Dinis Cruz",
+      "tags": [
+        "How it works"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 1037
+    },
+    {
+      "title": "Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai's Multi-Phase Architecture",
+      "slug": "building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture",
+      "url": "https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/",
+      "published": "Mon, 24 Mar 2025 13:35:32 GMT",
+      "author": "Dinis Cruz",
+      "tags": [
+        "How it works"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 2019
+    },
+    {
+      "title": "Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)",
+      "slug": "establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp",
+      "url": "https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/",
+      "published": "Sun, 23 Mar 2025 01:48:08 GMT",
+      "author": "Dinis Cruz",
+      "tags": [
+        "How it works"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 1121
+    },
+    {
+      "title": "CTO (19 Mar)",
+      "slug": "cto-19-mar",
+      "url": "https://mvp.myfeeds.ai/cto-19-mar/",
+      "published": "Thu, 20 Mar 2025 00:31:00 GMT",
+      "author": "Athena",
+      "tags": [
+        "CTO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 539
+    },
+    {
+      "title": "CISO (19 Mar)",
+      "slug": "ciso-19-mar-2",
+      "url": "https://mvp.myfeeds.ai/ciso-19-mar-2/",
+      "published": "Thu, 20 Mar 2025 00:25:36 GMT",
+      "author": "Athena",
+      "tags": [
+        "CISO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 706
+    },
+    {
+      "title": "CEO (19 Mar)",
+      "slug": "ceo-19-feb",
+      "url": "https://mvp.myfeeds.ai/ceo-19-feb/",
+      "published": "Thu, 20 Mar 2025 00:18:55 GMT",
+      "author": "Athena",
+      "tags": [
+        "CEO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 532
+    },
+    {
+      "title": "CISO News (Feb 2025)",
+      "slug": "cybersecurity-news-for-persona-exec-ciso-on-feb-2025",
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ciso-on-feb-2025/",
+      "published": "Wed, 19 Mar 2025 19:19:28 GMT",
+      "author": "Athena",
+      "tags": [
+        "CISO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 661
+    },
+    {
+      "title": "CTO New (Feb 2025)",
+      "slug": "cybersecurity-news-for-persona-exec-cto-on-feb-2025",
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-cto-on-feb-2025/",
+      "published": "Wed, 19 Mar 2025 19:18:45 GMT",
+      "author": "Athena",
+      "tags": [
+        "CTO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 608
+    },
+    {
+      "title": "CEO (Feb 2025)",
+      "slug": "cybersecurity-news-for-persona-exec-ceo-on-feb-2025",
+      "url": "https://mvp.myfeeds.ai/cybersecurity-news-for-persona-exec-ceo-on-feb-2025/",
+      "published": "Wed, 19 Mar 2025 19:18:00 GMT",
+      "author": "Athena",
+      "tags": [
+        "CEO"
+      ],
+      "source": "feed capture index.xml",
+      "recovered_from": "wayback",
+      "words": 581
+    }
+  ],
+  "gaps": [
+    {
+      "url": "https://mvp.myfeeds.ai/about/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/author/athena/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/author/dinis/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/ceo-news/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/board-member-private/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/board-member-public/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/ceo/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/ciso/",
+      "reason": "listed in sitemap, never captured"
+    },
+    {
+      "url": "https://mvp.myfeeds.ai/tag/cto/",
+      "reason": "listed in sitemap, never captured"
+    }
+  ]
+}

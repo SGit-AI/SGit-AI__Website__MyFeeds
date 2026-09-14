@@ -1,0 +1,230 @@
+{
+  "site": "myfeeds.sgit.ai",
+  "version": "v0.1.3",
+  "generated": "2026-09-14",
+  "source": "admin/build/build_pages.py",
+  "counts": {
+    "pages": 39,
+    "indexed": 17,
+    "hidden": 22
+  },
+  "pages": [
+    {
+      "path": "index.html",
+      "section": "Home",
+      "title": "myfeeds.sgit.ai"
+    },
+    {
+      "path": "how-it-works/index.html",
+      "section": "The argument",
+      "title": "How it works"
+    },
+    {
+      "path": "thesis/index.html",
+      "section": "Superseded (v0.1.0\u2013v0.1.2)",
+      "title": "Feeds are replaceable. Your reading is not."
+    },
+    {
+      "path": "read-state/index.html",
+      "section": "Superseded (v0.1.0\u2013v0.1.2)",
+      "title": "The part nobody exports"
+    },
+    {
+      "path": "vault/index.html",
+      "section": "Superseded (v0.1.0\u2013v0.1.2)",
+      "title": "What a feeds vault holds"
+    },
+    {
+      "path": "build-order/index.html",
+      "section": "Superseded (v0.1.0\u2013v0.1.2)",
+      "title": "What does not exist yet"
+    },
+    {
+      "path": "admin/index.html",
+      "section": "Provenance",
+      "title": "How this site is built"
+    },
+    {
+      "path": "network/index.html",
+      "section": "Provenance",
+      "title": "Part of the sgit.ai network"
+    },
+    {
+      "path": "about/index.html",
+      "section": "Provenance",
+      "title": "About, licence and honest edges"
+    },
+    {
+      "path": "team/index.html",
+      "section": "How this site is run",
+      "title": "How this site is run"
+    },
+    {
+      "path": "team/board.html",
+      "section": "How this site is run",
+      "title": "The board"
+    },
+    {
+      "path": "team/prompts.html",
+      "section": "How this site is run",
+      "title": "Starting prompts"
+    },
+    {
+      "path": "admin/versions.html",
+      "section": "Provenance",
+      "title": "Release history"
+    },
+    {
+      "path": "back-office/index.html",
+      "section": "Back office",
+      "title": "Everything this site is built from"
+    },
+    {
+      "path": "back-office/archive/index.html",
+      "section": "Back office",
+      "title": "The mvp.myfeeds.ai archive"
+    },
+    {
+      "path": "back-office/documents/index.html",
+      "section": "Back office",
+      "title": "Documents"
+    },
+    {
+      "path": "back-office/tools/index.html",
+      "section": "Back office",
+      "title": "Tools"
+    },
+    {
+      "path": "back-office/archive/for-cisos-19-26-march-2025.html",
+      "section": "Back office",
+      "title": "for CISOs | 19-26 March 2025",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/for-ceos-19-26-march-2025-2.html",
+      "section": "Back office",
+      "title": "for CTOs | 19-26 March 2025",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/for-ceos-19-26-march-2025.html",
+      "section": "Back office",
+      "title": "for CEOs | 19-26 March 2025",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/for-board-member-public.html",
+      "section": "Back office",
+      "title": "for Board Member (Public)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/for-board-member-private.html",
+      "section": "Back office",
+      "title": "for Board Member (Private)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html",
+      "section": "Back office",
+      "title": "How I'm Building Personalised News Feeds with Semantic Graphs - Part 1",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html",
+      "section": "Back office",
+      "title": "How I'm Building Personalised News Feeds with Semantic Graphs - Part 2",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html",
+      "section": "Back office",
+      "title": "Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai's Multi-Phase Architecture",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html",
+      "section": "Back office",
+      "title": "Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/cto-19-mar.html",
+      "section": "Back office",
+      "title": "CTO (19 Mar)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/ciso-19-mar-2.html",
+      "section": "Back office",
+      "title": "CISO (19 Mar)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/ceo-19-feb.html",
+      "section": "Back office",
+      "title": "CEO (19 Mar)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html",
+      "section": "Back office",
+      "title": "CTO New (Feb 2025)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html",
+      "section": "Back office",
+      "title": "CISO News (Feb 2025)",
+      "hidden": true
+    },
+    {
+      "path": "back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html",
+      "section": "Back office",
+      "title": "CEO (Feb 2025)",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/conductor.html",
+      "section": "Team",
+      "title": "Conductor",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/architect.html",
+      "section": "Team",
+      "title": "Architect",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/dev.html",
+      "section": "Team",
+      "title": "Dev",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/devops.html",
+      "section": "Team",
+      "title": "DevOps",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/qa.html",
+      "section": "Team",
+      "title": "QA",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/librarian.html",
+      "section": "Team",
+      "title": "Librarian",
+      "hidden": true
+    },
+    {
+      "path": "team/roles/historian.html",
+      "section": "Team",
+      "title": "Historian",
+      "hidden": true
+    }
+  ]
+}

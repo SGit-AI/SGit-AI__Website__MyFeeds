@@ -2,7 +2,7 @@
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -24,7 +24,7 @@ Each role is `team/roles/<slug>/ROLE.md`. The cards below and every role page ar
 
 - [01 · Direction — Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns.](roles/conductor.md)
 
-- [02 · Build — Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them.](roles/architect.md)
+- [02 · Build — Architect — Own the contracts this site publishes — the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source.](roles/architect.md)
 
 - [03 · Build — Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly.](roles/dev.md)
 
@@ -43,7 +43,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 | Role | Fails when | Form |
 |---|---|---|
 | [Conductor](roles/conductor.md) | If work happened on this site and no role owned it, the Conductor has failed. | falsifiable |
-| [Architect](roles/architect.md) | If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed. | falsifiable |
+| [Architect](roles/architect.md) | If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed. | falsifiable |
 | [Dev](roles/dev.md) | If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed. | falsifiable |
 | [DevOps](roles/devops.md) | If a release is reported as shipped and the live site is not serving that version, DevOps has failed. | falsifiable |
 | [QA](roles/qa.md) | If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed. | falsifiable |
@@ -66,7 +66,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 ## The board
 
-5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+4 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
 
 [The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
 

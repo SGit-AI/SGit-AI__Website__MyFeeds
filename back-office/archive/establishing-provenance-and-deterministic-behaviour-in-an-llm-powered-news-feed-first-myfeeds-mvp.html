@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) · myfeeds.sgit.ai</title>
+<meta name="description" content="Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…">
+<meta name="generator" content="admin/build/build_pages.py v0.1.3">
+<link rel="canonical" href="https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="myfeeds.sgit.ai">
+<meta property="og:title" content="Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) · myfeeds.sgit.ai">
+<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…">
+<meta property="og:url" content="https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)","description":"Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.3","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
+--dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--wide:1180px;--measure:74ch}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14151a;--panel:#1b1d23;
+--panel2:#22242b;--line:#2c2f38;--fg:#e8e6e0;--dim:#a3a7b0;--dim2:#767b86;--accent:#2dd4bf;
+--accent-dk:#5eead4}}
+*,*::before,*::after{box-sizing:border-box}
+.skip{position:absolute;left:-9999px;top:0;background:var(--panel);padding:.6rem 1rem;z-index:99}
+.skip:focus{left:.5rem;top:.5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;
+line-height:1.62}
+img{max-width:100%;height:auto}
+a{color:var(--accent-dk);text-decoration:none}
+main{max-width:var(--wide);margin:0 auto;padding:0 20px 5rem}
+main>*{max-width:var(--measure)}
+main>.grid,main>.band,main>.tablewrap,main>.wide{max-width:none}
+h1{font-size:clamp(1.95rem,1.3rem + 2.4vw,3rem);line-height:1.1;margin:.4rem 0 .6rem}
+h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .bar{max-width:var(--wide);margin:0 auto;padding:.7rem 20px;display:flex;
+align-items:baseline;gap:1rem;flex-wrap:wrap}
+.site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
+.site-nav a{color:var(--dim);padding:.22rem .55rem}
+.site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+.site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
+gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
+.site-foot ul{list-style:none;margin:0;padding:0}
+pre{overflow-x:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="bar">
+<a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
+<a class="ver" href="../../admin/versions.html#v0-1-3"
+title="What changed in v0.1.3">v0.1.3</a>
+<nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
+</div></header>
+<main id="main">
+<p class="crumb"><a href="../../index.html">myfeeds.sgit.ai</a> / Back office</p>
+<p class="kicker">Recovered from the archive</p>
+<h1>Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)</h1>
+<dl class="fields">
+<dt>Originally</dt><dd><code>https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/</code> —
+the site no longer exists</dd>
+<dt>Published</dt><dd>23 Mar 2025</dd>
+<dt>Author</dt><dd>Dinis Cruz</dd>
+<dt>Tags</dt><dd><span class="tag">How it works</span></dd>
+<dt>Recovered</dt><dd>From a capture of the site's RSS feed, which carried the full body.
+The markdown is at <code>back-office/archive/mvp.myfeeds.ai__posts/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.md</code>.</dd>
+</dl>
+
+<div class="note"><p>This is recovered content, reproduced as it was published. Links in
+it point at pages that in many cases no longer resolve, and images are still served from
+the dead domain — both are left exactly as written rather than silently repaired, because
+a rewritten archive is no longer evidence of what was said.</p></div>
+
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg)</p>
+<p>The first MVP of the <a href="https://mvp.myfeeds.ai/">MyFeeds.ai</a> site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on <em>why</em> each article was chosen for each targeted persona (CEO, CISO, CTO, Board Member, etc...)</p>
+<p>The solution pulls in content from sources like RSS feeds (in this first MVP, from <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">the Hacker News</a>) and uses a series of large language model (LLM) powered steps to transform raw articles into tailored briefings for specific personas (such as a CTO or an investor), with every step of this pipeline producing structured and traceable data.</p>
+<p>In this post, we&#x27;ll explore how MyFeeds works under the hood, focusing on how it establishes <strong>provenance</strong> (traceable origins of information) and a degree of <strong>deterministic behaviour</strong> in its LLM-driven workflow.</p>
+<h3 id="from-rss-feeds-to-knowledge-graphs">From RSS Feeds to Knowledge Graphs</h3>
+<p>MyFeeds begins by gathering content from RSS feeds. In this first MVP only from <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">the Hacker News</a>, but many more cyber security news feed will be added very soon.</p>
+<p>Each article is then analysed semantically and converted using an LLM into a <strong>knowledge graph</strong> – a structured representation of the article’s key <strong>entities</strong> (people, organisations, technologies, etc.) and the <strong>relationships</strong> between them.</p>
+<p>In other words, the system extracts the who, what, and how of the story and encodes those facts into a graph data structure. Each article yields its own graph in JSON format, capturing the essential concepts in machine-readable form.</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1.jpeg)</p>
+<p><em>Figure: A visualisation of a semantic knowledge graph generated from 50 Hacker News article titles (553 nodes, 1451 edges)​ Even with just titles and summaries, the graph forms a dense web of interconnected entities, illustrating how much structured information can be derived from raw text.</em></p>
+<h3 id="persona-semantic-graphs-tailoring-to-the-reader">Persona Semantic Graphs: Tailoring to the Reader</h3>
+<p>Next, MyFeeds considers the <strong>persona</strong> that will read the news. A persona could be a specific individual or a role-based profile like “CTO”, “AI researcher”, or “Tech investor”.</p>
+<p>The system uses an LLM to generate a <strong>persona knowledge graph</strong> which represents that persona’s domain of interest – essentially, a graph of topics and entities the persona cares about.</p>
+<p>For example, a CTO’s persona graph might include nodes for “cloud infrastructure”, “microservices”, and “cybersecurity” to highlight key interest areas. This persona graph, also represented in JSON, serves as a semantic fingerprint of the user’s interests against which incoming article graphs can be compared.</p>
+<h3 id="mapping-articles-to-personas-finding-relevance">Mapping Articles to Personas: Finding Relevance</h3>
+<p>With an article graph and a persona graph in hand, the next step is to <strong>map the article to the persona</strong> and determine relevance.</p>
+<p>An LLM at this stage compares the two graphs to find overlaps or connections. Essentially, it asks: <em>Which entities or themes in this article align with the persona’s interests?</em></p>
+<p>Shared topics appearing in both will be flagged as points of relevance. The output of this stage is another JSON structure that lists these connections – linking specific elements of the article to elements of the persona. Articles with significant overlap or strong semantic ties are marked as relevant to that persona, while those with little intersection are filtered out.</p>
+<h3 id="four-llm-powered-stages-of-processing">Four LLM-Powered Stages of Processing</h3>
+<p>Under the hood, MyFeeds’ pipeline consists of four LLM-driven stages, each producing a structured output. These stages break down the transformation from raw text to personalised summary into clear, verifiable steps:</p>
+<ul><li>Entity &amp; Relationship Extraction (Article) – Input: an article’s text (or summary). Task: Identify the important entities and how they relate. Output: A JSON knowledge graph of the article’s content (the key people, terms, and how they connect).</li><li>Persona Graph Construction – Input: persona information (profile or description). Task: Build a semantic graph of the persona’s interests. Output: A JSON graph representing what’s important to that persona.</li><li>Relevance Mapping – Input: the article graph and the persona graph. Task: Find intersections or links between them. Output: A JSON description of which entities or concepts from the article align with the persona&#x27;s graph (i.e. why the article is relevant).</li><li>Personalised Summary Generation – Input: the original article content plus the relevant connections from stage 3. Task: Produce a brief summary of the article tailored to the persona, emphasising the points that match the persona’s interests. Output: A final summary text (personalised for the reader).Each stage is like a module with a well-defined input and output, keeping the LLM workflow controlled and interpretable rather than one big black box.</li></ul>
+<h3 id="structured-outputs-traceability-and-determinism">Structured Outputs: Traceability and Determinism</h3>
+<p>A standout feature of MyFeeds is that every LLM stage outputs a structured JSON file rather than free-form text. This design brings <strong>traceability</strong> and a measure of <strong>determinism</strong> to the workflow that typical LLM pipelines lack:</p>
+<ul><li>Traceability &amp; Explainability: Since intermediate results are captured as JSON, the system keeps a step-by-step record of its reasoning. The chain of outputs forms a provenance trail that shows why a particular article was recommended to a persona. If someone asks “Why am I seeing this?”, we can point to the evidence – e.g., “The article mentions GraphQL, and your persona profile lists GraphQL as an interest, so it was flagged.” Every recommendation can thus be explained by tracing those intermediate entities and links, turning an opaque decision into an open, auditable one.</li><li>Consistency &amp; Control: While LLMs are probabilistic, having them fill out predefined JSON schemas at each step makes their behaviour more predictable. The model isn’t just generating text; it’s populating specific fields. This yields more consistent outputs and reduces variability. Structured outputs let us retrieve information from an LLM in a more deterministic way​. Moreover, the strict format allows automatic validation at each step – if the JSON is malformed or missing expected elements, the system knows something went wrong and can flag or fix it. The end result is a pipeline that behaves reliably given the same inputs, and clearly surfaces any errors.</li></ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>MyFeeds MVP showcases a novel approach to AI-driven content personalisation by combining knowledge graphs with multi-stage LLM processing.</p>
+<p>By making each step transparent and capturing its output as data, the system makes it possible to understand and trust why a specific article is shown to a given persona. The intermediate entities and relationships form a verifiable provenance trail that engineers and end-users alike can inspect, proving that we don&#x27;t have to treat AI models as inscrutable black boxes.</p>
+<p>In essence, MyFeeds demonstrates that an AI system can be both smart <em>and</em> accountable—providing tailored news with a clear explanation of <em>why</em> each item was selected.</p>
+<p>In an era of black-box AI, MyFeeds’ focus on determinism and provenance, shows that we can have powerful LLM-driven solutions without sacrificing transparency or trust.</p>
+<p>And here is what this first MVP looked like:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-23-at-01.28.45-4-1.png)</p>
+<hr>
+<p><em>by Dinis Cruz and ChatGPT Deep Research</em></p>
+
+<div class="next"><a href="index.html">← All recovered posts</a>
+<a href="../index.html">Back office →</a></div>
+</main>
+<footer class="site-foot"><div class="inner">
+<div><h4>The argument</h4><ul><li><a href="../../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP</a></li><li><a href="../../back-office/documents/index.html">The business case</a></li><li><a href="../../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../../back-office/index.html">Everything it is built from</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../../back-office/documents/index.html">Documents</a></li><li><a href="../../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>This page</h4>
+<p><a href="establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>The LLM was doing too much.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.3. Part of the
+<a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
+</div></footer>
+<script>(function(){var B="../../",n=0,t;
+function applied(){try{return getComputedStyle(document.documentElement)
+.getPropertyValue('--site-css').trim()==='1'}catch(e){return false}}
+function inject(tag,c){if(!c)return;var e=document.createElement(tag);e.textContent=c;
+(tag==='style'?document.head:document.body).appendChild(e);}
+function viaFetch(){fetch(B+'assets/site.css').then(function(r){return r.ok?r.text():''})
+.then(function(c){if(!applied())inject('style',c)}).catch(function(){});
+fetch(B+'assets/site.js').then(function(r){return r.ok?r.text():''})
+.then(function(c){inject('script',c)}).catch(function(){});}
+function viaBridge(sg){if(sg.loadCss&&sg.loadJs){try{sg.loadCss('assets/site.css');
+sg.loadJs('assets/site.js');return true}catch(e){}}
+if(sg.vfs&&sg.vfs.readText){try{Promise.resolve(sg.vfs.readText('assets/site.css'))
+.then(function(c){if(!applied())inject('style',c)});
+Promise.resolve(sg.vfs.readText('assets/site.js')).then(function(c){inject('script',c)});
+return true}catch(e){}}return false;}
+// The two transports are tried concurrently and both are idempotent: fetch starts now so
+// the static mirror is never unstyled, and the bridge is used the moment it appears. The
+// --site-css sentinel in site.css stops the second arrival applying anything twice.
+if(window.sg&&viaBridge(window.sg))return;
+viaFetch();
+window.addEventListener('sg-ready',function(){if(!applied()&&window.sg)viaBridge(window.sg)},
+{once:true});
+t=setInterval(function(){if(window.sg){clearInterval(t);if(!applied())viaBridge(window.sg);}
+else if(++n>40){clearInterval(t);if(!applied())viaFetch();}},50);})();</script>
+</body>
+</html>

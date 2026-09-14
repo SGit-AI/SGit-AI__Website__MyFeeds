@@ -1,8 +1,8 @@
 # The part nobody exports
 
-> OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
+> Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -11,6 +11,10 @@ links below point at them.*
 The contract
 
 # The part nobody exports
+
+**Superseded.** This page is part of an argument this site made in versions v0.1.0 to v0.1.2 — that the valuable half of a feed reader is the record of what you read, and that it belongs in an encrypted vault. It was written before any MyFeeds source material was available to this site, and it is not what MyFeeds is. The thesis is now [the four-stage pipeline](../index.md), built from the recovered writing.
+
+It stays up, unedited below this line, because deleting a wrong claim destroys the only evidence that the process works. Read it as a record of what was argued, not as a description of this project. The change is recorded in [the release history](../admin/versions.md).
 
 OPML has moved subscription lists between readers since 2000. Nothing has ever moved read state, because nothing has ever described it. This page describes it — before any implementation exists, so the description can be judged on its own terms rather than as documentation of whatever got built.
 

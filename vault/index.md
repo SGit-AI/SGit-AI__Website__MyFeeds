@@ -1,8 +1,8 @@
 # What a feeds vault holds
 
-> The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
+> Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -11,6 +11,10 @@ links below point at them.*
 The container
 
 # What a feeds vault holds
+
+**Superseded.** This page is part of an argument this site made in versions v0.1.0 to v0.1.2 — that the valuable half of a feed reader is the record of what you read, and that it belongs in an encrypted vault. It was written before any MyFeeds source material was available to this site, and it is not what MyFeeds is. The thesis is now [the four-stage pipeline](../index.md), built from the recovered writing.
+
+It stays up, unedited below this line, because deleting a wrong claim destroys the only evidence that the process works. Read it as a record of what was argued, not as a description of this project. The change is recorded in [the release history](../admin/versions.md).
 
 A layout, not an application. If two programs agree on this folder shape, either can be thrown away without taking the reading history with it — which is the whole point, and the reason the layout is published before either program exists.
 

@@ -19,9 +19,13 @@ import html
 import json
 import re
 import sys
+import urllib.parse
 from datetime import date
 from html.parser import HTMLParser
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import backoffice  # noqa: E402  (same folder; the back-office data module)
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "admin" / "content"
@@ -43,11 +47,13 @@ if not re.fullmatch(r"v\d+\.\d+\.\d+", SITE_VERSION):
 SITE_HOST = "myfeeds.sgit.ai"
 SITE_ORIGIN = f"https://{SITE_HOST}"
 SITE_NAME = "myfeeds.sgit.ai"
-SITE_THESIS = "Feeds are replaceable. Your reading is not."
+SITE_THESIS = "The LLM was doing too much."
 SITE_DESC = (
-    "Your subscriptions are portable and your reading never was. myfeeds.sgit.ai argues "
-    "that the record of what you read belongs in an encrypted vault you hold — and "
-    "publishes the read-state contract before the reader that would implement it."
+    "Ask one LLM to read fifty articles and pick five for a CISO and it will — and you "
+    "will never be able to say why. MyFeeds decomposes that single opaque call into four "
+    "stages with a semantic knowledge graph between them, so every recommendation carries "
+    "a provenance trail you can inspect. This site is the argument, the recovered record "
+    "of the first MVP, and the back office behind both."
 )
 LICENCE = "CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic)."
 
@@ -152,20 +158,73 @@ VERSION_LOG = [
             "the correction above them."
         ),
     },
+    {
+        "version": "v0.1.3",
+        "date": "2026-09-14",
+        "title": (
+            "the site finds out what MyFeeds actually is, recovers the MVP that proved "
+            "it, and gains a back office to keep the evidence in"
+        ),
+        "summary": (
+            "Versions v0.1.0 to v0.1.2 argued that the valuable half of a feed reader is "
+            "the record of what you read. That was written with no access to any MyFeeds "
+            "source material and it was wrong about the project it claimed to describe. "
+            "MyFeeds is a pipeline that decomposes one opaque LLM call — read fifty "
+            "articles, pick five for this persona — into four inspectable stages with a "
+            "semantic knowledge graph between them, so a recommendation carries a "
+            "provenance trail instead of a shrug. The site now argues that, from the "
+            "primary sources: fifteen posts recovered out of the Internet Archive, the "
+            "open-source engine, and the investor material. The four superseded pages "
+            "stay up with a banner rather than being deleted."
+        ),
+        "changes": [
+            "admin/tools/wayback_archive.py — recovers a site from the Internet Archive: "
+            "originals in id_ mode, a markdown rendering, and a manifest naming what the "
+            "sitemap listed and no crawler caught",
+            "back-office/archive/ — 15 posts (13,527 words) and 22 original files from "
+            "mvp.myfeeds.ai, plus 9 recorded gaps",
+            "back-office/ — the new section: the archive, documents indexed where they "
+            "live rather than copied, the tools, and previous versions",
+            "admin/content/index.html, admin/content/how-it-works/ — the real argument, "
+            "built from the recovered posts",
+            "admin/content/{thesis,read-state,vault,build-order}/ — superseded banners; "
+            "the pages stay, out of the nav",
+            "team/roles/architect/ROLE.md — now owns the pipeline's stage boundaries and "
+            "provenance trail, not a read-state schema",
+            "team/board/ — cards 001-003 held; 009 (the multi-audience demo) and 010 "
+            "(what the archive could not reach) opened",
+            "data/site.json — the page inventory as data; validate.js reads it instead of "
+            "re-deriving the list",
+        ],
+        "corrects": (
+            "The whole argument of v0.1.0 through v0.1.2. It was a plausible thesis about "
+            "feed readers in general and not a description of this project, and it was "
+            "asserted on a site named after the project. The pages stay up, marked, "
+            "because deleting them would remove the only evidence that this site corrects "
+            "itself rather than quietly rewriting. Separately: v0.1.2's validator "
+            "reported 19 pages passing while the build produced 38 — it maintained its "
+            "own idea of what existed. It now reads the build's published inventory."
+        ),
+    },
 ]
 
 NAV = [
-    ("thesis/index.html", "Thesis"),
-    ("read-state/index.html", "Read state"),
-    ("vault/index.html", "The vault"),
-    ("build-order/index.html", "Build order"),
+    ("how-it-works/index.html", "How it works"),
+    ("back-office/archive/index.html", "The MVP archive"),
+    ("back-office/index.html", "Back office"),
     ("team/index.html", "Team"),
     ("admin/index.html", "Admin"),
 ]
 
 FOOTER_COLS = [
     ("The argument", [
-        ("thesis/index.html", "Feeds are replaceable"),
+        ("how-it-works/index.html", "How it works — the four stages"),
+        ("back-office/archive/index.html", "The recovered MVP"),
+        ("back-office/documents/index.html", "The business case"),
+        ("about/index.html", "About & honest edges"),
+    ]),
+    ("Superseded", [
+        ("thesis/index.html", "Feeds are replaceable (v0.1.0–v0.1.2)"),
         ("read-state/index.html", "The part nobody exports"),
         ("vault/index.html", "What a feeds vault holds"),
         ("build-order/index.html", "What does not exist yet"),
@@ -175,6 +234,12 @@ FOOTER_COLS = [
         ("team/board.html", "The board"),
         ("admin/index.html", "How this site is built"),
         ("admin/versions.html", "Release history"),
+    ]),
+    ("Back office", [
+        ("back-office/index.html", "Everything it is built from"),
+        ("back-office/archive/index.html", "The recovered MVP archive"),
+        ("back-office/documents/index.html", "Documents"),
+        ("back-office/tools/index.html", "Tools"),
     ]),
     ("Elsewhere", [
         ("network/index.html", "The sgit.ai network"),
@@ -1040,6 +1105,253 @@ occasions elsewhere in this estate the first two agreed and the third did not.</
 """
 
 
+def backoffice_index_body(arc: dict) -> str:
+    site = arc["sites"][0] if arc["sites"] else None
+    posts = site["posts"] if site else []
+    words = sum(p["words"] for p in posts)
+    gaps = len(site["gaps"]) if site else 0
+    res = len(site["resources"]) if site else 0
+    return f"""
+<p class="kicker">Back office</p>
+<h1>Everything this site is built from</h1>
+<p class="lede">The working material behind myfeeds.sgit.ai: writing recovered from a
+site that no longer exists, the documents that live in other repositories, the tools that
+did the recovering, and every release this site has cut. Indexed from what is actually on
+disk, because a back office maintained by hand becomes a lie on a schedule.</p>
+
+<div class="grid">
+<a class="card" href="archive/index.html"><p class="k">Recovered</p>
+<h3>The mvp.myfeeds.ai archive</h3>
+<p>{len(posts)} posts, {words:,} words, pulled back out of the Internet Archive.
+{gaps} things the sitemap named that no crawler ever caught.</p></a>
+<a class="card" href="documents/index.html"><p class="k">Indexed, not copied</p>
+<h3>Documents</h3>
+<p>{len(backoffice.DOCUMENTS)} documents across {len(backoffice.REPOS)} repositories:
+the business plan, the pitch decks and their briefs, the engine's architecture notes.</p></a>
+<a class="card" href="tools/index.html"><p class="k">Runnable</p>
+<h3>Tools</h3>
+<p>{len(backoffice.TOOLS)} scripts, no dependencies between them and nothing to install:
+the archiver, the generator, the gate, the live check.</p></a>
+<a class="card" href="../admin/versions.html"><p class="k">Provenance</p>
+<h3>Previous versions</h3>
+<p>Every release of this site, as prose and as data at
+<code>/versions/index.json</code>.</p></a>
+</div>
+
+<h2 id="rules">Two rules this section follows</h2>
+<p><strong>A document has one owner.</strong> Where something lives in another
+repository it is indexed and linked, never copied — a second copy is a disagreement
+waiting to happen. Where something exists <em>only</em> in the Internet Archive, this
+repository is now its home, and every item says which of the two it is.</p>
+<p><strong>State the gaps.</strong> The archive page lists what could not be recovered as
+prominently as what could. A recovery that does not say what it lost is not a recovery,
+and the list is the honest measure of how much of the original is gone for good.</p>
+
+<h2 id="counts">What is here</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Holding</th><th>Count</th><th>Where it lives</th></tr></thead>
+<tbody>
+<tr><td>Recovered posts, as markdown with front matter</td><td>{len(posts)}</td>
+<td><code>back-office/archive/mvp.myfeeds.ai__posts/</code></td></tr>
+<tr><td>Recovered original files, unmodified bytes</td><td>{res}</td>
+<td><code>back-office/archive/mvp.myfeeds.ai/</code></td></tr>
+<tr><td>Recorded gaps — listed in the sitemap, never captured</td><td>{gaps}</td>
+<td><a href="archive/index.html#gaps">the archive page</a></td></tr>
+<tr><td>Documents indexed in other repositories</td><td>{len(backoffice.DOCUMENTS)}</td>
+<td><a href="documents/index.html">documents</a></td></tr>
+<tr><td>Tools</td><td>{len(backoffice.TOOLS)}</td><td><code>admin/tools/</code>,
+<code>admin/build/</code></td></tr>
+</tbody></table></div>
+
+<div class="next"><a href="archive/index.html">The recovered archive →</a>
+<a href="documents/index.html">Documents →</a><a href="tools/index.html">Tools →</a></div>
+"""
+
+
+def archive_index_body(arc: dict) -> str:
+    site = arc["sites"][0]
+    posts = site["posts"]
+    by_tag: dict[str, list] = {}
+    for p in posts:
+        for t in (p.get("tags") or ["(untagged)"]):
+            by_tag.setdefault(t, []).append(p)
+    rows = ""
+    for t, ps in sorted(by_tag.items(), key=lambda kv: -len(kv[1])):
+        rows += (f'<tr><td><strong>{html.escape(t)}</strong></td><td>{len(ps)}</td>'
+                 f'<td>{sum(x["words"] for x in ps):,}</td></tr>')
+    listing = ""
+    for p in posts:
+        tags = " ".join(f'<span class="tag">{html.escape(t)}</span>'
+                        for t in (p.get("tags") or []))
+        listing += (
+            f'<a class="card" href="{p["slug"]}.html">'
+            f'<p class="k">{html.escape(p.get("published_human", "undated"))} · '
+            f'{p["words"]:,} words</p>'
+            f'<h3>{html.escape(p["title"])}</h3><p>{tags}</p></a>'
+        )
+    gaps = "".join(f'<li><code>{html.escape(g["url"])}</code></li>' for g in site["gaps"])
+    return f"""
+<p class="kicker">Recovered</p>
+<h1>The mvp.myfeeds.ai archive</h1>
+<p class="lede">mvp.myfeeds.ai was the first MyFeeds MVP: a Ghost blog publishing
+machine-generated cybersecurity briefings, one per persona, alongside the long-form posts
+explaining how they were built. The site is gone. {len(posts)} of its posts —
+{sum(p["words"] for p in posts):,} words — are here, recovered from the Internet Archive
+and now kept as files rather than as somebody else's cache.</p>
+
+<div class="note">
+<p><strong>Most of this survived in the feed, not the pages.</strong> The crawler
+captured {len(site["resources"])} files, of which only eight were post pages. What saved
+the long-form writing was a single capture of <code>/rss/</code> on
+31 August 2025: a Ghost feed carries the full body of its recent posts in
+<code>content:encoded</code>, so one 224&nbsp;KB XML file held articles whose own pages
+were never archived. If that one request had failed, this page would be mostly a list of
+what used to exist.</p>
+</div>
+
+<h2 id="posts">The posts</h2>
+<p>Two kinds, and the difference matters. The <strong>How it works</strong> posts are
+Dinis Cruz explaining the architecture — they are the argument. The persona posts are
+<em>output</em>: briefings the pipeline generated for a CEO, a CISO, a CTO and two kinds
+of board member, which makes them evidence that the thing ran.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Tag</th><th>Posts</th><th>Words</th></tr></thead>
+<tbody>{rows}</tbody></table></div>
+<div class="grid">{listing}</div>
+
+<h2 id="gaps">What could not be recovered</h2>
+<p>{len(site["gaps"])} URLs appear in the site's own sitemap and in no capture anywhere.
+They are not missing from this page because nobody looked; they are gone.</p>
+<ul>{gaps}</ul>
+<p>Two of them are author pages and five are tag listings, which are indexes rather than
+writing — their contents are largely reconstructable from the posts that survived.
+<code>/about/</code> and <code>/ceo-news/</code> are not: whatever they said is lost
+unless a copy exists somewhere outside the archive.</p>
+
+<h2 id="how">How it was recovered</h2>
+<p>With <a href="../tools/index.html"><code>admin/tools/wayback_archive.py</code></a>, in
+this repository, which you can run against any domain. The three things that cost
+content, each of which loses it silently rather than erroring, are written up in that
+tool's own documentation — the worst is that the Internet Archive's
+<code>collapse=urlkey</code> option merges <code>http://host/x</code> with
+<code>https://host/x/</code> and keeps whichever sorts first, which on this domain was a
+redirect. A collapsed query reports <code>/tag/how-it-works/</code> as not existing. It
+exists, it was captured, and it is <a href="../../back-office/archive/index.html">here</a>.</p>
+
+<p>The manifest — every file, the capture it came from, and its Wayback URL — is at
+<code>{html.escape(site["manifest_file"])}</code>.</p>
+
+<div class="next"><a href="../index.html">← Back office</a>
+<a href="../tools/index.html">The tools →</a></div>
+"""
+
+
+def archive_post_body(post: dict, site: dict) -> str:
+    tags = " ".join(f'<span class="tag">{html.escape(t)}</span>'
+                    for t in (post.get("tags") or []))
+    return f"""
+<p class="kicker">Recovered from the archive</p>
+<h1>{html.escape(post["title"])}</h1>
+<dl class="fields">
+<dt>Originally</dt><dd><code>{html.escape(post.get("url", ""))}</code> —
+the site no longer exists</dd>
+<dt>Published</dt><dd>{html.escape(post.get("published_human", "undated"))}</dd>
+<dt>Author</dt><dd>{html.escape(post.get("author") or "not recorded")}</dd>
+<dt>Tags</dt><dd>{tags or "none"}</dd>
+<dt>Recovered</dt><dd>From a capture of the site's RSS feed, which carried the full body.
+The markdown is at <code>{html.escape(post["file"])}</code>.</dd>
+</dl>
+
+<div class="note"><p>This is recovered content, reproduced as it was published. Links in
+it point at pages that in many cases no longer resolve, and images are still served from
+the dead domain — both are left exactly as written rather than silently repaired, because
+a rewritten archive is no longer evidence of what was said.</p></div>
+
+{md_block(post["body"])}
+
+<div class="next"><a href="index.html">← All recovered posts</a>
+<a href="../index.html">Back office →</a></div>
+"""
+
+
+def documents_body() -> str:
+    rows = ""
+    for d in backoffice.DOCUMENTS:
+        repo = backoffice.REPOS[d["where"]]
+        href = f'{repo["url"]}/blob/main/{urllib.parse.quote(d["path"])}'
+        rows += (
+            f'<tr><td><a href="{href}">{html.escape(d["title"])}</a></td>'
+            f'<td><span class="tag">{html.escape(d["kind"])}</span></td>'
+            f'<td>{html.escape(d["date"])}</td>'
+            f'<td><code>{html.escape(d["where"])}</code></td>'
+            f'<td>{html.escape(d["note"])}</td></tr>'
+        )
+    repos = ""
+    for name, r in backoffice.REPOS.items():
+        repos += (f'<tr><td><a href="{r["url"]}">{html.escape(name)}</a></td>'
+                  f'<td>{html.escape(r["what"])}</td></tr>')
+    return f"""
+<p class="kicker">Indexed, not copied</p>
+<h1>Documents</h1>
+<p class="lede">The business plan, the pitch decks, the briefs that produced them, and the
+engine's own architecture notes. All of these live in other repositories and are indexed
+from here rather than duplicated — a document has one owner, and a second copy is a
+disagreement waiting to happen.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Document</th><th>Kind</th><th>Date</th><th>Repository</th><th>Note</th></tr></thead>
+<tbody>{rows}</tbody></table></div>
+
+<h2 id="repos">Where they live</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Repository</th><th>What it is</th></tr></thead>
+<tbody>{repos}</tbody></table></div>
+<p>Both are public and open source. <code>investor.myfeeds.ai</code> is published from
+the first; the second is the pipeline that generated every persona briefing in
+<a href="../archive/index.html">the recovered archive</a>.</p>
+
+<div class="note"><p><strong>The exception to indexing rather than copying</strong> is
+anything that exists only in the Internet Archive. That has no owner left to defer to, so
+this repository holds it — see <a href="../archive/index.html">the archive</a>, where
+every item records the capture it came from.</p></div>
+
+<div class="next"><a href="../index.html">← Back office</a>
+<a href="../archive/index.html">The archive →</a></div>
+"""
+
+
+def tools_body() -> str:
+    blocks = ""
+    for t in backoffice.TOOLS:
+        blocks += (
+            f'<div class="band"><p class="k"><code>{html.escape(t["file"])}</code></p>'
+            f'<h3>{html.escape(t["title"])}</h3>'
+            f'<p>{html.escape(t["what"])}</p>'
+            f'<pre><code>{html.escape(t["run"])}</code></pre></div>'
+        )
+    return f"""
+<p class="kicker">Runnable</p>
+<h1>Tools</h1>
+<p class="lede">Everything needed to build, check, publish and recover, in this
+repository, with nothing to install beyond Python 3.11 and Node 22. Each one is a single
+file and each one is documented in its own header rather than here, so the documentation
+cannot drift from the thing it documents.</p>
+
+{blocks}
+
+<h2 id="archiver">Why the archiver has a long header</h2>
+<p>Because three separate things lose content while appearing to work, and each cost a
+run before it was understood: the Internet Archive's <code>collapse=urlkey</code> hides
+good captures behind redirects; fetching without the <code>id_</code> modifier archives
+the Wayback Machine's rewritten copy rather than the site; and a blog's feed frequently
+holds writing whose own pages were never captured, so it is a primary source and not a
+fallback. Those are written into the tool where somebody modifying it will read them.</p>
+
+<div class="next"><a href="../index.html">← Back office</a>
+<a href="../../admin/index.html">How this site is built →</a></div>
+"""
+
+
 # ------------------------------------------------------------------------------- build
 
 
@@ -1094,12 +1406,79 @@ def build() -> int:
         },
     ]
 
+    arc = backoffice.load_archive(ROOT)
+    site0 = arc["sites"][0] if arc["sites"] else None
+
+    pages += [
+        {
+            "path": "back-office/index.html",
+            "section": "Back office",
+            "title": "Everything this site is built from",
+            "desc": (
+                "The working material behind myfeeds.sgit.ai: writing recovered from a "
+                "site that no longer exists, the documents that live in other "
+                "repositories, the tools that did the recovering, and every release cut "
+                "so far. Indexed from what is on disk."
+            ),
+        },
+        {
+            "path": "back-office/archive/index.html",
+            "section": "Back office",
+            "title": "The mvp.myfeeds.ai archive",
+            "desc": (
+                "The first MyFeeds MVP recovered from the Internet Archive: the posts "
+                "that survived, mostly inside a single capture of the RSS feed, and the "
+                "nine URLs its own sitemap named that no crawler ever caught."
+            ),
+        },
+        {
+            "path": "back-office/documents/index.html",
+            "section": "Back office",
+            "title": "Documents",
+            "desc": (
+                "The business plan, the pitch decks and their briefs, and the engine's "
+                "architecture notes — indexed where they live rather than copied, because "
+                "a document has one owner."
+            ),
+        },
+        {
+            "path": "back-office/tools/index.html",
+            "section": "Back office",
+            "title": "Tools",
+            "desc": (
+                "The archiver, the generator, the release gate and the live check: one "
+                "file each, nothing to install, each documented in its own header."
+            ),
+        },
+    ]
+
     generated = {
+        "back-office/index.html": lambda: backoffice_index_body(arc),
+        "back-office/archive/index.html": lambda: archive_index_body(arc),
+        "back-office/documents/index.html": documents_body,
+        "back-office/tools/index.html": tools_body,
         "team/index.html": lambda: team_index_body(roles, cards),
         "team/board.html": lambda: board_body(cards, roles),
         "team/prompts.html": prompts_body,
         "admin/versions.html": versions_body,
     }
+    if site0:
+        for post in site0["posts"]:
+            pages.append({
+                "path": f"back-office/archive/{post['slug']}.html",
+                "section": "Back office",
+                "title": post["title"],
+                "desc": (
+                    f"Recovered from mvp.myfeeds.ai, published "
+                    f"{post.get('published_human', 'undated')}: "
+                    + " ".join(post["body"].split()[:28]) + "…"
+                ),
+                "hidden": True,
+            })
+            generated[f"back-office/archive/{post['slug']}.html"] = (
+                lambda p=post: archive_post_body(p, site0)
+            )
+
     for r in roles:
         pages.append({
             "path": f"team/roles/{r['slug']}.html",
@@ -1295,6 +1674,33 @@ def build() -> int:
         encoding="utf-8",
     )
 
+    # data/site.json — the page inventory as data. The validator reads this rather than
+    # re-deriving the list from pages.json plus a hardcoded set of generated paths, which
+    # is what it used to do: the back office shipped and the validator went on checking
+    # 19 pages out of 38 while reporting success.
+    (ROOT / "data").mkdir(exist_ok=True)
+    (ROOT / "data" / "site.json").write_text(
+        json.dumps(
+            {
+                "site": SITE_NAME,
+                "version": SITE_VERSION,
+                "generated": date.today().isoformat(),
+                "source": "admin/build/build_pages.py",
+                "counts": {
+                    "pages": len(pages),
+                    "indexed": len(visible),
+                    "hidden": len(pages) - len(visible),
+                },
+                "pages": [
+                    {k: p[k] for k in ("path", "section", "title", "hidden") if k in p}
+                    for p in pages
+                ],
+            },
+            indent=2,
+        ) + "\n",
+        encoding="utf-8",
+    )
+
     # data/team.json — the roster at a stable address, because the primary reader of a
     # page like /team/ is an agent that would rather have the data.
     (ROOT / "data").mkdir(exist_ok=True)
@@ -1333,7 +1739,7 @@ def build() -> int:
     )
 
     print(f"build: {SITE_VERSION} · {len(pages)} pages "
-          f"({len(visible)} in the index, {len(role_pages)} role pages) · "
+          f"({len(visible)} in the index, {len(role_pages)} not indexed) · "
           f"{len(roles)} roles · {len(cards)} board cards")
     print(f"build: wrote {len(written)} page files + llms.txt, llms-full.txt, "
           f"sitemap.xml, robots.txt, CNAME, app.json, data/team.json, "

@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>myfeeds.sgit.ai</title>
-<meta name="description" content="Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.2">
+<meta name="description" content="Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.">
+<meta name="generator" content="admin/build/build_pages.py v0.1.3">
 <link rel="canonical" href="https://myfeeds.sgit.ai/index.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="myfeeds.sgit.ai">
 <meta property="og:title" content="myfeeds.sgit.ai">
-<meta property="og:description" content="Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.">
+<meta property="og:description" content="Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/index.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"myfeeds.sgit.ai","description":"Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.","url":"https://myfeeds.sgit.ai/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.2","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"myfeeds.sgit.ai","description":"Ask one LLM to read fifty articles and pick five for a CISO and it will \u2014 and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.","url":"https://myfeeds.sgit.ai/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.3","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -51,122 +51,149 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<a class="ver" href="admin/versions.html#v0-1-2"
-title="What changed in v0.1.2">v0.1.2</a>
-<nav class="site-nav" aria-label="Sections"><a href="thesis/index.html">Thesis</a><a href="read-state/index.html">Read state</a><a href="vault/index.html">The vault</a><a href="build-order/index.html">Build order</a><a href="team/index.html">Team</a><a href="admin/index.html">Admin</a></nav>
+<a class="ver" href="admin/versions.html#v0-1-3"
+title="What changed in v0.1.3">v0.1.3</a>
+<nav class="site-nav" aria-label="Sections"><a href="how-it-works/index.html">How it works</a><a href="back-office/archive/index.html">The MVP archive</a><a href="back-office/index.html">Back office</a><a href="team/index.html">Team</a><a href="admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
 
-<p class="kicker">One question, taken further than a section could</p>
-<h1>Feeds are replaceable.<br>Your reading is not.</h1>
+<p class="kicker">Personalised news, without the black box</p>
+<h1>The LLM was doing too much.</h1>
 
-<p class="lede">Every feed reader ever built treats those two sentences the other way
-round. It works hard to keep a copy of the articles — which the publisher will happily
-serve again tomorrow — and keeps the record of what you actually read, when, and what you
-skipped, in a database you cannot open, in a format nobody has ever standardised, at a
-company that may not exist in three years.</p>
+<p class="lede">Take fifty cybersecurity articles, describe a CEO, and ask a language
+model to pick the five that matter. It will. The output is plausible, often good, and
+completely unaccountable — you cannot say why those five, you cannot trace a claim back to
+its source, and you will not get the same answer twice. That is the failure mode every
+personalised-feed product has shipped into, and it is the one MyFeeds was built to
+avoid.</p>
 
-<p>This site argues that the record of your reading is the valuable half, that it belongs
-in an encrypted vault you hold, and that the contract for it should be published before
-anybody writes the reader. It publishes that contract. It does not yet publish the reader —
-<a href="build-order/index.html">what does not exist yet is listed, in order</a>.</p>
+<p class="thesis">If you cannot answer "why am I seeing this?", you have not built a
+feed. You have built a slot machine with good taste.</p>
 
-<div class="band">
-<h3>The whole argument in four steps</h3>
-<ol>
-<li><strong>Subscriptions are portable.</strong> OPML has moved a feed list between
-readers for two decades. That problem is solved.</li>
-<li><strong>Read state never was.</strong> There is no interchange format for <em>which
-items you have read</em>. Not in OPML, not in RSS, not in Atom, not anywhere. Each reader
-invented its own and kept it.</li>
-<li><strong>That asymmetry is the lock-in.</strong> You can leave with your subscriptions
-and you arrive at the new reader with twelve thousand unread items and no history. Most
-people just stay.</li>
-<li><strong>Read state is the one shape that merges without conflict.</strong> It is a
-grow-only set of <code>(item, first read at)</code> pairs; two devices union cleanly and
-nothing is ever overwritten. Which means it can live in a version-controlled encrypted
-vault you own, synced between your own machines, with no server that needs to be able to
-read it.</li>
-</ol>
-</div>
+<h2 id="diagnosis">The diagnosis</h2>
 
-<h2 id="why-here">Why this is a vault problem and not an app problem</h2>
+<p>The first attempt was the obvious one: one prompt containing the whole RSS feed, a
+description of the persona, and a description of the wanted output. It worked well enough
+to be tempting, and it failed on four counts at once — recorded at the time, in
+<a href="back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html">the
+post that worked it out</a>:</p>
 
-<p>The obvious fix — "just self-host a reader" — moves the database from someone else's
-machine to yours and leaves everything else in place. The state is still a private schema
-inside one application, still unreadable without running that application, still gone when
-you stop running it.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Problem</th><th>The question you cannot answer</th></tr></thead>
+<tbody>
+<tr><td><strong>Explainability</strong></td><td>How were <em>those</em> five articles
+selected, exactly?</td></tr>
+<tr><td><strong>Provenance</strong></td><td>Which source does this specific fact come
+from?</td></tr>
+<tr><td><strong>Determinism</strong></td><td>Will the same input produce the same output
+tomorrow?</td></tr>
+<tr><td><strong>Scope</strong></td><td>What did the model actually do in there? It did
+everything, in one step, where nobody can look.</td></tr>
+</tbody></table></div>
 
-<p>The interesting move is to make the state a <em>document</em>: files with a published
-shape, versioned, encrypted before they leave your machine, and readable by any program
-that implements the contract. Then the reader becomes replaceable too — which is the point,
-because a format that outlives its first implementation is the only kind worth writing
-down.</p>
+<p>The last one is the cause of the other three, and it is the sentence this site is
+named after: <strong>the LLM is doing too much</strong>. Not wrong — too much, in one
+step, with no surface to inspect.</p>
 
-<p class="thesis">A reading history is a profile of a person. It should be encrypted at
-rest, held by its subject, and portable by design — and none of that requires anything
-cleverer than agreeing on a file layout.</p>
+<h2 id="fix">The fix is a graph between the stages</h2>
+
+<p>Split the single call into four, each with a typed, structured output, and put a
+semantic knowledge graph where the reasoning used to be hidden:</p>
 
 <div class="grid">
-<a class="card" href="thesis/index.html">
-<p class="k">The argument</p><h3>Feeds are replaceable</h3>
-<p>Why the durability of the two data sets is backwards in every reader, and what that
-costs at the moment a service shuts down.</p></a>
-<a class="card" href="read-state/index.html">
-<p class="k">The contract</p><h3>The part nobody exports</h3>
-<p>What read state actually is, why OPML never carried it, and <code>read-state/v1</code>
-written out in full.</p></a>
-<a class="card" href="vault/index.html">
-<p class="k">The container</p><h3>What a feeds vault holds</h3>
-<p>The folder layout, the separation of cache from state, and the merge rule that makes
-two devices safe.</p></a>
-<a class="card" href="build-order/index.html">
-<p class="k">Honest edges</p><h3>What does not exist yet</h3>
-<p>Every item this site argues for, in build order, each marked shipped, argued or
-unverified.</p></a>
+<div class="card"><p class="k">Stage 1</p><h3>Extract the article</h3>
+<p>Article text in; a JSON knowledge graph of its entities and their relationships out.
+What this article is <em>about</em>, as data.</p></div>
+<div class="card"><p class="k">Stage 2</p><h3>Build the persona</h3>
+<p>A persona profile in; a graph of what that person cares about out. A CISO and a board
+member are different graphs, not different prompts.</p></div>
+<div class="card"><p class="k">Stage 3</p><h3>Map relevance</h3>
+<p>Both graphs in; out comes a JSON description of <em>which</em> entities overlap. This
+is the step that replaces "the model picked it".</p></div>
+<div class="card"><p class="k">Stage 4</p><h3>Write the summary</h3>
+<p>The article plus the connections from stage 3 in; a summary written for that persona
+out, emphasising the points that actually matched.</p></div>
 </div>
 
-<h2 id="status">What this site is worth today</h2>
+<p>Every stage emits structured JSON rather than prose, which is what buys back the three
+properties the single call destroyed. The intermediate files <em>are</em> the provenance
+trail: "the article mentions GraphQL, your persona lists GraphQL as an interest, so it was
+flagged" is not a generated explanation, it is a row you can point at.</p>
 
-<p>Published before the code, on purpose, so that the commitments are checkable later by
-anyone — including someone who would like them to have failed. Specifically:</p>
+<div class="band">
+<h3>What this costs, honestly</h3>
+<p>Four LLM calls where there was one, a graph database in the middle, and a schema to
+maintain for every stage. You do not do this because it is cheaper. You do it because a
+security executive asking "why is this in my briefing?" deserves an answer that is not
+"the model thought so" — and because, in a regulated setting, that answer has to survive
+somebody checking it.</p>
+</div>
+
+<h2 id="state">Where this stands</h2>
+
+<p>MyFeeds ran. The MVP published machine-generated briefings for five personas — CEO,
+CISO, CTO, and board members of private and public companies — from the Hacker News RSS
+feed, and wrote up how it did it. Then the site went down. The writing survived mostly
+inside a single capture of its RSS feed, and it is
+<a href="back-office/archive/index.html">recovered here</a>.</p>
 
 <div class="tablewrap"><table>
 <thead><tr><th>Thing</th><th>Status</th><th>Where</th></tr></thead>
 <tbody>
-<tr><td>The argument</td><td><span class="tag shipped">shipped</span></td>
-<td>These pages, and their markdown twins for agents — live at
-<code>myfeeds.sgit.ai</code> since v0.1.1</td></tr>
-<tr><td>The <code>read-state/v1</code> shape</td><td><span class="tag argued">argued</span></td>
-<td><a href="read-state/index.html">/read-state/</a> — prose and a worked example; the
-JSON Schema is <a href="team/board.html#todo">board card 001</a></td></tr>
-<tr><td>The vault layout</td><td><span class="tag argued">argued</span></td>
-<td><a href="vault/index.html">/vault/</a></td></tr>
-<tr><td>An importer, a reader, a fetcher</td><td><span class="tag">not started</span></td>
-<td><a href="build-order/index.html">/build-order/</a></td></tr>
-<tr><td>Claims about what named readers export</td>
-<td><span class="tag unverified">unverified</span></td>
-<td>Marked in place, with <a href="team/board.html#todo">card 003</a> open to check them
-against each vendor's own documentation</td></tr>
+<tr><td>The argument and the architecture</td><td><span class="tag shipped">shipped</span></td>
+<td><a href="how-it-works/index.html">/how-it-works/</a>, and the recovered posts it is
+built from</td></tr>
+<tr><td>The first MVP's output — five personas, real briefings</td>
+<td><span class="tag shipped">shipped</span></td>
+<td><a href="back-office/archive/index.html">the archive</a> — it ran, and this is what it
+produced</td></tr>
+<tr><td>The engine that produced them</td><td><span class="tag shipped">shipped</span></td>
+<td><a href="https://github.com/the-cyber-boardroom/myfeeds-ai">the-cyber-boardroom/myfeeds-ai</a>
+— public and open source</td></tr>
+<tr><td>The business case</td><td><span class="tag shipped">shipped</span></td>
+<td><a href="back-office/documents/index.html">documents</a>, and
+<a href="https://investor.myfeeds.ai/">investor.myfeeds.ai</a></td></tr>
+<tr><td>A live feed anyone can subscribe to</td><td><span class="tag">not yet</span></td>
+<td>The MVP is offline. What exists is the record of it having worked.</td></tr>
 </tbody></table></div>
 
-<p>The site is built and run by a small team of AI agents with one human owner, in the
-open: <a href="team/index.html">seven roles as files</a>, each with the failure condition
-it is judged on, and <a href="team/board.html">a board</a> that says what is not done.</p>
+<div class="grid">
+<a class="card" href="how-it-works/index.html"><p class="k">The architecture</p>
+<h3>How it works</h3><p>The four stages in detail, the structured outputs that make them
+inspectable, and why a graph rather than a longer prompt.</p></a>
+<a class="card" href="back-office/archive/index.html"><p class="k">Recovered</p>
+<h3>The first MVP</h3><p>Fifteen posts, pulled back out of the Internet Archive — the
+architecture write-ups and the briefings the pipeline actually generated.</p></a>
+<a class="card" href="back-office/index.html"><p class="k">The working material</p>
+<h3>Back office</h3><p>Documents, tools and every previous version — indexed from what is
+on disk rather than maintained by hand.</p></a>
+<a class="card" href="team/index.html"><p class="k">How this is run</p>
+<h3>The team</h3><p>Seven agent roles as files, each with the failure condition it is
+judged on.</p></a>
+</div>
+
+<div class="note">
+<p><strong>This site changed its mind, in public.</strong> Versions v0.1.0 to v0.1.2
+argued something else entirely — that the valuable part of a feed reader is the record of
+what you read, and that it belongs in an encrypted vault. That was written before any of
+the MyFeeds source material was available, and it is not what MyFeeds is. Those pages are
+still here, marked, starting at <a href="thesis/index.html">the superseded thesis</a>: the
+correction goes above the mistake, and the mistake stays.</p>
+</div>
 
 <div class="next">
-<a href="thesis/index.html">Start with the argument →</a>
-<a href="read-state/index.html">Go straight to the contract →</a>
+<a href="how-it-works/index.html">How it works →</a>
+<a href="back-office/archive/index.html">The recovered MVP →</a>
 <a href="llms.txt">llms.txt</a>
 </div>
 </main>
 <footer class="site-foot"><div class="inner">
-<div><h4>The argument</h4><ul><li><a href="thesis/index.html">Feeds are replaceable</a></li><li><a href="read-state/index.html">The part nobody exports</a></li><li><a href="vault/index.html">What a feeds vault holds</a></li><li><a href="build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="team/index.html">The team</a></li><li><a href="team/board.html">The board</a></li><li><a href="admin/index.html">How this site is built</a></li><li><a href="admin/versions.html">Release history</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="network/index.html">The sgit.ai network</a></li><li><a href="about/index.html">About &amp; licence</a></li><li><a href="llms.txt">llms.txt</a></li><li><a href="llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>The argument</h4><ul><li><a href="how-it-works/index.html">How it works — the four stages</a></li><li><a href="back-office/archive/index.html">The recovered MVP</a></li><li><a href="back-office/documents/index.html">The business case</a></li><li><a href="about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="read-state/index.html">The part nobody exports</a></li><li><a href="vault/index.html">What a feeds vault holds</a></li><li><a href="build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="team/index.html">The team</a></li><li><a href="team/board.html">The board</a></li><li><a href="admin/index.html">How this site is built</a></li><li><a href="admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="back-office/index.html">Everything it is built from</a></li><li><a href="back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="back-office/documents/index.html">Documents</a></li><li><a href="back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="network/index.html">The sgit.ai network</a></li><li><a href="about/index.html">About &amp; licence</a></li><li><a href="llms.txt">llms.txt</a></li><li><a href="llms-full.txt">llms-full.txt</a></li></ul></div>
 <div><h4>This page</h4>
 <p><a href="index.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
-<p>Feeds are replaceable. Your reading is not.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.2. Part of the
+<p>The LLM was doing too much.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.3. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="",n=0,t;

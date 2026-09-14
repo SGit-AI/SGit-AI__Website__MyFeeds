@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1 · myfeeds.sgit.ai</title>
+<meta name="description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I&#x27;m building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let&#x27;s look at the current (MVP) process of publishing a new set…">
+<meta name="generator" content="admin/build/build_pages.py v0.1.3">
+<link rel="canonical" href="https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="myfeeds.sgit.ai">
+<meta property="og:title" content="How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1 · myfeeds.sgit.ai">
+<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I&#x27;m building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let&#x27;s look at the current (MVP) process of publishing a new set…">
+<meta property="og:url" content="https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How I'm Building Personalised News Feeds with Semantic Graphs - Part 1","description":"Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.3","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
+--dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--wide:1180px;--measure:74ch}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14151a;--panel:#1b1d23;
+--panel2:#22242b;--line:#2c2f38;--fg:#e8e6e0;--dim:#a3a7b0;--dim2:#767b86;--accent:#2dd4bf;
+--accent-dk:#5eead4}}
+*,*::before,*::after{box-sizing:border-box}
+.skip{position:absolute;left:-9999px;top:0;background:var(--panel);padding:.6rem 1rem;z-index:99}
+.skip:focus{left:.5rem;top:.5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;
+line-height:1.62}
+img{max-width:100%;height:auto}
+a{color:var(--accent-dk);text-decoration:none}
+main{max-width:var(--wide);margin:0 auto;padding:0 20px 5rem}
+main>*{max-width:var(--measure)}
+main>.grid,main>.band,main>.tablewrap,main>.wide{max-width:none}
+h1{font-size:clamp(1.95rem,1.3rem + 2.4vw,3rem);line-height:1.1;margin:.4rem 0 .6rem}
+h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .bar{max-width:var(--wide);margin:0 auto;padding:.7rem 20px;display:flex;
+align-items:baseline;gap:1rem;flex-wrap:wrap}
+.site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
+.site-nav a{color:var(--dim);padding:.22rem .55rem}
+.site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+.site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
+gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
+.site-foot ul{list-style:none;margin:0;padding:0}
+pre{overflow-x:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="bar">
+<a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
+<a class="ver" href="../../admin/versions.html#v0-1-3"
+title="What changed in v0.1.3">v0.1.3</a>
+<nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
+</div></header>
+<main id="main">
+<p class="crumb"><a href="../../index.html">myfeeds.sgit.ai</a> / Back office</p>
+<p class="kicker">Recovered from the archive</p>
+<h1>How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1</h1>
+<dl class="fields">
+<dt>Originally</dt><dd><code>https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/</code> —
+the site no longer exists</dd>
+<dt>Published</dt><dd>26 Mar 2025</dd>
+<dt>Author</dt><dd>Dinis Cruz</dd>
+<dt>Tags</dt><dd><span class="tag">How it works</span></dd>
+<dt>Recovered</dt><dd>From a capture of the site's RSS feed, which carried the full body.
+The markdown is at <code>back-office/archive/mvp.myfeeds.ai__posts/publishing-a-new-personalised-set-of-posts-part-1.md</code>.</dd>
+</dl>
+
+<div class="note"><p>This is recovered content, reproduced as it was published. Links in
+it point at pages that in many cases no longer resolve, and images are still served from
+the dead domain — both are left exactly as written rather than silently repaired, because
+a rewritten archive is no longer evidence of what was said.</p></div>
+
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png)</p>
+<p>Following the technical explanation of how I&#x27;m building the <a href="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">Semantic Knowledge Graphs</a> and <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">Establishing Provenance</a>, let&#x27;s look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).</p>
+<p>The whole process is managed via a FastAPI service running on a serverless function (in this case AWS Lambda)</p>
+<p>I&#x27;m using the <a href="https://github.com/owasp-sbot/OSBot-Fast-API?ref=mvp.myfeeds.ai">OSBot-Fast-API</a> open source package, which makes it super easy to create these serverless functions (easier than using FastAPI directly)</p>
+<p>Here are the default methods that are added when you create and deploy an OSBot-Fast-API project</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-50.png)</p>
+<p>In the <a href="https://mvp.myfeeds.ai/">mvp.MyFeeds.ai</a> service, we have a set of APIs for Personas:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-53.png)</p>
+<p>... for <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">The Hacker News</a> flows:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-52.png)</p>
+<p>... for the Hacker News articles:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-54.png)</p>
+<p>... for the Hacker News files:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-55.png)</p>
+<p>... and for the <a href="https://open-security-summit.org/?ref=mvp.myfeeds.ai">Open Security Summit</a> data (although that is not relevant in this article :) )</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-56.png)</p>
+<h4 id="looking-at-the-current-articles">Looking at the current articles</h4>
+<p>Looking at the <em><strong>hacker-news-articles/current-articles</strong></em> article data, we can see that every article in there is currently on Step_9 (the current last step)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-57.png)</p>
+<p>What we need is a new set of articles to process, so let&#x27;s see how that is currently done.</p>
+<h4 id="flow-1-downloading-the-rss-feed">Flow 1 - Downloading the RSS feed</h4>
+<p>We start the full workflow by invoking the endpoint <em><strong>hacker-news-flows/flow-1-download-rss-feed</strong></em> which downloads the RSS feed and converts it into an JSON file</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-67.png)</p>
+<p>Here is what the <em><strong>feed-data.json</strong></em> file looks like</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-68.png)</p>
+<h4 id="flow-2-creating-the-timeline">Flow 2 - Creating the timeline</h4>
+<p>Next we need to create the MGraph Timeline, which is done by invoking the *<strong>hacker-news-flows/flow-2-create-articles-timeline </strong>*endpoint:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-61.png)</p>
+<p>The output confirms that all went as planned and that the following 3 files were created:</p>
+<ul><li>hacker_news_timeline - this is the MGraph-DB of the timelines (i.e date/time values) of the 50 articles processed. This file is called feed-timeline.mgraph.json</li><li>hacker_news_timeline_dot_code - this is the DOT Language code (see diagrams as code) created by the MGraph Dot_Exporter. This file is called feed-timeline.mgraph.dot</li><li>hacker_news_timeline_png - this is the Graphviz visualiastion of the DOT code, created by a Serverless function that is fully configured to convert DOT code into PNGs (i.e. images). This file is called feed-timeline.mgraph.pngAll 3 files were stored twice in the cloud storage (in this case S3):</li></ul>
+<ul><li>in the /latest/* folder (overwriting the previous version)</li><li>in the 2025/03/26/11/<em> folder (ensuring we have a copy of this action). This is an hour specific folder, which in this case is /2025/03/26/11/</em> (representing the 11th hour of the day 26 of March in 2025, i.e. the time I&#x27;m writing this article)Here is what the MGraph of the timeline looks like:</li></ul>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-65.png)</p>
+<p>Here is the DOT language</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-66.png)</p>
+<p>And much more interesting and useful, here is what the PNG of the timeline looks like:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-59.png)</p>
+<p>The MGraph above is quite an important one, since it shows the power of the MGraph-DB in creating a graph made of 50x timestamps (i.e. date/time values).</p>
+<p>Note how easy it is to find what happened at a particular year, month, day or hour (the nodes at the bottom represent an article)</p>
+<p>For more details about this MGraph timeline technology, and how it evolved during multiple coding iterations, see:</p>
+<ul><li>Storing Timestamps in Graph Databases: A Scalable and Semantic Approach (PDF of research paper)</li><li>How Should a Timestamp Be Represented in a Graph?</li><li>More visualisation capabilities to the MGraph-DB &quot;Export to Dot&quot; feature</li><li>First visualization of timestamps from latest 50 articles</li><li>Two visualisations of three Timestamps</li><li>initial visualisation of latest 15 articles</li><li>Visualization of latest 50x articles using multiple GraphViz engines and layouts.</li><li>MGraph-DB timeline is now automatically created and published to S3Also very important in that invocation response data is the <em><strong>durations</strong></em> section which provides timing details on the duration of each task executed in this flow (this is very important for debugging and keeping an eye on the performance)</li></ul>
+<p>The Flows/Tasks technology that is used to create and execute all these &quot;flows&quot;, is part of my <a href="https://github.com/owasp-sbot?ref=mvp.myfeeds.ai">OSBot-Utils</a> open source package. This was inspired by and compatible with the super powerful <a href="https://www.prefect.io/?ref=mvp.myfeeds.ai">Prefect</a> open source and SaaS technology.</p>
+<p>For more details about this Flows/Tasks see:</p>
+<ul><li>OSBot-Utils Flow System Documentation (PDF with the technical details)</li><li>Example of using Flows and Tasks in the IDE</li><li>Source code in GitHub</li></ul>
+<h4 id="flow-3-extract-new-articles">Flow 3 - Extract new Articles</h4>
+<p>Now that we have an updated timeline, the next step is to call the <em><strong>hacker-news-flows/flow-3-flow-extract-new-articles</strong></em> endpoint with the date to use as current_path (i.e. the new baseline time for creating the MGraph Diff)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-75.png)</p>
+<p>Here is the invocation response:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-64.png)</p>
+<p>The first file that we can see in the response (created in two locations as before) is the *<strong>feed-timeline-diff.json</strong>, <em>which is a really good example of the power of graphs to answer a simple but important question: </em>&quot;Since the last analysis, which articles were added and removed from the RSS Feed?*&quot;</p>
+<p>To see how this was done, look at the values of the *<strong>path_previous </strong><em>and </em><strong>path_current</strong>* also present in the response data.</p>
+<p>In this case we have:</p>
+<ul><li>2025/03/19/21 - which is the 21st hour of the 19th of March 2025</li><li>2025/03/26/11 - which is the 11th hour of the 26th of March 2025This is where the practice to keep two copies of the files created really helps.</li></ul>
+<p>The file in the *<strong>/latest/</strong> <em>folder has long been overwritten by more recent executions</em>, <em>but since we still have the files in the</em> **2025/03/19/21/<em> </em><strong>folder, we can take a look at the file</strong>* 2025/03/19/21/feed-timeline.mgraph.png ***to see what the timeline MGraph looked like at that time:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-69.png)</p>
+<p>For reference, here is the current timeline file *<strong>2025/03/26/11/feed-timeline.mgraph.png </strong>*looks like</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-70.png)</p>
+<p>What we need is a diff of these two graphs.</p>
+<p>The MGraph files of these visualisations was used to create the <em><strong>feed-timeline-diff.json</strong></em> file, which looks like this:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-71.png)</p>
+<p>... and</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-72.png)</p>
+<p>This is a MGraph Timeline-Diff object, which contains two main sections: <strong>added_values</strong> and <strong>removed_values</strong>, which in practice are the nodes added and removed between those two graphs.</p>
+<p>This data is then used to update the <strong>latest/articles-current.json</strong> files which now contains the entries for the articles ids listed in the <strong>added_values </strong>in the <strong>Step_1__Save__Article </strong>step (and empty data in those *<strong>path_</strong>** variables</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-73.png)</p>
+<hr>
+<p>Continues <a href="https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/">on part 2</a></p>
+
+<div class="next"><a href="index.html">← All recovered posts</a>
+<a href="../index.html">Back office →</a></div>
+</main>
+<footer class="site-foot"><div class="inner">
+<div><h4>The argument</h4><ul><li><a href="../../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP</a></li><li><a href="../../back-office/documents/index.html">The business case</a></li><li><a href="../../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../../back-office/index.html">Everything it is built from</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../../back-office/documents/index.html">Documents</a></li><li><a href="../../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>This page</h4>
+<p><a href="publishing-a-new-personalised-set-of-posts-part-1.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>The LLM was doing too much.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.3. Part of the
+<a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
+</div></footer>
+<script>(function(){var B="../../",n=0,t;
+function applied(){try{return getComputedStyle(document.documentElement)
+.getPropertyValue('--site-css').trim()==='1'}catch(e){return false}}
+function inject(tag,c){if(!c)return;var e=document.createElement(tag);e.textContent=c;
+(tag==='style'?document.head:document.body).appendChild(e);}
+function viaFetch(){fetch(B+'assets/site.css').then(function(r){return r.ok?r.text():''})
+.then(function(c){if(!applied())inject('style',c)}).catch(function(){});
+fetch(B+'assets/site.js').then(function(r){return r.ok?r.text():''})
+.then(function(c){inject('script',c)}).catch(function(){});}
+function viaBridge(sg){if(sg.loadCss&&sg.loadJs){try{sg.loadCss('assets/site.css');
+sg.loadJs('assets/site.js');return true}catch(e){}}
+if(sg.vfs&&sg.vfs.readText){try{Promise.resolve(sg.vfs.readText('assets/site.css'))
+.then(function(c){if(!applied())inject('style',c)});
+Promise.resolve(sg.vfs.readText('assets/site.js')).then(function(c){inject('script',c)});
+return true}catch(e){}}return false;}
+// The two transports are tried concurrently and both are idempotent: fetch starts now so
+// the static mirror is never unstyled, and the bridge is used the moment it appears. The
+// --site-css sentinel in site.css stops the second arrival applying anything twice.
+if(window.sg&&viaBridge(window.sg))return;
+viaFetch();
+window.addEventListener('sg-ready',function(){if(!applied()&&window.sg)viaBridge(window.sg)},
+{once:true});
+t=setInterval(function(){if(window.sg){clearInterval(t);if(!applied())viaBridge(window.sg);}
+else if(++n>40){clearInterval(t);if(!applied())viaFetch();}},50);})();</script>
+</body>
+</html>

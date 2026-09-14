@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture</title>
+    <link rel="stylesheet" href="https://mvp.myfeeds.ai/assets/built/screen.css?v=8765ea719d">
+
+    <link rel="icon" href="https://mvp.myfeeds.ai/content/images/size/w256h256/2025/03/TCB-icon.png" type="image/png">
+    <link rel="canonical" href="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="myfeeds">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture">
+    <meta property="og:description" content="The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but what do those entities look like? and more importantly, how do we have">
+    <meta property="og:url" content="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">
+    <meta property="og:image" content="https://mvp.myfeeds.ai/content/images/size/w1200/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png">
+    <meta property="article:published_time" content="2025-03-24T13:35:32.000Z">
+    <meta property="article:modified_time" content="2025-03-24T13:35:32.000Z">
+    <meta property="article:tag" content="How it works">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture">
+    <meta name="twitter:description" content="The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but what do those entities look like? and more importantly, how do we have">
+    <meta name="twitter:url" content="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">
+    <meta name="twitter:image" content="https://mvp.myfeeds.ai/content/images/size/w1200/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Dinis Cruz">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="How it works">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="638">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "myfeeds",
+        "url": "https://mvp.myfeeds.ai/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://mvp.myfeeds.ai/content/images/2025/03/TCB-logo-black.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dinis Cruz",
+        "url": "https://mvp.myfeeds.ai/author/dinis/",
+        "sameAs": []
+    },
+    "headline": "Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture",
+    "url": "https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/",
+    "datePublished": "2025-03-24T13:35:32.000Z",
+    "dateModified": "2025-03-24T13:35:32.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://mvp.myfeeds.ai/content/images/size/w1200/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png",
+        "width": 1200,
+        "height": 638
+    },
+    "keywords": "How it works",
+    "description": "The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but what do those entities look like? and more importantly, how do we have provenance, explainability and determinism from this workflow?\n\nLet&#x27;s take for example the CEO (19 Mar) post which looked like this:\n\nAs you can see, the intro text is focused on the CEO persona, and in the 50x availa",
+    "mainEntityOfPage": "https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="myfeeds" href="https://mvp.myfeeds.ai/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.51/umd/portal.min.js" data-i18n="true" data-ghost="https://mvp.myfeeds.ai/" data-key="5399aa8753befd46446c5d4dc9" data-api="https://thecyberboardroom-cybernews.ghost.io/ghost/api/content/" data-locale="en" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="5399aa8753befd46446c5d4dc9" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://thecyberboardroom-cybernews.ghost.io/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://mvp.myfeeds.ai/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=8765ea719d"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=8765ea719d">
+    <script defer src="/public/member-attribution.min.js?v=8765ea719d"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+</head>
+
+<body class="post-template tag-how-it-works is-head-stacked has-serif-body">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    
+                    <a class="gh-head-logo" href="https://mvp.myfeeds.ai">
+                            <img src="https://mvp.myfeeds.ai/content/images/2025/03/TCB-logo-black.png" alt="myfeeds">
+                    </a>
+                    
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://mvp.myfeeds.ai/">Home</a></li>
+    <li class="nav-ceo"><a href="https://mvp.myfeeds.ai/tag/ceo/">CEO</a></li>
+    <li class="nav-ciso"><a href="https://mvp.myfeeds.ai/tag/ciso/">CISO</a></li>
+    <li class="nav-cto"><a href="https://mvp.myfeeds.ai/tag/cto/">CTO</a></li>
+    <li class="nav-board-member-private"><a href="https://mvp.myfeeds.ai/tag/board-member-private/">Board Member (Private)</a></li>
+    <li class="nav-board-member-public"><a href="https://mvp.myfeeds.ai/tag/board-member-public/">Board Member (Public)</a></li>
+    <li class="nav-how-it-works-this-site"><a href="https://mvp.myfeeds.ai/tag/how-it-works/">How It Works (this site)</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    
+<main class="gh-main">
+        <article class="gh-article post tag-how-it-works">
+
+            <header class="gh-article-header gh-canvas">
+                    <a class="gh-article-tag" href="https://mvp.myfeeds.ai/tag/how-it-works/">How it works</a>
+
+                <h1 class="gh-article-title">Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture</h1>
+
+
+                    <aside class="gh-article-sidebar">
+
+        <div class="gh-author-image-list instapaper_ignore">
+                <a class="gh-author-image" href="/author/dinis/">
+                        <div class="gh-author-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</div>
+                </a>
+        </div>
+
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/dinis/">Dinis Cruz</a>
+                </h4>
+                
+        </div>
+
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2025-03-24">24 Mar 2025</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">10 min</span>
+            </div>
+        </div>
+
+    </aside>
+
+                    <figure class="gh-article-image">
+        <img
+            srcset="/content/images/size/w300/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png 300w,
+                    /content/images/size/w720/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png 720w,
+                    /content/images/size/w960/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png 960w,
+                    /content/images/size/w1200/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png 1200w,
+                    /content/images/size/w2000/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png 2000w"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="/content/images/size/w1200/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png"
+            alt="Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture"
+        >
+    </figure>
+            </header>
+
+            <section class="gh-content gh-canvas">
+                <p>The post <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/" rel="noreferrer">Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)</a> mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but <strong>what do those entities look like?</strong> and more importantly,<strong> how do we have provenance, explainability and determinism from</strong> this workflow?</p><p>Let's take for example the <a href="https://mvp.myfeeds.ai/ceo-19-feb/">CEO (19 Mar)</a> post which looked like this:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image.png" class="kg-image" alt="" loading="lazy" width="1418" height="1382" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image.png 1418w" sizes="(min-width: 720px) 720px"></figure><p>As you can see, the intro text is focused on the CEO persona, and in the 50x available articles from <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">the Hacker News</a> RSS feed used, the <a href="https://thehackernews.com/2025/03/bcdr-2025-trends-and-challenges-for-msps-and-it-teams.html?ref=mvp.myfeeds.ai">Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025</a> article was selected, which  looks like this:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-1.png" class="kg-image" alt="" loading="lazy" width="1818" height="1582" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-1.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-1.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-1.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-1.png 1818w" sizes="(min-width: 720px) 720px"></figure><p>Since we are using the <a href="https://feeds.feedburner.com/TheHackersNews?ref=mvp.myfeeds.ai">RSS feed</a>, it all starts with the XML content:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-2.png" class="kg-image" alt="" loading="lazy" width="1754" height="912" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-2.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-2.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-2.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-2.png 1754w" sizes="(min-width: 720px) 720px"></figure><blockquote>Note: In this first MVP we are only using the text of the title <em>"Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025" </em>(I also created a similar workflow using the description, but the title was already working quite well)</blockquote><h3 id="what-didnt-work-using-one-llm-call-to-create-the-output"><strong>What didn't work: using one LLM call to create the output</strong></h3><p>On the personalisation path, the first thing I tried was to create a prompt that had:</p><ul><li>the entire RSS feed content (i.e the titles and descriptions)</li><li>a description of the user's persona (in this case a CEO)</li><li>a description of the desired output (for example a news digest)</li></ul><p>This was easily done by converting the RSS content into a 'prompt friendly' text based representation:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-3.png" class="kg-image" alt="" loading="lazy" width="2000" height="1157" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-3.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-3.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-3.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-3.png 2002w" sizes="(min-width: 720px) 720px"></figure><p>.... which I could easily add to one of my <a href="https://www.thecyberboardroom.com/?ref=mvp.myfeeds.ai">Cyber Boardroom</a> personas (in this case a CEO): </p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-4.png" class="kg-image" alt="" loading="lazy" width="2000" height="1019" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-4.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-4.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-4.png 1600w, https://mvp.myfeeds.ai/content/images/size/w2400/2025/03/image-4.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>.... resulting in something like this:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-5.png" class="kg-image" alt="" loading="lazy" width="1794" height="1224" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-5.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-5.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-5.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-5.png 1794w" sizes="(min-width: 720px) 720px"></figure><p>Although this kinda works, when using the 50x RSS articles and asking the LLM to pick the most relevant 5x, I had a large number of very important problems, challenges and concerns: (which btw are the same ones faced by the companies/services that have been trying to create personalised news feed, with limited success) :</p><ul><li><strong>Explainability</strong>: How do I explain exactly how and why those specific 5x articles were selected</li><li><strong>Provenance</strong>: How can I connect each article, statement, opinion, and more importantly, each fact, into it's original source</li><li><strong>Determinism</strong>: How can I make sure that the results are deterministic and repeatable (i.e. same inputs should produce the same output)</li><li><strong>LLM is doing too much</strong>: since we can't look inside the LLM and understand how it arrive at its conclusions, this is a good example (like in most Agentic solutions these days) where the LLM is just doing too much in one step</li></ul><h3 id="semantic-knowledge-graphs">Semantic Knowledge Graphs</h3><p>After a number of experiments, following on my personal theme that <em>'everything is really just graphs and maps'</em> and inspired by the great work/thinking done by the semantic web community, the solution that worked really well was to use Semantic Knowledge Graphs</p><p>But the problem I always had when I created large graphs (for example when using <a href="https://www.linkedin.com/posts/diniscruz_jira-as-graph-db-activity-7293099257547354112-z4xs/?ref=mvp.myfeeds.ai">Jira as a GraphDB</a>) was how to scale the graph creation, curation and connection.</p><p>As explained in <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">detail here</a> in mvp.MyFeeds.ai uses 4 stages of LLM processing:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-6.png" class="kg-image" alt="" loading="lazy" width="1042" height="988" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-6.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-6.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-6.png 1042w" sizes="(min-width: 720px) 720px"></figure><p>Let's look at each of these stages in action</p><h3 id="phase-1-entity-relationship-extraction">Phase 1: Entity &amp; Relationship extraction</h3><p>From the feed's RSS the following JSON file is created which is basically a representation of a Python object with the same fields:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-7.png" class="kg-image" alt="" loading="lazy" width="1752" height="676" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-7.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-7.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-7.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-7.png 1752w" sizes="(min-width: 720px) 720px"></figure><p>From this data the two fields that we are going to use is the <strong>article_obj_id</strong> (in this case <em>"6feb1978"</em>) and the <strong>title</strong> value (in this case <em>"Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025"</em>)</p><p>Here is <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/providers/cyber_security/hacker_news/llms/prompts/LLM__Prompt__Extract_Entities.py?ref=mvp.myfeeds.ai#L10-L22">the System Prompt</a> for this first LLM call:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-11.png" class="kg-image" alt="" loading="lazy" width="1478" height="532" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-11.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-11.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-11.png 1478w" sizes="(min-width: 720px) 720px"></figure><p>What is very important and powerful is that for these calls we are using OpenAI's <a href="https://platform.openai.com/docs/guides/structured-outputs?ref=mvp.myfeeds.ai">structured outputs</a> where we are able to create set of Python classes which are then provided as the schema to be used by the LLM responses (i.e. we don't get raw text back from the LLM call, we get nicely typed JSON/Python objects)</p><p>Here are the <a href="https://github.com/owasp-sbot/MGraph-DB/blob/a6b4875a8e54794ee577527ea86212efdf73fb35/mgraph_db/providers/graph_rag/schemas/Schema__Graph_RAG__Entity__LLM.py?ref=mvp.myfeeds.ai">classes</a> (from the <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">MGraph-DB</a> project) used in this 'entity text extraction' LLM:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-14.png" class="kg-image" alt="" loading="lazy" width="1354" height="340" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-14.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-14.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-14.png 1354w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-17.png" class="kg-image" alt="" loading="lazy" width="1324" height="172" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-17.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-17.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-17.png 1324w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-16.png" class="kg-image" alt="" loading="lazy" width="1306" height="218" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-16.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-16.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-16.png 1306w" sizes="(min-width: 720px) 720px"></figure><p>Which look like this (when created by the LLM)</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-18.png" class="kg-image" alt="" loading="lazy" width="1470" height="1492" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-18.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-18.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-18.png 1470w" sizes="(min-width: 720px) 720px"></figure><blockquote>Note: at the moment (for this first MVP) we are not providing the LLMs any Ontology or Taxonomy to follow, we are basically letting the LLM pick the best relationships, which it already does a pretty good job at. But as we move into a much more deterministic output, based on human feedback, we will be providing a much more explicit set of entities and relationships to use</blockquote><p>The next step is to convert this JSON/Python object into a <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">MGraph-DB</a> object (i.e. nodes and edges), which looks like this</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-19.png" class="kg-image" alt="" loading="lazy" width="1750" height="1376" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-19.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-19.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-19.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-19.png 1750w" sizes="(min-width: 720px) 720px"></figure><blockquote>Note: <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">MGraph-DB</a> is the Serverless Graph database that I recently published which provides a critical part of this workflow (in this case the ability to easily manipulate and merge those JSON objects as nodes and edges). For more details see: <a href="https://www.linkedin.com/pulse/introducing-mgraph-ai-memory-first-graph-database-genai-dinis-cruz-wxmde/?ref=mvp.myfeeds.ai">MGraph-AI - A Memory-First Graph Database for GenAI and Serverless Apps</a></blockquote><p>One of the areas that I always put a lot of coding effort in, is the visualisation of graphs, since without it, I find that I can't really understand and visualise what the graphs actually look like.</p><p>So in this case, here is the DOT/Graphviz visualisation all the relationships extracted: </p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-20.png" class="kg-image" alt="" loading="lazy" width="1272" height="4253" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-20.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-20.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-20.png 1272w" sizes="(min-width: 720px) 720px"></figure><p>For reference here is the graph for the <em>"Critical Authentication Bypass Vulnerability Discovered in Moxa PT Switches" </em>which is another one of the articles shown in the CEO post</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-21.png" class="kg-image" alt="" loading="lazy" width="2000" height="1826" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-21.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-21.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-21.png 1600w, https://mvp.myfeeds.ai/content/images/size/w2400/2025/03/image-21.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">"</span></figcaption></figure><p>But since we can't really feed these JSON or Images to an LLM (well ... we could ... but it wouldn't be very efficient and it would introduce a big area for hallucinations), we use the the MGraph-DB Tree_Values exporter to create this compressed LLM friendly representation (also for this first MVP, I'm only using the Entities relationships from the graph above)</p><p>The image below shows the graph tree for this article in the middle of the bigger graph tree text (which is the one that contains all 50x articles from the RSS feed, that is then used in Phase 3)</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-34.png" class="kg-image" alt="" loading="lazy" width="896" height="1618" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-34.png 600w, https://mvp.myfeeds.ai/content/images/2025/03/image-34.png 896w" sizes="(min-width: 720px) 720px"></figure><blockquote>Note: when working with LLMs it is very important to think about the best way to 'communicate' with the LLMs, which in this case was about how to create a representation of the graphs nodes and edges in a format that the LLMs can understand (while preserving the nodes and edges relationships), and in this case the simple tree view you can see above did the trick.</blockquote><h3 id="phase-2-persona-graph-construction">Phase 2: Persona Graph Construction</h3><p>Next step is to create the equivalent graph for the target persona, in this case the CEO, which starts with this (for now <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/schemas/Default_Data__My_Feeds__Personas.py?ref=mvp.myfeeds.ai">hard-coded</a>) CEO description:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-23.png" class="kg-image" alt="" loading="lazy" width="1750" height="374" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-23.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-23.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-23.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-23.png 1750w" sizes="(min-width: 720px) 720px"></figure><p>Then using this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Extract_Entities.py?ref=mvp.myfeeds.ai">LLM prompt</a>:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-24.png" class="kg-image" alt="" loading="lazy" width="1882" height="1380" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-24.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-24.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-24.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-24.png 1882w" sizes="(min-width: 720px) 720px"></figure><p>... and these schemas:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-26.png" class="kg-image" alt="" loading="lazy" width="1286" height="102" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-26.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-26.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-26.png 1286w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-27.png" class="kg-image" alt="" loading="lazy" width="1308" height="148" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-27.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-27.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-27.png 1308w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-28.png" class="kg-image" alt="" loading="lazy" width="1250" height="170" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-28.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-28.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-28.png 1250w" sizes="(min-width: 720px) 720px"></figure><p>... we get these set of entities mappings</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-25.png" class="kg-image" alt="" loading="lazy" width="1054" height="1444" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-25.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-25.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-25.png 1054w" sizes="(min-width: 720px) 720px"></figure><p>... which looks like this</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-29.png" class="kg-image" alt="" loading="lazy" width="2000" height="1196" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-29.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-29.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-29.png 1600w, https://mvp.myfeeds.ai/content/images/size/w2400/2025/03/image-29.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>... and like this, when using the MGraph-DB Tree_Values exporter to create an LLM friendly representation:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-30.png" class="kg-image" alt="" loading="lazy" width="1098" height="1622" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-30.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-30.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-30.png 1098w" sizes="(min-width: 720px) 720px"></figure><h3 id="phase-3-relevance-mapping">Phase 3: Relevance Mapping</h3><p>Once we have the entities for the Article and for the Persona, the key question is <strong><em>how do we connect them?</em></strong></p><blockquote>Note: This step should eventually not be needed once we provide a strong ontology and taxonomy to the LLM extraction steps (since we would be able to do the same by just navigating the graphs), but at this stage since we are letting the LLMs to freely define the entities and the relationships, we need a way to 'connect them', which is what this step is</blockquote><p>Using <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Connect_Entities.py?ref=mvp.myfeeds.ai">this system prompt</a>:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-31.png" class="kg-image" alt="" loading="lazy" width="2000" height="925" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-31.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-31.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-31.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-31.png 2020w" sizes="(min-width: 720px) 720px"></figure><p>... and this user prompt (where we will include the previously created "Personas Graph Tree" and the "50x articles Graph Tree") :</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-35.png" class="kg-image" alt="" loading="lazy" width="1662" height="928" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-35.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-35.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-35.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-35.png 1662w" sizes="(min-width: 720px) 720px"></figure><p>... and <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Connected_Entities.py?ref=mvp.myfeeds.ai">this schema</a>:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-32.png" class="kg-image" alt="" loading="lazy" width="1932" height="812" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-32.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-32.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-32.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-32.png 1932w" sizes="(min-width: 720px) 720px"></figure><p>... we get these mappings:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-33.png" class="kg-image" alt="" loading="lazy" width="2000" height="1108" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-33.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-33.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-33.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-33.png 2242w" sizes="(min-width: 720px) 720px"></figure><p>In the image above we can see that we are looking at the mappings for the article_id for this RSS article (in this case. "6feb1978"), with 3 entities matches and an an overall score of 8.5</p><p>What is very important here are the <strong>persona_entity</strong> and the <strong>article_entity</strong> values, since they are the connections between the "Persona's entity graph" and the "Article's entity graph"</p><blockquote>Note: although this workflow already provides good results and just about no hallucinations (since the LLM is only working on the data that was provided), my current thinking is that this is still doing 'too much' and it will be better to extract the entities per article (vs dealing with all articles in one go). This will provide better explainability and allow for more interesting use cases</blockquote><p>Also important is that in the JSON/Python file created by this Phase 3, we also include the markdown text of the original article:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-36.png" class="kg-image" alt="" loading="lazy" width="1826" height="904" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-36.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-36.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-36.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-36.png 1826w" sizes="(min-width: 720px) 720px"></figure><p>This is done in order to make it easy (and efficient) for the Phase 4 workflow prompt creation step</p><p>What is very powerful is that we now have the list of 5 articles (from the RSS feed 50) that are relevant to a particular persona (in this case a CEO), containing full provenance and explainability.</p><h3 id="phase-4-personalise-summary-generation">Phase 4) Personalise Summary Generation</h3><p>The final use of the LLMs is in the translation of the selected articles (and connected entities) into personalised blog post.</p><p>Using this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Create_Digest.py?ref=mvp.myfeeds.ai">system prompt</a>:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-37.png" class="kg-image" alt="" loading="lazy" width="1828" height="692" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-37.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-37.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-37.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-37.png 1828w" sizes="(min-width: 720px) 720px"></figure><p>... and this user prompt:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-38.png" class="kg-image" alt="" loading="lazy" width="1536" height="1096" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-38.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-38.png 1000w, https://mvp.myfeeds.ai/content/images/2025/03/image-38.png 1536w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-40.png" class="kg-image" alt="" loading="lazy" width="1678" height="524" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-40.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-40.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-40.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-40.png 1678w" sizes="(min-width: 720px) 720px"></figure><p>... and this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Digest_Articles.py?ref=mvp.myfeeds.ai">schema</a>:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-42.png" class="kg-image" alt="" loading="lazy" width="1896" height="832" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-42.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-42.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-42.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-42.png 1896w" sizes="(min-width: 720px) 720px"></figure><p>... we get this JSON/Python object:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-43.png" class="kg-image" alt="" loading="lazy" width="1674" height="1572" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-43.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-43.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-43.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-43.png 1674w" sizes="(min-width: 720px) 720px"></figure><p>What is very powerful here is that, as before, we are not getting raw text from the LLM , we are getting a set of nicely structured JSON/Python objects which can then be used to create the output in a much more controlled and effective way.</p><p>For example the workflow that executes this Phase 4, also creates for this persona the HTML:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-44.png" class="kg-image" alt="" loading="lazy" width="1672" height="486" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-44.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-44.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-44.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-44.png 1672w" sizes="(min-width: 720px) 720px"></figure><p>... and the Markdown code:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-45.png" class="kg-image" alt="" loading="lazy" width="1682" height="390" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-45.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-45.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-45.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-45.png 1682w" sizes="(min-width: 720px) 720px"></figure><p>This is what the HTML looks like (when loaded directly from the S3 bucket used to hold all the files shown here):</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-46.png" class="kg-image" alt="" loading="lazy" width="1654" height="1564" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-46.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-46.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-46.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-46.png 1654w" sizes="(min-width: 720px) 720px"></figure><h3 id="ghost-publishing">Ghost Publishing</h3><p>The final step is to publish this article using the Ghost platform:</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-47.png" class="kg-image" alt="" loading="lazy" width="2000" height="1002" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-47.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-47.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-47.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-47.png 2092w" sizes="(min-width: 720px) 720px"></figure><p>... to <a href="https://mvp.myfeeds.ai/ceo-19-feb/">https://mvp.myfeeds.ai/ceo-19-feb/</a> , which looks like this: </p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-48.png" class="kg-image" alt="" loading="lazy" width="1688" height="670" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-48.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-48.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-48.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-48.png 1688w" sizes="(min-width: 720px) 720px"></figure><blockquote>Note: in this first MVP, the publishing was done manually (i.e. copy and paste of the persona's HTML shown above), but the key reason I picked the Ghost platform was because it has a really <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">good API</a>, which will make this step easy to implement</blockquote><h3 id="personalising-to-an-actual-persona-and-keep-it-private">Personalising to an actual persona (and keep it private)</h3><p>At the moment, the MyFeeds.ai workflows all work on a predefined set of personas and all the data is publicly available (via REST API), so what about when we <strong><em>want to further personalise the result and keep it private?</em></strong></p><p>That is where <a href="https://www.thecyberboardroom.com/?ref=mvp.myfeeds.ai">the Cyber Boardroom</a> comes into play, since I've already added there powerful user authentication and "multiple personas per user" capabilities.</p><p>The idea is that MyFeeds provides the key data primitives that can then be further processed, customised and personalised at the Cyber Boardroom</p><p>Also important will be to add the human-in-the-loop feedback workflows, where these first set of Ontologies and Taxonomies created by the LLMs will be fine tuned and corrected, providing a scalable way to create and maintain Semantic Knowledge Graphs.</p><h3 id="in-conclusion">In conclusion</h3><p>I'm really happy with this workflow, since it represents where I believe GenAI and LLMs can make a massive difference: <strong>Semantic Graphs creation, curation and maintenance, with Human-in-the-loop workflows</strong></p><p>The other key principle that you can see in action in these workflows is the: <strong>"Only use LLMs for what they are the only option, and for everything else use code"</strong></p><p>As a good example of how much key infrastructure is still missing from the LLMs code generation work, it took me 3 months of development and lots of experimentation to arrive at this outcome (with all code released as open source at the <a href="https://github.com/the-cyber-boardroom?ref=mvp.myfeeds.ai">https://github.com/the-cyber-boardroom</a> and the <a href="https://github.com/owasp-sbot?ref=mvp.myfeeds.ai">https://github.com/owasp-sbot</a> repos)</p><p>Thanks for reading, please <a href="https://mvp.myfeeds.ai/">subscribe to the mvp.myfeeds.ai</a> persona-driven newsletters and give me feedback and ideas on how to make it better :) </p><hr><p>This final paragraph is here to make this article exceed 2000 words, as counted by the Ghost word counter to the right hand side of the editor</p><figure class="kg-card kg-image-card"><img src="https://mvp.myfeeds.ai/content/images/2025/03/image-49-1-1.png" class="kg-image" alt="" loading="lazy" width="1820" height="442" srcset="https://mvp.myfeeds.ai/content/images/size/w600/2025/03/image-49-1-1.png 600w, https://mvp.myfeeds.ai/content/images/size/w1000/2025/03/image-49-1-1.png 1000w, https://mvp.myfeeds.ai/content/images/size/w1600/2025/03/image-49-1-1.png 1600w, https://mvp.myfeeds.ai/content/images/2025/03/image-49-1-1.png 1820w" sizes="(min-width: 720px) 720px"></figure>
+            </section>
+
+        </article>
+
+                <div class="gh-read-next gh-canvas">
+                <section class="gh-pagehead">
+                    <h4 class="gh-pagehead-title">Read next</h4>
+                </section>
+
+                <div class="gh-topic gh-topic-grid">
+                    <div class="gh-topic-content">
+                            <article class="gh-card post">
+    <a class="gh-card-link" href="/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="/content/images/size/w300/2025/03/Screenshot-2025-03-26-at-17.34.21.png 300w,
+                            /content/images/size/w720/2025/03/Screenshot-2025-03-26-at-17.34.21.png 720w,
+                            /content/images/size/w960/2025/03/Screenshot-2025-03-26-at-17.34.21.png 960w,
+                            /content/images/size/w1200/2025/03/Screenshot-2025-03-26-at-17.34.21.png 1200w,
+                            /content/images/size/w2000/2025/03/Screenshot-2025-03-26-at-17.34.21.png 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="/content/images/size/w720/2025/03/Screenshot-2025-03-26-at-17.34.21.png"
+                    alt="How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 2"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 2</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">At the end of Part 1 of this series of posts on how I&#39;m creating the personalised news feeds for multiple personas, we got into the Flow 3 stage, where we had a list of articles that needed to be processed.
+
+For reference here are all the flows</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Dinis Cruz</span>
+                <time class="gh-card-date" datetime="2025-03-26">26 Mar 2025</time>
+            </footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post">
+    <a class="gh-card-link" href="/publishing-a-new-personalised-set-of-posts-part-1/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="/content/images/size/w300/2025/03/feed-timeline.mgraph--4-.png 300w,
+                            /content/images/size/w720/2025/03/feed-timeline.mgraph--4-.png 720w,
+                            /content/images/size/w960/2025/03/feed-timeline.mgraph--4-.png 960w,
+                            /content/images/size/w1200/2025/03/feed-timeline.mgraph--4-.png 1200w,
+                            /content/images/size/w2000/2025/03/feed-timeline.mgraph--4-.png 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="/content/images/size/w720/2025/03/feed-timeline.mgraph--4-.png"
+                    alt="How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">Following the technical explanation of how I&#39;m building the Semantic Knowledge Graphs and Establishing Provenance, let&#39;s look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).
+
+The whole process is managed via a</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Dinis Cruz</span>
+                <time class="gh-card-date" datetime="2025-03-26">26 Mar 2025</time>
+            </footer>
+        </div>
+    </a>
+</article>                            <article class="gh-card post">
+    <a class="gh-card-link" href="/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">
+            <figure class="gh-card-image">
+                <img
+                    srcset="/content/images/size/w300/2025/03/1742165370948-2-1-1.jpeg 300w,
+                            /content/images/size/w720/2025/03/1742165370948-2-1-1.jpeg 720w,
+                            /content/images/size/w960/2025/03/1742165370948-2-1-1.jpeg 960w,
+                            /content/images/size/w1200/2025/03/1742165370948-2-1-1.jpeg 1200w,
+                            /content/images/size/w2000/2025/03/1742165370948-2-1-1.jpeg 2000w"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    src="/content/images/size/w720/2025/03/1742165370948-2-1-1.jpeg"
+                    alt="Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)"
+                >
+            </figure>
+
+        <div class="gh-card-wrapper">
+            <header class="gh-card-header">
+                <h3 class="gh-card-title">Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)</h3>
+            </header>
+
+                    <div class="gh-card-excerpt">The first MVP of the MyFeeds.ai site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on why each article was chosen for each targeted persona (CEO, CISO, CTO, Board Member, etc...)
+
+The solution pulls in content from sources like RSS</div>
+
+            <footer class="gh-card-footer">
+                <span class="gh-card-author">Dinis Cruz</span>
+                <time class="gh-card-date" datetime="2025-03-23">23 Mar 2025</time>
+            </footer>
+        </div>
+    </a>
+</article>                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+                <section class="gh-subscribe">
+                    <h3 class="gh-subscribe-title">Subscribe to myfeeds</h3>
+                        <div class="gh-subscribe-description">Don&#x27;t miss out on the latest news. Sign up now to get access to the library of members-only articles.</div>
+                    <button class="gh-subscribe-btn gh-btn" data-portal="signup"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.33332 3.33334H16.6667C17.5833 3.33334 18.3333 4.08334 18.3333 5.00001V15C18.3333 15.9167 17.5833 16.6667 16.6667 16.6667H3.33332C2.41666 16.6667 1.66666 15.9167 1.66666 15V5.00001C1.66666 4.08334 2.41666 3.33334 3.33332 3.33334Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.3333 5L9.99999 10.8333L1.66666 5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> Subscribe now</button>
+                </section>
+
+            <nav class="gh-foot-menu">
+                <ul class="nav">
+    <li class="nav-sign-up"><a href="#/portal/">Sign up</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-copyright">
+                    myfeeds © 2025. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://mvp.myfeeds.ai/assets/built/main.min.js?v=8765ea719d"></script>
+
+<script src="https://t.ghostboard.io/min.js" async defer data-gbid="c7c7850536ccf5508c0462402e03ff5e"></script><noscript>
+  <img src="https://api.ghostboard.io/noscript/c7c7850536ccf5508c0462402e03ff5e/pixel.gif" alt="Ghostboard pixel" /></noscript>
+
+</body>
+
+</html>

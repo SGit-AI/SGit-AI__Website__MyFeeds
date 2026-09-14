@@ -38,33 +38,50 @@ contract and that is a fair criticism to make of it.</p>
 
 <p>The complete list of things this site currently asserts without having proven:</p>
 
+<div class="note">
+<p><strong>This table was replaced wholesale at v0.1.3.</strong> Until then it listed the
+edges of a different argument — what feed readers export, what a vault guarantees — which
+was superseded when the MyFeeds source material became available. Those rows are not
+hidden: they are in <a href="../build-order/index.html">the superseded build order</a> and
+in <a href="../admin/versions.html">the release history</a>, which is where a retired claim belongs
+once it is no longer the site's claim.</p>
+</div>
+
 <div class="tablewrap"><table>
 <thead><tr><th>Claim</th><th>Status</th><th>What would settle it</th></tr></thead>
 <tbody>
-<tr><td>No mainstream reader exports per-item read state</td>
-<td><span class="tag unverified">unverified</span></td>
-<td>Reading each vendor's own export documentation — <a href="../team/board.html#todo">card
-003</a></td></tr>
-<tr><td>What Google Takeout carried for Reader in 2013</td>
-<td><span class="tag unverified">unverified</span></td>
-<td>The archived documentation; written here from memory</td></tr>
-<tr><td>The sgit vault's security properties, as summarised on /vault/</td>
-<td><span class="tag unverified">unverified</span></td>
-<td>An independent audit. This site has run none and is repeating the platform's own
-published model</td></tr>
-<tr><td>Item identity under <code>read-state/v1</code> is stable enough to be useful</td>
+<tr><td>The four-stage pipeline is what MyFeeds does</td>
+<td><span class="tag shipped">shipped</span></td>
+<td>Settled. It is described in the author's own posts, recovered
+<a href="../back-office/archive/index.html">here</a>, and the engine is public at
+<a href="https://github.com/the-cyber-boardroom/myfeeds-ai">the-cyber-boardroom/myfeeds-ai</a>.</td></tr>
+<tr><td>Decomposing the call buys back explainability and provenance</td>
 <td><span class="tag argued">argued</span></td>
-<td>Measured churn across a few hundred real feeds over weeks —
-<a href="../build-order/index.html#obligations">obligation 2</a></td></tr>
-<tr><td>Read state merges without conflict</td><td><span class="tag argued">argued</span></td>
-<td>A published two-device transcript — <a href="../build-order/index.html#order">build
-order item 5</a></td></tr>
+<td>A worked trace published end to end: one briefing, its four intermediate JSON files,
+and the source article each claim came from. The archive shows the outputs; it does not
+show the intermediates.</td></tr>
+<tr><td>"A measure of determinism"</td><td><span class="tag argued">argued</span></td>
+<td>Deliberately hedged, in the original's own words. An LLM is not deterministic;
+schema-constrained stages are repeatable enough to check. Settled by running the same
+inputs repeatedly and publishing the variance — which nobody has done.</td></tr>
+<tr><td>The single-call approach fails the way this site says it does</td>
+<td><span class="tag argued">argued</span></td>
+<td>It is a first-hand account of building both, not a controlled comparison. A
+side-by-side on the same fifty articles, with both outputs published, would make it
+evidence.</td></tr>
+<tr><td>Competitors have tried this "with limited success"</td>
+<td><span class="tag unverified">unverified</span></td>
+<td>Carried over from the recovered post and not independently checked here.
+<code>docs/similar-services.md</code> in the engine repository is the place to start.</td></tr>
+<tr><td>9 archived URLs are unrecoverable</td>
+<td><span class="tag argued">argued</span></td>
+<td>Unrecoverable <em>from the Internet Archive</em>, which is what the manifest says.
+<a href="../team/board.html#todo">Card 010</a> lists the other places to look before that
+becomes a conclusion.</td></tr>
 <tr><td>The site is live at myfeeds.sgit.ai</td>
 <td><span class="tag shipped">shipped</span></td>
 <td>Serving since v0.1.1, confirmed by <code>admin/build/verify-live.sh</code> rather than
-by a green CI badge. <strong>This row said <em>not yet</em> in v0.1.0 and v0.1.1</strong>,
-and the reason it changed is on <a href="../team/board.html#done">card 004</a>: the
-subdomain was never the blocker, the missing deploy workflow was</td></tr>
+by a green CI badge.</td></tr>
 </tbody></table></div>
 
 <h2 id="worth">What this site is worth</h2>

@@ -1,8 +1,8 @@
 # Feeds are replaceable. Your reading is not.
 
-> Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
+> Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -11,6 +11,10 @@ links below point at them.*
 The argument
 
 # Feeds are replaceable. Your reading is not.
+
+**Superseded.** This page is part of an argument this site made in versions v0.1.0 to v0.1.2 — that the valuable half of a feed reader is the record of what you read, and that it belongs in an encrypted vault. It was written before any MyFeeds source material was available to this site, and it is not what MyFeeds is. The thesis is now [the four-stage pipeline](../index.md), built from the recovered writing.
+
+It stays up, unedited below this line, because deleting a wrong claim destroys the only evidence that the process works. Read it as a record of what was argued, not as a description of this project. The change is recorded in [the release history](../admin/versions.md).
 
 A feed reader holds two data sets with opposite properties, and treats them identically. One of them can be reconstructed from the public internet at any time. The other exists once, nowhere else, and is destroyed by the same event that ends your subscription.
 

@@ -3,31 +3,37 @@
     "path": "index.html",
     "section": "Home",
     "title": "myfeeds.sgit.ai",
-    "desc": "Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it."
+    "desc": "Ask one LLM to read fifty articles and pick five for a CISO and it will \u2014 and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect."
+  },
+  {
+    "path": "how-it-works/index.html",
+    "section": "The argument",
+    "title": "How it works",
+    "desc": "The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary \u2014 each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built."
   },
   {
     "path": "thesis/index.html",
-    "section": "The argument",
+    "section": "Superseded (v0.1.0\u2013v0.1.2)",
     "title": "Feeds are replaceable. Your reading is not.",
-    "desc": "Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place."
+    "desc": "Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place."
   },
   {
     "path": "read-state/index.html",
-    "section": "The argument",
+    "section": "Superseded (v0.1.0\u2013v0.1.2)",
     "title": "The part nobody exports",
-    "desc": "OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it."
+    "desc": "Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 \u2014 a contract published before anything implements it."
   },
   {
     "path": "vault/index.html",
-    "section": "The argument",
+    "section": "Superseded (v0.1.0\u2013v0.1.2)",
     "title": "What a feeds vault holds",
-    "desc": "The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container."
+    "desc": "Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart \u2014 plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container."
   },
   {
     "path": "build-order/index.html",
-    "section": "The argument",
+    "section": "Superseded (v0.1.0\u2013v0.1.2)",
     "title": "What does not exist yet",
-    "desc": "Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built."
+    "desc": "Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified \u2014 published before the code so the commitments are checkable against what actually gets built."
   },
   {
     "path": "admin/index.html",

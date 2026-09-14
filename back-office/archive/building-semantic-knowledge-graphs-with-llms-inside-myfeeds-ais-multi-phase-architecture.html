@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture · myfeeds.sgit.ai</title>
+<meta name="description" content="Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…">
+<meta name="generator" content="admin/build/build_pages.py v0.1.3">
+<link rel="canonical" href="https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="myfeeds.sgit.ai">
+<meta property="og:title" content="Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture · myfeeds.sgit.ai">
+<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…">
+<meta property="og:url" content="https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai's Multi-Phase Architecture","description":"Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.3","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
+--dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--wide:1180px;--measure:74ch}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14151a;--panel:#1b1d23;
+--panel2:#22242b;--line:#2c2f38;--fg:#e8e6e0;--dim:#a3a7b0;--dim2:#767b86;--accent:#2dd4bf;
+--accent-dk:#5eead4}}
+*,*::before,*::after{box-sizing:border-box}
+.skip{position:absolute;left:-9999px;top:0;background:var(--panel);padding:.6rem 1rem;z-index:99}
+.skip:focus{left:.5rem;top:.5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;
+line-height:1.62}
+img{max-width:100%;height:auto}
+a{color:var(--accent-dk);text-decoration:none}
+main{max-width:var(--wide);margin:0 auto;padding:0 20px 5rem}
+main>*{max-width:var(--measure)}
+main>.grid,main>.band,main>.tablewrap,main>.wide{max-width:none}
+h1{font-size:clamp(1.95rem,1.3rem + 2.4vw,3rem);line-height:1.1;margin:.4rem 0 .6rem}
+h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .bar{max-width:var(--wide);margin:0 auto;padding:.7rem 20px;display:flex;
+align-items:baseline;gap:1rem;flex-wrap:wrap}
+.site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
+.site-nav a{color:var(--dim);padding:.22rem .55rem}
+.site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+.site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
+gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
+.site-foot ul{list-style:none;margin:0;padding:0}
+pre{overflow-x:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="bar">
+<a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
+<a class="ver" href="../../admin/versions.html#v0-1-3"
+title="What changed in v0.1.3">v0.1.3</a>
+<nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
+</div></header>
+<main id="main">
+<p class="crumb"><a href="../../index.html">myfeeds.sgit.ai</a> / Back office</p>
+<p class="kicker">Recovered from the archive</p>
+<h1>Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai&#x27;s Multi-Phase Architecture</h1>
+<dl class="fields">
+<dt>Originally</dt><dd><code>https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/</code> —
+the site no longer exists</dd>
+<dt>Published</dt><dd>24 Mar 2025</dd>
+<dt>Author</dt><dd>Dinis Cruz</dd>
+<dt>Tags</dt><dd><span class="tag">How it works</span></dd>
+<dt>Recovered</dt><dd>From a capture of the site's RSS feed, which carried the full body.
+The markdown is at <code>back-office/archive/mvp.myfeeds.ai__posts/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.md</code>.</dd>
+</dl>
+
+<div class="note"><p>This is recovered content, reproduced as it was published. Links in
+it point at pages that in many cases no longer resolve, and images are still served from
+the dead domain — both are left exactly as written rather than silently repaired, because
+a rewritten archive is no longer evidence of what was said.</p></div>
+
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png)</p>
+<p>The post <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)</a> mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but <strong>what do those entities look like?</strong> and more importantly,<strong> how do we have provenance, explainability and determinism from</strong> this workflow?</p>
+<p>Let&#x27;s take for example the <a href="https://mvp.myfeeds.ai/ceo-19-feb/">CEO (19 Mar)</a> post which looked like this:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image.png)</p>
+<p>As you can see, the intro text is focused on the CEO persona, and in the 50x available articles from <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">the Hacker News</a> RSS feed used, the <a href="https://thehackernews.com/2025/03/bcdr-2025-trends-and-challenges-for-msps-and-it-teams.html?ref=mvp.myfeeds.ai">Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025</a> article was selected, which looks like this:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-1.png)</p>
+<p>Since we are using the <a href="https://feeds.feedburner.com/TheHackersNews?ref=mvp.myfeeds.ai">RSS feed</a>, it all starts with the XML content:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-2.png)</p>
+<blockquote><p>Note: In this first MVP we are only using the text of the title &quot;Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025&quot; (I also created a similar workflow using the description, but the title was already working quite well)</p></blockquote>
+<h4 id="what-didn-t-work-using-one-llm-call-to-create-the-output">What didn&#x27;t work: using one LLM call to create the output</h4>
+<p>On the personalisation path, the first thing I tried was to create a prompt that had:</p>
+<ul><li>the entire RSS feed content (i.e the titles and descriptions)</li><li>a description of the user&#x27;s persona (in this case a CEO)</li><li>a description of the desired output (for example a news digest)This was easily done by converting the RSS content into a &#x27;prompt friendly&#x27; text based representation:</li></ul>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-3.png)</p>
+<p>.... which I could easily add to one of my <a href="https://www.thecyberboardroom.com/?ref=mvp.myfeeds.ai">Cyber Boardroom</a> personas (in this case a CEO):</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-4.png)</p>
+<p>.... resulting in something like this:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-5.png)</p>
+<p>Although this kinda works, when using the 50x RSS articles and asking the LLM to pick the most relevant 5x, I had a large number of very important problems, challenges and concerns: (which btw are the same ones faced by the companies/services that have been trying to create personalised news feed, with limited success) :</p>
+<ul><li>Explainability: How do I explain exactly how and why those specific 5x articles were selected</li><li>Provenance: How can I connect each article, statement, opinion, and more importantly, each fact, into it&#x27;s original source</li><li>Determinism: How can I make sure that the results are deterministic and repeatable (i.e. same inputs should produce the same output)</li><li>LLM is doing too much: since we can&#x27;t look inside the LLM and understand how it arrive at its conclusions, this is a good example (like in most Agentic solutions these days) where the LLM is just doing too much in one step</li></ul>
+<h4 id="semantic-knowledge-graphs">Semantic Knowledge Graphs</h4>
+<p>After a number of experiments, following on my personal theme that <em>&#x27;everything is really just graphs and maps&#x27;</em> and inspired by the great work/thinking done by the semantic web community, the solution that worked really well was to use Semantic Knowledge Graphs</p>
+<p>But the problem I always had when I created large graphs (for example when using <a href="https://www.linkedin.com/posts/diniscruz_jira-as-graph-db-activity-7293099257547354112-z4xs/?ref=mvp.myfeeds.ai">Jira as a GraphDB</a>) was how to scale the graph creation, curation and connection.</p>
+<p>As explained in <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">detail here</a> in mvp.MyFeeds.ai uses 4 stages of LLM processing:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-6.png)</p>
+<p>Let&#x27;s look at each of these stages in action</p>
+<h4 id="phase-1-entity-relationship-extraction">Phase 1: Entity &amp; Relationship extraction</h4>
+<p>From the feed&#x27;s RSS the following JSON file is created which is basically a representation of a Python object with the same fields:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-7.png)</p>
+<p>From this data the two fields that we are going to use is the <strong>article_obj_id</strong> (in this case <em>&quot;6feb1978&quot;</em>) and the <strong>title</strong> value (in this case <em>&quot;Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025&quot;</em>)</p>
+<p>Here is <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/providers/cyber_security/hacker_news/llms/prompts/LLM__Prompt__Extract_Entities.py?ref=mvp.myfeeds.ai#L10-L22">the System Prompt</a> for this first LLM call:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-11.png)</p>
+<p>What is very important and powerful is that for these calls we are using OpenAI&#x27;s <a href="https://platform.openai.com/docs/guides/structured-outputs?ref=mvp.myfeeds.ai">structured outputs</a> where we are able to create set of Python classes which are then provided as the schema to be used by the LLM responses (i.e. we don&#x27;t get raw text back from the LLM call, we get nicely typed JSON/Python objects)</p>
+<p>Here are the <a href="https://github.com/owasp-sbot/MGraph-DB/blob/a6b4875a8e54794ee577527ea86212efdf73fb35/mgraph_db/providers/graph_rag/schemas/Schema__Graph_RAG__Entity__LLM.py?ref=mvp.myfeeds.ai">classes</a> (from the <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">MGraph-DB</a> project) used in this &#x27;entity text extraction&#x27; LLM:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-14.png)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-17.png)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-16.png)</p>
+<p>Which look like this (when created by the LLM)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-18.png)</p>
+<blockquote><p>Note: at the moment (for this first MVP) we are not providing the LLMs any Ontology or Taxonomy to follow, we are basically letting the LLM pick the best relationships, which it already does a pretty good job at. But as we move into a much more deterministic output, based on human feedback, we will be providing a much more explicit set of entities and relationships to use</p></blockquote>
+<p>The next step is to convert this JSON/Python object into a <a href="https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai">MGraph-DB</a> object (i.e. nodes and edges), which looks like this</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-19.png)</p>
+<blockquote><p>Note: MGraph-DB is the Serverless Graph database that I recently published which provides a critical part of this workflow (in this case the ability to easily manipulate and merge those JSON objects as nodes and edges). For more details see: MGraph-AI - A Memory-First Graph Database for GenAI and Serverless Apps</p></blockquote>
+<p>One of the areas that I always put a lot of coding effort in, is the visualisation of graphs, since without it, I find that I can&#x27;t really understand and visualise what the graphs actually look like.</p>
+<p>So in this case, here is the DOT/Graphviz visualisation all the relationships extracted:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-20.png)</p>
+<p>For reference here is the graph for the *&quot;Critical Authentication Bypass Vulnerability Discovered in Moxa PT Switches&quot; *which is another one of the articles shown in the CEO post</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-21.png)</p>
+<p><em>&quot;</em></p>
+<p>But since we can&#x27;t really feed these JSON or Images to an LLM (well ... we could ... but it wouldn&#x27;t be very efficient and it would introduce a big area for hallucinations), we use the the MGraph-DB Tree_Values exporter to create this compressed LLM friendly representation (also for this first MVP, I&#x27;m only using the Entities relationships from the graph above)</p>
+<p>The image below shows the graph tree for this article in the middle of the bigger graph tree text (which is the one that contains all 50x articles from the RSS feed, that is then used in Phase 3)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-34.png)</p>
+<blockquote><p>Note: when working with LLMs it is very important to think about the best way to &#x27;communicate&#x27; with the LLMs, which in this case was about how to create a representation of the graphs nodes and edges in a format that the LLMs can understand (while preserving the nodes and edges relationships), and in this case the simple tree view you can see above did the trick.</p></blockquote>
+<h4 id="phase-2-persona-graph-construction">Phase 2: Persona Graph Construction</h4>
+<p>Next step is to create the equivalent graph for the target persona, in this case the CEO, which starts with this (for now <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/schemas/Default_Data__My_Feeds__Personas.py?ref=mvp.myfeeds.ai">hard-coded</a>) CEO description:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-23.png)</p>
+<p>Then using this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Extract_Entities.py?ref=mvp.myfeeds.ai">LLM prompt</a>:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-24.png)</p>
+<p>... and these schemas:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-26.png)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-27.png)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-28.png)</p>
+<p>... we get these set of entities mappings</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-25.png)</p>
+<p>... which looks like this</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-29.png)</p>
+<p>... and like this, when using the MGraph-DB Tree_Values exporter to create an LLM friendly representation:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-30.png)</p>
+<h4 id="phase-3-relevance-mapping">Phase 3: Relevance Mapping</h4>
+<p>Once we have the entities for the Article and for the Persona, the key question is <em><strong>how do we connect them?</strong></em></p>
+<blockquote><p>Note: This step should eventually not be needed once we provide a strong ontology and taxonomy to the LLM extraction steps (since we would be able to do the same by just navigating the graphs), but at this stage since we are letting the LLMs to freely define the entities and the relationships, we need a way to &#x27;connect them&#x27;, which is what this step is</p></blockquote>
+<p>Using <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Connect_Entities.py?ref=mvp.myfeeds.ai">this system prompt</a>:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-31.png)</p>
+<p>... and this user prompt (where we will include the previously created &quot;Personas Graph Tree&quot; and the &quot;50x articles Graph Tree&quot;) :</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-35.png)</p>
+<p>... and <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Connected_Entities.py?ref=mvp.myfeeds.ai">this schema</a>:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-32.png)</p>
+<p>... we get these mappings:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-33.png)</p>
+<p>In the image above we can see that we are looking at the mappings for the article_id for this RSS article (in this case. &quot;6feb1978&quot;), with 3 entities matches and an an overall score of 8.5</p>
+<p>What is very important here are the <strong>persona_entity</strong> and the <strong>article_entity</strong> values, since they are the connections between the &quot;Persona&#x27;s entity graph&quot; and the &quot;Article&#x27;s entity graph&quot;</p>
+<blockquote><p>Note: although this workflow already provides good results and just about no hallucinations (since the LLM is only working on the data that was provided), my current thinking is that this is still doing &#x27;too much&#x27; and it will be better to extract the entities per article (vs dealing with all articles in one go). This will provide better explainability and allow for more interesting use cases</p></blockquote>
+<p>Also important is that in the JSON/Python file created by this Phase 3, we also include the markdown text of the original article:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-36.png)</p>
+<p>This is done in order to make it easy (and efficient) for the Phase 4 workflow prompt creation step</p>
+<p>What is very powerful is that we now have the list of 5 articles (from the RSS feed 50) that are relevant to a particular persona (in this case a CEO), containing full provenance and explainability.</p>
+<h4 id="phase-4-personalise-summary-generation">Phase 4) Personalise Summary Generation</h4>
+<p>The final use of the LLMs is in the translation of the selected articles (and connected entities) into personalised blog post.</p>
+<p>Using this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Create_Digest.py?ref=mvp.myfeeds.ai">system prompt</a>:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-37.png)</p>
+<p>... and this user prompt:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-38.png)</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-40.png)</p>
+<p>... and this <a href="https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Digest_Articles.py?ref=mvp.myfeeds.ai">schema</a>:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-42.png)</p>
+<p>... we get this JSON/Python object:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-43.png)</p>
+<p>What is very powerful here is that, as before, we are not getting raw text from the LLM , we are getting a set of nicely structured JSON/Python objects which can then be used to create the output in a much more controlled and effective way.</p>
+<p>For example the workflow that executes this Phase 4, also creates for this persona the HTML:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-44.png)</p>
+<p>... and the Markdown code:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-45.png)</p>
+<p>This is what the HTML looks like (when loaded directly from the S3 bucket used to hold all the files shown here):</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-46.png)</p>
+<h4 id="ghost-publishing">Ghost Publishing</h4>
+<p>The final step is to publish this article using the Ghost platform:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-47.png)</p>
+<p>... to <a href="https://mvp.myfeeds.ai/ceo-19-feb/">https://mvp.myfeeds.ai/ceo-19-feb/</a> , which looks like this:</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-48.png)</p>
+<blockquote><p>Note: in this first MVP, the publishing was done manually (i.e. copy and paste of the persona&#x27;s HTML shown above), but the key reason I picked the Ghost platform was because it has a really good API, which will make this step easy to implement</p></blockquote>
+<h4 id="personalising-to-an-actual-persona-and-keep-it-private">Personalising to an actual persona (and keep it private)</h4>
+<p>At the moment, the MyFeeds.ai workflows all work on a predefined set of personas and all the data is publicly available (via REST API), so what about when we <em><strong>want to further personalise the result and keep it private?</strong></em></p>
+<p>That is where <a href="https://www.thecyberboardroom.com/?ref=mvp.myfeeds.ai">the Cyber Boardroom</a> comes into play, since I&#x27;ve already added there powerful user authentication and &quot;multiple personas per user&quot; capabilities.</p>
+<p>The idea is that MyFeeds provides the key data primitives that can then be further processed, customised and personalised at the Cyber Boardroom</p>
+<p>Also important will be to add the human-in-the-loop feedback workflows, where these first set of Ontologies and Taxonomies created by the LLMs will be fine tuned and corrected, providing a scalable way to create and maintain Semantic Knowledge Graphs.</p>
+<h4 id="in-conclusion">In conclusion</h4>
+<p>I&#x27;m really happy with this workflow, since it represents where I believe GenAI and LLMs can make a massive difference: <strong>Semantic Graphs creation, curation and maintenance, with Human-in-the-loop workflows</strong></p>
+<p>The other key principle that you can see in action in these workflows is the: <strong>&quot;Only use LLMs for what they are the only option, and for everything else use code&quot;</strong></p>
+<p>As a good example of how much key infrastructure is still missing from the LLMs code generation work, it took me 3 months of development and lots of experimentation to arrive at this outcome (with all code released as open source at the <a href="https://github.com/the-cyber-boardroom?ref=mvp.myfeeds.ai">https://github.com/the-cyber-boardroom</a> and the <a href="https://github.com/owasp-sbot?ref=mvp.myfeeds.ai">https://github.com/owasp-sbot</a> repos)</p>
+<p>Thanks for reading, please <a href="https://mvp.myfeeds.ai/">subscribe to the mvp.myfeeds.ai</a> persona-driven newsletters and give me feedback and ideas on how to make it better :)</p>
+<hr>
+<p>This final paragraph is here to make this article exceed 2000 words, as counted by the Ghost word counter to the right hand side of the editor</p>
+<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-49-1-1.png)</p>
+
+<div class="next"><a href="index.html">← All recovered posts</a>
+<a href="../index.html">Back office →</a></div>
+</main>
+<footer class="site-foot"><div class="inner">
+<div><h4>The argument</h4><ul><li><a href="../../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP</a></li><li><a href="../../back-office/documents/index.html">The business case</a></li><li><a href="../../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../../back-office/index.html">Everything it is built from</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../../back-office/documents/index.html">Documents</a></li><li><a href="../../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>This page</h4>
+<p><a href="building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>The LLM was doing too much.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.3. Part of the
+<a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
+</div></footer>
+<script>(function(){var B="../../",n=0,t;
+function applied(){try{return getComputedStyle(document.documentElement)
+.getPropertyValue('--site-css').trim()==='1'}catch(e){return false}}
+function inject(tag,c){if(!c)return;var e=document.createElement(tag);e.textContent=c;
+(tag==='style'?document.head:document.body).appendChild(e);}
+function viaFetch(){fetch(B+'assets/site.css').then(function(r){return r.ok?r.text():''})
+.then(function(c){if(!applied())inject('style',c)}).catch(function(){});
+fetch(B+'assets/site.js').then(function(r){return r.ok?r.text():''})
+.then(function(c){inject('script',c)}).catch(function(){});}
+function viaBridge(sg){if(sg.loadCss&&sg.loadJs){try{sg.loadCss('assets/site.css');
+sg.loadJs('assets/site.js');return true}catch(e){}}
+if(sg.vfs&&sg.vfs.readText){try{Promise.resolve(sg.vfs.readText('assets/site.css'))
+.then(function(c){if(!applied())inject('style',c)});
+Promise.resolve(sg.vfs.readText('assets/site.js')).then(function(c){inject('script',c)});
+return true}catch(e){}}return false;}
+// The two transports are tried concurrently and both are idempotent: fetch starts now so
+// the static mirror is never unstyled, and the bridge is used the moment it appears. The
+// --site-css sentinel in site.css stops the second arrival applying anything twice.
+if(window.sg&&viaBridge(window.sg))return;
+viaFetch();
+window.addEventListener('sg-ready',function(){if(!applied()&&window.sg)viaBridge(window.sg)},
+{once:true});
+t=setInterval(function(){if(window.sg){clearInterval(t);if(!applied())viaBridge(window.sg);}
+else if(++n>40){clearInterval(t);if(!applied())viaFetch();}},50);})();</script>
+</body>
+</html>

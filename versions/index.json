@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.2",
+  "current": "v0.1.3",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.3",
+      "date": "2026-09-14",
+      "title": "the site finds out what MyFeeds actually is, recovers the MVP that proved it, and gains a back office to keep the evidence in",
+      "href": "v0.1.3.json"
+    },
     {
       "version": "v0.1.2",
       "date": "2026-09-14",

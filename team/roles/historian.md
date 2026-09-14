@@ -2,7 +2,7 @@
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

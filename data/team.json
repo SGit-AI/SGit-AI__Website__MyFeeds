@@ -1,15 +1,15 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.2",
+  "version": "v0.1.3",
   "generated": "2026-09-14",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {
     "roles": 7,
     "falsifiable_claims": 7,
-    "board_cards": 8,
-    "open_cards": 5,
-    "pages": 19
+    "board_cards": 10,
+    "open_cards": 4,
+    "pages": 39
   },
   "roles": [
     {
@@ -38,19 +38,19 @@
       "slug": "architect",
       "group": "Build",
       "order": 2,
-      "mission": "Own the contracts this site publishes \u2014 the read-state schema, the vault layout, the merge rule \u2014 and keep them separable from any reader that implements them.",
-      "claim": "If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.",
+      "mission": "Own the contracts this site publishes \u2014 the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source.",
+      "claim": "If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed.",
       "claim_form": "falsifiable",
       "not_responsible_for": "Writing the build code, writing page copy, running tests, deploying, or choosing which release something lands in.",
       "owns": [
-        "the read-state schema (read-state/v1)",
-        "the vault folder layout",
-        "the merge rule for read state",
-        "the boundary between fetched content and recorded state"
+        "the stage boundaries of the four-stage pipeline",
+        "the structured-output schemas each stage populates",
+        "the provenance trail from a summary back to its source article",
+        "the boundary between the argument this site publishes and the engine that runs"
       ],
       "tools": [
-        "admin/content/read-state/",
-        "admin/content/vault/"
+        "admin/content/how-it-works/",
+        "back-office/archive/"
       ],
       "file": "team/roles/architect/ROLE.md"
     },
@@ -160,7 +160,7 @@
     {
       "id": "001",
       "title": "Publish read-state/v1 as a versioned schema with a validator",
-      "status": "todo",
+      "status": "held",
       "owner": "architect",
       "kind": "task",
       "opened": "2026-09-14",
@@ -169,7 +169,7 @@
     {
       "id": "002",
       "title": "OPML to vault importer",
-      "status": "todo",
+      "status": "held",
       "owner": "dev",
       "kind": "task",
       "opened": "2026-09-14",
@@ -178,7 +178,7 @@
     {
       "id": "003",
       "title": "Check what each named reader actually exports, against its own docs",
-      "status": "todo",
+      "status": "held",
       "owner": "qa",
       "kind": "task",
       "opened": "2026-09-14",
@@ -228,6 +228,24 @@
       "kind": "need",
       "opened": "2026-09-14",
       "file": "team/board/008-v010-tag.md"
+    },
+    {
+      "id": "009",
+      "title": "Build the multi-audience demo over a live newsroom",
+      "status": "need",
+      "owner": "architect",
+      "kind": "need",
+      "opened": "2026-09-14",
+      "file": "team/board/009-audience-views.md"
+    },
+    {
+      "id": "010",
+      "title": "Recover what the archive could not reach",
+      "status": "todo",
+      "owner": "librarian",
+      "kind": "task",
+      "opened": "2026-09-14",
+      "file": "team/board/010-recover-remaining.md"
     }
   ]
 }

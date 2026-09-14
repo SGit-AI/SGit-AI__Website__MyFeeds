@@ -1,0 +1,24 @@
+{
+  "version": "v0.1.3",
+  "date": "2026-09-14",
+  "commit": null,
+  "commit_ref": "refs/tags/v0.1.3",
+  "vault": null,
+  "reconstructed": false,
+  "title": "the site finds out what MyFeeds actually is, recovers the MVP that proved it, and gains a back office to keep the evidence in",
+  "summary": "Versions v0.1.0 to v0.1.2 argued that the valuable half of a feed reader is the record of what you read. That was written with no access to any MyFeeds source material and it was wrong about the project it claimed to describe. MyFeeds is a pipeline that decomposes one opaque LLM call \u2014 read fifty articles, pick five for this persona \u2014 into four inspectable stages with a semantic knowledge graph between them, so a recommendation carries a provenance trail instead of a shrug. The site now argues that, from the primary sources: fifteen posts recovered out of the Internet Archive, the open-source engine, and the investor material. The four superseded pages stay up with a banner rather than being deleted.",
+  "changes": [
+    "admin/tools/wayback_archive.py \u2014 recovers a site from the Internet Archive: originals in id_ mode, a markdown rendering, and a manifest naming what the sitemap listed and no crawler caught",
+    "back-office/archive/ \u2014 15 posts (13,527 words) and 22 original files from mvp.myfeeds.ai, plus 9 recorded gaps",
+    "back-office/ \u2014 the new section: the archive, documents indexed where they live rather than copied, the tools, and previous versions",
+    "admin/content/index.html, admin/content/how-it-works/ \u2014 the real argument, built from the recovered posts",
+    "admin/content/{thesis,read-state,vault,build-order}/ \u2014 superseded banners; the pages stay, out of the nav",
+    "team/roles/architect/ROLE.md \u2014 now owns the pipeline's stage boundaries and provenance trail, not a read-state schema",
+    "team/board/ \u2014 cards 001-003 held; 009 (the multi-audience demo) and 010 (what the archive could not reach) opened",
+    "data/site.json \u2014 the page inventory as data; validate.js reads it instead of re-deriving the list"
+  ],
+  "corrects": "The whole argument of v0.1.0 through v0.1.2. It was a plausible thesis about feed readers in general and not a description of this project, and it was asserted on a site named after the project. The pages stay up, marked, because deleting them would remove the only evidence that this site corrects itself rather than quietly rewriting. Separately: v0.1.2's validator reported 19 pages passing while the build produced 38 \u2014 it maintained its own idea of what existed. It now reads the build's published inventory.",
+  "basis": [],
+  "site": "myfeeds.sgit.ai",
+  "url": "https://myfeeds.sgit.ai/admin/versions.html#v0-1-3"
+}

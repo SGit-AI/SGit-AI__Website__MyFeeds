@@ -1,8 +1,8 @@
 # What does not exist yet
 
-> Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
+> Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -11,6 +11,10 @@ links below point at them.*
 Honest edges
 
 # What does not exist yet
+
+**Superseded.** This page is part of an argument this site made in versions v0.1.0 to v0.1.2 — that the valuable half of a feed reader is the record of what you read, and that it belongs in an encrypted vault. It was written before any MyFeeds source material was available to this site, and it is not what MyFeeds is. The thesis is now [the four-stage pipeline](../index.md), built from the recovered writing.
+
+It stays up, unedited below this line, because deleting a wrong claim destroys the only evidence that the process works. Read it as a record of what was argued, not as a description of this project. The change is recorded in [the release history](../admin/versions.md).
 
 This site publishes its argument before the thing it argues for. The cost of doing that is this page: every commitment, in the order it has to be built, with what it blocks — so that in six months anyone can check what was claimed against what exists, including the parts that were quietly dropped.
 

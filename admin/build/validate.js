@@ -37,17 +37,31 @@ function exists(p) {
 
 // ---------------------------------------------------------------- the page inventory
 
-const pagesJson = JSON.parse(read('admin/content/pages.json'));
 const roleSlugs = fs
   .readdirSync(path.join(ROOT, 'team', 'roles'))
   .filter((d) => fs.existsSync(path.join(ROOT, 'team', 'roles', d, 'ROLE.md')));
 
-const pages = pagesJson.map((p) => p.path).concat(
-  ['team/index.html', 'team/board.html', 'team/prompts.html', 'admin/versions.html'],
-  roleSlugs.map((s) => `team/roles/${s}.html`)
-);
+// The build publishes what it made. This file used to re-derive the list — pages.json
+// plus a hardcoded set of generated paths — and when the back office shipped it went on
+// checking 19 pages out of 38 and reporting success. A checker that maintains its own
+// idea of what exists will eventually check something else.
+if (!exists('data/site.json')) {
+  failures.push('data/site.json: missing — run the build; the validator reads its inventory');
+}
+const inventory = exists('data/site.json') ? JSON.parse(read('data/site.json')) : { pages: [] };
+const pages = inventory.pages.map((p) => p.path);
 
 check(pages.length >= 12, `expected the full page set, found ${pages.length}`);
+check(inventory.counts && inventory.counts.pages === pages.length,
+  'data/site.json: the page count disagrees with the pages it lists');
+// Everything registered in pages.json must be in the inventory: a page dropped from the
+// build would otherwise simply stop being checked.
+for (const p of JSON.parse(read('admin/content/pages.json'))) {
+  check(pages.includes(p.path), `${p.path}: registered in pages.json but not built`);
+}
+for (const slug of roleSlugs) {
+  check(pages.includes(`team/roles/${slug}.html`), `${slug}: has a ROLE.md but no page`);
+}
 
 // ------------------------------------------------------------------ per-page checks
 

@@ -1,62 +1,91 @@
 # myfeeds.sgit.ai
 
-> Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.
+> Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
 ---
 
-One question, taken further than a section could
+Personalised news, without the black box
 
-# Feeds are replaceable. Your reading is not.
+# The LLM was doing too much.
 
-Every feed reader ever built treats those two sentences the other way round. It works hard to keep a copy of the articles — which the publisher will happily serve again tomorrow — and keeps the record of what you actually read, when, and what you skipped, in a database you cannot open, in a format nobody has ever standardised, at a company that may not exist in three years.
+Take fifty cybersecurity articles, describe a CEO, and ask a language model to pick the five that matter. It will. The output is plausible, often good, and completely unaccountable — you cannot say why those five, you cannot trace a claim back to its source, and you will not get the same answer twice. That is the failure mode every personalised-feed product has shipped into, and it is the one MyFeeds was built to avoid.
 
-This site argues that the record of your reading is the valuable half, that it belongs in an encrypted vault you hold, and that the contract for it should be published before anybody writes the reader. It publishes that contract. It does not yet publish the reader — [what does not exist yet is listed, in order](build-order/index.md).
+If you cannot answer "why am I seeing this?", you have not built a feed. You have built a slot machine with good taste.
 
-### The whole argument in four steps
+## The diagnosis
 
-1. **Subscriptions are portable.** OPML has moved a feed list between readers for two decades. That problem is solved.
+The first attempt was the obvious one: one prompt containing the whole RSS feed, a description of the persona, and a description of the wanted output. It worked well enough to be tempting, and it failed on four counts at once — recorded at the time, in [the post that worked it out](back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.md):
 
-2. **Read state never was.** There is no interchange format for *which items you have read*. Not in OPML, not in RSS, not in Atom, not anywhere. Each reader invented its own and kept it.
+| Problem | The question you cannot answer |
+|---|---|
+| **Explainability** | How were *those* five articles selected, exactly? |
+| **Provenance** | Which source does this specific fact come from? |
+| **Determinism** | Will the same input produce the same output tomorrow? |
+| **Scope** | What did the model actually do in there? It did everything, in one step, where nobody can look. |
 
-3. **That asymmetry is the lock-in.** You can leave with your subscriptions and you arrive at the new reader with twelve thousand unread items and no history. Most people just stay.
+The last one is the cause of the other three, and it is the sentence this site is named after: **the LLM is doing too much**. Not wrong — too much, in one step, with no surface to inspect.
 
-4. **Read state is the one shape that merges without conflict.** It is a grow-only set of `(item, first read at)` pairs; two devices union cleanly and nothing is ever overwritten. Which means it can live in a version-controlled encrypted vault you own, synced between your own machines, with no server that needs to be able to read it.
+## The fix is a graph between the stages
 
-## Why this is a vault problem and not an app problem
+Split the single call into four, each with a typed, structured output, and put a semantic knowledge graph where the reasoning used to be hidden:
 
-The obvious fix — "just self-host a reader" — moves the database from someone else's machine to yours and leaves everything else in place. The state is still a private schema inside one application, still unreadable without running that application, still gone when you stop running it.
+Stage 1
 
-The interesting move is to make the state a *document*: files with a published shape, versioned, encrypted before they leave your machine, and readable by any program that implements the contract. Then the reader becomes replaceable too — which is the point, because a format that outlives its first implementation is the only kind worth writing down.
+### Extract the article
 
-A reading history is a profile of a person. It should be encrypted at rest, held by its subject, and portable by design — and none of that requires anything cleverer than agreeing on a file layout.
+Article text in; a JSON knowledge graph of its entities and their relationships out. What this article is *about*, as data.
 
-- [The argument — Feeds are replaceable — Why the durability of the two data sets is backwards in every reader, and what that costs at the moment a service shuts down.](thesis/index.md)
+Stage 2
 
-- [The contract — The part nobody exports — What read state actually is, why OPML never carried it, and `read-state/v1` written out in full.](read-state/index.md)
+### Build the persona
 
-- [The container — What a feeds vault holds — The folder layout, the separation of cache from state, and the merge rule that makes two devices safe.](vault/index.md)
+A persona profile in; a graph of what that person cares about out. A CISO and a board member are different graphs, not different prompts.
 
-- [Honest edges — What does not exist yet — Every item this site argues for, in build order, each marked shipped, argued or unverified.](build-order/index.md)
+Stage 3
 
-## What this site is worth today
+### Map relevance
 
-Published before the code, on purpose, so that the commitments are checkable later by anyone — including someone who would like them to have failed. Specifically:
+Both graphs in; out comes a JSON description of *which* entities overlap. This is the step that replaces "the model picked it".
+
+Stage 4
+
+### Write the summary
+
+The article plus the connections from stage 3 in; a summary written for that persona out, emphasising the points that actually matched.
+
+Every stage emits structured JSON rather than prose, which is what buys back the three properties the single call destroyed. The intermediate files *are* the provenance trail: "the article mentions GraphQL, your persona lists GraphQL as an interest, so it was flagged" is not a generated explanation, it is a row you can point at.
+
+### What this costs, honestly
+
+Four LLM calls where there was one, a graph database in the middle, and a schema to maintain for every stage. You do not do this because it is cheaper. You do it because a security executive asking "why is this in my briefing?" deserves an answer that is not "the model thought so" — and because, in a regulated setting, that answer has to survive somebody checking it.
+
+## Where this stands
+
+MyFeeds ran. The MVP published machine-generated briefings for five personas — CEO, CISO, CTO, and board members of private and public companies — from the Hacker News RSS feed, and wrote up how it did it. Then the site went down. The writing survived mostly inside a single capture of its RSS feed, and it is [recovered here](back-office/archive/index.md).
 
 | Thing | Status | Where |
 |---|---|---|
-| The argument | shipped | These pages, and their markdown twins for agents — live at `myfeeds.sgit.ai` since v0.1.1 |
-| The `read-state/v1` shape | argued | [/read-state/](read-state/index.md) — prose and a worked example; the JSON Schema is [board card 001](team/board.md#todo) |
-| The vault layout | argued | [/vault/](vault/index.md) |
-| An importer, a reader, a fetcher | not started | [/build-order/](build-order/index.md) |
-| Claims about what named readers export | unverified | Marked in place, with [card 003](team/board.md#todo) open to check them against each vendor's own documentation |
+| The argument and the architecture | shipped | [/how-it-works/](how-it-works/index.md), and the recovered posts it is built from |
+| The first MVP's output — five personas, real briefings | shipped | [the archive](back-office/archive/index.md) — it ran, and this is what it produced |
+| The engine that produced them | shipped | [the-cyber-boardroom/myfeeds-ai](https://github.com/the-cyber-boardroom/myfeeds-ai) — public and open source |
+| The business case | shipped | [documents](back-office/documents/index.md), and [investor.myfeeds.ai](https://investor.myfeeds.ai/) |
+| A live feed anyone can subscribe to | not yet | The MVP is offline. What exists is the record of it having worked. |
 
-The site is built and run by a small team of AI agents with one human owner, in the open: [seven roles as files](team/index.md), each with the failure condition it is judged on, and [a board](team/board.md) that says what is not done.
+- [The architecture — How it works — The four stages in detail, the structured outputs that make them inspectable, and why a graph rather than a longer prompt.](how-it-works/index.md)
 
-[Start with the argument →](thesis/index.md) [Go straight to the contract →](read-state/index.md) [llms.txt](llms.txt)
+- [Recovered — The first MVP — Fifteen posts, pulled back out of the Internet Archive — the architecture write-ups and the briefings the pipeline actually generated.](back-office/archive/index.md)
+
+- [The working material — Back office — Documents, tools and every previous version — indexed from what is on disk rather than maintained by hand.](back-office/index.md)
+
+- [How this is run — The team — Seven agent roles as files, each with the failure condition it is judged on.](team/index.md)
+
+**This site changed its mind, in public.** Versions v0.1.0 to v0.1.2 argued something else entirely — that the valuable part of a feed reader is the record of what you read, and that it belongs in an encrypted vault. That was written before any of the MyFeeds source material was available, and it is not what MyFeeds is. Those pages are still here, marked, starting at [the superseded thesis](thesis/index.md): the correction goes above the mistake, and the mistake stays.
+
+[How it works →](how-it-works/index.md) [The recovered MVP →](back-office/archive/index.md) [llms.txt](llms.txt)
 
 ---
 

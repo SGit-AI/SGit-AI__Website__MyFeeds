@@ -2,7 +2,7 @@
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -14,45 +14,39 @@ Open work
 
 Every card is a markdown file in `team/board/` with a status line and exactly one owning role. The columns below are those lines rendered at build time. A card with two owners is two cards; a card with no owner does not enter the board.
 
-## Tasks 5
+## Needs 1
+
+Only the human owner can supply these.
+
+`team/board/009-audience-views.md`
+
+### 009 · Build the multi-audience demo over a live newsroom
+
+need owner [architect](roles/architect.md) · opened 2026-09-14
+
+From the author's voice memo of 14 September 2026, recorded here so the intent does not live only in a transcript.
+
+The ask: a MyFeeds-published version of an existing news site, cut for several audiences rather than one — **startups, investors, and corporate executives**, with the executive audience splitting further into C-level, cybersecurity, and risk. Roughly five views. Portuguese first, English second, since the pipeline can do both and the source newsroom is Portuguese (`pt.newsroom.sk.ai`, with other sources to follow).
+
+The shape is two sites, not one:
+
+- a **generic** MyFeeds site explaining the concepts and principles — which is what
+
+myfeeds.sgit.ai now is; and
+
+- a **worked example** that runs the argument on real news: the graphs from the source
+
+articles, the ontology of each target audience, and the join between them rendered as the output. "Connect the dots, and that's what you see on the website."
+
+**Why this is a need rather than a task.** It requires a running pipeline against a live source, which is an engineering project in `myfeeds-ai`, not a page in this repository. What this site can do without it is publish the contract the demo would have to meet — the audience ontologies and what a view is — which is item 1 below and *is* a task once the audiences are settled.
+
+**Open questions the author has to settle before anything is built** 1. Are the five audiences final, and is there a written ontology for each, or is deriving them from the existing persona definitions part of the work? 2. Does the demo publish as its own site, a section of this one, or back into the source newsroom? 3. Portuguese first — does this site become bilingual, or does the demo carry the Portuguese and this site stay English?
+
+**Done when** those three are answered and the contract for an audience view is published here, before the demo exists. That is this estate's order of work and the reason the commitments stay checkable.
+
+## Tasks 3
 
 An agent can pick these up from its starting prompt.
-
-`team/board/001-read-state-schema.md`
-
-### 001 · Publish read-state/v1 as a versioned schema with a validator
-
-todo task owner [architect](roles/architect.md) · opened 2026-09-14
-
-`/read-state/` currently describes the shape in prose and one worked example. That is enough to argue with and not enough to build against.
-
-Ship: a JSON Schema at `data/read-state.v1.schema.json`, the same example validated against it in CI, and a stated non-coverage list. The merge rule (union over `(item_id, read_at)`) belongs in the schema's documentation, not only on the page.
-
-**Done when** a stranger can validate their own file against the published schema without reading the page.
-
-`team/board/002-opml-importer.md`
-
-### 002 · OPML to vault importer
-
-todo task owner [dev](roles/dev.md) · opened 2026-09-14
-
-Take an OPML export from any reader and produce the `feeds/feeds.json` described on `/vault/`. Subscriptions only — OPML carries no read state, and the importer must not invent one. Items with no `xmlUrl` are dropped with a line on stderr, not silently.
-
-Blocked by 001 only for the state half; the subscription half can ship first.
-
-**Done when** `myfeeds import subscriptions.xml` produces a `feeds.json` that round-trips back to an OPML a reader will accept.
-
-`team/board/003-verify-reader-exports.md`
-
-### 003 · Check what each named reader actually exports, against its own docs
-
-todo task owner [qa](roles/qa.md) · opened 2026-09-14
-
-Every sentence on this site about what a specific product does or does not export is currently marked `unverified`, because it was written from memory rather than from a primary source. That marker is honest; it is not a resting place.
-
-For each reader this site names: find the vendor's own export documentation, record the URL and the date checked, list the fields the export carries, and move the sentence to sourced — or correct it.
-
-**Done when** no `unverified` marker remains on `/read-state/` without a dated reason beside it.
 
 `team/board/005-network-entry.md`
 
@@ -78,9 +72,85 @@ Two adaptations were made here and should be reviewed against upstream rather th
 
 **Done when** a periodic diff against the upstream workflow is part of the release routine, and any upstream fix since has been ported or its absence noted here.
 
-## Held 2
+`team/board/010-recover-remaining.md`
+
+### 010 · Recover what the archive could not reach
+
+todo task owner [librarian](roles/librarian.md) · opened 2026-09-14
+
+`admin/tools/wayback_archive.py` recovered 15 posts and 22 files from `mvp.myfeeds.ai` and recorded 9 URLs that its own sitemap named and no crawler ever captured. Two of those are writing rather than an index and are therefore genuinely lost from that source: `/about/` and `/ceo-news/`.
+
+They may exist elsewhere. Places to look, in order of likelihood:
+
+- the Ghost export or database backup, if one was kept;
+
+- `the-cyber-boardroom/myfeeds-ai`, which generated the persona posts and may hold the
+
+source of the pages too;
+
+- LinkedIn, where several of these posts were cross-published — the recovered HTML carries
+
+`?trk=article-ssr-frontend-pulse` parameters, which is evidence they were syndicated there;
+
+- a second archive (archive.today, Bing or Google cache) that the Internet Archive's
+
+index does not cover.
+
+Also outstanding: the run used `--skip-assets`, so the **361 captured images are indexed in the manifest but not downloaded**. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.
+
+**Done when** the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.
+
+## Held 5
 
 Deliberately not shipping, with the reason on the card.
+
+`team/board/001-read-state-schema.md`
+
+### 001 · Publish read-state/v1 as a versioned schema with a validator
+
+held task owner [architect](roles/architect.md) · opened 2026-09-14
+
+`/read-state/` currently describes the shape in prose and one worked example. That is enough to argue with and not enough to build against.
+
+Ship: a JSON Schema at `data/read-state.v1.schema.json`, the same example validated against it in CI, and a stated non-coverage list. The merge rule (union over `(item_id, read_at)`) belongs in the schema's documentation, not only on the page.
+
+**Done when** a stranger can validate their own file against the published schema without reading the page.
+
+---
+
+**Held at v0.1.3.** This card belongs to the read-state argument the site made in v0.1.0 to v0.1.2, which has been superseded — see the release history. It is kept rather than deleted because the cards are the record of what the team was working on, and a board that quietly loses its history is worth less than one that shows a direction being abandoned. Reopen only if the read-state work is ever picked up in its own right.
+
+`team/board/002-opml-importer.md`
+
+### 002 · OPML to vault importer
+
+held task owner [dev](roles/dev.md) · opened 2026-09-14
+
+Take an OPML export from any reader and produce the `feeds/feeds.json` described on `/vault/`. Subscriptions only — OPML carries no read state, and the importer must not invent one. Items with no `xmlUrl` are dropped with a line on stderr, not silently.
+
+Blocked by 001 only for the state half; the subscription half can ship first.
+
+**Done when** `myfeeds import subscriptions.xml` produces a `feeds.json` that round-trips back to an OPML a reader will accept.
+
+---
+
+**Held at v0.1.3.** This card belongs to the read-state argument the site made in v0.1.0 to v0.1.2, which has been superseded — see the release history. It is kept rather than deleted because the cards are the record of what the team was working on, and a board that quietly loses its history is worth less than one that shows a direction being abandoned. Reopen only if the read-state work is ever picked up in its own right.
+
+`team/board/003-verify-reader-exports.md`
+
+### 003 · Check what each named reader actually exports, against its own docs
+
+held task owner [qa](roles/qa.md) · opened 2026-09-14
+
+Every sentence on this site about what a specific product does or does not export is currently marked `unverified`, because it was written from memory rather than from a primary source. That marker is honest; it is not a resting place.
+
+For each reader this site names: find the vendor's own export documentation, record the URL and the date checked, list the fields the export carries, and move the sentence to sourced — or correct it.
+
+**Done when** no `unverified` marker remains on `/read-state/` without a dated reason beside it.
+
+---
+
+**Held at v0.1.3.** This card belongs to the read-state argument the site made in v0.1.0 to v0.1.2, which has been superseded — see the release history. It is kept rather than deleted because the cards are the record of what the team was working on, and a board that quietly loses its history is worth less than one that shows a direction being abandoned. Reopen only if the read-state work is ever picked up in its own right.
 
 `team/board/007-version-commit-hash.md`
 

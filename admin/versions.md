@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.2 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.3 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,32 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.3` · 2026-09-14 · [as data](../versions/v0.1.3.json)
+
+### the site finds out what MyFeeds actually is, recovers the MVP that proved it, and gains a back office to keep the evidence in
+
+Versions v0.1.0 to v0.1.2 argued that the valuable half of a feed reader is the record of what you read. That was written with no access to any MyFeeds source material and it was wrong about the project it claimed to describe. MyFeeds is a pipeline that decomposes one opaque LLM call — read fifty articles, pick five for this persona — into four inspectable stages with a semantic knowledge graph between them, so a recommendation carries a provenance trail instead of a shrug. The site now argues that, from the primary sources: fifteen posts recovered out of the Internet Archive, the open-source engine, and the investor material. The four superseded pages stay up with a banner rather than being deleted.
+
+**Corrects.** The whole argument of v0.1.0 through v0.1.2. It was a plausible thesis about feed readers in general and not a description of this project, and it was asserted on a site named after the project. The pages stay up, marked, because deleting them would remove the only evidence that this site corrects itself rather than quietly rewriting. Separately: v0.1.2's validator reported 19 pages passing while the build produced 38 — it maintained its own idea of what existed. It now reads the build's published inventory.
+
+#### Changes
+
+- admin/tools/wayback_archive.py — recovers a site from the Internet Archive: originals in id_ mode, a markdown rendering, and a manifest naming what the sitemap listed and no crawler caught
+
+- back-office/archive/ — 15 posts (13,527 words) and 22 original files from mvp.myfeeds.ai, plus 9 recorded gaps
+
+- back-office/ — the new section: the archive, documents indexed where they live rather than copied, the tools, and previous versions
+
+- admin/content/index.html, admin/content/how-it-works/ — the real argument, built from the recovered posts
+
+- admin/content/{thesis,read-state,vault,build-order}/ — superseded banners; the pages stay, out of the nav
+
+- team/roles/architect/ROLE.md — now owns the pipeline's stage boundaries and provenance trail, not a read-state schema
+
+- team/board/ — cards 001-003 held; 009 (the multi-audience demo) and 010 (what the archive could not reach) opened
+
+- data/site.json — the page inventory as data; validate.js reads it instead of re-deriving the list
 
 `v0.1.2` · 2026-09-14 · [as data](../versions/v0.1.2.json)
 
