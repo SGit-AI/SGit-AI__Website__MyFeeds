@@ -2,7 +2,7 @@
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.1 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.2 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -13,22 +13,6 @@ Open work
 # The board
 
 Every card is a markdown file in `team/board/` with a status line and exactly one owning role. The columns below are those lines rendered at build time. A card with two owners is two cards; a card with no owner does not enter the board.
-
-## Needs 1
-
-Only the human owner can supply these.
-
-`team/board/004-domain.md`
-
-### 004 · myfeeds.sgit.ai does not resolve yet
-
-need owner [devops](roles/devops.md) · opened 2026-09-14
-
-At the time of this release the subdomain has no certificate and no DNS record — a request to `https://myfeeds.sgit.ai/` fails TLS before it reaches anything. The site builds, validates and is committed; it is not served.
-
-Only the human owner can supply this: the DNS record and the Pages configuration that `CNAME` in the repository root expects.
-
-**Done when** `curl -sI https://myfeeds.sgit.ai/` returns 200 and the version in the response matches `VERSION_LOG`.
 
 ## Tasks 5
 
@@ -94,7 +78,7 @@ Two adaptations were made here and should be reviewed against upstream rather th
 
 **Done when** a periodic diff against the upstream workflow is part of the release routine, and any upstream fix since has been ported or its absence noted here.
 
-## Held 1
+## Held 2
 
 Deliberately not shipping, with the reason on the card.
 
@@ -111,6 +95,40 @@ The reason is real: the commit that *carries* a version cannot be known while th
 **Held**, not open, because the obvious fixes are worse than the gap: capturing `git rev-parse HEAD` at build time records the *previous* commit under a field that claims to be this one, and having CI write the hash back means a CI-authored commit that exists only on the git side, which breaks the both-remotes-in-sync invariant.
 
 **Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
+
+`team/board/008-v010-tag.md`
+
+### 008 · v0.1.0 has no tag on the remote
+
+held need owner [devops](roles/devops.md) · opened 2026-09-14
+
+The `tag-release` job backfills a tag for every historical release. It created `v0.1.0` locally and could not push it: `GITHUB_TOKEN` cannot push a ref to a commit whose tree carries a different `.github/workflows` blob, and v0.1.0's tree carried the `build.yml` this release replaced.
+
+The workflow names the remedy — `git push origin --tags` from a workflows-scoped human credential. That was attempted from this session and also rejected, with `HTTP 403`, so the session credential carries the same limit. `v0.1.1` is tagged; `v0.1.0` is not.
+
+**Held**, not open, because nothing is broken: the release is identified by its commit subject and by `versions/v0.1.0.json`, and the missing tag is a bookkeeping gap rather than an outage — which is exactly the distinction the workflow is built around. Every future release tags normally, because their trees will carry the current workflow.
+
+**Done when** somebody with a workflows-scoped token runs `git push origin --tags`, or the team decides the gap is permanent and says so here.
+
+## Done 1
+
+Closed, with the release that carried it.
+
+`team/board/004-domain.md`
+
+### 004 · myfeeds.sgit.ai does not resolve yet
+
+done need owner [devops](roles/devops.md) · opened 2026-09-14
+
+**Closed by v0.1.1, and not in the way this card expected.**
+
+As opened: at v0.1.0 the subdomain had no certificate — a request to `https://myfeeds.sgit.ai/` failed TLS before reaching anything — and this was filed as a need only the human owner could supply, on the assumption that a DNS record was missing.
+
+What actually happened: the DNS was already there (`myfeeds.sgit.ai` resolved to the same GitHub Pages addresses as every sibling site, which is consistent with a wildcard record on `sgit.ai` — *inferred from the resolution, not confirmed against the zone*). What was missing was Pages itself being switched on for this repository, so no certificate had ever been issued for the host. The v0.1.1 deploy job did that: `actions/configure-pages@v5` with `enablement: true`, plus the `CNAME` file in the repository root, and GitHub provisioned the certificate.
+
+So the need was not a need. It was the deploy workflow this site did not have.
+
+**Verified:** `admin/build/verify-live.sh` reports `myfeeds.sgit.ai is serving v0.1.1`; `index.md`, `llms.txt`, `versions/index.json`, `data/team.json` and `app.json` all return 200 with the right content types.
 
 [← The team](index.md)[Starting prompts →](prompts.md)
 

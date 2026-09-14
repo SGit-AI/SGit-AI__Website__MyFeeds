@@ -2,7 +2,7 @@
 
 > Architect — Own the contracts this site publishes — the read-state schema, the vault layout, the merge rule — and keep them separable from any reader that implements them. Fails when: If a reader application and a vault layout cannot be replaced independently of each other, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.1 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.2 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

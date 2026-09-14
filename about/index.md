@@ -2,7 +2,7 @@
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.1 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.2 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -53,7 +53,7 @@ The complete list of things this site currently asserts without having proven:
 | The sgit vault's security properties, as summarised on /vault/ | unverified | An independent audit. This site has run none and is repeating the platform's own published model |
 | Item identity under `read-state/v1` is stable enough to be useful | argued | Measured churn across a few hundred real feeds over weeks — [obligation 2](../build-order/index.md#obligations) |
 | Read state merges without conflict | argued | A published two-device transcript — [build order item 5](../build-order/index.md#order) |
-| The site is live at myfeeds.sgit.ai | not yet | The subdomain does not resolve at the time of this release — [card 004](../team/board.md#need) |
+| The site is live at myfeeds.sgit.ai | shipped | Serving since v0.1.1, confirmed by `admin/build/verify-live.sh` rather than by a green CI badge. **This row said *not yet* in v0.1.0 and v0.1.1**, and the reason it changed is on [card 004](../team/board.md#done): the subdomain was never the blocker, the missing deploy workflow was |
 
 ## What this site is worth
 

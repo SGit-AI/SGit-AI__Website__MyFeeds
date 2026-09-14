@@ -2,7 +2,7 @@
 
 > Feeds are replaceable; your reading is not. The case for holding the record of what you read in an encrypted vault you own, and the read-state contract published before the reader that would implement it.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.1 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.2 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -48,7 +48,7 @@ Published before the code, on purpose, so that the commitments are checkable lat
 
 | Thing | Status | Where |
 |---|---|---|
-| The argument | shipped | These pages, and their markdown twins for agents |
+| The argument | shipped | These pages, and their markdown twins for agents — live at `myfeeds.sgit.ai` since v0.1.1 |
 | The `read-state/v1` shape | argued | [/read-state/](read-state/index.md) — prose and a worked example; the JSON Schema is [board card 001](team/board.md#todo) |
 | The vault layout | argued | [/vault/](vault/index.md) |
 | An importer, a reader, a fetcher | not started | [/build-order/](build-order/index.md) |

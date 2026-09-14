@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.1",
+  "current": "v0.1.2",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.2",
+      "date": "2026-09-14",
+      "title": "the site went live, so the three pages that said it had not are corrected above the claims rather than instead of them",
+      "href": "v0.1.2.json"
+    },
     {
       "version": "v0.1.1",
       "date": "2026-09-14",

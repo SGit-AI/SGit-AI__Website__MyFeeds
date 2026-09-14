@@ -2,7 +2,7 @@
 
 > Feeds are replaceable. Your reading is not. Your subscriptions are portable and your reading never was. myfeeds.sgit.ai argues that the record of what you read belongs in an encrypted vault you hold — and publishes the read-state contract before the reader that would implement it.
 
-Site version: v0.1.1. A site in the [sgit.ai](https://sgit.ai) network.
+Site version: v0.1.2. A site in the [sgit.ai](https://sgit.ai) network.
 Every page below is markdown, generated from the same source as the HTML page at
 the same path (swap `.md` for `.html`). Links inside the markdown point at
 markdown, so you can traverse the whole site without parsing HTML.

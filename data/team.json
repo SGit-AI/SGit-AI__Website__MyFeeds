@@ -1,14 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.1",
+  "version": "v0.1.2",
   "generated": "2026-09-14",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {
     "roles": 7,
     "falsifiable_claims": 7,
-    "board_cards": 7,
-    "open_cards": 6,
+    "board_cards": 8,
+    "open_cards": 5,
     "pages": 19
   },
   "roles": [
@@ -187,7 +187,7 @@
     {
       "id": "004",
       "title": "myfeeds.sgit.ai does not resolve yet",
-      "status": "need",
+      "status": "done",
       "owner": "devops",
       "kind": "need",
       "opened": "2026-09-14",
@@ -219,6 +219,15 @@
       "kind": "task",
       "opened": "2026-09-14",
       "file": "team/board/007-version-commit-hash.md"
+    },
+    {
+      "id": "008",
+      "title": "v0.1.0 has no tag on the remote",
+      "status": "held",
+      "owner": "devops",
+      "kind": "need",
+      "opened": "2026-09-14",
+      "file": "team/board/008-v010-tag.md"
     }
   ]
 }

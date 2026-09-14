@@ -2,7 +2,7 @@
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.1 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.2 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -40,7 +40,9 @@ Everything here follows from that one question, and anything that does not follo
 
 ## Corrections go upstream
 
-The network directory on sgit.ai carries one entry per sibling site, written in that site's own words, and a sibling corrects the directory when it is wrong about it rather than the other way round. This site does not appear in that directory yet — [card 005](../team/board.md#todo) is open to send the entry, and until it closes the network is, from the outside, correct not to list a site that serves nothing.
+The network directory on sgit.ai carries one entry per sibling site, written in that site's own words, and a sibling corrects the directory when it is wrong about it rather than the other way round. This site does not appear in that directory yet — [card 005](../team/board.md#todo) is open to send the entry.
+
+**Corrected in v0.1.2.** Until this release the paragraph above ended “until it closes the network is, from the outside, correct not to list a site that serves nothing.” That was true when it was written and stopped being true the moment v0.1.1 deployed: `myfeeds.sgit.ai` now serves. The entry is still unsent, which is a card, not an excuse.
 
 [The full network ↗](https://sgit.ai/network/index.html) [About this site →](../about/index.md) [← Home](../index.md)
 
