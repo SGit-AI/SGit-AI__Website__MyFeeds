@@ -1,15 +1,15 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.5",
+  "version": "v0.1.6",
   "generated": "2026-09-15",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {
     "roles": 7,
     "falsifiable_claims": 7,
-    "board_cards": 11,
-    "open_cards": 5,
-    "pages": 43
+    "board_cards": 12,
+    "open_cards": 6,
+    "pages": 45
   },
   "roles": [
     {
@@ -223,7 +223,7 @@
     {
       "id": "008",
       "title": "v0.1.0 has no tag on the remote",
-      "status": "held",
+      "status": "done",
       "owner": "devops",
       "kind": "need",
       "opened": "2026-09-14",
@@ -255,6 +255,15 @@
       "kind": "task",
       "opened": "2026-09-15",
       "file": "team/board/011-daily-sync.md"
+    },
+    {
+      "id": "012",
+      "title": "Brief filed to the pt.newsroom.sgit.ai team \u2014 four requests",
+      "status": "doing",
+      "owner": "librarian",
+      "kind": "task",
+      "opened": "2026-09-15",
+      "file": "team/board/012-newsroom-brief.md"
     }
   ]
 }

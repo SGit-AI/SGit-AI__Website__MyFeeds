@@ -1,11 +1,11 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.5",
+  "version": "v0.1.6",
   "generated": "2026-09-15",
   "source": "admin/build/build_pages.py",
   "counts": {
-    "pages": 43,
-    "indexed": 21,
+    "pages": 45,
+    "indexed": 23,
     "hidden": 22
   },
   "pages": [
@@ -73,6 +73,16 @@
       "path": "admin/versions.html",
       "section": "Provenance",
       "title": "Release history"
+    },
+    {
+      "path": "provenance/index.html",
+      "section": "Provenance",
+      "title": "This site is written by an AI, and reviewed afterwards"
+    },
+    {
+      "path": "review/index.html",
+      "section": "Provenance",
+      "title": "What a human is being asked to settle"
     },
     {
       "path": "audiences/index.html",

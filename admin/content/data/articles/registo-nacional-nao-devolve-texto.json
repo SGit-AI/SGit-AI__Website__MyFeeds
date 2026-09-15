@@ -1,0 +1,60 @@
+{
+  "slug": "registo-nacional-nao-devolve-texto",
+  "title": "Duas das três páginas do registo nacional não devolvem texto a um leitor automático",
+  "title_en": "Two of the three national registry pages return no text to a machine reader",
+  "language": "pt-PT",
+  "date": "2026-09-14",
+  "source_site": "pt.newsroom.sgit.ai",
+  "source_url": "https://pt.newsroom.sgit.ai/artigos/2026/09/14/registo-nacional-nao-devolve-texto/",
+  "source_repo": "SGit-AI/SGit-AI__Website__Newsroom__PT",
+  "source_path": "artigos/2026/09/14/registo-nacional-nao-devolve-texto/",
+  "extraction": {
+    "status": "ai-generated, unreviewed",
+    "note": "Entities and edges proposed by a Claude Code session reading the article and its afirmacoes.json, against the published article ontology. No human has reviewed this extraction. Errors here propagate into every explanation downstream, which is why the review status is carried on the page rather than in a footnote.",
+    "by": "claude-code session, 2026-09-15"
+  },
+  "what_it_says": "Three pages of Portugal's public registry were requested the way any program would request them — one HTTP request, no scripts run — and the bytes kept. The official gazette returned 2,346 bytes and 22 characters of visible text. The government page returned 165,569 bytes and 348 characters. The national open-data portal returned 849,388 bytes and 27,406 characters, and is the only one of the three a machine reader can read. A measurement on published artefacts, with a date and a hash, not an opinion about anyone.",
+  "entities": [
+    { "id": "article", "type": "Article", "label": "Duas das três páginas do registo nacional não devolvem texto" },
+    { "id": "org:dre", "type": "Organisation", "label": "Diário da República (the official gazette)" },
+    { "id": "org:gov-ia", "type": "Organisation", "label": "the Government's AI page" },
+    { "id": "org:dados-gov", "type": "Organisation", "label": "the national open-data portal" },
+    { "id": "tech:client-side-rendering", "type": "Technology", "label": "rendering page content by script in the visitor's browser" },
+    { "id": "weakness:no-text-without-scripts", "type": "Weakness", "label": "a page that returns bytes but no readable text to any client that does not run scripts" },
+    { "id": "measure:dre-chars", "type": "Measure", "label": "22 characters of visible text from 2,346 bytes" },
+    { "id": "measure:gov-chars", "type": "Measure", "label": "348 characters of visible text from 165,569 bytes" },
+    { "id": "measure:dados-chars", "type": "Measure", "label": "27,406 characters of visible text from 849,388 bytes" },
+    { "id": "source:dre", "type": "Source", "label": "the frozen gazette page (2026-09-14/registo/dre-inicio)" },
+    { "id": "source:gov-ia", "type": "Source", "label": "the frozen government AI page (2026-09-14/registo/gov-ia)" },
+    { "id": "source:dados-gov", "type": "Source", "label": "the frozen open-data portal page (2026-09-14/registo/dados-gov)" },
+    { "id": "claim:c1", "type": "Claim", "label": "the gazette returned 2,346 bytes and 22 characters of visible text" },
+    { "id": "claim:c2", "type": "Claim", "label": "the government page returned 165,569 bytes and 348 characters" },
+    { "id": "claim:c3", "type": "Claim", "label": "the open-data portal returned 849,388 bytes and 27,406 characters, and is the only one a machine reader can read" }
+  ],
+  "edges": [
+    { "verb": "states", "from": "article", "to": "claim:c1" },
+    { "verb": "states", "from": "article", "to": "claim:c2" },
+    { "verb": "states", "from": "article", "to": "claim:c3" },
+    { "verb": "rests_on", "from": "claim:c1", "to": "source:dre" },
+    { "verb": "rests_on", "from": "claim:c2", "to": "source:gov-ia" },
+    { "verb": "rests_on", "from": "claim:c3", "to": "source:dados-gov" },
+    { "verb": "names", "from": "claim:c1", "to": "org:dre" },
+    { "verb": "names", "from": "claim:c2", "to": "org:gov-ia" },
+    { "verb": "names", "from": "claim:c3", "to": "org:dados-gov" },
+    { "verb": "affects", "from": "weakness:no-text-without-scripts", "to": "tech:client-side-rendering" }
+  ],
+  "consequence_connections": [
+    {
+      "audience": "risk", "concern": "accountability",
+      "concern_label": "Who is answerable",
+      "entity": "weakness:no-text-without-scripts",
+      "entity_label": "a page that returns bytes but no readable text to any client that does not run scripts",
+      "entity_type": "Weakness",
+      "path": "weakness:no-text-without-scripts --affects--> tech:client-side-rendering; the pages affected are a national gazette and a government page, which are the publishers of record for legal instruments",
+      "reads": "The risk owner watches who is answerable; a registry of record that is unreadable to any non-browser client creates an accessibility and machine-readability exposure for the body that publishes it, whoever else it also affects.",
+      "reads_inverse": "This weakness makes the publishing bodies answerable, which the risk owner watches.",
+      "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)"
+    }
+  ],
+  "verification": { "confirmed": 4, "disputed": 0, "not_found": 0 }
+}

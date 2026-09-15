@@ -2,7 +2,7 @@
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

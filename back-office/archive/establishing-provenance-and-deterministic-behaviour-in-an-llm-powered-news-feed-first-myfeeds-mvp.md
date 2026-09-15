@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

@@ -1,5 +1,5 @@
 {
-  "version": "v0.1.5",
+  "version": "v0.1.6",
   "formula": "join/v1",
   "joins": [
     {
@@ -16,6 +16,35 @@
         "cybersecurity"
       ],
       "href": "https://myfeeds.sgit.ai/data/joins/dois-nomes-para-os-mesmos-palcos.json"
+    },
+    {
+      "article": "registo-nacional-nao-devolve-texto",
+      "title": "Duas das três páginas do registo nacional não devolvem texto a um leitor automático",
+      "reached": [
+        "translation-en",
+        "startups",
+        "investors",
+        "c-level",
+        "cybersecurity",
+        "risk"
+      ],
+      "withheld": [],
+      "href": "https://myfeeds.sgit.ai/data/joins/registo-nacional-nao-devolve-texto.json"
+    },
+    {
+      "article": "uma-captura-nao-mostra-movimento",
+      "title": "Uma captura não mostra movimento; duas mostram",
+      "reached": [
+        "translation-en",
+        "startups",
+        "investors"
+      ],
+      "withheld": [
+        "c-level",
+        "cybersecurity",
+        "risk"
+      ],
+      "href": "https://myfeeds.sgit.ai/data/joins/uma-captura-nao-mostra-movimento.json"
     }
   ]
 }

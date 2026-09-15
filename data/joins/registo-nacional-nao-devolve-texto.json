@@ -1,0 +1,501 @@
+{
+  "article": "registo-nacional-nao-devolve-texto",
+  "title": "Duas das três páginas do registo nacional não devolvem texto a um leitor automático",
+  "formula": "join/v1",
+  "entity_types": [
+    "Article",
+    "Claim",
+    "Measure",
+    "Organisation",
+    "Source",
+    "Technology",
+    "Weakness"
+  ],
+  "deliveries": [
+    {
+      "audience": "translation-en",
+      "audience_name": "The faithful translation",
+      "verdict": "reached",
+      "rank": null,
+      "control": true,
+      "connections": [],
+      "because": "The control audience. Every article reaches it and no selection runs — it is the baseline the other audiences' output is compared against."
+    },
+    {
+      "audience": "startups",
+      "audience_name": "The founder",
+      "verdict": "reached",
+      "rank": 9,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "org:dre",
+          "entity_label": "Diário da República (the official gazette)",
+          "entity_type": "Organisation",
+          "concern": "peer-company",
+          "concern_label": "Companies in the same sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The founder watches companies in the same sector; the article names Diário da República (the official gazette), which is a Organisation.",
+          "reads_inverse": "Diário da República (the official gazette) satisfies companies in the same sector, which the founder watches."
+        },
+        {
+          "entity": "org:gov-ia",
+          "entity_label": "the Government's AI page",
+          "entity_type": "Organisation",
+          "concern": "peer-company",
+          "concern_label": "Companies in the same sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The founder watches companies in the same sector; the article names the Government's AI page, which is a Organisation.",
+          "reads_inverse": "the Government's AI page satisfies companies in the same sector, which the founder watches."
+        },
+        {
+          "entity": "org:dados-gov",
+          "entity_label": "the national open-data portal",
+          "entity_type": "Organisation",
+          "concern": "peer-company",
+          "concern_label": "Companies in the same sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The founder watches companies in the same sector; the article names the national open-data portal, which is a Organisation.",
+          "reads_inverse": "the national open-data portal satisfies companies in the same sector, which the founder watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "funding-programme",
+          "label": "Funding programmes and calls",
+          "wanted": [
+            "Programme",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Programme or Instrument in it"
+        },
+        {
+          "concern": "event",
+          "label": "Events worth attending",
+          "wanted": [
+            "Event"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Event in it"
+        },
+        {
+          "concern": "peer-company",
+          "label": "Companies in the same sector",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 3,
+          "why_not": null
+        },
+        {
+          "concern": "small-company-rule",
+          "label": "Obligations that bind small companies",
+          "wanted": [
+            "Obligation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation in it"
+        }
+      ],
+      "because": "3 connection(s) from 1 concern(s)."
+    },
+    {
+      "audience": "investors",
+      "audience_name": "The allocator",
+      "verdict": "reached",
+      "rank": 18,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "org:dre",
+          "entity_label": "Diário da República (the official gazette)",
+          "entity_type": "Organisation",
+          "concern": "sector-signal",
+          "concern_label": "Signals about a sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches signals about a sector; the article names Diário da República (the official gazette), which is a Organisation.",
+          "reads_inverse": "Diário da República (the official gazette) satisfies signals about a sector, which the allocator watches."
+        },
+        {
+          "entity": "org:gov-ia",
+          "entity_label": "the Government's AI page",
+          "entity_type": "Organisation",
+          "concern": "sector-signal",
+          "concern_label": "Signals about a sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches signals about a sector; the article names the Government's AI page, which is a Organisation.",
+          "reads_inverse": "the Government's AI page satisfies signals about a sector, which the allocator watches."
+        },
+        {
+          "entity": "org:dados-gov",
+          "entity_label": "the national open-data portal",
+          "entity_type": "Organisation",
+          "concern": "sector-signal",
+          "concern_label": "Signals about a sector",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches signals about a sector; the article names the national open-data portal, which is a Organisation.",
+          "reads_inverse": "the national open-data portal satisfies signals about a sector, which the allocator watches."
+        },
+        {
+          "entity": "measure:dre-chars",
+          "entity_label": "22 characters of visible text from 2,346 bytes",
+          "entity_type": "Measure",
+          "concern": "population-count",
+          "concern_label": "Counts of a population and how they move",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches counts of a population and how they move; the article names 22 characters of visible text from 2,346 bytes, which is a Measure.",
+          "reads_inverse": "22 characters of visible text from 2,346 bytes satisfies counts of a population and how they move, which the allocator watches."
+        },
+        {
+          "entity": "measure:gov-chars",
+          "entity_label": "348 characters of visible text from 165,569 bytes",
+          "entity_type": "Measure",
+          "concern": "population-count",
+          "concern_label": "Counts of a population and how they move",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches counts of a population and how they move; the article names 348 characters of visible text from 165,569 bytes, which is a Measure.",
+          "reads_inverse": "348 characters of visible text from 165,569 bytes satisfies counts of a population and how they move, which the allocator watches."
+        },
+        {
+          "entity": "measure:dados-chars",
+          "entity_label": "27,406 characters of visible text from 849,388 bytes",
+          "entity_type": "Measure",
+          "concern": "population-count",
+          "concern_label": "Counts of a population and how they move",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches counts of a population and how they move; the article names 27,406 characters of visible text from 849,388 bytes, which is a Measure.",
+          "reads_inverse": "27,406 characters of visible text from 849,388 bytes satisfies counts of a population and how they move, which the allocator watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "sector-signal",
+          "label": "Signals about a sector",
+          "wanted": [
+            "Sector",
+            "Organisation"
+          ],
+          "hits": 3,
+          "why_not": null
+        },
+        {
+          "concern": "policy-direction",
+          "label": "Policy and regulatory direction",
+          "wanted": [
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Instrument in it"
+        },
+        {
+          "concern": "population-count",
+          "label": "Counts of a population and how they move",
+          "wanted": [
+            "Measure"
+          ],
+          "hits": 3,
+          "why_not": null
+        },
+        {
+          "concern": "capital-flow",
+          "label": "Money entering or leaving",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        }
+      ],
+      "because": "6 connection(s) from 2 concern(s)."
+    },
+    {
+      "audience": "c-level",
+      "audience_name": "The executive",
+      "verdict": "reached",
+      "rank": 9,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "org:dre",
+          "entity_label": "Diário da República (the official gazette)",
+          "entity_type": "Organisation",
+          "concern": "competitive-position",
+          "concern_label": "Where we stand against named others",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The executive watches where we stand against named others; the article names Diário da República (the official gazette), which is a Organisation.",
+          "reads_inverse": "Diário da República (the official gazette) satisfies where we stand against named others, which the executive watches."
+        },
+        {
+          "entity": "org:gov-ia",
+          "entity_label": "the Government's AI page",
+          "entity_type": "Organisation",
+          "concern": "competitive-position",
+          "concern_label": "Where we stand against named others",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The executive watches where we stand against named others; the article names the Government's AI page, which is a Organisation.",
+          "reads_inverse": "the Government's AI page satisfies where we stand against named others, which the executive watches."
+        },
+        {
+          "entity": "org:dados-gov",
+          "entity_label": "the national open-data portal",
+          "entity_type": "Organisation",
+          "concern": "competitive-position",
+          "concern_label": "Where we stand against named others",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The executive watches where we stand against named others; the article names the national open-data portal, which is a Organisation.",
+          "reads_inverse": "the national open-data portal satisfies where we stand against named others, which the executive watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "financial-consequence",
+          "label": "Cost, revenue and exposure in money",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        },
+        {
+          "concern": "board-question",
+          "label": "What a board will ask about",
+          "wanted": [
+            "Discrepancy",
+            "Obligation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy or Obligation in it"
+        },
+        {
+          "concern": "competitive-position",
+          "label": "Where we stand against named others",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 3,
+          "why_not": null
+        },
+        {
+          "concern": "reputation",
+          "label": "Anything that becomes a public question",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy in it"
+        }
+      ],
+      "because": "3 connection(s) from 1 concern(s)."
+    },
+    {
+      "audience": "cybersecurity",
+      "audience_name": "The practitioner",
+      "verdict": "reached",
+      "rank": 6,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "tech:client-side-rendering",
+          "entity_label": "rendering page content by script in the visitor's browser",
+          "entity_type": "Technology",
+          "concern": "technology",
+          "concern_label": "Named technologies and versions",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The practitioner watches named technologies and versions; the article names rendering page content by script in the visitor's browser, which is a Technology.",
+          "reads_inverse": "rendering page content by script in the visitor's browser satisfies named technologies and versions, which the practitioner watches."
+        },
+        {
+          "entity": "weakness:no-text-without-scripts",
+          "entity_label": "a page that returns bytes but no readable text to any client that does not run scripts",
+          "entity_type": "Weakness",
+          "concern": "weakness",
+          "concern_label": "Weaknesses and how they are reached",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The practitioner watches weaknesses and how they are reached; the article names a page that returns bytes but no readable text to any client that does not run scripts, which is a Weakness.",
+          "reads_inverse": "a page that returns bytes but no readable text to any client that does not run scripts satisfies weaknesses and how they are reached, which the practitioner watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "technology",
+          "label": "Named technologies and versions",
+          "wanted": [
+            "Technology"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "weakness",
+          "label": "Weaknesses and how they are reached",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "control-action",
+          "label": "Something to change on a system",
+          "wanted": [
+            "Control"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Control in it"
+        },
+        {
+          "concern": "integrity",
+          "label": "Whether published information can be trusted",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy in it"
+        }
+      ],
+      "because": "2 connection(s) from 2 concern(s)."
+    },
+    {
+      "audience": "risk",
+      "audience_name": "The risk owner",
+      "verdict": "reached",
+      "rank": 12,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "weakness:no-text-without-scripts",
+          "entity_label": "a page that returns bytes but no readable text to any client that does not run scripts",
+          "entity_type": "Weakness",
+          "concern": "exposure-change",
+          "concern_label": "Something more likely or more expensive",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The risk owner watches something more likely or more expensive; the article names a page that returns bytes but no readable text to any client that does not run scripts, which is a Weakness.",
+          "reads_inverse": "a page that returns bytes but no readable text to any client that does not run scripts satisfies something more likely or more expensive, which the risk owner watches."
+        },
+        {
+          "entity": "org:dre",
+          "entity_label": "Diário da República (the official gazette)",
+          "entity_type": "Organisation",
+          "concern": "accountability",
+          "concern_label": "Who is answerable",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The risk owner watches who is answerable; the article names Diário da República (the official gazette), which is a Organisation.",
+          "reads_inverse": "Diário da República (the official gazette) satisfies who is answerable, which the risk owner watches."
+        },
+        {
+          "entity": "org:gov-ia",
+          "entity_label": "the Government's AI page",
+          "entity_type": "Organisation",
+          "concern": "accountability",
+          "concern_label": "Who is answerable",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The risk owner watches who is answerable; the article names the Government's AI page, which is a Organisation.",
+          "reads_inverse": "the Government's AI page satisfies who is answerable, which the risk owner watches."
+        },
+        {
+          "entity": "org:dados-gov",
+          "entity_label": "the national open-data portal",
+          "entity_type": "Organisation",
+          "concern": "accountability",
+          "concern_label": "Who is answerable",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The risk owner watches who is answerable; the article names the national open-data portal, which is a Organisation.",
+          "reads_inverse": "the national open-data portal satisfies who is answerable, which the risk owner watches."
+        },
+        {
+          "audience": "risk",
+          "concern": "accountability",
+          "concern_label": "Who is answerable",
+          "entity": "weakness:no-text-without-scripts",
+          "entity_label": "a page that returns bytes but no readable text to any client that does not run scripts",
+          "entity_type": "Weakness",
+          "path": "weakness:no-text-without-scripts --affects--> tech:client-side-rendering; the pages affected are a national gazette and a government page, which are the publishers of record for legal instruments",
+          "reads": "The risk owner watches who is answerable; a registry of record that is unreadable to any non-browser client creates an accessibility and machine-readability exposure for the body that publishes it, whoever else it also affects.",
+          "reads_inverse": "This weakness makes the publishing bodies answerable, which the risk owner watches.",
+          "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)",
+          "match": "consequence",
+          "weight": 2
+        }
+      ],
+      "tried": [
+        {
+          "concern": "exposure-change",
+          "label": "Something more likely or more expensive",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "obligation",
+          "label": "Duties, and who they bind",
+          "wanted": [
+            "Obligation",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation or Instrument in it"
+        },
+        {
+          "concern": "accountability",
+          "label": "Who is answerable",
+          "wanted": [
+            "Organisation",
+            "Person"
+          ],
+          "hits": 3,
+          "why_not": null
+        },
+        {
+          "concern": "source-conflict",
+          "label": "Published information that disagrees with itself",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy in it"
+        }
+      ],
+      "because": "5 connection(s) from 2 concern(s)."
+    }
+  ],
+  "summary": {
+    "reached": [
+      "translation-en",
+      "startups",
+      "investors",
+      "c-level",
+      "cybersecurity",
+      "risk"
+    ],
+    "withheld": []
+  },
+  "findings": [
+    {
+      "kind": "ranking-observation",
+      "audience": "investors",
+      "concern": null,
+      "note": "Ranked highest (18) for this article. Worth a human glance: a rank that surprises you is either a real finding or a concern that is too broad, and only reading the connections tells you which."
+    }
+  ]
+}

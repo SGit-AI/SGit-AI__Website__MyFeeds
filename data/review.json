@@ -1,0 +1,130 @@
+{
+  "id": "myfeeds-review",
+  "note": "Open questions about the ontology, computed from the corpus. Not a quality score: a list of things a human is being asked to settle. The system does not change itself in response to these.",
+  "corpus": {
+    "articles": 3,
+    "slugs": [
+      "dois-nomes-para-os-mesmos-palcos",
+      "registo-nacional-nao-devolve-texto",
+      "uma-captura-nao-mostra-movimento"
+    ]
+  },
+  "counts": {
+    "open": 9,
+    "by_kind": {
+      "concern-never-fires": 8,
+      "audience-receives-everything": 1
+    }
+  },
+  "findings": [
+    {
+      "diagnosis": {
+        "fire_counts": {
+          "funding-programme": 0,
+          "event": 2,
+          "peer-company": 1,
+          "small-company-rule": 0
+        },
+        "of": 3,
+        "coarse_types": [
+          "event",
+          "peer-company"
+        ],
+        "note": "Concerns matching a coarse type fire on things the concern did not mean: Organisation covers a startup and a government department equally, and Event covers a conference and an incident. Where a concern above fired on an article you would not have sent, the coarse type is the first place to look."
+      },
+      "proposed_by": "model",
+      "id": "aud-everything-startups",
+      "kind": "audience-receives-everything",
+      "audience": "startups",
+      "concern": null,
+      "articles": [
+        "dois-nomes-para-os-mesmos-palcos",
+        "registo-nacional-nao-devolve-texto",
+        "uma-captura-nao-mostra-movimento"
+      ],
+      "question": "The founder received all 3 articles. Is that right for this corpus, or is one of its concerns too broad?",
+      "would_change": "Narrowing or qualifying the concern that fires most often.",
+      "status": "open"
+    },
+    {
+      "id": "silent-startups-funding-programme",
+      "kind": "concern-never-fires",
+      "audience": "startups",
+      "concern": "funding-programme",
+      "articles": [],
+      "question": "“Funding programmes and calls” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-startups-small-company-rule",
+      "kind": "concern-never-fires",
+      "audience": "startups",
+      "concern": "small-company-rule",
+      "articles": [],
+      "question": "“Obligations that bind small companies” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-investors-policy-direction",
+      "kind": "concern-never-fires",
+      "audience": "investors",
+      "concern": "policy-direction",
+      "articles": [],
+      "question": "“Policy and regulatory direction” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-investors-capital-flow",
+      "kind": "concern-never-fires",
+      "audience": "investors",
+      "concern": "capital-flow",
+      "articles": [],
+      "question": "“Money entering or leaving” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-c-level-financial-consequence",
+      "kind": "concern-never-fires",
+      "audience": "c-level",
+      "concern": "financial-consequence",
+      "articles": [],
+      "question": "“Cost, revenue and exposure in money” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-cybersecurity-control-action",
+      "kind": "concern-never-fires",
+      "audience": "cybersecurity",
+      "concern": "control-action",
+      "articles": [],
+      "question": "“Something to change on a system” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-cybersecurity-integrity",
+      "kind": "concern-never-fires",
+      "audience": "cybersecurity",
+      "concern": "integrity",
+      "articles": [],
+      "question": "“Whether published information can be trusted” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    },
+    {
+      "id": "silent-risk-obligation",
+      "kind": "concern-never-fires",
+      "audience": "risk",
+      "concern": "obligation",
+      "articles": [],
+      "question": "“Duties, and who they bind” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?",
+      "would_change": "Either keep it and say what it is waiting for, or replace it.",
+      "status": "open"
+    }
+  ]
+}

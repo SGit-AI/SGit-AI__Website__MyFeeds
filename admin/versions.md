@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,30 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.6` · 2026-09-15 · [as data](../versions/v0.1.6.json)
+
+### the site says who wrote it, the corpus grows to three articles and starts asking questions back, and the ontology's first rule becomes that it does not have to be right
+
+Three changes that belong together. The ontology's first rule is now that it does not have to be correct — it has to be wrong in ways a human can see and correct — which outranks every other rule here and changes what the system is for. Every page now states that it was written by a model and not yet read by a person, at the top rather than in a footnote, because a site arguing that automated selection must be checkable cannot itself be an unmarked pile of model output. And the corpus grew from one article to three, which was immediately enough for it to start contradicting its own ontology.
+
+**Corrects.** Two things this release found by having more than one article. With one article the audience ontology looked serviceable; with three, the founder receives everything and seven concerns have never fired once. Neither is necessarily a defect — a concern about funding programmes cannot fire on a newsroom that has not published one — and that ambiguity is exactly why they are published as questions for a human rather than auto-corrected. Separately, review.py's first diagnosis named the wrong culprit: a max-of-counts heuristic pointed at the concern that fires most, which is not the one that fired on the article that should not have been delivered. It now reports the whole distribution and lets a reader find it.
+
+#### Changes
+
+- provenance/ — who made what, the three places a model can be wrong here in order of damage, and the per-page review status vocabulary
+
+- review/ + admin/tools/review.py — the feedback loop: corpus-level findings as open questions with evidence, a model diagnosis marked as a proposal, and an answer format. Nothing on the page fixes itself
+
+- admin/content/data/articles/ — two more real articles from the newsroom, extraction marked ai-generated and unreviewed
+
+- admin/content/data/ontology.json 0.2.0 — the good-enough-to-be-argued-with rule, placed first
+
+- briefs/to-pt-newsroom-2026-09-15.md — four requests to the newsroom team, with what we can and cannot work around
+
+- admin/build/validate.js — every page must carry a review status and an AI-generation disclosure
+
+- team/board/008 closed won't-fix; 012 opened for the brief
 
 `v0.1.5` · 2026-09-15 · [as data](../versions/v0.1.5.json)
 

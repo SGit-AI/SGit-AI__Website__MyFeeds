@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.5",
+  "current": "v0.1.6",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.6",
+      "date": "2026-09-15",
+      "title": "the site says who wrote it, the corpus grows to three articles and starts asking questions back, and the ontology's first rule becomes that it does not have to be right",
+      "href": "v0.1.6.json"
+    },
     {
       "version": "v0.1.5",
       "date": "2026-09-15",

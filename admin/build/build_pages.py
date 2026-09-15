@@ -286,12 +286,61 @@ VERSION_LOG = [
             "withheld."
         ),
     },
+    {
+        "version": "v0.1.6",
+        "date": "2026-09-15",
+        "title": (
+            "the site says who wrote it, the corpus grows to three articles and starts "
+            "asking questions back, and the ontology's first rule becomes that it does "
+            "not have to be right"
+        ),
+        "summary": (
+            "Three changes that belong together. The ontology's first rule is now that it "
+            "does not have to be correct — it has to be wrong in ways a human can see and "
+            "correct — which outranks every other rule here and changes what the system "
+            "is for. Every page now states that it was written by a model and not yet "
+            "read by a person, at the top rather than in a footnote, because a site "
+            "arguing that automated selection must be checkable cannot itself be an "
+            "unmarked pile of model output. And the corpus grew from one article to "
+            "three, which was immediately enough for it to start contradicting its own "
+            "ontology."
+        ),
+        "changes": [
+            "provenance/ — who made what, the three places a model can be wrong here in "
+            "order of damage, and the per-page review status vocabulary",
+            "review/ + admin/tools/review.py — the feedback loop: corpus-level findings "
+            "as open questions with evidence, a model diagnosis marked as a proposal, and "
+            "an answer format. Nothing on the page fixes itself",
+            "admin/content/data/articles/ — two more real articles from the newsroom, "
+            "extraction marked ai-generated and unreviewed",
+            "admin/content/data/ontology.json 0.2.0 — the good-enough-to-be-argued-with "
+            "rule, placed first",
+            "briefs/to-pt-newsroom-2026-09-15.md — four requests to the newsroom team, "
+            "with what we can and cannot work around",
+            "admin/build/validate.js — every page must carry a review status and an "
+            "AI-generation disclosure",
+            "team/board/008 closed won't-fix; 012 opened for the brief",
+        ],
+        "corrects": (
+            "Two things this release found by having more than one article. With one "
+            "article the audience ontology looked serviceable; with three, the founder "
+            "receives everything and seven concerns have never fired once. Neither is "
+            "necessarily a defect — a concern about funding programmes cannot fire on a "
+            "newsroom that has not published one — and that ambiguity is exactly why they "
+            "are published as questions for a human rather than auto-corrected. "
+            "Separately, review.py's first diagnosis named the wrong culprit: a "
+            "max-of-counts heuristic pointed at the concern that fires most, which is not "
+            "the one that fired on the article that should not have been delivered. It "
+            "now reports the whole distribution and lets a reader find it."
+        ),
+    },
 ]
 
 NAV = [
     ("how-it-works/index.html", "How it works"),
     ("audiences/index.html", "Audiences"),
     ("explain/index.html", "Explain"),
+    ("review/index.html", "Review"),
     ("back-office/archive/index.html", "The MVP archive"),
     ("back-office/index.html", "Back office"),
     ("team/index.html", "Team"),
@@ -327,6 +376,8 @@ FOOTER_COLS = [
         ("back-office/tools/index.html", "Tools"),
     ]),
     ("Elsewhere", [
+        ("provenance/index.html", "Who wrote this site"),
+        ("review/index.html", "Open questions"),
         ("network/index.html", "The sgit.ai network"),
         ("about/index.html", "About & licence"),
         ("llms.txt", "llms.txt"),
@@ -342,6 +393,13 @@ FAVICON = (
     "%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E"
     "%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E"
 )
+
+# Every page carries a review status. The default is the true one for this site today:
+# written by a model and not yet read by a human. A page moves off the default only when
+# somebody names themselves against it, which is why this is a map of exceptions rather
+# than a field somebody remembers to set.
+REVIEW_DEFAULT = "ai-generated, unreviewed"
+REVIEWED: dict[str, str] = {}
 
 CRITICAL_CSS = """
 :root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
@@ -368,6 +426,7 @@ h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 align-items:baseline;gap:1rem;flex-wrap:wrap}
 .site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
 .site-nav a{color:var(--dim);padding:.22rem .55rem}
+.prov{font-size:.78rem;color:var(--dim2);margin:.6rem 0 0}
 .site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
 .site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
 gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
@@ -737,6 +796,11 @@ def render_page(page: dict, body: str) -> str:
     nav = "".join(
         f'<a href="{base}{href}">{html.escape(label)}</a>' for href, label in NAV
     )
+    status = REVIEWED.get(path, REVIEW_DEFAULT)
+    badge = (
+        f'<p class="prov"><span class="tag unverified">{html.escape(status)}</span> '
+        f'<a href="{base}provenance/index.html">what this means</a></p>'
+    )
     crumb = ""
     if path != "index.html":
         crumb = (
@@ -796,10 +860,15 @@ title="What changed in {SITE_VERSION}">{SITE_VERSION}</a>
 </div></header>
 <main id="main">
 {crumb}
+{badge}
 {body.strip()}
 </main>
 <footer class="site-foot"><div class="inner">
 {cols}
+<div><h4>Written by</h4>
+<p>This entire site — its prose, its ontologies and the classifications they produce —
+is <strong>generated by an AI system</strong> and reviewed by a human after the fact,
+not before. <a href="{base}provenance/index.html">What that means, exactly</a>.</p></div>
 <div><h4>This page</h4>
 <p><a href="{path.rsplit("/", 1)[-1][:-5]}.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
@@ -1845,6 +1914,192 @@ being evidence. How they were recovered, and the nine URLs that could not be, is
 <a href="../index.html">← Home</a></div>
 """
 
+def provenance_body(fd: dict) -> str:
+    n_art = len(fd["articles"])
+    return f"""
+<p class="kicker">Disclosure</p>
+<h1>This site is written by an AI, and reviewed afterwards</h1>
+<p class="lede">Not "AI-assisted". The prose on every page, the two ontologies, the six
+audience definitions, the extraction of entities from each article and the classifications
+that follow from them were all produced by a language model — a Claude Code session — and
+are read by a human <strong>after</strong> publication rather than before. That is an
+unusual thing to put at the top of a page instead of at the bottom, and it is the only
+honest place for it on a site whose entire argument is that automated selection should be
+checkable.</p>
+
+<h2 id="who">Who does what</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Part</th><th>Made by</th><th>Reviewed</th></tr></thead>
+<tbody>
+<tr><td>The pages and their argument</td><td>Model</td>
+<td>After the fact, by Dinis Cruz</td></tr>
+<tr><td>The article and audience ontologies</td><td>Model</td>
+<td>After the fact; the open questions are on <a href="../review/index.html">the review
+page</a></td></tr>
+<tr><td>The six audience role definitions</td><td>Model</td>
+<td>After the fact. These are the most opinionated thing here and the most worth
+disagreeing with</td></tr>
+<tr><td>Entity extraction from each article</td><td>Model</td>
+<td>Not yet. {n_art} articles, none reviewed</td></tr>
+<tr><td>The join formula and its weights</td><td>Model</td><td>After the fact</td></tr>
+<tr><td>The source articles themselves</td>
+<td><a href="https://pt.newsroom.sgit.ai/">pt.newsroom.sgit.ai</a></td>
+<td>By that newsroom's named human editor of record, <em>before</em> publication</td></tr>
+</tbody></table></div>
+
+<p>Note the asymmetry in the last row. The Portuguese newsroom this site reads from has a
+named human who reads every page before it goes live. This site does not, yet. That gap is
+on <a href="../team/board.html">the board</a> and is the single most important thing to fix
+before anything here runs on a schedule.</p>
+
+<h2 id="vocabulary">The status on every page</h2>
+<p>Every page on this site carries one of these, at the top, under the breadcrumb:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Status</th><th>Means</th></tr></thead>
+<tbody>
+<tr><td><span class="tag unverified">ai-generated, unreviewed</span></td>
+<td>A model wrote it and nobody has checked it. Today this is every page.</td></tr>
+<tr><td><span class="tag argued">ai-generated, human-reviewed</span></td>
+<td>A model wrote it and a named person has read it and let it stand.</td></tr>
+<tr><td><span class="tag shipped">human-written</span></td>
+<td>A person wrote it.</td></tr>
+</tbody></table></div>
+<p>A page moves off the default when somebody names themselves against it, which is why
+the generator holds a map of exceptions rather than a field that has to be remembered.
+An empty map is the honest state and it is currently empty.</p>
+
+<h2 id="why">Why this matters more here than elsewhere</h2>
+<p>This site argues that a recommendation you cannot interrogate is worthless. A site
+making that argument in prose a model wrote, using an ontology the same model invented, to
+classify articles the same model extracted, would be an unusually pure example of the
+problem it describes — unless it says so, in the same place a reader forms their view of
+whether to trust it.</p>
+
+<div class="band">
+<h3>The three places a model can be wrong here, in order of damage</h3>
+<ol>
+<li><strong>Extraction.</strong> A model can name an entity the article does not contain.
+Everything downstream then explains, correctly and traceably, a connection that should not
+exist — and the provenance trail makes it <em>more</em> convincing, not less. This is the
+worst failure mode in the whole system and it currently has no automated guard.</li>
+<li><strong>The audience definitions.</strong> Six role descriptions written by a model
+about how real people read. They are plausible, which is exactly the problem: plausible
+and unchecked is how a stereotype gets encoded as a data structure. These need a
+practitioner, an investor and a risk owner to read their own entry and say what is
+wrong.</li>
+<li><strong>The prose.</strong> The least dangerous, because a reader can tell. A wrong
+sentence about how something works is visible in a way that a wrong edge in a graph is
+not.</li>
+</ol>
+</div>
+
+<h2 id="not">What is not AI-generated</h2>
+<ul>
+<li>The <a href="../library/index.html">recovered MVP posts</a> — written by Dinis Cruz in
+2025 and reproduced as published.</li>
+<li>The source articles, which belong to the Portuguese newsroom and are linked rather
+than reproduced.</li>
+<li>The measurements in this repository: counts of pages, words, articles and connections
+are computed from files, not written.</li>
+</ul>
+
+<div class="next"><a href="../review/index.html">What a human is being asked →</a>
+<a href="../about/index.html">About &amp; honest edges →</a>
+<a href="../index.html">← Home</a></div>
+"""
+
+
+def review_body(fd: dict, review: dict) -> str:
+    kinds = {
+        "audience-receives-everything": "An audience that receives everything",
+        "audience-receives-nothing": "An audience that receives nothing",
+        "concern-fires-on-everything": "A concern that fires on everything",
+        "concern-never-fires": "A concern that has never fired",
+    }
+    blocks = ""
+    for kind, heading in kinds.items():
+        fs = [f for f in review["findings"] if f["kind"] == kind]
+        if not fs:
+            continue
+        blocks += f'<h3>{html.escape(heading)} <span class="tag">{len(fs)}</span></h3>'
+        for f in fs:
+            d = f.get("diagnosis")
+            diag = ""
+            if isinstance(d, dict):
+                counts = ", ".join(f"<code>{html.escape(k)}</code> {v}"
+                                   for k, v in d["fire_counts"].items())
+                diag = (f'<p><small><strong>The model\'s own diagnosis, which is a '
+                        f'proposal and not a finding:</strong> fired on — {counts} '
+                        f'(of {d["of"]} articles). {html.escape(d["note"])}</small></p>')
+            blocks += (
+                f'<div class="band" id="{html.escape(f["id"])}">'
+                f'<p class="k"><span class="tag open">open</span> '
+                f'{html.escape(f["audience"])}'
+                + (f' · {html.escape(f["concern"])}' if f["concern"] else "")
+                + f'</p><p><strong>{html.escape(f["question"])}</strong></p>'
+                + diag
+                + f'<p><small><strong>Answering it would change:</strong> '
+                  f'{html.escape(f["would_change"])}</small></p>'
+                + (f'<p><small><strong>Articles:</strong> '
+                   + ", ".join(f"<code>{html.escape(a)}</code>" for a in f["articles"])
+                   + "</small></p>" if f["articles"] else "")
+                + "</div>"
+            )
+
+    return f"""
+<p class="kicker">The feedback loop</p>
+<h1>What a human is being asked to settle</h1>
+<p class="lede">The ontologies here do not have to be right. They have to be <strong>wrong
+in ways somebody can see and correct</strong> — which is a different and much more
+achievable target, and the only one available to a system whose classifications are
+written by a model. This page is the output of that principle: not a quality score, but
+{review["counts"]["open"]} specific questions, each with the evidence that raised it and
+what an answer would change.</p>
+
+<div class="note">
+<p><strong>Nothing on this page fixes itself.</strong> The formula does not change in
+response to these questions. A model proposing a diagnosis and then acting on it is the
+same closed loop this site exists to argue against — so the questions sit here until a
+person answers them, and the answer is recorded next to the question.</p>
+</div>
+
+<h2 id="corpus">The corpus these came from</h2>
+<p>{review["corpus"]["articles"]} articles from
+<a href="https://pt.newsroom.sgit.ai/">pt.newsroom.sgit.ai</a>. That is a small corpus and
+the questions below reflect it: several concerns have never fired, and with three articles
+the honest reading is usually "this newsroom has not published that kind of thing yet"
+rather than "the concern is wrong". Both answers are useful and only a human can tell them
+apart.</p>
+<ul>""" + "".join(
+        f'<li><code>{html.escape(s)}</code></li>' for s in review["corpus"]["slugs"]
+    ) + f"""</ul>
+
+<h2 id="questions">The {review["counts"]["open"]} open questions</h2>
+{blocks}
+
+<h2 id="how">How to answer one</h2>
+<p>Every question has an id. An answer is a line in
+<code>admin/content/data/review-answers.json</code> naming the question, the person, the
+date and what they decided — and, where the answer changes the ontology, the change lands
+in the same release as the answer so the two cannot drift. There is no form on this page
+and no comment box: the answers version with the repository, like everything else here.</p>
+<pre><code>{{
+  "question": "aud-everything-startups",
+  "answered_by": "&lt;name&gt;",
+  "date": "2026-09-__",
+  "decision": "keep | narrow | qualify | replace",
+  "because": "&lt;one sentence a stranger could check&gt;"
+}}</code></pre>
+
+<h2 id="data">As data</h2>
+<p><a href="../data/review.json"><code>/data/review.json</code></a> — regenerate with
+<code>python3 admin/tools/review.py</code> after any join run.</p>
+
+<div class="next"><a href="../provenance/index.html">← Who wrote this site</a>
+<a href="../explain/index.html">The debug view →</a>
+<a href="../audiences/index.html">The audiences →</a></div>
+"""
+
 # ------------------------------------------------------------------------------- build
 
 
@@ -1901,9 +2156,35 @@ def build() -> int:
 
     arc = backoffice.load_archive(ROOT)
     fd = feeds.load_all(ROOT)
+    review = json.loads((ROOT / "data" / "review.json").read_text(encoding="utf-8")) \
+        if (ROOT / "data" / "review.json").exists() else {
+            "counts": {"open": 0}, "corpus": {"articles": 0, "slugs": []}, "findings": []}
     site0 = arc["sites"][0] if arc["sites"] else None
 
     pages += [
+        {
+            "path": "provenance/index.html",
+            "section": "Provenance",
+            "title": "This site is written by an AI, and reviewed afterwards",
+            "desc": (
+                "Not AI-assisted: the prose, both ontologies, the audience definitions and "
+                "every classification were produced by a language model and are read by a "
+                "human after publication rather than before. Who made what, the three "
+                "places a model can be wrong here in order of damage, and what is not "
+                "AI-generated."
+            ),
+        },
+        {
+            "path": "review/index.html",
+            "section": "Provenance",
+            "title": "What a human is being asked to settle",
+            "desc": (
+                "The ontologies do not have to be right; they have to be wrong in ways "
+                "somebody can see and correct. The open questions the corpus raised, each "
+                "with its evidence and what an answer would change — and nothing on the "
+                "page fixes itself."
+            ),
+        },
         {
             "path": "audiences/index.html",
             "section": "The argument",
@@ -1990,6 +2271,8 @@ def build() -> int:
     ]
 
     generated = {
+        "provenance/index.html": lambda: provenance_body(fd),
+        "review/index.html": lambda: review_body(fd, review),
         "audiences/index.html": lambda: audiences_body(fd),
         "ontology/index.html": lambda: ontology_body(fd),
         "explain/index.html": lambda: explain_body(fd),

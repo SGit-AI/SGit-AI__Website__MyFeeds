@@ -1,0 +1,35 @@
+{
+  "slug": "uma-captura-nao-mostra-movimento",
+  "title": "Uma captura não mostra movimento; duas mostram",
+  "title_en": "One capture shows no movement; two do",
+  "language": "pt-PT",
+  "date": "2026-09-14",
+  "source_site": "pt.newsroom.sgit.ai",
+  "source_url": "https://pt.newsroom.sgit.ai/artigos/2026/09/14/uma-captura-nao-mostra-movimento/",
+  "source_repo": "SGit-AI/SGit-AI__Website__Newsroom__PT",
+  "source_path": "artigos/2026/09/14/uma-captura-nao-mostra-movimento/",
+  "extraction": {
+    "status": "ai-generated, unreviewed",
+    "note": "Entities and edges proposed by a Claude Code session against the published article ontology. No human has reviewed this extraction.",
+    "by": "claude-code session, 2026-09-15"
+  },
+  "what_it_says": "The speaker list for Startup Summit Lisbon 2026 has 70 names today, and the page's own stated count agrees with the count made over the frozen bytes. That is all that can be said. Reporting movement honestly needs two captures and two hashes; with one there is no difference, only a photograph. The article exists to say that rather than to write 'the list grew', which would rest on nothing.",
+  "entities": [
+    { "id": "article", "type": "Article", "label": "Uma captura não mostra movimento; duas mostram" },
+    { "id": "event:startup-summit-lisbon-2026", "type": "Event", "label": "Startup Summit Lisbon 2026" },
+    { "id": "measure:speakers-70", "type": "Measure", "label": "70 names on the speaker list, on 2026-09-14" },
+    { "id": "source:oradores", "type": "Source", "label": "the frozen speakers page (2026-09-14/oradores)" },
+    { "id": "claim:b1", "type": "Claim", "label": "the speaker list has 70 names" },
+    { "id": "claim:b2", "type": "Claim", "label": "the page's own stated count and the count over the bytes agree" },
+    { "id": "claim:b3", "type": "Claim", "label": "only one capture of this page exists, so there is no difference to report" }
+  ],
+  "edges": [
+    { "verb": "states", "from": "article", "to": "claim:b1" },
+    { "verb": "states", "from": "article", "to": "claim:b2" },
+    { "verb": "states", "from": "article", "to": "claim:b3" },
+    { "verb": "rests_on", "from": "claim:b1", "to": "source:oradores" },
+    { "verb": "rests_on", "from": "claim:b2", "to": "source:oradores" },
+    { "verb": "rests_on", "from": "claim:b3", "to": "source:oradores" }
+  ],
+  "verification": { "confirmed": 3, "disputed": 0, "not_found": 0 }
+}

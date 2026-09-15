@@ -2,7 +2,7 @@
 
 > The LLM was doing too much. Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect. This site is the argument, the recovered record of the first MVP, and the back office behind both.
 
-Site version: v0.1.5. A site in the [sgit.ai](https://sgit.ai) network.
+Site version: v0.1.6. A site in the [sgit.ai](https://sgit.ai) network.
 Every page below is markdown, generated from the same source as the HTML page at
 the same path (swap `.md` for `.html`). Links inside the markdown point at
 markdown, so you can traverse the whole site without parsing HTML.
@@ -43,6 +43,8 @@ every page of this site concatenated into one document.
 - [Part of the sgit.ai network](/network/index.md): Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 - [About, licence and honest edges](/about/index.md): Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 - [Release history](/admin/versions.md): Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
+- [This site is written by an AI, and reviewed afterwards](/provenance/index.md): Not AI-assisted: the prose, both ontologies, the audience definitions and every classification were produced by a language model and are read by a human after publication rather than before. Who made what, the three places a model can be wrong here in order of damage, and what is not AI-generated.
+- [What a human is being asked to settle](/review/index.md): The ontologies do not have to be right; they have to be wrong in ways somebody can see and correct. The open questions the corpus raised, each with its evidence and what an answer would change — and nothing on the page fixes itself.
 
 ## How this site is run
 - [How this site is run](/team/index.md): The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.

@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.26.00---Professional--modern-image-tailored-for-cybersecurity-in-the-FinTech-sector--specifically-for-CISOs.-Include-the-word--CISO--prominently-in-bold-typog.webp) This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges.…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

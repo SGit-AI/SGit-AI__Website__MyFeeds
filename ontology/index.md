@@ -2,7 +2,7 @@
 
 > One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
 
-*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,10 @@ The grammar
 One ontology says what a piece of news contains. Another says what a role watches for. Neither is interesting on its own — the whole value is in the third thing, the join, which is where an article meets an audience and a sentence comes out saying why. The grammar is adapted from the one [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/) uses for the Portuguese graph, and keeps its hardest rule.
 
 ## The rules
+
+### The ontology does not have to be right. It has to be wrong in ways a human reader can see and correct.
+
+Correctness is not available: nobody can write a complete taxonomy of what six roles care about, and waiting until it is right means never publishing. Legibility IS available — every classification shown with its working out, every concern that fires on everything or fires on nothing surfaced as a question rather than buried in a score. This rule outranks the others: where a modelling choice is more correct but less checkable, take the checkable one, and where the corpus contradicts the ontology, the corpus is right.
 
 ### Every edge is a verb with a distinct named inverse, and both directions read as sentences.
 

@@ -1,8 +1,13 @@
 {
   "id": "myfeeds-ontology",
-  "version": "0.1.0",
-  "note": "Two ontologies and the join between them. The article side says what a piece of news contains; the audience side says what a role watches for; the join says why one reached the other, and — as importantly — why one did not. Adapted from the grammar pt.newsroom.sgit.ai uses for the Portuguese graph, with its rule kept: every edge is a verb with a distinct named inverse, and a path that does not read as a sentence is a wrong edge.",
+  "version": "0.2.0",
+  "note": "Two ontologies and the join between them. The article side says what a piece of news contains; the audience side says what a role watches for; the join says why one reached the other, and — as importantly — why one did not. Adapted from the grammar pt.newsroom.sgit.ai uses for the Portuguese graph, with its rule kept: every edge is a verb with a distinct named inverse, and a path that does not read as a sentence is a wrong edge. The first rule is the one the others serve: this is built to be corrected, not to be right.",
   "rules": [
+    {
+      "id": "good-enough-to-be-argued-with",
+      "rule": "The ontology does not have to be right. It has to be wrong in ways a human reader can see and correct.",
+      "why": "Correctness is not available: nobody can write a complete taxonomy of what six roles care about, and waiting until it is right means never publishing. Legibility IS available — every classification shown with its working out, every concern that fires on everything or fires on nothing surfaced as a question rather than buried in a score. This rule outranks the others: where a modelling choice is more correct but less checkable, take the checkable one, and where the corpus contradicts the ontology, the corpus is right."
+    },
     {
       "id": "named-inverse",
       "rule": "Every edge is a verb with a distinct named inverse, and both directions read as sentences.",

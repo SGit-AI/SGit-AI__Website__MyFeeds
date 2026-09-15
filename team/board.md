@@ -2,7 +2,7 @@
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -146,7 +146,25 @@ eventually publish something wrong with full confidence and a provenance trail. 
 
 **Done when** a scheduled Routine runs the eight steps end to end on one day's articles, the release it cuts passes CI, `verify-live.sh` confirms it, and the run record says which articles were extracted, which audiences each reached, and what a human changed.
 
-## Held 5
+## In progress 1
+
+Claimed, with a role behind it.
+
+`team/board/012-newsroom-brief.md`
+
+### 012 · Brief filed to the pt.newsroom.sgit.ai team — four requests
+
+doing task owner [librarian](roles/librarian.md) · opened 2026-09-15
+
+`briefs/to-pt-newsroom-2026-09-15.md` is filed. Four requests, in value order, each saying whether we can work around it:
+
+1. A JSON index of published articles with what changed. **We asked for the index rather than RSS** and said why: a feed answers "what is new" but still costs a fetch per article, and a full-content feed duplicates prose we would rather link to. 2. Carry `tem_prosa` into whatever index is exposed, so we stop inferring "has prose" from the existence of a file. 3. Keep `afirmacoes.json` beside each article and keep the `[[fonte:...]]` markers in the prose. We carry both into every audience output; without them a re-framed piece is an assertion with a nicer tone. 4. **The one worth more than the other three combined:** for each published article, the graph node ids it names. They already build a typed graph with named-inverse verbs and a source per node. Consuming their extraction instead of making our own removes the single most dangerous failure mode in this pipeline — a model inventing an entity, after which everything downstream explains a connection that does not exist, convincingly, with a provenance trail.
+
+We also told them what we do NOT want: a generic article taxonomy designed to serve every downstream consumer, because the audience side has to be shaped by what an audience watches for and that is ours to get wrong.
+
+**Done when** the brief has been read and each request has an answer — including "no", which is a fine answer and should be recorded here with its reason rather than left open.
+
+## Held 4
 
 Deliberately not shipping, with the reason on the card.
 
@@ -212,21 +230,7 @@ The reason is real: the commit that *carries* a version cannot be known while th
 
 **Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
 
-`team/board/008-v010-tag.md`
-
-### 008 · v0.1.0 has no tag on the remote
-
-held need owner [devops](roles/devops.md) · opened 2026-09-14
-
-The `tag-release` job backfills a tag for every historical release. It created `v0.1.0` locally and could not push it: `GITHUB_TOKEN` cannot push a ref to a commit whose tree carries a different `.github/workflows` blob, and v0.1.0's tree carried the `build.yml` this release replaced.
-
-The workflow names the remedy — `git push origin --tags` from a workflows-scoped human credential. That was attempted from this session and also rejected, with `HTTP 403`, so the session credential carries the same limit. `v0.1.1` is tagged; `v0.1.0` is not.
-
-**Held**, not open, because nothing is broken: the release is identified by its commit subject and by `versions/v0.1.0.json`, and the missing tag is a bookkeeping gap rather than an outage — which is exactly the distinction the workflow is built around. Every future release tags normally, because their trees will carry the current workflow.
-
-**Done when** somebody with a workflows-scoped token runs `git push origin --tags`, or the team decides the gap is permanent and says so here.
-
-## Done 1
+## Done 2
 
 Closed, with the release that carried it.
 
@@ -245,6 +249,28 @@ What actually happened: the DNS was already there (`myfeeds.sgit.ai` resolved to
 So the need was not a need. It was the deploy workflow this site did not have.
 
 **Verified:** `admin/build/verify-live.sh` reports `myfeeds.sgit.ai is serving v0.1.1`; `index.md`, `llms.txt`, `versions/index.json`, `data/team.json` and `app.json` all return 200 with the right content types.
+
+`team/board/008-v010-tag.md`
+
+### 008 · v0.1.0 has no tag on the remote
+
+done need owner [devops](roles/devops.md) · opened 2026-09-14
+
+The `tag-release` job backfills a tag for every historical release. It created `v0.1.0` locally and could not push it: `GITHUB_TOKEN` cannot push a ref to a commit whose tree carries a different `.github/workflows` blob, and v0.1.0's tree carried the `build.yml` this release replaced.
+
+The workflow names the remedy — `git push origin --tags` from a workflows-scoped human credential. That was attempted from this session and also rejected, with `HTTP 403`, so the session credential carries the same limit. `v0.1.1` is tagged; `v0.1.0` is not.
+
+**Held**, not open, because nothing is broken: the release is identified by its commit subject and by `versions/v0.1.0.json`, and the missing tag is a bookkeeping gap rather than an outage — which is exactly the distinction the workflow is built around. Every future release tags normally, because their trees will carry the current workflow.
+
+**Done when** somebody with a workflows-scoped token runs `git push origin --tags`, or the team decides the gap is permanent and says so here.
+
+---
+
+**Closed 2026-09-15: won't fix, and that is the right answer.**
+
+The author's call: tagging works fine from v0.1.1 onward, and one missing historical tag is not worth a credential rotation. v0.1.0 remains identifiable by its commit subject and by `versions/v0.1.0.json`, which is what the versions contract actually requires — the tag was a convenience, not the record. Every release since has tagged normally because their trees carry the current workflow file.
+
+Recorded rather than deleted, because "we decided not to" is a more useful thing for a future reader to find than silence.
 
 [← The team](index.md)[Starting prompts →](prompts.md)
 

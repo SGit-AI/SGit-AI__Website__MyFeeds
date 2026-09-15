@@ -1,0 +1,308 @@
+{
+  "article": "uma-captura-nao-mostra-movimento",
+  "title": "Uma captura não mostra movimento; duas mostram",
+  "formula": "join/v1",
+  "entity_types": [
+    "Article",
+    "Claim",
+    "Event",
+    "Measure",
+    "Source"
+  ],
+  "deliveries": [
+    {
+      "audience": "translation-en",
+      "audience_name": "The faithful translation",
+      "verdict": "reached",
+      "rank": null,
+      "control": true,
+      "connections": [],
+      "because": "The control audience. Every article reaches it and no selection runs — it is the baseline the other audiences' output is compared against."
+    },
+    {
+      "audience": "startups",
+      "audience_name": "The founder",
+      "verdict": "reached",
+      "rank": 3,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "event:startup-summit-lisbon-2026",
+          "entity_label": "Startup Summit Lisbon 2026",
+          "entity_type": "Event",
+          "concern": "event",
+          "concern_label": "Events worth attending",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The founder watches events worth attending; the article names Startup Summit Lisbon 2026, which is a Event.",
+          "reads_inverse": "Startup Summit Lisbon 2026 satisfies events worth attending, which the founder watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "funding-programme",
+          "label": "Funding programmes and calls",
+          "wanted": [
+            "Programme",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Programme or Instrument in it"
+        },
+        {
+          "concern": "event",
+          "label": "Events worth attending",
+          "wanted": [
+            "Event"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "peer-company",
+          "label": "Companies in the same sector",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation in it"
+        },
+        {
+          "concern": "small-company-rule",
+          "label": "Obligations that bind small companies",
+          "wanted": [
+            "Obligation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation in it"
+        }
+      ],
+      "because": "1 connection(s) from 1 concern(s)."
+    },
+    {
+      "audience": "investors",
+      "audience_name": "The allocator",
+      "verdict": "reached",
+      "rank": 3,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "measure:speakers-70",
+          "entity_label": "70 names on the speaker list, on 2026-09-14",
+          "entity_type": "Measure",
+          "concern": "population-count",
+          "concern_label": "Counts of a population and how they move",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The allocator watches counts of a population and how they move; the article names 70 names on the speaker list, on 2026-09-14, which is a Measure.",
+          "reads_inverse": "70 names on the speaker list, on 2026-09-14 satisfies counts of a population and how they move, which the allocator watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "sector-signal",
+          "label": "Signals about a sector",
+          "wanted": [
+            "Sector",
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Sector or Organisation in it"
+        },
+        {
+          "concern": "policy-direction",
+          "label": "Policy and regulatory direction",
+          "wanted": [
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Instrument in it"
+        },
+        {
+          "concern": "population-count",
+          "label": "Counts of a population and how they move",
+          "wanted": [
+            "Measure"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "capital-flow",
+          "label": "Money entering or leaving",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        }
+      ],
+      "because": "1 connection(s) from 1 concern(s)."
+    },
+    {
+      "audience": "c-level",
+      "audience_name": "The executive",
+      "verdict": "withheld",
+      "rank": 0,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [],
+      "tried": [
+        {
+          "concern": "financial-consequence",
+          "label": "Cost, revenue and exposure in money",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        },
+        {
+          "concern": "board-question",
+          "label": "What a board will ask about",
+          "wanted": [
+            "Discrepancy",
+            "Obligation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy or Obligation in it"
+        },
+        {
+          "concern": "competitive-position",
+          "label": "Where we stand against named others",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation in it"
+        },
+        {
+          "concern": "reputation",
+          "label": "Anything that becomes a public question",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy in it"
+        }
+      ],
+      "because": "None of the concerns this audience watches were satisfied: this article has no Money in it; this article has no Discrepancy or Obligation in it; this article has no Organisation in it; this article has no Discrepancy in it."
+    },
+    {
+      "audience": "cybersecurity",
+      "audience_name": "The practitioner",
+      "verdict": "withheld",
+      "rank": 0,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [],
+      "tried": [
+        {
+          "concern": "technology",
+          "label": "Named technologies and versions",
+          "wanted": [
+            "Technology"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Technology in it"
+        },
+        {
+          "concern": "weakness",
+          "label": "Weaknesses and how they are reached",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Weakness in it"
+        },
+        {
+          "concern": "control-action",
+          "label": "Something to change on a system",
+          "wanted": [
+            "Control"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Control in it"
+        },
+        {
+          "concern": "integrity",
+          "label": "Whether published information can be trusted",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "qualified_out": true,
+          "why_not": "this concern only applies where the article is also about Technology or Weakness or Control, and this one is not"
+        }
+      ],
+      "because": "None of the concerns this audience watches were satisfied: this article has no Technology in it; this article has no Weakness in it; this article has no Control in it; this concern only applies where the article is also about Technology or Weakness or Control, and this one is not."
+    },
+    {
+      "audience": "risk",
+      "audience_name": "The risk owner",
+      "verdict": "withheld",
+      "rank": 0,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [],
+      "tried": [
+        {
+          "concern": "exposure-change",
+          "label": "Something more likely or more expensive",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Weakness in it"
+        },
+        {
+          "concern": "obligation",
+          "label": "Duties, and who they bind",
+          "wanted": [
+            "Obligation",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation or Instrument in it"
+        },
+        {
+          "concern": "accountability",
+          "label": "Who is answerable",
+          "wanted": [
+            "Organisation",
+            "Person"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation or Person in it"
+        },
+        {
+          "concern": "source-conflict",
+          "label": "Published information that disagrees with itself",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Discrepancy in it"
+        }
+      ],
+      "because": "None of the concerns this audience watches were satisfied: this article has no Weakness in it; this article has no Obligation or Instrument in it; this article has no Organisation or Person in it; this article has no Discrepancy in it."
+    }
+  ],
+  "summary": {
+    "reached": [
+      "translation-en",
+      "startups",
+      "investors"
+    ],
+    "withheld": [
+      "c-level",
+      "cybersecurity",
+      "risk"
+    ]
+  },
+  "findings": [
+    {
+      "kind": "ranking-observation",
+      "audience": "startups",
+      "concern": null,
+      "note": "Ranked highest (3) for this article. Worth a human glance: a rank that surprises you is either a real finding or a concern that is too broad, and only reading the connections tells you which."
+    }
+  ]
+}

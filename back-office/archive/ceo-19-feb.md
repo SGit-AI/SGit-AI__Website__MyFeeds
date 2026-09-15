@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern-corporate-themed-image-for-a-cybersecurity-blog-post-targeted-at-CEOs.-The-word--CEO--clearly-visible-in-bold--elegant.webp) This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

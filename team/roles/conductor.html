@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Conductor · myfeeds.sgit.ai</title>
 <meta name="description" content="Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.5">
+<meta name="generator" content="admin/build/build_pages.py v0.1.6">
 <link rel="canonical" href="https://myfeeds.sgit.ai/team/roles/conductor.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/team/roles/conductor.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Conductor","description":"Conductor \u2014 Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.","url":"https://myfeeds.sgit.ai/team/roles/conductor.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.5","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Conductor","description":"Conductor \u2014 Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.","url":"https://myfeeds.sgit.ai/team/roles/conductor.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.6","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -39,6 +39,7 @@ h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
 align-items:baseline;gap:1rem;flex-wrap:wrap}
 .site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
 .site-nav a{color:var(--dim);padding:.22rem .55rem}
+.prov{font-size:.78rem;color:var(--dim2);margin:.6rem 0 0}
 .site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
 .site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
 gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
@@ -51,12 +52,13 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<a class="ver" href="../../admin/versions.html#v0-1-5"
-title="What changed in v0.1.5">v0.1.5</a>
-<nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../audiences/index.html">Audiences</a><a href="../../explain/index.html">Explain</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
+<a class="ver" href="../../admin/versions.html#v0-1-6"
+title="What changed in v0.1.6">v0.1.6</a>
+<nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../audiences/index.html">Audiences</a><a href="../../explain/index.html">Explain</a><a href="../../review/index.html">Review</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
 <p class="crumb"><a href="../../index.html">myfeeds.sgit.ai</a> / Team</p>
+<p class="prov"><span class="tag unverified">ai-generated, unreviewed</span> <a href="../../provenance/index.html">what this means</a></p>
 <p class="kicker">Direction</p>
 <h1>Conductor</h1>
 <p class="lede">Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns.</p>
@@ -92,12 +94,16 @@ that file, so a role cannot say one thing to an agent and another to a reader.</
 <p><small>Other roles: <a href="architect.html">Architect</a> · <a href="dev.html">Dev</a> · <a href="devops.html">DevOps</a> · <a href="qa.html">QA</a> · <a href="librarian.html">Librarian</a> · <a href="historian.html">Historian</a></small></p>
 </main>
 <footer class="site-foot"><div class="inner">
-<div><h4>The argument</h4><ul><li><a href="../../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../../audiences/index.html">The six audiences</a></li><li><a href="../../ontology/index.html">The two ontologies</a></li><li><a href="../../explain/index.html">A worked example</a></li><li><a href="../../library/index.html">The recovered library</a></li><li><a href="../../back-office/documents/index.html">The business case</a></li><li><a href="../../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../../back-office/index.html">Everything it is built from</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../../back-office/documents/index.html">Documents</a></li><li><a href="../../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>The argument</h4><ul><li><a href="../../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../../audiences/index.html">The six audiences</a></li><li><a href="../../ontology/index.html">The two ontologies</a></li><li><a href="../../explain/index.html">A worked example</a></li><li><a href="../../library/index.html">The recovered library</a></li><li><a href="../../back-office/documents/index.html">The business case</a></li><li><a href="../../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../../read-state/index.html">The part nobody exports</a></li><li><a href="../../vault/index.html">What a feeds vault holds</a></li><li><a href="../../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../../team/index.html">The team</a></li><li><a href="../../team/board.html">The board</a></li><li><a href="../../admin/index.html">How this site is built</a></li><li><a href="../../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../../back-office/index.html">Everything it is built from</a></li><li><a href="../../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../../back-office/documents/index.html">Documents</a></li><li><a href="../../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../../provenance/index.html">Who wrote this site</a></li><li><a href="../../review/index.html">Open questions</a></li><li><a href="../../network/index.html">The sgit.ai network</a></li><li><a href="../../about/index.html">About &amp; licence</a></li><li><a href="../../llms.txt">llms.txt</a></li><li><a href="../../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>Written by</h4>
+<p>This entire site — its prose, its ontologies and the classifications they produce —
+is <strong>generated by an AI system</strong> and reviewed by a human after the fact,
+not before. <a href="../../provenance/index.html">What that means, exactly</a>.</p></div>
 <div><h4>This page</h4>
 <p><a href="conductor.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
 <p>The LLM was doing too much.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.5. Part of the
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.6. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../../",n=0,t;

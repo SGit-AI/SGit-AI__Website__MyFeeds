@@ -2,7 +2,7 @@
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

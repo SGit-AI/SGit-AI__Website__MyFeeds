@@ -1,4 +1,4 @@
-# myfeeds.sgit.ai — every page, v0.1.5
+# myfeeds.sgit.ai — every page, v0.1.6
 
 > The LLM was doing too much.
 
@@ -14,7 +14,7 @@ the markdown twins of every page, in navigation order.
 
 > Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -112,7 +112,7 @@ MyFeeds ran. The MVP published machine-generated briefings for five personas —
 
 > The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary — each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built.
 
-*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -186,7 +186,7 @@ The engine is public and open source at [the-cyber-boardroom/myfeeds-ai](https:/
 
 > Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -259,7 +259,7 @@ This is the strongest objection, and the answer is that it is nearly free. Read 
 
 > Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -395,7 +395,7 @@ If any of that is wrong, it is wrong in public with a card open against it, whic
 
 > Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -483,7 +483,7 @@ Once the reading record is a set of files with a published shape rather than row
 
 > Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -558,7 +558,7 @@ Not "incomplete" — wrong. If item 2 above turns out to be true and identity ch
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -688,7 +688,7 @@ One honest note on that contract: the estate's shape includes the commit a versi
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -745,7 +745,7 @@ The network directory on sgit.ai carries one entry per sibling site, written in 
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -824,7 +824,7 @@ A correction is published above the claim it corrects, and the claim stays, beca
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -888,7 +888,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 ## The board
 
-5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+6 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
 
 [The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
 
@@ -905,7 +905,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1049,7 +1049,25 @@ eventually publish something wrong with full confidence and a provenance trail. 
 
 **Done when** a scheduled Routine runs the eight steps end to end on one day's articles, the release it cuts passes CI, `verify-live.sh` confirms it, and the run record says which articles were extracted, which audiences each reached, and what a human changed.
 
-## Held 5
+## In progress 1
+
+Claimed, with a role behind it.
+
+`team/board/012-newsroom-brief.md`
+
+### 012 · Brief filed to the pt.newsroom.sgit.ai team — four requests
+
+doing task owner [librarian](roles/librarian.md) · opened 2026-09-15
+
+`briefs/to-pt-newsroom-2026-09-15.md` is filed. Four requests, in value order, each saying whether we can work around it:
+
+1. A JSON index of published articles with what changed. **We asked for the index rather than RSS** and said why: a feed answers "what is new" but still costs a fetch per article, and a full-content feed duplicates prose we would rather link to. 2. Carry `tem_prosa` into whatever index is exposed, so we stop inferring "has prose" from the existence of a file. 3. Keep `afirmacoes.json` beside each article and keep the `[[fonte:...]]` markers in the prose. We carry both into every audience output; without them a re-framed piece is an assertion with a nicer tone. 4. **The one worth more than the other three combined:** for each published article, the graph node ids it names. They already build a typed graph with named-inverse verbs and a source per node. Consuming their extraction instead of making our own removes the single most dangerous failure mode in this pipeline — a model inventing an entity, after which everything downstream explains a connection that does not exist, convincingly, with a provenance trail.
+
+We also told them what we do NOT want: a generic article taxonomy designed to serve every downstream consumer, because the audience side has to be shaped by what an audience watches for and that is ours to get wrong.
+
+**Done when** the brief has been read and each request has an answer — including "no", which is a fine answer and should be recorded here with its reason rather than left open.
+
+## Held 4
 
 Deliberately not shipping, with the reason on the card.
 
@@ -1115,21 +1133,7 @@ The reason is real: the commit that *carries* a version cannot be known while th
 
 **Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
 
-`team/board/008-v010-tag.md`
-
-### 008 · v0.1.0 has no tag on the remote
-
-held need owner [devops](roles/devops.md) · opened 2026-09-14
-
-The `tag-release` job backfills a tag for every historical release. It created `v0.1.0` locally and could not push it: `GITHUB_TOKEN` cannot push a ref to a commit whose tree carries a different `.github/workflows` blob, and v0.1.0's tree carried the `build.yml` this release replaced.
-
-The workflow names the remedy — `git push origin --tags` from a workflows-scoped human credential. That was attempted from this session and also rejected, with `HTTP 403`, so the session credential carries the same limit. `v0.1.1` is tagged; `v0.1.0` is not.
-
-**Held**, not open, because nothing is broken: the release is identified by its commit subject and by `versions/v0.1.0.json`, and the missing tag is a bookkeeping gap rather than an outage — which is exactly the distinction the workflow is built around. Every future release tags normally, because their trees will carry the current workflow.
-
-**Done when** somebody with a workflows-scoped token runs `git push origin --tags`, or the team decides the gap is permanent and says so here.
-
-## Done 1
+## Done 2
 
 Closed, with the release that carried it.
 
@@ -1149,6 +1153,28 @@ So the need was not a need. It was the deploy workflow this site did not have.
 
 **Verified:** `admin/build/verify-live.sh` reports `myfeeds.sgit.ai is serving v0.1.1`; `index.md`, `llms.txt`, `versions/index.json`, `data/team.json` and `app.json` all return 200 with the right content types.
 
+`team/board/008-v010-tag.md`
+
+### 008 · v0.1.0 has no tag on the remote
+
+done need owner [devops](roles/devops.md) · opened 2026-09-14
+
+The `tag-release` job backfills a tag for every historical release. It created `v0.1.0` locally and could not push it: `GITHUB_TOKEN` cannot push a ref to a commit whose tree carries a different `.github/workflows` blob, and v0.1.0's tree carried the `build.yml` this release replaced.
+
+The workflow names the remedy — `git push origin --tags` from a workflows-scoped human credential. That was attempted from this session and also rejected, with `HTTP 403`, so the session credential carries the same limit. `v0.1.1` is tagged; `v0.1.0` is not.
+
+**Held**, not open, because nothing is broken: the release is identified by its commit subject and by `versions/v0.1.0.json`, and the missing tag is a bookkeeping gap rather than an outage — which is exactly the distinction the workflow is built around. Every future release tags normally, because their trees will carry the current workflow.
+
+**Done when** somebody with a workflows-scoped token runs `git push origin --tags`, or the team decides the gap is permanent and says so here.
+
+---
+
+**Closed 2026-09-15: won't fix, and that is the right answer.**
+
+The author's call: tagging works fine from v0.1.1 onward, and one missing historical tag is not worth a credential rotation. v0.1.0 remains identifiable by its commit subject and by `versions/v0.1.0.json`, which is what the versions contract actually requires — the tag was a convenience, not the record. Every release since has tagged normally because their trees carry the current workflow file.
+
+Recorded rather than deleted, because "we decided not to" is a more useful thing for a future reader to find than silence.
+
 [← The team](index.md)[Starting prompts →](prompts.md)
 
 ---
@@ -1164,7 +1190,7 @@ So the need was not a need. It was the deploy workflow this site did not have.
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1223,7 +1249,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1236,6 +1262,30 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.6` · 2026-09-15 · [as data](../versions/v0.1.6.json)
+
+### the site says who wrote it, the corpus grows to three articles and starts asking questions back, and the ontology's first rule becomes that it does not have to be right
+
+Three changes that belong together. The ontology's first rule is now that it does not have to be correct — it has to be wrong in ways a human can see and correct — which outranks every other rule here and changes what the system is for. Every page now states that it was written by a model and not yet read by a person, at the top rather than in a footnote, because a site arguing that automated selection must be checkable cannot itself be an unmarked pile of model output. And the corpus grew from one article to three, which was immediately enough for it to start contradicting its own ontology.
+
+**Corrects.** Two things this release found by having more than one article. With one article the audience ontology looked serviceable; with three, the founder receives everything and seven concerns have never fired once. Neither is necessarily a defect — a concern about funding programmes cannot fire on a newsroom that has not published one — and that ambiguity is exactly why they are published as questions for a human rather than auto-corrected. Separately, review.py's first diagnosis named the wrong culprit: a max-of-counts heuristic pointed at the concern that fires most, which is not the one that fired on the article that should not have been delivered. It now reports the whole distribution and lets a reader find it.
+
+#### Changes
+
+- provenance/ — who made what, the three places a model can be wrong here in order of damage, and the per-page review status vocabulary
+
+- review/ + admin/tools/review.py — the feedback loop: corpus-level findings as open questions with evidence, a model diagnosis marked as a proposal, and an answer format. Nothing on the page fixes itself
+
+- admin/content/data/articles/ — two more real articles from the newsroom, extraction marked ai-generated and unreviewed
+
+- admin/content/data/ontology.json 0.2.0 — the good-enough-to-be-argued-with rule, placed first
+
+- briefs/to-pt-newsroom-2026-09-15.md — four requests to the newsroom team, with what we can and cannot work around
+
+- admin/build/validate.js — every page must carry a review status and an AI-generation disclosure
+
+- team/board/008 closed won't-fix; 012 opened for the brief
 
 `v0.1.5` · 2026-09-15 · [as data](../versions/v0.1.5.json)
 
@@ -1373,6 +1423,199 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 
 ==============================================================================
+# /provenance/index.html
+==============================================================================
+
+# This site is written by an AI, and reviewed afterwards
+
+> Not AI-assisted: the prose, both ontologies, the audience definitions and every classification were produced by a language model and are read by a human after publication rather than before. Who made what, the three places a model can be wrong here in order of damage, and what is not AI-generated.
+
+*Source: <https://myfeeds.sgit.ai/provenance/index.html> · site v0.1.6 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+Disclosure
+
+# This site is written by an AI, and reviewed afterwards
+
+Not "AI-assisted". The prose on every page, the two ontologies, the six audience definitions, the extraction of entities from each article and the classifications that follow from them were all produced by a language model — a Claude Code session — and are read by a human **after** publication rather than before. That is an unusual thing to put at the top of a page instead of at the bottom, and it is the only honest place for it on a site whose entire argument is that automated selection should be checkable.
+
+## Who does what
+
+| Part | Made by | Reviewed |
+|---|---|---|
+| The pages and their argument | Model | After the fact, by Dinis Cruz |
+| The article and audience ontologies | Model | After the fact; the open questions are on [the review page](../review/index.md) |
+| The six audience role definitions | Model | After the fact. These are the most opinionated thing here and the most worth disagreeing with |
+| Entity extraction from each article | Model | Not yet. 3 articles, none reviewed |
+| The join formula and its weights | Model | After the fact |
+| The source articles themselves | [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/) | By that newsroom's named human editor of record, *before* publication |
+
+Note the asymmetry in the last row. The Portuguese newsroom this site reads from has a named human who reads every page before it goes live. This site does not, yet. That gap is on [the board](../team/board.md) and is the single most important thing to fix before anything here runs on a schedule.
+
+## The status on every page
+
+Every page on this site carries one of these, at the top, under the breadcrumb:
+
+| Status | Means |
+|---|---|
+| ai-generated, unreviewed | A model wrote it and nobody has checked it. Today this is every page. |
+| ai-generated, human-reviewed | A model wrote it and a named person has read it and let it stand. |
+| human-written | A person wrote it. |
+
+A page moves off the default when somebody names themselves against it, which is why the generator holds a map of exceptions rather than a field that has to be remembered. An empty map is the honest state and it is currently empty.
+
+## Why this matters more here than elsewhere
+
+This site argues that a recommendation you cannot interrogate is worthless. A site making that argument in prose a model wrote, using an ontology the same model invented, to classify articles the same model extracted, would be an unusually pure example of the problem it describes — unless it says so, in the same place a reader forms their view of whether to trust it.
+
+### The three places a model can be wrong here, in order of damage
+
+1. **Extraction.** A model can name an entity the article does not contain. Everything downstream then explains, correctly and traceably, a connection that should not exist — and the provenance trail makes it *more* convincing, not less. This is the worst failure mode in the whole system and it currently has no automated guard.
+
+2. **The audience definitions.** Six role descriptions written by a model about how real people read. They are plausible, which is exactly the problem: plausible and unchecked is how a stereotype gets encoded as a data structure. These need a practitioner, an investor and a risk owner to read their own entry and say what is wrong.
+
+3. **The prose.** The least dangerous, because a reader can tell. A wrong sentence about how something works is visible in a way that a wrong edge in a graph is not.
+
+## What is not AI-generated
+
+- The [recovered MVP posts](../library/index.md) — written by Dinis Cruz in 2025 and reproduced as published.
+
+- The source articles, which belong to the Portuguese newsroom and are linked rather than reproduced.
+
+- The measurements in this repository: counts of pages, words, articles and connections are computed from files, not written.
+
+[What a human is being asked →](../review/index.md) [About & honest edges →](../about/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/provenance/index.html)*
+
+
+==============================================================================
+# /review/index.html
+==============================================================================
+
+# What a human is being asked to settle
+
+> The ontologies do not have to be right; they have to be wrong in ways somebody can see and correct. The open questions the corpus raised, each with its evidence and what an answer would change — and nothing on the page fixes itself.
+
+*Source: <https://myfeeds.sgit.ai/review/index.html> · site v0.1.6 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The feedback loop
+
+# What a human is being asked to settle
+
+The ontologies here do not have to be right. They have to be **wrong in ways somebody can see and correct** — which is a different and much more achievable target, and the only one available to a system whose classifications are written by a model. This page is the output of that principle: not a quality score, but 9 specific questions, each with the evidence that raised it and what an answer would change.
+
+**Nothing on this page fixes itself.** The formula does not change in response to these questions. A model proposing a diagnosis and then acting on it is the same closed loop this site exists to argue against — so the questions sit here until a person answers them, and the answer is recorded next to the question.
+
+## The corpus these came from
+
+3 articles from [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/). That is a small corpus and the questions below reflect it: several concerns have never fired, and with three articles the honest reading is usually "this newsroom has not published that kind of thing yet" rather than "the concern is wrong". Both answers are useful and only a human can tell them apart.
+
+- `dois-nomes-para-os-mesmos-palcos`
+
+- `registo-nacional-nao-devolve-texto`
+
+- `uma-captura-nao-mostra-movimento`
+
+## The 9 open questions
+
+### An audience that receives everything 1
+
+open startups
+
+**The founder received all 3 articles. Is that right for this corpus, or is one of its concerns too broad?**
+
+**The model's own diagnosis, which is a proposal and not a finding:** fired on — `funding-programme` 0, `event` 2, `peer-company` 1, `small-company-rule` 0 (of 3 articles). Concerns matching a coarse type fire on things the concern did not mean: Organisation covers a startup and a government department equally, and Event covers a conference and an incident. Where a concern above fired on an article you would not have sent, the coarse type is the first place to look.
+
+**Answering it would change:** Narrowing or qualifying the concern that fires most often.
+
+**Articles:** `dois-nomes-para-os-mesmos-palcos`, `registo-nacional-nao-devolve-texto`, `uma-captura-nao-mostra-movimento`
+
+### A concern that has never fired 8
+
+open startups · funding-programme
+
+**“Funding programmes and calls” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open startups · small-company-rule
+
+**“Obligations that bind small companies” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open investors · policy-direction
+
+**“Policy and regulatory direction” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open investors · capital-flow
+
+**“Money entering or leaving” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open c-level · financial-consequence
+
+**“Cost, revenue and exposure in money” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open cybersecurity · control-action
+
+**“Something to change on a system” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open cybersecurity · integrity
+
+**“Whether published information can be trusted” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+open risk · obligation
+
+**“Duties, and who they bind” has never fired in 3 articles. Is it waiting for material this newsroom has not published yet, or is it looking for types the extraction never produces?**
+
+**Answering it would change:** Either keep it and say what it is waiting for, or replace it.
+
+## How to answer one
+
+Every question has an id. An answer is a line in `admin/content/data/review-answers.json` naming the question, the person, the date and what they decided — and, where the answer changes the ontology, the change lands in the same release as the answer so the two cannot drift. There is no form on this page and no comment box: the answers version with the repository, like everything else here.
+
+```
+{
+  "question": "aud-everything-startups",
+  "answered_by": "<name>",
+  "date": "2026-09-__",
+  "decision": "keep | narrow | qualify | replace",
+  "because": "<one sentence a stranger could check>"
+}
+```
+
+## As data
+
+[`/data/review.json`](../data/review.json) — regenerate with `python3 admin/tools/review.py` after any join run.
+
+[← Who wrote this site](../provenance/index.md) [The debug view →](../explain/index.md) [The audiences →](../audiences/index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/review/index.html)*
+
+
+==============================================================================
 # /audiences/index.html
 ==============================================================================
 
@@ -1380,7 +1623,7 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 > The audience side of the join: six roles with a stated appetite rather than a tone of voice — a founder, an allocator, an executive, a practitioner, a risk owner, and a faithful translation that acts as the control. What separates them is what each converts a piece of news into.
 
-*Source: <https://myfeeds.sgit.ai/audiences/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/audiences/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1702,7 +1945,7 @@ this week → several years
 
 > One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
 
-*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1715,6 +1958,10 @@ The grammar
 One ontology says what a piece of news contains. Another says what a role watches for. Neither is interesting on its own — the whole value is in the third thing, the join, which is where an article meets an audience and a sentence comes out saying why. The grammar is adapted from the one [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/) uses for the Portuguese graph, and keeps its hardest rule.
 
 ## The rules
+
+### The ontology does not have to be right. It has to be wrong in ways a human reader can see and correct.
+
+Correctness is not available: nobody can write a complete taxonomy of what six roles care about, and waiting until it is right means never publishing. Legibility IS available — every classification shown with its working out, every concern that fires on everything or fires on nothing surfaced as a question rather than buried in a score. This rule outranks the others: where a modelling choice is more correct but less checkable, take the checkable one, and where the corpus contradicts the ontology, the corpus is right.
 
 ### Every edge is a verb with a distinct named inverse, and both directions read as sentences.
 
@@ -1842,7 +2089,7 @@ The formula is not only described here — it is [`admin/tools/join.py`](../back
 
 > One real Portuguese article put through the join, with its working out: the entities, every concern tried, the connections that fired and the verdicts that did not — plus the three defects the first run found in the audience ontology, shown before and after.
 
-*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2073,7 +2320,7 @@ python3 admin/tools/join.py   admin/content/data/articles/dois-nomes-para-os-mes
 
 > Everything recovered from mvp.myfeeds.ai, readable: the long-form posts where the architecture was worked out, and the briefings the pipeline generated for five personas when it ran.
 
-*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2140,7 +2387,7 @@ Output, not argument: briefings the pipeline generated for a CEO, a CISO, a CTO 
 
 > The working material behind myfeeds.sgit.ai: writing recovered from a site that no longer exists, the documents that live in other repositories, the tools that did the recovering, and every release cut so far. Indexed from what is on disk.
 
-*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2191,7 +2438,7 @@ The working material behind myfeeds.sgit.ai: writing recovered from a site that 
 
 > The first MyFeeds MVP recovered from the Internet Archive: the posts that survived, mostly inside a single capture of the RSS feed, and the nine URLs its own sitemap named that no crawler ever caught.
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2293,7 +2540,7 @@ The manifest — every file, the capture it came from, and its Wayback URL — i
 
 > The business plan, the pitch decks and their briefs, and the engine's architecture notes — indexed where they live rather than copied, because a document has one owner.
 
-*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2341,7 +2588,7 @@ Both are public and open source. `investor.myfeeds.ai` is published from the fir
 
 > The archiver, the generator, the release gate and the live check: one file each, nothing to install, each documented in its own header.
 
-*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2412,7 +2659,7 @@ Because three separate things lose content while appearing to work, and each cos
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_06_14-PM.png) In the rapidly evolving landscape of cybersecurity, recent findings bring attention to developing threats and vulnerabilities, necessitating urgent focus on incident response and compliance strategies. Key developments…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2563,7 +2810,7 @@ Generated: 2025-04-15 16:20:52
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_54_04-PM.png) In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2682,7 +2929,7 @@ Generated: 2025-04-15 16:10:19
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_48_15-PM.png) Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2835,7 +3082,7 @@ Generated: 2025-04-15 14:24:33
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_20_55-PM.png) In the rapidly evolving landscape of cybersecurity, significant threats and vulnerabilities continue to challenge corporate governance and risk management strategies. For board members…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2988,7 +3235,7 @@ Generated: 2025-04-15 21:29:39
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_14_41-PM.png) In today's rapidly evolving cybersecurity landscape, it's crucial for private board members to stay informed about vulnerabilities and regulatory shifts that impact corporate…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3141,7 +3388,7 @@ Generated: 2025-04-15 21:30:28
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3346,7 +3593,7 @@ Continues [on part 2](https://mvp.myfeeds.ai/how-im-building-personalised-news-f
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3589,7 +3836,7 @@ I wanted to see how effective it would be before using all data available and st
 
 > Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3890,7 +4137,7 @@ This final paragraph is here to make this article exceed 2000 words, as counted 
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4011,7 +4258,7 @@ And here is what this first MVP looked like:
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.28.00---Professional-and-technology-focused-image-designed-specifically-for-a-cybersecurity-digest-targeted-at-CTOs.-Prominently-include--CTO--in-bold--clear-.webp) Recent cybersecurity incidents underline the urgency for CTOs to integrate security measures into their cloud migration and microservices strategies. Notable vulnerabilities in CI/CD pipelines and emerging malware…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4140,7 +4387,7 @@ Generated: 2025-03-20 00:19:36
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.26.00---Professional--modern-image-tailored-for-cybersecurity-in-the-FinTech-sector--specifically-for-CISOs.-Include-the-word--CISO--prominently-in-bold-typog.webp) This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges.…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4287,7 +4534,7 @@ Generated: 2025-03-20 00:15:02
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern-corporate-themed-image-for-a-cybersecurity-blog-post-targeted-at-CEOs.-The-word--CEO--clearly-visible-in-bold--elegant.webp) This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4416,7 +4663,7 @@ Generated: 2025-03-20 00:11:08
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.47---An-abstract-digital-illustration-highlighting-cybersecurity-for-CTOs.-Depict-cloud-security--ransomware--password-protection--and-AI-integration-with-.webp) The latest cybersecurity developments present critical insights for CTOs, particularly regarding cloud security threats, ransomware risks, and password management practices. Organizations must remain vigilant when migrating to…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4563,7 +4810,7 @@ Generated: 2025-03-19 19:11:21
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: # Executive Summary ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustration-representing-cybersecurity-threats--including-symbols-of-hacking--phishing--malware--cloud-services--and-prominently.webp) Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4712,7 +4959,7 @@ Generated: 2025-03-19 19:13:03
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustration-emphasizing-cybersecurity-concerns-for-CEOs--featuring-symbols-for-ransomware--phishing--compliance--business-continu.webp) Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4859,7 +5106,7 @@ Generated: 2025-03-19 19:13:37
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4957,7 +5204,7 @@ Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Architect — Own the contracts this site publishes — the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source. Fails when: If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5050,7 +5297,7 @@ Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5139,7 +5386,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5236,7 +5483,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5323,7 +5570,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5426,7 +5673,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.5 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.6 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
