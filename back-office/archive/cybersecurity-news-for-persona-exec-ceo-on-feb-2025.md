@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustration-emphasizing-cybersecurity-concerns-for-CEOs--featuring-symbols-for-ransomware--phishing--compliance--business-continu.webp) Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

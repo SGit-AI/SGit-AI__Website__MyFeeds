@@ -361,6 +361,30 @@ if (exists('assets/site.css')) {
   check(opens === closes, `assets/site.css: ${opens} { against ${closes} } — unbalanced`);
 }
 
+// ------------------------------------------------- nothing non-deterministic is tracked
+
+// CI rebuilds on a clean checkout and fails if the tree differs by a byte. Any tracked
+// file the build REWRITES with different bytes each run therefore breaks every push,
+// whatever the change was. A .pyc did exactly that: the .gitignore negation that
+// un-ignores admin/build/ (so the generator is tracked at all) also un-ignored
+// __pycache__, and Python rewrites those on every import.
+{
+  const tracked = require('child_process')
+    .execSync('git ls-files', { cwd: ROOT, encoding: 'utf8' })
+    .split('\n').filter(Boolean);
+  const junk = tracked.filter((f) =>
+    /(^|\/)__pycache__\//.test(f) || /\.py[cod]$/.test(f) ||
+    /(^|\/)\.DS_Store$/.test(f) || /(^|\/)node_modules\//.test(f));
+  check(junk.length === 0,
+    `tracked build artefact(s) will break the staleness check on every push: ${junk.join(', ')}`);
+  // The generator and the gate must BE tracked — the .gitignore that hides bytecode is
+  // one edit away from hiding them too.
+  for (const need of ['admin/build/build_pages.py', 'admin/build/validate.js',
+    'admin/build/backoffice.py', 'admin/build/version.txt']) {
+    check(tracked.includes(need), `${need}: not tracked by git — check .gitignore`);
+  }
+}
+
 // ------------------------------------------------------------------- banned patterns
 
 for (const [p, html] of bodies) {

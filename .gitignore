@@ -224,3 +224,11 @@ __marimo__/
 # contents, or git never descends into it.
 !admin/build/
 !admin/build/**
+
+# ...but NOT Python's bytecode cache. The negation above un-ignores everything under
+# admin/build/, which silently included __pycache__: a .pyc was committed, its bytes
+# differ between interpreter runs, and CI's "a fresh build must match the committed tree"
+# check therefore failed on every push regardless of content. Re-ignore it explicitly;
+# later rules win.
+admin/build/**/__pycache__/
+admin/build/**/*.py[cod]

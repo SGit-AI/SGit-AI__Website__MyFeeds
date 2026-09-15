@@ -206,6 +206,40 @@ VERSION_LOG = [
             "own idea of what existed. It now reads the build's published inventory."
         ),
     },
+    {
+        "version": "v0.1.4",
+        "date": "2026-09-15",
+        "title": (
+            "a committed .pyc broke the staleness check on every push, which is the "
+            "gitignore fix from v0.1.0 coming back around"
+        ),
+        "summary": (
+            "v0.1.3 validated clean, committed clean, and failed CI. The cause was a "
+            "Python bytecode cache file tracked in the repository: v0.1.0 had to negate "
+            "the Python .gitignore's build/ rule to track the generator at all, and the "
+            "negation un-ignored __pycache__ along with it. Python rewrites those bytes "
+            "on every import, so CI's 'a fresh build must be byte-identical to the "
+            "committed tree' check failed regardless of what the release contained. The "
+            "gate behaved correctly — deploy is gated on validate, so nothing shipped and "
+            "the live site went on serving v0.1.2 rather than half a release."
+        ),
+        "changes": [
+            ".gitignore — re-ignores admin/build/**/__pycache__/ and *.py[cod] after the "
+            "negation that un-ignores the generator",
+            "admin/build/__pycache__/backoffice.cpython-311.pyc — untracked",
+            "admin/build/validate.js — fails on any tracked __pycache__, .pyc, .DS_Store "
+            "or node_modules, and asserts the generator and gate ARE tracked, because the "
+            "same .gitignore edit could hide them too. Demonstrated red before trusting.",
+        ],
+        "corrects": (
+            "v0.1.3 was announced as shipped. It was committed and pushed; it never "
+            "deployed, and the site served v0.1.2 throughout. The failure was in the "
+            "repository's own hygiene rather than in anything the release changed, which "
+            "is the least interesting kind of outage and the easiest to repeat: the "
+            "assertion added here exists so the next one fails at the desk instead of in "
+            "CI."
+        ),
+    },
 ]
 
 NAV = [

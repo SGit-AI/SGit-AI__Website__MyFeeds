@@ -2,7 +2,7 @@
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

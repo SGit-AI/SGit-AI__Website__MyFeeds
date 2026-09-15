@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,22 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.4` · 2026-09-15 · [as data](../versions/v0.1.4.json)
+
+### a committed .pyc broke the staleness check on every push, which is the gitignore fix from v0.1.0 coming back around
+
+v0.1.3 validated clean, committed clean, and failed CI. The cause was a Python bytecode cache file tracked in the repository: v0.1.0 had to negate the Python .gitignore's build/ rule to track the generator at all, and the negation un-ignored __pycache__ along with it. Python rewrites those bytes on every import, so CI's 'a fresh build must be byte-identical to the committed tree' check failed regardless of what the release contained. The gate behaved correctly — deploy is gated on validate, so nothing shipped and the live site went on serving v0.1.2 rather than half a release.
+
+**Corrects.** v0.1.3 was announced as shipped. It was committed and pushed; it never deployed, and the site served v0.1.2 throughout. The failure was in the repository's own hygiene rather than in anything the release changed, which is the least interesting kind of outage and the easiest to repeat: the assertion added here exists so the next one fails at the desk instead of in CI.
+
+#### Changes
+
+- .gitignore — re-ignores admin/build/**/__pycache__/ and *.py[cod] after the negation that un-ignores the generator
+
+- admin/build/__pycache__/backoffice.cpython-311.pyc — untracked
+
+- admin/build/validate.js — fails on any tracked __pycache__, .pyc, .DS_Store or node_modules, and asserts the generator and gate ARE tracked, because the same .gitignore edit could hide them too. Demonstrated red before trusting.
 
 `v0.1.3` · 2026-09-14 · [as data](../versions/v0.1.3.json)
 

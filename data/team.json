@@ -1,7 +1,7 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.3",
-  "generated": "2026-09-14",
+  "version": "v0.1.4",
+  "generated": "2026-09-15",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {

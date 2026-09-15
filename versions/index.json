@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.3",
+  "current": "v0.1.4",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.4",
+      "date": "2026-09-15",
+      "title": "a committed .pyc broke the staleness check on every push, which is the gitignore fix from v0.1.0 coming back around",
+      "href": "v0.1.4.json"
+    },
     {
       "version": "v0.1.3",
       "date": "2026-09-14",

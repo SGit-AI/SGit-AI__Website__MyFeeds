@@ -1,8 +1,8 @@
-# myfeeds.sgit.ai — every page, v0.1.3
+# myfeeds.sgit.ai — every page, v0.1.4
 
 > The LLM was doing too much.
 
-Generated 2026-09-14 from https://myfeeds.sgit.ai/. Sections below are
+Generated 2026-09-15 from https://myfeeds.sgit.ai/. Sections below are
 the markdown twins of every page, in navigation order.
 
 
@@ -14,7 +14,7 @@ the markdown twins of every page, in navigation order.
 
 > Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -112,7 +112,7 @@ MyFeeds ran. The MVP published machine-generated briefings for five personas —
 
 > The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary — each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built.
 
-*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -186,7 +186,7 @@ The engine is public and open source at [the-cyber-boardroom/myfeeds-ai](https:/
 
 > Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -259,7 +259,7 @@ This is the strongest objection, and the answer is that it is nearly free. Read 
 
 > Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -395,7 +395,7 @@ If any of that is wrong, it is wrong in public with a card open against it, whic
 
 > Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -483,7 +483,7 @@ Once the reading record is a set of files with a published shape rather than row
 
 > Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -558,7 +558,7 @@ Not "incomplete" — wrong. If item 2 above turns out to be true and identity ch
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -688,7 +688,7 @@ One honest note on that contract: the estate's shape includes the commit a versi
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -745,7 +745,7 @@ The network directory on sgit.ai carries one entry per sibling site, written in 
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -824,7 +824,7 @@ A correction is published above the claim it corrects, and the claim stays, beca
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -905,7 +905,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1118,7 +1118,7 @@ So the need was not a need. It was the deploy workflow this site did not have.
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1177,7 +1177,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1190,6 +1190,22 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.4` · 2026-09-15 · [as data](../versions/v0.1.4.json)
+
+### a committed .pyc broke the staleness check on every push, which is the gitignore fix from v0.1.0 coming back around
+
+v0.1.3 validated clean, committed clean, and failed CI. The cause was a Python bytecode cache file tracked in the repository: v0.1.0 had to negate the Python .gitignore's build/ rule to track the generator at all, and the negation un-ignored __pycache__ along with it. Python rewrites those bytes on every import, so CI's 'a fresh build must be byte-identical to the committed tree' check failed regardless of what the release contained. The gate behaved correctly — deploy is gated on validate, so nothing shipped and the live site went on serving v0.1.2 rather than half a release.
+
+**Corrects.** v0.1.3 was announced as shipped. It was committed and pushed; it never deployed, and the site served v0.1.2 throughout. The failure was in the repository's own hygiene rather than in anything the release changed, which is the least interesting kind of outage and the easiest to repeat: the assertion added here exists so the next one fails at the desk instead of in CI.
+
+#### Changes
+
+- .gitignore — re-ignores admin/build/**/__pycache__/ and *.py[cod] after the negation that un-ignores the generator
+
+- admin/build/__pycache__/backoffice.cpython-311.pyc — untracked
+
+- admin/build/validate.js — fails on any tracked __pycache__, .pyc, .DS_Store or node_modules, and asserts the generator and gate ARE tracked, because the same .gitignore edit could hide them too. Demonstrated red before trusting.
 
 `v0.1.3` · 2026-09-14 · [as data](../versions/v0.1.3.json)
 
@@ -1296,7 +1312,7 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 > The working material behind myfeeds.sgit.ai: writing recovered from a site that no longer exists, the documents that live in other repositories, the tools that did the recovering, and every release cut so far. Indexed from what is on disk.
 
-*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1347,7 +1363,7 @@ The working material behind myfeeds.sgit.ai: writing recovered from a site that 
 
 > The first MyFeeds MVP recovered from the Internet Archive: the posts that survived, mostly inside a single capture of the RSS feed, and the nine URLs its own sitemap named that no crawler ever caught.
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1449,7 +1465,7 @@ The manifest — every file, the capture it came from, and its Wayback URL — i
 
 > The business plan, the pitch decks and their briefs, and the engine's architecture notes — indexed where they live rather than copied, because a document has one owner.
 
-*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1497,7 +1513,7 @@ Both are public and open source. `investor.myfeeds.ai` is published from the fir
 
 > The archiver, the generator, the release gate and the live check: one file each, nothing to install, each documented in its own header.
 
-*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1568,7 +1584,7 @@ Because three separate things lose content while appearing to work, and each cos
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_06_14-PM.png) In the rapidly evolving landscape of cybersecurity, recent findings bring attention to developing threats and vulnerabilities, necessitating urgent focus on incident response and compliance strategies. Key developments…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1719,7 +1735,7 @@ Generated: 2025-04-15 16:20:52
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_54_04-PM.png) In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1838,7 +1854,7 @@ Generated: 2025-04-15 16:10:19
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_48_15-PM.png) Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1991,7 +2007,7 @@ Generated: 2025-04-15 14:24:33
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_20_55-PM.png) In the rapidly evolving landscape of cybersecurity, significant threats and vulnerabilities continue to challenge corporate governance and risk management strategies. For board members…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2144,7 +2160,7 @@ Generated: 2025-04-15 21:29:39
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_14_41-PM.png) In today's rapidly evolving cybersecurity landscape, it's crucial for private board members to stay informed about vulnerabilities and regulatory shifts that impact corporate…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2297,7 +2313,7 @@ Generated: 2025-04-15 21:30:28
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2502,7 +2518,7 @@ Continues [on part 2](https://mvp.myfeeds.ai/how-im-building-personalised-news-f
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2745,7 +2761,7 @@ I wanted to see how effective it would be before using all data available and st
 
 > Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3046,7 +3062,7 @@ This final paragraph is here to make this article exceed 2000 words, as counted 
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3167,7 +3183,7 @@ And here is what this first MVP looked like:
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.28.00---Professional-and-technology-focused-image-designed-specifically-for-a-cybersecurity-digest-targeted-at-CTOs.-Prominently-include--CTO--in-bold--clear-.webp) Recent cybersecurity incidents underline the urgency for CTOs to integrate security measures into their cloud migration and microservices strategies. Notable vulnerabilities in CI/CD pipelines and emerging malware…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3296,7 +3312,7 @@ Generated: 2025-03-20 00:19:36
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.26.00---Professional--modern-image-tailored-for-cybersecurity-in-the-FinTech-sector--specifically-for-CISOs.-Include-the-word--CISO--prominently-in-bold-typog.webp) This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges.…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3443,7 +3459,7 @@ Generated: 2025-03-20 00:15:02
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern-corporate-themed-image-for-a-cybersecurity-blog-post-targeted-at-CEOs.-The-word--CEO--clearly-visible-in-bold--elegant.webp) This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3572,7 +3588,7 @@ Generated: 2025-03-20 00:11:08
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.47---An-abstract-digital-illustration-highlighting-cybersecurity-for-CTOs.-Depict-cloud-security--ransomware--password-protection--and-AI-integration-with-.webp) The latest cybersecurity developments present critical insights for CTOs, particularly regarding cloud security threats, ransomware risks, and password management practices. Organizations must remain vigilant when migrating to…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3719,7 +3735,7 @@ Generated: 2025-03-19 19:11:21
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: # Executive Summary ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustration-representing-cybersecurity-threats--including-symbols-of-hacking--phishing--malware--cloud-services--and-prominently.webp) Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3868,7 +3884,7 @@ Generated: 2025-03-19 19:13:03
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustration-emphasizing-cybersecurity-concerns-for-CEOs--featuring-symbols-for-ransomware--phishing--compliance--business-continu.webp) Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4015,7 +4031,7 @@ Generated: 2025-03-19 19:13:37
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4113,7 +4129,7 @@ Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Architect — Own the contracts this site publishes — the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source. Fails when: If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4206,7 +4222,7 @@ Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4295,7 +4311,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4392,7 +4408,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4479,7 +4495,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4582,7 +4598,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.3 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.4 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
