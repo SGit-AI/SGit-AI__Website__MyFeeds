@@ -370,7 +370,12 @@ if (exists('assets/site.css')) {
 for (const [p, html] of bodies) {
   // Scope to <main>: a description built from a post body legitimately mentions markdown
   // before it is cleaned, and head metadata is not rendered content.
-  const mainOnly = (html.match(/<main id="main">([\s\S]*?)<\/main>/) || ['', ''])[1];
+  // Scope to <main>, then drop code spans and blocks. Markdown syntax inside <code> is
+  // the correct rendering of a page that documents markdown — this check failed the build
+  // on a board card whose whole subject was that `![](url)` had never been handled.
+  const mainOnly = (html.match(/<main id="main">([\s\S]*?)<\/main>/) || ['', ''])[1]
+    .replace(/<pre[\s\S]*?<\/pre>/g, '')
+    .replace(/<code>[\s\S]*?<\/code>/g, '');
   const raw = [...mainOnly.matchAll(/!\[[^\]]*\]\([^)]*\)/g)];
   check(raw.length === 0,
     `${p}: ${raw.length} markdown image(s) rendered as literal source, not as <img>`);
@@ -384,7 +389,7 @@ for (const [p, html] of bodies) {
 // it looks identical to an image that simply failed to load this once.
 {
   const archiveRoot = 'back-office/archive/mvp.myfeeds.ai';
-  let local = 0, missing = 0;
+  let local = 0, missing = 0, offsite = 0;
   for (const [p, html] of bodies) {
     for (const m of [...html.matchAll(/<img[^>]*\bsrc="([^"]+)"/g),
                      ...html.matchAll(/<a class="rimg" href="([^"]+)"/g)]) {
@@ -398,9 +403,12 @@ for (const [p, html] of bodies) {
       if (resolved.startsWith(archiveRoot)) local++;
     }
     missing += (html.match(/class="missing-img"/g) || []).length;
+    offsite += (html.match(/class="offsite-img"/g) || []).length;
   }
-  if (local || missing) {
-    notes.push(`recovered images: ${local} served from this repository, ${missing} marked not recovered`);
+  if (local || missing || offsite) {
+    notes.push(`recovered images: ${local} served from this repository, ${missing} never `
+      + `archived (re-running the archiver will not find them), ${offsite} embedded from `
+      + `other hosts and never part of this site`);
   }
 }
 

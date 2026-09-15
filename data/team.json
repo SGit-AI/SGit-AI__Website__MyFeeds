@@ -1,6 +1,6 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.7",
+  "version": "v0.1.8",
   "generated": "2026-09-15",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
@@ -8,7 +8,7 @@
     "roles": 7,
     "falsifiable_claims": 7,
     "board_cards": 12,
-    "open_cards": 6,
+    "open_cards": 5,
     "pages": 45
   },
   "roles": [
@@ -241,7 +241,7 @@
     {
       "id": "010",
       "title": "Recover what the archive could not reach",
-      "status": "doing",
+      "status": "done",
       "owner": "librarian",
       "kind": "task",
       "opened": "2026-09-14",

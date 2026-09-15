@@ -201,6 +201,11 @@ dl.fields dd{margin:0}
   border:1px solid var(--line);border-radius:8px;background:var(--panel2);
 }
 .article-body pre{margin-inline:0}
+.article-body .offsite-img{
+  display:inline-block;font-size:.82rem;color:var(--dim2);background:var(--panel2);
+  border:1px dotted var(--line2);border-radius:6px;padding:.25rem .6rem;margin:.4rem 0;
+}
+.article-body .offsite-img a{color:var(--dim);border:0}
 .article-body .missing-img{
   display:inline-block;font-size:.82rem;color:var(--dim2);background:var(--panel2);
   border:1px dashed var(--line2);border-radius:6px;padding:.25rem .6rem;margin:.4rem 0;

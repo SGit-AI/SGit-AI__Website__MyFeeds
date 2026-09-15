@@ -1,6 +1,6 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.7",
+  "version": "v0.1.8",
   "generated": "2026-09-15",
   "source": "admin/build/build_pages.py",
   "counts": {

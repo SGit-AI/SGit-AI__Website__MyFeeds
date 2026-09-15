@@ -1,10 +1,11 @@
 ---
 id: 010
 title: Recover what the archive could not reach
-status: doing
+status: done
 owner: librarian
 kind: task
 opened: 2026-09-14
+closed: 2026-09-15
 ---
 
 `admin/tools/wayback_archive.py` recovered 15 posts and 22 files from `mvp.myfeeds.ai` and
@@ -33,6 +34,44 @@ readable but stops them being verbatim.
 places checked listed, and the image question is decided either way on this card.
 
 ---
+
+**Closed v0.1.8 — and the v0.1.7 update above this line was wrong about the numbers.**
+
+The images are done, and "partly complete, re-run to finish" was a misreading of the
+count. Three different things were being added together:
+
+| | | |
+|---|---|---|
+| 92 | served from this repository | recovered, working |
+| 16 | on the dead domain, **never captured by the Internet Archive** | re-running finds nothing |
+| 51 | embedded from other publishers' CDNs | never part of that site at all |
+
+The last group is the one that made the number look bad. The persona briefings quote
+Hacker News articles and embed the screenshots from the original publisher's image host —
+those were never on `mvp.myfeeds.ai`, so no archive of that site could ever have held them.
+They are not missing. They are somebody else's images, and they are now rendered as a link
+to the original rather than counted as a loss.
+
+Of the 105 images the posts actually reference from the dead domain, **89 are here and 16
+were never archived**. Those 16 are gone unless a copy exists outside the Internet Archive
+— most are DALL·E header images for the persona posts, which the MyFeeds engine repository
+may still hold.
+
+**What was actually done**
+- Archiver run without `--skip-assets`; 120 files pulled before archive.org's rate limiting
+  made further progress pointless.
+- The archiver now honours `Retry-After` and paces the whole run rather than backing off
+  per file, because per-file exponential backoff is the wrong shape for a server that is
+  telling you a specific number of seconds to wait.
+- Each image renders as one of three honest states rather than one misleading one.
+
+**What is left, and it is not this card:** the 16 never-archived images, if anyone wants to
+go looking in `the-cyber-boardroom/myfeeds-ai` for the originals. That is a new card if it
+matters, not an unfinished part of this one.
+
+---
+
+**Superseded update from v0.1.7, kept because it was published:**
 
 **Update, v0.1.7 — images: partially done, and the finish is a re-run.**
 

@@ -2,7 +2,7 @@
 
 > The business plan, the pitch decks and their briefs, and the engine's architecture notes — indexed where they live rather than copied, because a document has one owner.
 
-*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

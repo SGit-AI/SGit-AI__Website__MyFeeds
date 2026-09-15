@@ -2,7 +2,7 @@
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

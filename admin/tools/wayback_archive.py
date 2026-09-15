@@ -52,20 +52,46 @@ WEB = "https://web.archive.org/web"
 UA = "myfeeds-archive/1.0 (+https://myfeeds.sgit.ai; recovering our own site)"
 
 
+# The Internet Archive rate-limits hard on a long asset run. Per-file exponential backoff
+# is the wrong shape for that: every file independently waits 3s, 6s, 12s… and the run
+# crawls while the server is telling you a specific number of seconds to wait. Honour
+# Retry-After, and slow the WHOLE run rather than each file separately, so a throttled run
+# is slow-and-finishing instead of slow-and-apparently-hung.
+_PACE = {"delay": 0.0}
+
+
 def fetch(url: str, tries: int = 5, timeout: int = 60) -> bytes:
-    """GET with backoff. The Internet Archive throttles, 429s, and goes offline for
-    maintenance; every one of those is transient and none of them should lose a run."""
+    """GET with backoff that respects the server. The Internet Archive throttles, 429s and
+    goes offline for maintenance; all three are transient and none should lose a run."""
     last = None
     for attempt in range(1, tries + 1):
+        if _PACE["delay"]:
+            time.sleep(_PACE["delay"])
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 body = r.read()
-            # The maintenance page is served as 200 with an HTML apology.
             if b"Internet Archive services are temporarily offline" in body[:4000]:
                 raise RuntimeError("archive.org is in maintenance")
+            # A clean response earns the run a little speed back.
+            _PACE["delay"] = max(0.0, _PACE["delay"] - 0.25)
             return body
-        except Exception as e:  # noqa: BLE001 - every failure here is worth retrying
+        except urllib.error.HTTPError as e:
+            last = e
+            if e.code == 429:
+                # The server named a number. Use it, and keep the new pace for the rest
+                # of the run rather than forgetting it on the next file.
+                retry_after = e.headers.get("Retry-After")
+                wait = float(retry_after) if (retry_after or "").isdigit() else 30.0
+                _PACE["delay"] = min(10.0, _PACE["delay"] + 1.0)
+                print(f"    429 — waiting {wait:.0f}s, run pace now "
+                      f"{_PACE['delay']:.2f}s/request", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            wait = min(60, 3 * 2 ** (attempt - 1))
+            print(f"    retry {attempt}/{tries} in {wait}s (HTTP {e.code})", file=sys.stderr)
+            time.sleep(wait)
+        except Exception as e:  # noqa: BLE001 - every other failure is worth retrying too
             last = e
             wait = min(60, 3 * 2 ** (attempt - 1))
             print(f"    retry {attempt}/{tries} in {wait}s ({type(e).__name__}: {e})",
@@ -258,7 +284,7 @@ def main() -> int:
         rec["bytes"] = len(body)
         manifest["resources"].append(rec)
         done += 1
-        print(f"  ok {len(body):>8}b  {dest.relative_to(out)}")
+        print(f"  ok [{done}/{len(wanted)}] {len(body):>8}b  {dest.relative_to(out)}")
         time.sleep(args.delay)
 
     print("[3/4] extracting posts from the feed …")

@@ -2,7 +2,7 @@
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

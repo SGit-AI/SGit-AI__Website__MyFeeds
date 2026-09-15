@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -16,11 +16,31 @@ Every release of this site: the version, the date, what it did, and what an earl
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
 
+`v0.1.8` · 2026-09-15 · [as data](../versions/v0.1.8.json)
+
+### the image count in the last release was three different things added together, and the renderer could not document its own syntax
+
+v0.1.7 reported 70 images as missing and said re-running the archiver would fix it. Both halves were wrong. Of the 105 images the recovered posts reference from the dead domain, 89 are here and 16 were never captured by the Internet Archive at all — re-running finds nothing. The other 51 were never part of that site: the persona briefings embed screenshots from the original publishers' own image hosts, which no archive of mvp.myfeeds.ai could ever have held. Three different things were being counted as one, and the one that made the number look bad was the group that was never a loss.
+
+**Corrects.** v0.1.7's release note and board card 010 both said 70 images were missing and that a re-run would recover them. The honest figures are 89 recovered, 16 never archived and 51 that were never this site's to recover. The wrong text stays on the card with the correction above it. Separately, two renderer defects found by this site's own prose: a code span containing markdown had that markdown rewritten — a board card explaining that image syntax had never been handled turned its own example into a link and broke the build — and the check that catches literal markdown then flagged the correct rendering of a code span as a defect. A renderer that cannot document its own syntax is one that will quietly rewrite any example anybody ever writes in it.
+
+#### Changes
+
+- admin/build/build_pages.py — three image states instead of one: recovered, never archived, or hosted elsewhere (rendered as a link to the original)
+
+- admin/build/build_pages.py — md_inline lifts code spans out before every other rule and restores them last
+
+- admin/tools/wayback_archive.py — honours Retry-After and paces the whole run rather than backing off per file; prints progress
+
+- admin/build/validate.js — the literal-markdown check ignores code spans and code blocks; the image note reports the three states separately
+
+- team/board/010 — closed, with the corrected numbers above the wrong ones
+
 `v0.1.7` · 2026-09-15 · [as data](../versions/v0.1.7.json)
 
 ### the recovered posts get their images back, which took fixing two unrelated bugs and resolving a conflict with the authoring contract
 
-Every architecture post in the library had been showing raw markdown where its images should be, since the recovery. Two independent causes. The archiver had been run with --skip-assets, so no image had ever been downloaded. And the inline-markdown renderer had never handled image syntax at all: its link rule required non-empty link text, and `[image not recovered: `url`]` has none, so the pattern matched nothing and the source fell through to the page. Neither failed loudly; both were visible only to a human looking at a page.
+Every architecture post in the library had been showing raw markdown where its images should be, since the recovery. Two independent causes. The archiver had been run with --skip-assets, so no image had ever been downloaded. And the inline-markdown renderer had never handled image syntax at all: its link rule required non-empty link text, and `![](url)` has none, so the pattern matched nothing and the source fell through to the page. Neither failed loudly; both were visible only to a human looking at a page.
 
 **Corrects.** A decision from v0.1.3. The archive pages said images were 'left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence'. The principle is right and the application was wrong: it produced an archive nobody could read, which is not evidence either. Images are now served from this repository with the original URL kept in each image's title — rewritten AND recorded. Separately, pointing an <img src> at the local copies broke the authoring contract, because a declarative reference to a vault path 404s inside a sandboxed frame before the bridge installs; the validator caught it before it shipped. Images are emitted as links that JavaScript upgrades, which passes the contract, works in a vault, works on the static mirror, and degrades to a working link with scripting disabled.
 
@@ -28,7 +48,7 @@ Every architecture post in the library had been showing raw markdown where its i
 
 - back-office/archive/mvp.myfeeds.ai/content/ — the archived images, downloaded. Partial at this release: the Internet Archive is throttling, and the archiver resumes on a re-run (board card 010)
 
-- admin/build/build_pages.py — markdown images render; post descriptions are stripped to prose, because a post opening with an image had put `[image not recovered: `…png`]` into its own meta description and JSON-LD
+- admin/build/build_pages.py — markdown images render; post descriptions are stripped to prose, because a post opening with an image had put `![](https://…png)` into its own meta description and JSON-LD
 
 - assets/site.js — upgrades recovered image links into images, over the vault bridge where one exists and directly otherwise
 

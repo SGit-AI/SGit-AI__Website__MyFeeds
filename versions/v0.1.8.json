@@ -1,0 +1,21 @@
+{
+  "version": "v0.1.8",
+  "date": "2026-09-15",
+  "commit": null,
+  "commit_ref": "refs/tags/v0.1.8",
+  "vault": null,
+  "reconstructed": false,
+  "title": "the image count in the last release was three different things added together, and the renderer could not document its own syntax",
+  "summary": "v0.1.7 reported 70 images as missing and said re-running the archiver would fix it. Both halves were wrong. Of the 105 images the recovered posts reference from the dead domain, 89 are here and 16 were never captured by the Internet Archive at all \u2014 re-running finds nothing. The other 51 were never part of that site: the persona briefings embed screenshots from the original publishers' own image hosts, which no archive of mvp.myfeeds.ai could ever have held. Three different things were being counted as one, and the one that made the number look bad was the group that was never a loss.",
+  "changes": [
+    "admin/build/build_pages.py \u2014 three image states instead of one: recovered, never archived, or hosted elsewhere (rendered as a link to the original)",
+    "admin/build/build_pages.py \u2014 md_inline lifts code spans out before every other rule and restores them last",
+    "admin/tools/wayback_archive.py \u2014 honours Retry-After and paces the whole run rather than backing off per file; prints progress",
+    "admin/build/validate.js \u2014 the literal-markdown check ignores code spans and code blocks; the image note reports the three states separately",
+    "team/board/010 \u2014 closed, with the corrected numbers above the wrong ones"
+  ],
+  "corrects": "v0.1.7's release note and board card 010 both said 70 images were missing and that a re-run would recover them. The honest figures are 89 recovered, 16 never archived and 51 that were never this site's to recover. The wrong text stays on the card with the correction above it. Separately, two renderer defects found by this site's own prose: a code span containing markdown had that markdown rewritten \u2014 a board card explaining that image syntax had never been handled turned its own example into a link and broke the build \u2014 and the check that catches literal markdown then flagged the correct rendering of a code span as a defect. A renderer that cannot document its own syntax is one that will quietly rewrite any example anybody ever writes in it.",
+  "basis": [],
+  "site": "myfeeds.sgit.ai",
+  "url": "https://myfeeds.sgit.ai/admin/versions.html#v0-1-8"
+}

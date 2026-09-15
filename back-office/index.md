@@ -2,7 +2,7 @@
 
 > The working material behind myfeeds.sgit.ai: writing recovered from a site that no longer exists, the documents that live in other repositories, the tools that did the recovering, and every release cut so far. Indexed from what is on disk.
 
-*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

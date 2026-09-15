@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 24 Mar 2025: The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -36,7 +36,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 24 Mar 2025 · Dinis Cruz
 
-[image not recovered: `cc8800d3-ac07-43a3-9485-53d7a87b7770.png`]
+[image never archived: `cc8800d3-ac07-43a3-9485-53d7a87b7770.png`]
 
 The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but **what do those entities look like?** and more importantly,** how do we have provenance, explainability and determinism from** this workflow?
 

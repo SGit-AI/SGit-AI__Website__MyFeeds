@@ -1,4 +1,4 @@
-# myfeeds.sgit.ai — every page, v0.1.7
+# myfeeds.sgit.ai — every page, v0.1.8
 
 > The LLM was doing too much.
 
@@ -14,7 +14,7 @@ the markdown twins of every page, in navigation order.
 
 > Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -112,7 +112,7 @@ MyFeeds ran. The MVP published machine-generated briefings for five personas —
 
 > The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary — each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built.
 
-*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -186,7 +186,7 @@ The engine is public and open source at [the-cyber-boardroom/myfeeds-ai](https:/
 
 > Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -259,7 +259,7 @@ This is the strongest objection, and the answer is that it is nearly free. Read 
 
 > Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -395,7 +395,7 @@ If any of that is wrong, it is wrong in public with a card open against it, whic
 
 > Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -483,7 +483,7 @@ Once the reading record is a set of files with a published shape rather than row
 
 > Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -558,7 +558,7 @@ Not "incomplete" — wrong. If item 2 above turns out to be true and identity ch
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -688,7 +688,7 @@ One honest note on that contract: the estate's shape includes the commit a versi
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -745,7 +745,7 @@ The network directory on sgit.ai carries one entry per sibling site, written in 
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -824,7 +824,7 @@ A correction is published above the claim it corrects, and the claim stays, beca
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -888,7 +888,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 ## The board
 
-6 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
 
 [The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
 
@@ -905,7 +905,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1021,54 +1021,9 @@ eventually publish something wrong with full confidence and a provenance trail. 
 
 **Done when** a scheduled Routine runs the eight steps end to end on one day's articles, the release it cuts passes CI, `verify-live.sh` confirms it, and the run record says which articles were extracted, which audiences each reached, and what a human changed.
 
-## In progress 2
+## In progress 1
 
 Claimed, with a role behind it.
-
-`team/board/010-recover-remaining.md`
-
-### 010 · Recover what the archive could not reach
-
-doing task owner [librarian](roles/librarian.md) · opened 2026-09-14
-
-`admin/tools/wayback_archive.py` recovered 15 posts and 22 files from `mvp.myfeeds.ai` and recorded 9 URLs that its own sitemap named and no crawler ever captured. Two of those are writing rather than an index and are therefore genuinely lost from that source: `/about/` and `/ceo-news/`.
-
-They may exist elsewhere. Places to look, in order of likelihood:
-
-- the Ghost export or database backup, if one was kept;
-
-- `the-cyber-boardroom/myfeeds-ai`, which generated the persona posts and may hold the
-
-source of the pages too;
-
-- LinkedIn, where several of these posts were cross-published — the recovered HTML carries
-
-`?trk=article-ssr-frontend-pulse` parameters, which is evidence they were syndicated there;
-
-- a second archive (archive.today, Bing or Google cache) that the Internet Archive's
-
-index does not cover.
-
-Also outstanding: the run used `--skip-assets`, so the **361 captured images are indexed in the manifest but not downloaded**. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.
-
-**Done when** the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.
-
----
-
-**Update, v0.1.7 — images: partially done, and the finish is a re-run.**
-
-The run used `--skip-assets`, so no images had been downloaded at all and every recovered post rendered a column of markdown source. Both halves are now fixed: the archiver was run without the flag, and the renderer was taught image syntax (see the release note — it had never handled `[image not recovered: `url`]`, because the inline link rule required non-empty link text).
-
-At the time of this release the Internet Archive is throttling and the download is **partly complete**. The exact split is printed by the validator on every build — look for the `recovered images:` note — and shown on each post as an explicit "image not recovered" marker rather than a broken image, so the gap is visible rather than inferred.
-
-**To finish it:** re-run the same command. The archiver skips files already present, so it resumes rather than restarting.
-
-```
-python3 admin/tools/wayback_archive.py mvp.myfeeds.ai --out back-office/archive --delay 0.25
-python3 admin/build/build_pages.py && node admin/build/validate.js
-```
-
-**Decided:** the images are served from this repository and the original URL is kept in each image's `title`. The earlier position — leave references pointing at the dead domain so the archive stays verbatim — was wrong in practice: it produced an archive nobody could read. Rewriting a reference and recording it is evidence; rewriting and hiding it is not.
 
 `team/board/012-newsroom-brief.md`
 
@@ -1150,7 +1105,7 @@ The reason is real: the commit that *carries* a version cannot be known while th
 
 **Reopen when** there is a way to fill `commit` that is true at the moment it is written — most likely the Historian backfilling the previous release's hash in the entry for the next one, which is honest and verifiable.
 
-## Done 2
+## Done 3
 
 Closed, with the release that carried it.
 
@@ -1192,6 +1147,83 @@ The author's call: tagging works fine from v0.1.1 onward, and one missing histor
 
 Recorded rather than deleted, because "we decided not to" is a more useful thing for a future reader to find than silence.
 
+`team/board/010-recover-remaining.md`
+
+### 010 · Recover what the archive could not reach
+
+done task owner [librarian](roles/librarian.md) · opened 2026-09-14
+
+`admin/tools/wayback_archive.py` recovered 15 posts and 22 files from `mvp.myfeeds.ai` and recorded 9 URLs that its own sitemap named and no crawler ever captured. Two of those are writing rather than an index and are therefore genuinely lost from that source: `/about/` and `/ceo-news/`.
+
+They may exist elsewhere. Places to look, in order of likelihood:
+
+- the Ghost export or database backup, if one was kept;
+
+- `the-cyber-boardroom/myfeeds-ai`, which generated the persona posts and may hold the
+
+source of the pages too;
+
+- LinkedIn, where several of these posts were cross-published — the recovered HTML carries
+
+`?trk=article-ssr-frontend-pulse` parameters, which is evidence they were syndicated there;
+
+- a second archive (archive.today, Bing or Google cache) that the Internet Archive's
+
+index does not cover.
+
+Also outstanding: the run used `--skip-assets`, so the **361 captured images are indexed in the manifest but not downloaded**. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.
+
+**Done when** the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.
+
+---
+
+**Closed v0.1.8 — and the v0.1.7 update above this line was wrong about the numbers.**
+
+The images are done, and "partly complete, re-run to finish" was a misreading of the count. Three different things were being added together:
+
+|  |  |  |
+|---|---|---|
+| 92 | served from this repository | recovered, working |
+| 16 | on the dead domain, **never captured by the Internet Archive** | re-running finds nothing |
+| 51 | embedded from other publishers' CDNs | never part of that site at all |
+
+The last group is the one that made the number look bad. The persona briefings quote Hacker News articles and embed the screenshots from the original publisher's image host — those were never on `mvp.myfeeds.ai`, so no archive of that site could ever have held them. They are not missing. They are somebody else's images, and they are now rendered as a link to the original rather than counted as a loss.
+
+Of the 105 images the posts actually reference from the dead domain, **89 are here and 16 were never archived**. Those 16 are gone unless a copy exists outside the Internet Archive — most are DALL·E header images for the persona posts, which the MyFeeds engine repository may still hold.
+
+**What was actually done**
+
+- Archiver run without `--skip-assets`; 120 files pulled before archive.org's rate limiting
+
+made further progress pointless.
+
+- The archiver now honours `Retry-After` and paces the whole run rather than backing off
+
+per file, because per-file exponential backoff is the wrong shape for a server that is telling you a specific number of seconds to wait.
+
+- Each image renders as one of three honest states rather than one misleading one.
+
+**What is left, and it is not this card:** the 16 never-archived images, if anyone wants to go looking in `the-cyber-boardroom/myfeeds-ai` for the originals. That is a new card if it matters, not an unfinished part of this one.
+
+---
+
+**Superseded update from v0.1.7, kept because it was published:**
+
+**Update, v0.1.7 — images: partially done, and the finish is a re-run.**
+
+The run used `--skip-assets`, so no images had been downloaded at all and every recovered post rendered a column of markdown source. Both halves are now fixed: the archiver was run without the flag, and the renderer was taught image syntax (see the release note — it had never handled `![](url)`, because the inline link rule required non-empty link text).
+
+At the time of this release the Internet Archive is throttling and the download is **partly complete**. The exact split is printed by the validator on every build — look for the `recovered images:` note — and shown on each post as an explicit "image not recovered" marker rather than a broken image, so the gap is visible rather than inferred.
+
+**To finish it:** re-run the same command. The archiver skips files already present, so it resumes rather than restarting.
+
+```
+python3 admin/tools/wayback_archive.py mvp.myfeeds.ai --out back-office/archive --delay 0.25
+python3 admin/build/build_pages.py && node admin/build/validate.js
+```
+
+**Decided:** the images are served from this repository and the original URL is kept in each image's `title`. The earlier position — leave references pointing at the dead domain so the archive stays verbatim — was wrong in practice: it produced an archive nobody could read. Rewriting a reference and recording it is evidence; rewriting and hiding it is not.
+
 [← The team](index.md)[Starting prompts →](prompts.md)
 
 ---
@@ -1207,7 +1239,7 @@ Recorded rather than deleted, because "we decided not to" is a more useful thing
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1266,7 +1298,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1280,11 +1312,31 @@ Every release of this site: the version, the date, what it did, and what an earl
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
 
+`v0.1.8` · 2026-09-15 · [as data](../versions/v0.1.8.json)
+
+### the image count in the last release was three different things added together, and the renderer could not document its own syntax
+
+v0.1.7 reported 70 images as missing and said re-running the archiver would fix it. Both halves were wrong. Of the 105 images the recovered posts reference from the dead domain, 89 are here and 16 were never captured by the Internet Archive at all — re-running finds nothing. The other 51 were never part of that site: the persona briefings embed screenshots from the original publishers' own image hosts, which no archive of mvp.myfeeds.ai could ever have held. Three different things were being counted as one, and the one that made the number look bad was the group that was never a loss.
+
+**Corrects.** v0.1.7's release note and board card 010 both said 70 images were missing and that a re-run would recover them. The honest figures are 89 recovered, 16 never archived and 51 that were never this site's to recover. The wrong text stays on the card with the correction above it. Separately, two renderer defects found by this site's own prose: a code span containing markdown had that markdown rewritten — a board card explaining that image syntax had never been handled turned its own example into a link and broke the build — and the check that catches literal markdown then flagged the correct rendering of a code span as a defect. A renderer that cannot document its own syntax is one that will quietly rewrite any example anybody ever writes in it.
+
+#### Changes
+
+- admin/build/build_pages.py — three image states instead of one: recovered, never archived, or hosted elsewhere (rendered as a link to the original)
+
+- admin/build/build_pages.py — md_inline lifts code spans out before every other rule and restores them last
+
+- admin/tools/wayback_archive.py — honours Retry-After and paces the whole run rather than backing off per file; prints progress
+
+- admin/build/validate.js — the literal-markdown check ignores code spans and code blocks; the image note reports the three states separately
+
+- team/board/010 — closed, with the corrected numbers above the wrong ones
+
 `v0.1.7` · 2026-09-15 · [as data](../versions/v0.1.7.json)
 
 ### the recovered posts get their images back, which took fixing two unrelated bugs and resolving a conflict with the authoring contract
 
-Every architecture post in the library had been showing raw markdown where its images should be, since the recovery. Two independent causes. The archiver had been run with --skip-assets, so no image had ever been downloaded. And the inline-markdown renderer had never handled image syntax at all: its link rule required non-empty link text, and `[image not recovered: `url`]` has none, so the pattern matched nothing and the source fell through to the page. Neither failed loudly; both were visible only to a human looking at a page.
+Every architecture post in the library had been showing raw markdown where its images should be, since the recovery. Two independent causes. The archiver had been run with --skip-assets, so no image had ever been downloaded. And the inline-markdown renderer had never handled image syntax at all: its link rule required non-empty link text, and `![](url)` has none, so the pattern matched nothing and the source fell through to the page. Neither failed loudly; both were visible only to a human looking at a page.
 
 **Corrects.** A decision from v0.1.3. The archive pages said images were 'left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence'. The principle is right and the application was wrong: it produced an archive nobody could read, which is not evidence either. Images are now served from this repository with the original URL kept in each image's title — rewritten AND recorded. Separately, pointing an <img src> at the local copies broke the authoring contract, because a declarative reference to a vault path 404s inside a sandboxed frame before the bridge installs; the validator caught it before it shipped. Images are emitted as links that JavaScript upgrades, which passes the contract, works in a vault, works on the static mirror, and degrades to a working link with scripting disabled.
 
@@ -1292,7 +1344,7 @@ Every architecture post in the library had been showing raw markdown where its i
 
 - back-office/archive/mvp.myfeeds.ai/content/ — the archived images, downloaded. Partial at this release: the Internet Archive is throttling, and the archiver resumes on a re-run (board card 010)
 
-- admin/build/build_pages.py — markdown images render; post descriptions are stripped to prose, because a post opening with an image had put `[image not recovered: `…png`]` into its own meta description and JSON-LD
+- admin/build/build_pages.py — markdown images render; post descriptions are stripped to prose, because a post opening with an image had put `![](https://…png)` into its own meta description and JSON-LD
 
 - assets/site.js — upgrades recovered image links into images, over the vault bridge where one exists and directly otherwise
 
@@ -1467,7 +1519,7 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 > Not AI-assisted: the prose, both ontologies, the audience definitions and every classification were produced by a language model and are read by a human after publication rather than before. Who made what, the three places a model can be wrong here in order of damage, and what is not AI-generated.
 
-*Source: <https://myfeeds.sgit.ai/provenance/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/provenance/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1539,7 +1591,7 @@ This site argues that a recommendation you cannot interrogate is worthless. A si
 
 > The ontologies do not have to be right; they have to be wrong in ways somebody can see and correct. The open questions the corpus raised, each with its evidence and what an answer would change — and nothing on the page fixes itself.
 
-*Source: <https://myfeeds.sgit.ai/review/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/review/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1660,7 +1712,7 @@ Every question has an id. An answer is a line in `admin/content/data/review-answ
 
 > The audience side of the join: six roles with a stated appetite rather than a tone of voice — a founder, an allocator, an executive, a practitioner, a risk owner, and a faithful translation that acts as the control. What separates them is what each converts a piece of news into.
 
-*Source: <https://myfeeds.sgit.ai/audiences/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/audiences/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1982,7 +2034,7 @@ this week → several years
 
 > One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
 
-*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2126,7 +2178,7 @@ The formula is not only described here — it is [`admin/tools/join.py`](../back
 
 > One real Portuguese article put through the join, with its working out: the entities, every concern tried, the connections that fired and the verdicts that did not — plus the three defects the first run found in the audience ontology, shown before and after.
 
-*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2357,7 +2409,7 @@ python3 admin/tools/join.py   admin/content/data/articles/dois-nomes-para-os-mes
 
 > Everything recovered from mvp.myfeeds.ai, readable: the long-form posts where the architecture was worked out, and the briefings the pipeline generated for five personas when it ran.
 
-*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2424,7 +2476,7 @@ Output, not argument: briefings the pipeline generated for a CEO, a CISO, a CTO 
 
 > The working material behind myfeeds.sgit.ai: writing recovered from a site that no longer exists, the documents that live in other repositories, the tools that did the recovering, and every release cut so far. Indexed from what is on disk.
 
-*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2475,7 +2527,7 @@ The working material behind myfeeds.sgit.ai: writing recovered from a site that 
 
 > The first MyFeeds MVP recovered from the Internet Archive: the posts that survived, mostly inside a single capture of the RSS feed, and the nine URLs its own sitemap named that no crawler ever caught.
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2577,7 +2629,7 @@ The manifest — every file, the capture it came from, and its Wayback URL — i
 
 > The business plan, the pitch decks and their briefs, and the engine's architecture notes — indexed where they live rather than copied, because a document has one owner.
 
-*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2625,7 +2677,7 @@ Both are public and open source. `investor.myfeeds.ai` is published from the fir
 
 > The archiver, the generator, the release gate and the live check: one file each, nothing to install, each documented in its own header.
 
-*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2696,7 +2748,7 @@ Because three separate things lose content while appearing to work, and each cos
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: In the rapidly evolving landscape of cybersecurity, recent findings bring attention to developing threats and vulnerabilities, necessitating urgent focus on incident response and compliance strategies. Key developments include…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2730,7 +2782,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 15 Apr 2025 · Athena
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--11_06_14-PM.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--11_06_14-PM.png`]
 
 In the rapidly evolving landscape of cybersecurity, recent findings bring attention to developing threats and vulnerabilities, necessitating urgent focus on incident response and compliance strategies. Key developments include security vulnerabilities in widely-used software platforms, advancements in cyber-attack tools, and guidance on shared responsibility models crucial for CISOs in fintech sectors.
 
@@ -2754,7 +2806,7 @@ The current cybersecurity news signals an urgent call to action, demanding a dyn
 
 **Published:** 2025-03-24 09:17:00 +0000
 
-[image not recovered: `nextjs.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEju51s8C-YRfwNqS5bwSkr7KlPeKSciSM8enbWEAc111TwyUbr_G-EV3jJiuTWPbBk9e7lrxh9OPdS6_YyLdjr4pgrt7rApvGk7XVjcpIDBwa-uipiAM1r8SFIWj6Myo2-hC4d2-pb2Fzys8ny8yAIQqF3vIv8g7E0lA9IJUuHCg9Q2fkqFsdWzG2k3O0Z-/s1600/nextjs.png)
 
 A critical flaw in the Next.js framework, known as CVE-2025-29927, has been uncovered, allowing attackers to bypass authorization checks. With a CVSS score of 9.1, this vulnerability currently poses a high threat level requiring immediate action from security teams.
 
@@ -2770,7 +2822,7 @@ A critical flaw in the Next.js framework, known as CVE-2025-29927, has been unco
 
 **Published:** 2025-03-26 08:53:00 +0000
 
-[image not recovered: `credential-stuffing-attack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNU94_bE3yIjKoZ6aKoXUA5HOICF_murllTUaOLwGL0pllmeHTy-q2uwKtdf_gzGNqcnsy6LEnG86nZxf6J5hDXbxA9yQhGWMdm0kSCMaDks3w_ruMy9LEhDFbVvNxLDLUTGep8AGeAiOIfZ2i9Capg9l9YnbwktxV8Iu-JG3AgHgOg5ECdy0wk1KWwDsh/s1600/credential-stuffing-attack.png)
 
 Cybercriminals leveraging Atlantis AIO for automated credential stuffing attacks highlight an increasing threat vector. This tool allows checking millions of stolen credentials rapidly, demanding enhanced measures in access management.
 
@@ -2786,7 +2838,7 @@ Cybercriminals leveraging Atlantis AIO for automated credential stuffing attacks
 
 **Published:** 2025-03-26 04:56:00 +0000
 
-[image not recovered: `chrome-hack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEjVt8bRERjUwrg5DqCasG7dqttQ49Ed8nn0wFLmsdS2bpGmdm7AQpDOnrSve1vBVN_JS-oQXEkufDBjeQ0ZzkgN2S0f6R6rGCcl4SG_lT4pPPzfC6_Nc571xNujohkMMA1O3G1GV0eQ0HjA4yGp1vlKZwW0OmPCC53wWFTM2XIuJvsIbOZhetdYOiJoYu/s1600/chrome-hack.png)
 
 Google's recent patch for a Chrome vulnerability exploited for espionage underlines the importance of up-to-date threat intelligence to curb exploitation by malicious actors, particularly in politically sensitive environments.
 
@@ -2802,7 +2854,7 @@ Google's recent patch for a Chrome vulnerability exploited for espionage underli
 
 **Published:** 2025-03-21 05:09:00 +0000
 
-[image not recovered: `cisco.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvJrbAzwqHpKhpHksnXIn8w_nn45746SNyOytsPON3SRIiwJiV83kcThx_VImXQTYHuY2Jh7d0bXOBSxHuoNE2PGJkdwmuz20vR9gyRJ7V64WVu_2rqV81tL0lXFIVVGfq69V56e1gV85sdFO43RLGNRlyyVQ8rBvwVNq6Lx52usaBELtr0qUHBnWknhFi/s1600/cisco.png)
 
 Recent attacks exploiting critical vulnerabilities in Cisco's Smart Licensing Utility highlight active exploitation risks, posing serious threats to organizational infrastructures reliant on Cisco technologies.
 
@@ -2818,7 +2870,7 @@ Recent attacks exploiting critical vulnerabilities in Cisco's Smart Licensing Ut
 
 **Published:** 2025-03-20 11:25:00 +0000
 
-[image not recovered: `crashplan.jpg`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhK15A8I2t-L1pvBtpctTjQlAK36bzjisflZV44oEKUrns33WM20e1LG2kUqm_UaGKJS_Tq6EfTawSeC_LZ_gdnl7oLmH5veRm6hlyDFyKj5p2qM-M2aMePE0pmu9urreOaJezzJnACWDSlsmsT900DSOtbzrVa3gosBi7_Pl87AzvG0xL8E5vOZ3MZLc4/s1600/crashplan.jpg)
 
 The adoption of the shared responsibility model provides key insights for incorporating compliance and cybersecurity effectiveness within organizations, urging leaders to optimize cloud security strategies.
 
@@ -2851,7 +2903,7 @@ Generated: 2025-04-15 16:20:52
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD pipelines…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2885,7 +2937,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 15 Apr 2025 · Athena
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--10_54_04-PM.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--10_54_04-PM.png`]
 
 In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD pipelines and highlight emerging threats within cloud migration environments. Understanding the implications of these developments is essential for driving secure innovation while maintaining system integrity.
 
@@ -2909,7 +2961,7 @@ For the CTO steering a technology-focused enterprise, these developments mandate
 
 **Published:** 2025-03-24 11:35:00 +0000
 
-[image not recovered: `recap.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLMmGnaFj02bQOVNInRxWU6pojgOefyyTEjP07OmmhXLsmLTyO1FAdQ5mF9uGyCOdvcQewKKxPdJ_rM-P6vEtvz0nS2t43-8Mdug0vURvQ9niaQ59YaXIMNNE7ZqwnkHad4Q1TZAw3Z6uUGX5CWeJw-NlDm_PD8WSNKLAvf_rm3xwv_6ym6KZyVLoxHDA/s1600/recap.png)
 
 A covert alteration in a GitHub Action component led to a widespread supply chain breach, affecting deployment automation and highlighting security vulnerabilities within CI/CD pipelines.
 
@@ -2925,7 +2977,7 @@ A covert alteration in a GitHub Action component led to a widespread supply chai
 
 **Published:** 2025-03-21 05:09:00 +0000
 
-[image not recovered: `cisco.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvJrbAzwqHpKhpHksnXIn8w_nn45746SNyOytsPON3SRIiwJiV83kcThx_VImXQTYHuY2Jh7d0bXOBSxHuoNE2PGJkdwmuz20vR9gyRJ7V64WVu_2rqV81tL0lXFIVVGfq69V56e1gV85sdFO43RLGNRlyyVQ8rBvwVNq6Lx52usaBELtr0qUHBnWknhFi/s1600/cisco.png)
 
 Active attempts to exploit patched vulnerabilities in Cisco's Smart Licensing Utility underline the need for urgency in addressing technical debt and security patching during cloud migrations.
 
@@ -2941,7 +2993,7 @@ Active attempts to exploit patched vulnerabilities in Cisco's Smart Licensing Ut
 
 **Published:** 2025-03-24 18:55:00 +0000
 
-[image not recovered: `cluster.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyjHlwsnUepUlWpwFiKweqPP3vCKOcnbee6MnlDwVTWs_TYiFbWPIfYBJ0fN0x3HCC7hHcHeo4sFNLoWMce5ZM9-F16BeQ05Ol7yBhOP5v8hyPCJbY6DwPgEh1o-Ky3nszcSPE0s1XKxnRnGIpdixE4T4VFOpYrc4CedZ2xtSwVUNW3HBbvmYG6lFqlcMZ/s1600/cluster.png)
 
 Five critical flaws in the Kubernetes Ingress NGINX Controller could permit unauthenticated remote code execution, jeopardizing over 6,500 clusters and core cloud operations.
 
@@ -2974,7 +3026,7 @@ Generated: 2025-04-15 16:10:19
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of a…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3008,7 +3060,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 15 Apr 2025 · Athena
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--10_48_15-PM.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--10_48_15-PM.png`]
 
 Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of a mid-sized tech company, navigating these challenges alongside digital transformation efforts is essential to safeguarding company assets, maintaining shareholder trust, and ensuring compliance with regulatory standards.
 
@@ -3032,7 +3084,7 @@ Addressing emerging cyber threats and ensuring business continuity through robus
 
 **Published:** 2025-03-20 11:25:00 +0000
 
-[image not recovered: `crashplan.jpg`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhK15A8I2t-L1pvBtpctTjQlAK36bzjisflZV44oEKUrns33WM20e1LG2kUqm_UaGKJS_Tq6EfTawSeC_LZ_gdnl7oLmH5veRm6hlyDFyKj5p2qM-M2aMePE0pmu9urreOaJezzJnACWDSlsmsT900DSOtbzrVa3gosBi7_Pl87AzvG0xL8E5vOZ3MZLc4/s1600/crashplan.jpg)
 
 The article underscores the necessity of integrating business continuity with cybersecurity through frameworks like Microsoft's shared responsibility model. This approach is crucial for managing cloud-based assets, aligning with strategic digital transformation goals, and ensuring comprehensive protection against cyber threats.
 
@@ -3048,7 +3100,7 @@ The article underscores the necessity of integrating business continuity with cy
 
 **Published:** 2025-03-20 10:00:00 +0000
 
-[image not recovered: `rapid.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi88eSxKJCCs2ZpS0_XkvKbgI1aAIXJgItw-eRe-nfF92_CwAwLMZ9ZoJIMcoxwKJis0r3yBglBRk8Sgx5W6fxk7QsA9GCfqxBd49sDs8uthuL1OlDB3BWPIFKK_G5CBZTsnrwR5UwkTOHDvYnciaZkZJcQC79sNJ-YRwzFZSdpWRRphcT6ZTE1QKGvPMc/s1600/rapid.png)
 
 The article emphasizes that continuous compliance monitoring is essential for mid-sized tech companies like yours to meet evolving regulatory standards. This is crucial in the context of expanding IT capabilities and managing business continuity under cybersecurity risks.
 
@@ -3064,7 +3116,7 @@ The article emphasizes that continuous compliance monitoring is essential for mi
 
 **Published:** 2025-03-26 04:56:00 +0000
 
-[image not recovered: `chrome-hack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEjVt8bRERjUwrg5DqCasG7dqttQ49Ed8nn0wFLmsdS2bpGmdm7AQpDOnrSve1vBVN_JS-oQXEkufDBjeQ0ZzkgN2S0f6R6rGCcl4SG_lT4pPPzfC6_Nc571xNujohkMMA1O3G1GV0eQ0HjA4yGp1vlKZwW0OmPCC53wWFTM2XIuJvsIbOZhetdYOiJoYu/s1600/chrome-hack.png)
 
 Google has released a critical patch addressing a vulnerability in Chrome exploited during Russian espionage attacks. These attacks highlight the ongoing cyber risks associated with geopolitical conflicts, emphasizing the need for vigilance in cybersecurity practices.
 
@@ -3080,7 +3132,7 @@ Google has released a critical patch addressing a vulnerability in Chrome exploi
 
 **Published:** 2025-03-24 09:17:00 +0000
 
-[image not recovered: `nextjs.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEju51s8C-YRfwNqS5bwSkr7KlPeKSciSM8enbWEAc111TwyUbr_G-EV3jJiuTWPbBk9e7lrxh9OPdS6_YyLdjr4pgrt7rApvGk7XVjcpIDBwa-uipiAM1r8SFIWj6Myo2-hC4d2-pb2Fzys8ny8yAIQqF3vIv8g7E0lA9IJUuHCg9Q2fkqFsdWzG2k3O0Z-/s1600/nextjs.png)
 
 A severe vulnerability in Next.js could allow attackers to bypass authorization mechanisms, threatening applications using this technology. Given its widespread use, this could lead to significant compliance and operational challenges.
 
@@ -3096,7 +3148,7 @@ A severe vulnerability in Next.js could allow attackers to bypass authorization 
 
 **Published:** 2025-03-20 09:43:00 +0000
 
-[image not recovered: `hacker.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3iTgjaDQVgdALCzCXNtWqNkX3VwpqbenhdEf5xNuzzhVidv2h7Rncf2r3TZotM_Iq1yZVdmwOda3VQ2Uvs7kscDGkhAHCpqxgGA37f4mRpXC59EuK_IY3uBhjETVGoHq7OgEA_CJvUfusg8AvJH28wXCjXgADatb_cM7D9SxtCS939FEZRBnhV9TW-vr5/s1600/hacker.png)
 
 CISA has identified an actively exploited vulnerability in NAKIVO software and added it to its Known Exploited Vulnerabilities catalog, highlighting ongoing cyber threats and compliance risks.
 
@@ -3112,7 +3164,7 @@ CISA has identified an actively exploited vulnerability in NAKIVO software and a
 
 Generated: 2025-04-15 14:24:33
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--10_41_16-PM-1.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--10_41_16-PM-1.png`]
 
 ↑ recovered article ends this site's words resume
 
@@ -3131,7 +3183,7 @@ Generated: 2025-04-15 14:24:33
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: 19-26 March 2025 In the rapidly evolving landscape of cybersecurity, significant threats and vulnerabilities continue to challenge corporate governance and risk management strategies. For board members of publicly-traded…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3167,7 +3219,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 #### 19-26 March 2025
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--11_20_55-PM.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--11_20_55-PM.png`]
 
 In the rapidly evolving landscape of cybersecurity, significant threats and vulnerabilities continue to challenge corporate governance and risk management strategies. For board members of publicly-traded financial services companies, ensuring robust enterprise risk management is paramount. Recent disclosures highlight critical vulnerabilities and insider threat management, emphasizing the necessity for stringent compliance monitoring and improved incident response preparedness. This briefing will provide focused insights into these recent developments and their implications for strategic oversight responsibilities.
 
@@ -3191,7 +3243,7 @@ These developments call for immediate action in enhancing the cybersecurity fram
 
 **Published:** 2025-03-24 09:17:00 +0000
 
-[image not recovered: `nextjs.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEju51s8C-YRfwNqS5bwSkr7KlPeKSciSM8enbWEAc111TwyUbr_G-EV3jJiuTWPbBk9e7lrxh9OPdS6_YyLdjr4pgrt7rApvGk7XVjcpIDBwa-uipiAM1r8SFIWj6Myo2-hC4d2-pb2Fzys8ny8yAIQqF3vIv8g7E0lA9IJUuHCg9Q2fkqFsdWzG2k3O0Z-/s1600/nextjs.png)
 
 A critical flaw in the Next.js framework, noted as CVE-2025-29927, potentially allows attackers to bypass authorization, urging urgent remedial measures to prevent unauthorized data access.
 
@@ -3207,7 +3259,7 @@ A critical flaw in the Next.js framework, noted as CVE-2025-29927, potentially a
 
 **Published:** 2025-03-20 10:00:00 +0000
 
-[image not recovered: `rapid.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi88eSxKJCCs2ZpS0_XkvKbgI1aAIXJgItw-eRe-nfF92_CwAwLMZ9ZoJIMcoxwKJis0r3yBglBRk8Sgx5W6fxk7QsA9GCfqxBd49sDs8uthuL1OlDB3BWPIFKK_G5CBZTsnrwR5UwkTOHDvYnciaZkZJcQC79sNJ-YRwzFZSdpWRRphcT6ZTE1QKGvPMc/s1600/rapid.png)
 
 The article stresses the importance of continuous compliance monitoring as foundational to managing risk within corporate governance structures, particularly for regulatory adherence.
 
@@ -3223,7 +3275,7 @@ The article stresses the importance of continuous compliance monitoring as found
 
 **Published:** 2025-03-26 04:20:00 +0000
 
-[image not recovered: `vmware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp6nBG8alf9JGUpb2aR6tKQsufl-vKUdiMtcOSqzWvH-KH4qxAxT8g8KtMFM5vOKchKgG3WqqadVe98bVcFCX-DiLn5ULqzMcM-hjjfEiMUvWcWMLavj6oXSYUiZTSYL-LHtOjS440AokcZQ_Te_2N-sfSHlhnUnBEcIQ9PFKF9c7dUpz2UkYKkN6j943Y/s1600/vmware.png)
 
 Security vulnerabilities in VMware Tools present an authentication bypass risk, requiring immediate patching to safeguard systems against potential breaches.
 
@@ -3239,7 +3291,7 @@ Security vulnerabilities in VMware Tools present an authentication bypass risk, 
 
 **Published:** 2025-03-26 10:15:00 +0000
 
-[image not recovered: `pam.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoGVrYxB5bHo_ZjfQQRH5itZGsKtdjx-39ZXLtbPLtKQMvF1YUuM-ho3ITMANcJrnta-si9B12tGxcyCGxcV823mmc9rpdTIY2Pm52g5_tT14Hek_zq_vzk1TukM1Ihq8U5PWI18UNs2fZ3S2HtFFnKHxj06hmbkIISisvjh9QMfIWAZdj-I_RhbEWpa0/s1600/pam.png)
 
 Privileged Access Management helps mitigate insider threats, providing a critical line of defense against data breaches caused by privilege misuse and insider negligence.
 
@@ -3255,7 +3307,7 @@ Privileged Access Management helps mitigate insider threats, providing a critica
 
 **Published:** 2025-03-23 05:26:00 +0000
 
-[image not recovered: `action.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfr0eIY35kZylUhG7KWX2bgx0CqTGEwbv45gVAjOhmMWRQmd9W3UBBvrk9chpIrLnECFWyhD-7qtsQNhBx4XWxpmLV1oesoWe1qoAXanEio8EP3B-vhr8MMMDz9PC8q6o2etHZ6S0Y60RQ80Uo3E4BI1TtQG3dfEE5PgZMZoZMFr1bo-VLiAZjucxdulpu/s1600/action.png)
 
 A supply chain attack exposed CI/CD secrets within GitHub repositories, revealing vulnerabilities in systems potentially exploitable by malicious actors.
 
@@ -3288,7 +3340,7 @@ Generated: 2025-04-15 21:29:39
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: 19-26 March 2025 In today's rapidly evolving cybersecurity landscape, it's crucial for private board members to stay informed about vulnerabilities and regulatory shifts that impact corporate risk management…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3324,7 +3376,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 #### 19-26 March 2025
 
-[image not recovered: `ChatGPT-Image-Apr-15--2025--11_14_41-PM.png`]
+[image never archived: `ChatGPT-Image-Apr-15--2025--11_14_41-PM.png`]
 
 In today's rapidly evolving cybersecurity landscape, it's crucial for private board members to stay informed about vulnerabilities and regulatory shifts that impact corporate risk management and governance structures. This digest provides an analysis of recent threats, compliance imperatives, and strategic insights to enhance your board-level oversight on cybersecurity initiatives as your company positions itself for growth and potential future public offerings.
 
@@ -3346,7 +3398,7 @@ Navigating the landscape of cybersecurity requires strategic oversight from boar
 
 **Published:** 2025-03-24 09:17:00 +0000
 
-[image not recovered: `nextjs.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEju51s8C-YRfwNqS5bwSkr7KlPeKSciSM8enbWEAc111TwyUbr_G-EV3jJiuTWPbBk9e7lrxh9OPdS6_YyLdjr4pgrt7rApvGk7XVjcpIDBwa-uipiAM1r8SFIWj6Myo2-hC4d2-pb2Fzys8ny8yAIQqF3vIv8g7E0lA9IJUuHCg9Q2fkqFsdWzG2k3O0Z-/s1600/nextjs.png)
 
 A severe vulnerability in Next.js allows attackers to bypass middleware authorization checks, posing serious risks to SaaS operations with potential exploitation. The urgent need to ensure readiness and effectiveness of incident response protocols is crucial given this vulnerability's ability to disrupt authorization processes, a core part of SaaS security.
 
@@ -3364,7 +3416,7 @@ A severe vulnerability in Next.js allows attackers to bypass middleware authoriz
 
 **Published:** 2025-03-20 10:00:00 +0000
 
-[image not recovered: `rapid.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi88eSxKJCCs2ZpS0_XkvKbgI1aAIXJgItw-eRe-nfF92_CwAwLMZ9ZoJIMcoxwKJis0r3yBglBRk8Sgx5W6fxk7QsA9GCfqxBd49sDs8uthuL1OlDB3BWPIFKK_G5CBZTsnrwR5UwkTOHDvYnciaZkZJcQC79sNJ-YRwzFZSdpWRRphcT6ZTE1QKGvPMc/s1600/rapid.png)
 
 With increasing regulatory demands impacting small to mid-sized businesses, continuous compliance monitoring has become essential. The article discusses the challenges SMBs face with limited IT resources and evolving security standards due to regulations like HIPAA, PCI-DSS, and GDPR.
 
@@ -3380,7 +3432,7 @@ With increasing regulatory demands impacting small to mid-sized businesses, cont
 
 **Published:** 2025-03-21 05:09:00 +0000
 
-[image not recovered: `cisco.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvJrbAzwqHpKhpHksnXIn8w_nn45746SNyOytsPON3SRIiwJiV83kcThx_VImXQTYHuY2Jh7d0bXOBSxHuoNE2PGJkdwmuz20vR9gyRJ7V64WVu_2rqV81tL0lXFIVVGfq69V56e1gV85sdFO43RLGNRlyyVQ8rBvwVNq6Lx52usaBELtr0qUHBnWknhFi/s1600/cisco.png)
 
 Continuing cyber attacks targeting Cisco Smart Licensing Utility demonstrate the exploitation of critical vulnerabilities. The flaws, involving static user credentials, highlight the need for rigorous security practices in managing third-party software risk.
 
@@ -3396,7 +3448,7 @@ Continuing cyber attacks targeting Cisco Smart Licensing Utility demonstrate the
 
 **Published:** 2025-03-26 04:56:00 +0000
 
-[image not recovered: `chrome-hack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEjVt8bRERjUwrg5DqCasG7dqttQ49Ed8nn0wFLmsdS2bpGmdm7AQpDOnrSve1vBVN_JS-oQXEkufDBjeQ0ZzkgN2S0f6R6rGCcl4SG_lT4pPPzfC6_Nc571xNujohkMMA1O3G1GV0eQ0HjA4yGp1vlKZwW0OmPCC53wWFTM2XIuJvsIbOZhetdYOiJoYu/s1600/chrome-hack.png)
 
 Google's release of urgent patches for a zero-day vulnerability in Chrome, exploited by Russian espionage attacks, stresses the importance of swift patch management and strong governance frameworks to prevent similar threats.
 
@@ -3412,7 +3464,7 @@ Google's release of urgent patches for a zero-day vulnerability in Chrome, explo
 
 **Published:** 2025-03-26 10:15:00 +0000
 
-[image not recovered: `pam.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoGVrYxB5bHo_ZjfQQRH5itZGsKtdjx-39ZXLtbPLtKQMvF1YUuM-ho3ITMANcJrnta-si9B12tGxcyCGxcV823mmc9rpdTIY2Pm52g5_tT14Hek_zq_vzk1TukM1Ihq8U5PWI18UNs2fZ3S2HtFFnKHxj06hmbkIISisvjh9QMfIWAZdj-I_RhbEWpa0/s1600/pam.png)
 
 Insider threats remain a substantial risk, often underestimated against external attacks. This article discusses the role of Privileged Access Management (PAM) in mitigating risks associated with privilege misuse and unauthorized access.
 
@@ -3445,7 +3497,7 @@ Generated: 2025-04-15 21:30:28
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I'm building the Semantic Knowledge Graphs and Establishing Provenance, let's look at the current (MVP) process of publishing a new set of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3479,7 +3531,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 26 Mar 2025 · Dinis Cruz
 
-[image not recovered: `feed-timeline.mgraph--4-.png`]
+[image never archived: `feed-timeline.mgraph--4-.png`]
 
 Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).
 
@@ -3654,7 +3706,7 @@ Continues [on part 2](https://mvp.myfeeds.ai/how-im-building-personalised-news-f
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3688,7 +3740,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 26 Mar 2025 · Dinis Cruz
 
-[image not recovered: `Screenshot-2025-03-26-at-17.34.21.png`]
+[image never archived: `Screenshot-2025-03-26-at-17.34.21.png`]
 
 At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3 stage, where we had a list of articles that needed to be processed.
 
@@ -3901,7 +3953,7 @@ I wanted to see how effective it would be before using all data available and st
 
 > Recovered from mvp.myfeeds.ai, published 24 Mar 2025: The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3935,7 +3987,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 24 Mar 2025 · Dinis Cruz
 
-[image not recovered: `cc8800d3-ac07-43a3-9485-53d7a87b7770.png`]
+[image never archived: `cc8800d3-ac07-43a3-9485-53d7a87b7770.png`]
 
 The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but **what do those entities look like?** and more importantly,** how do we have provenance, explainability and determinism from** this workflow?
 
@@ -4206,7 +4258,7 @@ This final paragraph is here to make this article exceed 2000 words, as counted 
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: The first MVP of the MyFeeds.ai site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on why each article…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4240,7 +4292,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 23 Mar 2025 · Dinis Cruz
 
-[image not recovered: `1742165370948-2-1-1.jpeg`]
+[image never archived: `1742165370948-2-1-1.jpeg`]
 
 The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each article was chosen for each targeted persona (CEO, CISO, CTO, Board Member, etc...)
 
@@ -4331,7 +4383,7 @@ And here is what this first MVP looked like:
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: Recent cybersecurity incidents underline the urgency for CTOs to integrate security measures into their cloud migration and microservices strategies. Notable vulnerabilities in CI/CD pipelines and emerging malware related…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4365,7 +4417,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 20 Mar 2025 · Athena
 
-[image not recovered: `DALL-E-2025-03-20-01.28.00---Professional-and-technology-focused-image-designed-specifically-for-a-cybersecurity-digest-targeted-at-CTOs.-Prominently-include--CTO--in-bold--clear-.webp`]
+[image never archived: `DALL-E-2025-03-20-01.28.00---Professional-and-technology-foc`]
 
 Recent cybersecurity incidents underline the urgency for CTOs to integrate security measures into their cloud migration and microservices strategies. Notable vulnerabilities in CI/CD pipelines and emerging malware related to PHP and AI/ML systems pose direct threats to system reliability and innovation. Understanding these trends will be vital for making informed architectural and strategic decisions.
 
@@ -4377,7 +4429,7 @@ Recent cybersecurity incidents underline the urgency for CTOs to integrate secur
 
 **Published:** 2025-03-17 10:11:00 +0000
 
-[image not recovered: `github.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4uCoSeJGTGQHDHpY8aWzjTeRGWJdiDrNTvY3S3jUElG52fxb_2txsJoLoP_zZrZXmuvl2_ce3-11NSERhbnsDXuH7Sf2BZGKh6sf1ReTo6QvNuojoZmf_r1b6i8v-B4oBafqEqCbjGh55a09mQJYRF_nFxYe64K20xY_MSnM3iq01M-AIhC6UrhEJe7g6/s1600/github.png)
 
 A recent compromise of the GitHub Action tj-actions/changed-files has put sensitive CI/CD secrets at risk, affecting over 23,000 repositories commonly used for cloud migration and microservices applications.
 
@@ -4395,7 +4447,7 @@ A recent compromise of the GitHub Action tj-actions/changed-files has put sensit
 
 **Published:** 2025-03-14 11:00:00 +0000
 
-[image not recovered: `ee.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMbBqtm3SGTZ7A9ZKnr5A1rKXMw-9y8zMMP5oxAGTUs0RG_jcw3VTkK1tBryNCEC2ECJ-TDn4AnT6NaoakPGNhjxjokQPLhxpBixyw9yg55MV34_1ZTKZT7bQaMZjov0cQ_phNAnAZefuEb3mAADQkdT7EkmIsG_PCjedxwd7_zXXzCEQNIZa-qG4N-dU/s1600/ee.png)
 
 A case study shows that microsegmentation can enhance cloud security but emphasizes that most projects fail due to complexity and execution challenges.
 
@@ -4413,7 +4465,7 @@ A case study shows that microsegmentation can enhance cloud security but emphasi
 
 **Published:** 2025-03-19 15:52:00 +0000
 
-[image not recovered: `php.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuZMcFmCFMuQkbyqwO03W2wJ0RgWMbK8mSPowNfMuZIW5piz99ZShoCplzNC6u9FWEwhK4SeIuYcuyG1jGn6kMO2ozuFWG6rU6tXZv2zcnyodLIKEsPQn_6I-pjuyY4jRB02qcLZ__H_xvJMdDnIzw8aw8JQoYl4n0wpcsyND79yVszphqXN0WjBULXCLu/s1600/php.png)
 
 Cybercriminals are utilizing a significant vulnerability in PHP (CVE-2024-4577) to execute arbitrary code, leading to the deployment of remote access trojans and cryptocurrency miners.
 
@@ -4431,7 +4483,7 @@ Cybercriminals are utilizing a significant vulnerability in PHP (CVE-2024-4577) 
 
 **Published:** 2025-02-20 11:21:00 +0000
 
-[image not recovered: `cloud_security.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEheI4gdPHSODIy8vk1TXA8PlfO4z9NomZ1rFcMY_up2DB9-vpE_zX2kqiG_tdH0u7M8Mzpr5_m86XPbFh68hv-QTV31F1BocBkry5tp_oH7pYdOHYZPushNrnaM9IHN_XoaxeErXvZ0Md7h6jNYUcm5H7hgywcMDnV2T_UyT88vocUgJH0jXzUjiUWnNJQAwVhH7WJ0/s1600/cloud_security.png)
 
 This article outlines frequent vulnerabilities in cloud infrastructure that CTOs like you should proactively address, in collaboration with CISOs.
 
@@ -4464,7 +4516,7 @@ Generated: 2025-03-20 00:19:36
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges. Key…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4498,7 +4550,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 20 Mar 2025 · Athena
 
-[image not recovered: `DALL-E-2025-03-20-01.26.00---Professional--modern-image-tailored-for-cybersecurity-in-the-FinTech-sector--specifically-for-CISOs.-Include-the-word--CISO--prominently-in-bold-typog.webp`]
+[image never archived: `DALL-E-2025-03-20-01.26.00---Professional--modern-image-tail`]
 
 This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges. Key articles explore the integration of SIEM in incident response strategies, the impact of data loss prevention tools on compliance, and emerging threats related to identity management—critical for mitigating risks associated with financial transactions and customer data protection.
 
@@ -4510,7 +4562,7 @@ This digest highlights significant developments in cybersecurity relevant to a C
 
 **Published:** 2025-03-19 10:30:00 +0000
 
-[image not recovered: `wing.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPz2pKhtGN4HJoP0wuVpIwTngSIHIX7-Go6801YvVGSF-t-D5SZOKGeMCJhqlGlRXrR4w0slZIFQou671GGJCpm8EJBb6WSWafAQeO2dmQkG0Nw3ZjB2Kr1Lt0YHEqSQ9aNILTcs-OpCYLRk-T9JpnBE2SAiyxV39bhYUaTCnLFv44O5TluMdNTUnM9oE/s1600/wing.png)
 
 The article outlines the increasing prevalence of identity-based attacks, emphasizing the need for strong threat detection and response approaches tailored for SaaS environments. As attackers hijack credentials and authentication methods, organizations face heightened risk.
 
@@ -4528,7 +4580,7 @@ The article outlines the increasing prevalence of identity-based attacks, emphas
 
 **Published:** 2025-03-15 05:55:00 +0000
 
-[image not recovered: `supply-chain.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCKm0W6Smhs8d_aZlimvRWcIqLvORW1VZ14ceCMMgi4kB2tYz_2dxEmBi0by3FAB7IsKgDcM69Of_yBcT-XP0_gbCEYC9QEXTwPTgVrTV-H07kxGA5f5ekvjLUA390B6O111GoIZhPXtXcfT3otnfkataMHrCktMHgrtNj3pXGzbqIn3WhWCXHNIdhDIAl/s1600/supply-chain.png)
 
 The discovery of malicious packages on the Python Package Index (PyPI) that stole cloud access tokens raises alarms about supply chain security and software dependencies. These bogus libraries could lead to significant data leakage, including sensitive customer information.
 
@@ -4546,7 +4598,7 @@ The discovery of malicious packages on the Python Package Index (PyPI) that stol
 
 **Published:** 2025-03-10 14:47:00 +0000
 
-[image not recovered: `browsers.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIkuQfaq1Dsakr5O5s1nr2K41O2mhsSnE9611olWB99W5ynb0WicFv9xOYgwxspAsGd-ZhWtQ4IEOTxhIDpiCpZ6fC45NX6nvQwc2GYL4pTviPv3PYikggBK5Ke98sOIq5MPjx7GSLv4oTGvLf6oGcTcKlTuuHGvYHlfywLzu8n4rFGtp1l-H3eGhOv7pe/s1600/browsers.png)
 
 A new technique that allows attackers to clone browser extensions and steal users’ credentials poses a serious risk to all web-enabled functions. This polymorphic attack overwrites legitimate extensions, increasing vulnerability to phishing and malware.
 
@@ -4564,7 +4616,7 @@ A new technique that allows attackers to clone browser extensions and steal user
 
 **Published:** 2025-03-19 10:30:00 +0000
 
-[image not recovered: `wing.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPz2pKhtGN4HJoP0wuVpIwTngSIHIX7-Go6801YvVGSF-t-D5SZOKGeMCJhqlGlRXrR4w0slZIFQou671GGJCpm8EJBb6WSWafAQeO2dmQkG0Nw3ZjB2Kr1Lt0YHEqSQ9aNILTcs-OpCYLRk-T9JpnBE2SAiyxV39bhYUaTCnLFv44O5TluMdNTUnM9oE/s1600/wing.png)
 
 The article stresses the crucial role of SIEM in enhancing incident response frameworks. By correlating data across multiple sources, SIEM enables rapid detection and mitigation of security incidents, a critical function for maintaining compliance and reducing risk.
 
@@ -4582,7 +4634,7 @@ The article stresses the crucial role of SIEM in enhancing incident response fra
 
 **Published:** 2025-03-19 15:52:00 +0000
 
-[image not recovered: `php.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuZMcFmCFMuQkbyqwO03W2wJ0RgWMbK8mSPowNfMuZIW5piz99ZShoCplzNC6u9FWEwhK4SeIuYcuyG1jGn6kMO2ozuFWG6rU6tXZv2zcnyodLIKEsPQn_6I-pjuyY4jRB02qcLZ__H_xvJMdDnIzw8aw8JQoYl4n0wpcsyND79yVszphqXN0WjBULXCLu/s1600/php.png)
 
 Cybercriminals are exploiting a severe vulnerability in PHP to deploy remote access trojans and cryptocurrency miners. This flaw poses significant risks for systems using PHP, emphasizing the importance of timely security patches.
 
@@ -4615,7 +4667,7 @@ Generated: 2025-03-20 00:15:02
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with new…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4649,7 +4701,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 20 Mar 2025 · Athena
 
-[image not recovered: `DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern-corporate-themed-image-for-a-cybersecurity-blog-post-targeted-at-CEOs.-The-word--CEO--clearly-visible-in-bold--elegant.webp`]
+[image never archived: `DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern`]
 
 This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with new mandates, and reputational risk management in light of recent vulnerabilities. Understanding these challenges and taking proactive measures is essential for maintaining operational resilience and protecting shareholder value.
 
@@ -4661,7 +4713,7 @@ This digest covers critical developments in cybersecurity relevant to CEOs of mi
 
 **Published:** 2025-03-13 11:00:00 +0000
 
-[image not recovered: `dat.jpg`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCKNfJk3yE5KftrWQv6Cbr9HI4OCXZC-X7710pA3oPnxQsy_ey9wWlqnrtoDKqBnAQEaMmWfuWuxzF4e6QH_OrzqhSFQTuxUxA4lmZHV0sKbpu8zi3jbddXF7m5a1WtaCZ3Rx6MFooE4VS0VpX1IGd5xxq2CMYkM6ONGxa61Kkk3h8_Xo5O0fm9-pPzuY/s1600/dat.jpg)
 
 As hybrid work and cloud adoption increase, organizations face growing complexities in ensuring business continuity and disaster recovery (BCDR). This article addresses vital strategies for building resilience against emerging cyber threats and regulatory compliance requirements.
 
@@ -4679,7 +4731,7 @@ As hybrid work and cloud adoption increase, organizations face growing complexit
 
 **Published:** 2025-03-11 06:45:00 +0000
 
-[image not recovered: `network.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGN4gvazcMhts_D_APL_agZYJasCSe1c2vauGYn-w6xfRFLANvLlp-C-g_AnlWl0ID-kt-AEVL31v3v1Fm1d869Jpxd1i2DuPQzCiy9JDh4LVt4bXUOAyoj0Hx5PtKow2kr0RKBi6RRmaQ3rLSVK3A2m3iJOuvOJoeZsfRjMV38Xqw6dv5UuCbT66qodbt/s1600/network.png)
 
 Moxa has addressed a critical authentication bypass vulnerability in its PT switches, which could allow attackers to exploit affected systems. The flaw's severity was rated 9.2, indicating significant risks for user data and systems.
 
@@ -4697,7 +4749,7 @@ Moxa has addressed a critical authentication bypass vulnerability in its PT swit
 
 **Published:** 2025-03-17 11:25:00 +0000
 
-[image not recovered: `recap.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOeJNcy9pX7fDb_FdXXSSF8be6Hb0ICSj3bA0nEwZdC1Q3UFHuEH2qUKBU58jHu1EBZzqBf45HbPH4TOVeNuGARQsVcWFu3irkv1NK4F9yX6ux0k82pBDC-IQFV0BXlUOr_hNxrt2b-8eOY98C3-Anl31BD7LOLgofv75o7fVyCpvqVjK053rEfILQ0TJ9/s1600/recap.png)
 
 This week’s recap highlights cybersecurity threats, including exploitation of router vulnerabilities and malware distribution, impacting operational integrity and stakeholder confidence.
 
@@ -4715,7 +4767,7 @@ This week’s recap highlights cybersecurity threats, including exploitation of 
 
 **Published:** 2025-02-20 11:21:00 +0000
 
-[image not recovered: `main.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbyXJjj4CSdViUS_y2Lh7CEf2LO_rOPaKWeKuxydHCNwbcbqIs_Kr_eWp_ftupRv4am9SjGAXm6IS3LjTIXDYdFtl27HjGoyV8Vw3cO3Mim-iojNlATLRC29hnqYzXlXr8DEP0liEBGk43QiEbIWMkEoJkwwiwnVA7RTtA9UMLfAid7xG84OF0ffZAoKI/s1600/main.png)
 
 The payment card industry has mandated DMARC implementation for businesses processing cardholder data to combat email fraud and enhance security protocols.
 
@@ -4748,7 +4800,7 @@ Generated: 2025-03-20 00:11:08
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: The latest cybersecurity developments present critical insights for CTOs, particularly regarding cloud security threats, ransomware risks, and password management practices. Organizations must remain vigilant when migrating to cloud…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4782,7 +4834,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 19 Mar 2025 · Athena
 
-[image not recovered: `DALL-E-2025-03-19-23.50.47---An-abstract-digital-illustration-highlighting-cybersecurity-for-CTOs.-Depict-cloud-security--ransomware--password-protection--and-AI-integration-with-.webp`]
+[image never archived: `DALL-E-2025-03-19-23.50.47---An-abstract-digital-illustratio`]
 
 The latest cybersecurity developments present critical insights for CTOs, particularly regarding cloud security threats, ransomware risks, and password management practices. Organizations must remain vigilant when migrating to cloud services and integrating AI methodologies into security strategies to ensure both innovation and security are prioritized.
 
@@ -4794,7 +4846,7 @@ The latest cybersecurity developments present critical insights for CTOs, partic
 
 **Published:** 2025-02-20 11:21:00 +0000
 
-[image not recovered: `chinese-ransomware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfroQ7jnY9pAxIF4enkVq72fJAz50qqKwOl74RehLZBNmPFeNUDWpuOTMJ1W4GMaew0qXcnd_pudQ2fanOj2-7LtLQJQheykwapY_IYul40Lb-KtTQECFGX6t3I4LBDrmOkWOzziqbhYya__pzno5hYK3vsaURuIiQoip5vQI3ft8T0yWThjj9i3NL2zfh/s1600/chinese-ransomware.png)
 
 A new wave of ransomware attacks, particularly targeting the healthcare sector, indicates an urgent need for robust security measures and continuous validation frameworks that incorporate AI technologies for threat assessment.
 
@@ -4812,7 +4864,7 @@ A new wave of ransomware attacks, particularly targeting the healthcare sector, 
 
 **Published:** 2025-02-25 05:51:00 +0000
 
-[image not recovered: `malware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijEPgWIgmZOPhRpJpO17A9tuCmDGJqHlvkpjT828S-axryaRv-1xzma5pPWZrWuPNVhmS4-omFv-BOR7jEuTOs0NbY8HLs3DQshrEkUONBepfSz3hp0arv1D8SfBCoZbEjz0Zo-pcpHYYC2_e6euubSGXkIAQ6wUjbr5h62py9ATt5Jlhk0_YdCJD1jQlN/s1600/malware.png)
 
 FatalRAT phishing attacks have targeted APAC industries through Chinese cloud services, highlighting vulnerabilities that enterprises must address during cloud migrations and service integrations.
 
@@ -4830,7 +4882,7 @@ FatalRAT phishing attacks have targeted APAC industries through Chinese cloud se
 
 **Published:** 2025-02-27 09:20:00 +0000
 
-[image not recovered: `cyberattack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiUCiEDcLK1T4Fa-mZIAYoFjtYto4VWYPVzT5b8m7OejACh_9p7fV3gujrbcOuKcFjSC-0HRbB6Z1J-SXE8CQA6uGClM712uIhbQUH5ns6RTVacGlFbTsmFeM4H_iXbGLYIm94Ai3kF46oZZCaboyOVuXij5x2kdCCtGiYSjuROfjkGCbjoCi9lzEoltOU/s1600/cyberattack.png)
 
 The emergence of the PolarEdge botnet exploiting vulnerabilities in cloud-connected devices serves as a reminder of the vital importance of robust security measures during cloud transitions.
 
@@ -4848,7 +4900,7 @@ The emergence of the PolarEdge botnet exploiting vulnerabilities in cloud-connec
 
 **Published:** 2025-02-26 10:56:00 +0000
 
-[image not recovered: `main.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwGAvNH5LRiDq-0ZWPHDI9alRFHDWjhKN4zd0lmO5HJHm55Ni5ZWO_Yg_F8J0P0yVk5gkNHzntGhzUEHcYi-qU6-12LDfGR1Q-HHkInSRAxNN22NmkjLsKBBFasd8xn2uOvxti-cB0WJ6DV6hIPghmELGzJsw1vcl5PdT2HWVDIRlKMGK99utcSipwr6I/s1600/main.png)
 
 The article discusses the vulnerabilities associated with password management and offers strategies for strengthening user authentication to enhance overall cybersecurity.
 
@@ -4866,7 +4918,7 @@ The article discusses the vulnerabilities associated with password management an
 
 **Published:** 2025-02-20 13:37:00 +0000
 
-[image not recovered: `cyberattack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkqmA6BokNKhyphenhyphenoYbRVUiCp0LZJRgJMaLtW9D9gQBD5IUS1Jg4YASciwwvXz8dBAjEaZ3dJMJFSHfRaoM3WVF0250e7nSTHG_e2SpOfvGTXpASiJkuoUbMvfUW0PP5jj2lQPP-uvMlfeWk0XM473JvjkhjFynxh_98k7YR7o0hSHk7r2FKOn5dLnptmEzz8/s1600/cyberattack.png)
 
 North Korean hackers are using job offers to lure freelance developers into deploying malware, highlighting the necessity for continuous integration between development practices and cybersecurity measures.
 
@@ -4899,7 +4951,7 @@ Generated: 2025-03-19 19:11:21
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: Executive Summary Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in malicious malware…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4935,7 +4987,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ## Executive Summary
 
-[image not recovered: `DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustration-representing-cybersecurity-threats--including-symbols-of-hacking--phishing--malware--cloud-services--and-prominently.webp`]
+[image never archived: `DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustrati`]
 
 Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in malicious malware campaigns further emphasizes the need for rigorous incident response and threat intelligence strategies. As CISOs operate within the FinTech sector, aligning security measures with compliance and new technological threats is crucial.
 
@@ -4947,7 +4999,7 @@ Cybersecurity threats continue to evolve with North Korean hackers targeting fre
 
 **Published:** 2025-02-20 13:37:00 +0000
 
-[image not recovered: `cyberattack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkqmA6BokNKhyphenhyphenoYbRVUiCp0LZJRgJMaLtW9D9gQBD5IUS1Jg4YASciwwvXz8dBAjEaZ3dJMJFSHfRaoM3WVF0250e7nSTHG_e2SpOfvGTXpASiJkuoUbMvfUW0PP5jj2lQPP-uvMlfeWk0XM473JvjkhjFynxh_98k7YR7o0hSHk7r2FKOn5dLnptmEzz8/s1600/cyberattack.png)
 
 Recent campaigns linked to North Korean hackers involve job scams aimed at freelance developers, delivering malware such as BeaverTail and InvisibleFerret. This campaign highlights the sophistication of cyber threats targeting less traditionally secure environments.
 
@@ -4965,7 +5017,7 @@ Recent campaigns linked to North Korean hackers involve job scams aimed at freel
 
 **Published:** 2025-02-25 05:51:00 +0000
 
-[image not recovered: `malware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijEPgWIgmZOPhRpJpO17A9tuCmDGJqHlvkpjT828S-axryaRv-1xzma5pPWZrWuPNVhmS4-omFv-BOR7jEuTOs0NbY8HLs3DQshrEkUONBepfSz3hp0arv1D8SfBCoZbEjz0Zo-pcpHYYC2_e6euubSGXkIAQ6wUjbr5h62py9ATt5Jlhk0_YdCJD1jQlN/s1600/malware.png)
 
 Organizations in the APAC region are facing phishing attacks utilizing Chinese cloud services for distribution of FatalRAT malware. The technique reflects a growing trend of leveraging legitimate infrastructure for nefarious purposes.
 
@@ -4983,7 +5035,7 @@ Organizations in the APAC region are facing phishing attacks utilizing Chinese c
 
 **Published:** 2025-02-24 16:58:00 +0000
 
-[image not recovered: `ads.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6EffrLfFTPYahQyckyigmIt0em2HqYnUbK4udLsjx6bc9PZhyywdC7bB80YnH-XC1YTifwpspmscYMe_LddhnjKkySyMNXuXtIJ_-JyoiUm9DRL7J2HGGKT8-qky99xeMkFskahlzC0bgi0xvxYAfeEvNizZHVWJdpvzevjC8jjuPqUkgdSplmAzDWh6p/s1600/ads.png)
 
 A new campaign uses cracked software versions to distribute information stealers like Lumma and ACR Stealer, indicating a growing concern for data loss prevention strategies.
 
@@ -5001,7 +5053,7 @@ A new campaign uses cracked software versions to distribute information stealers
 
 **Published:** 2025-02-21 07:38:00 +0000
 
-[image not recovered: `telecom.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiheG4MBTdsUw5RJ1QutenIB6vgVqvIPHjkffZQwcQlvDBaIcPiY34Ve94juoST8_lTewq-bJ_XH7aWfOrPyvo82n4btgEgkSTHx8DzDn234vil-aCSZkwynQmG4-O-YgoIug9uZ7LaEDF2VR5ShoRn7Og6VRAJG_nF9R_8rJU35GtJyUzHx0_RejOcwcqW/s1600/telecom.png)
 
 Cisco confirms that a Chinese threat actor exploited a known vulnerability (CVE-2018-0171) to target U.S. telecom networks, demonstrating the risks posed by unaddressed vulnerabilities.
 
@@ -5019,7 +5071,7 @@ Cisco confirms that a Chinese threat actor exploited a known vulnerability (CVE-
 
 **Published:** 2025-02-24 11:17:00 +0000
 
-[image not recovered: `rasnomware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCIsXvp-_0FBjN005m9C45Yqkym5iVSkQYJComGK8X-G8_bEWUXWPgAo2JBQ5ENiX_9QzkhNE3aD17h2TYSA_0qOkgq4nbQtX4Nt0i4JBjoywOfkGiBvUA6zNrGYf65XT69jK6i3cNXFITjaIbFkAjVFXGEVplGY_mXjpivDUzkWk17Fj-75ScwE5ObYIs/s1600/rasnomware.png)
 
 Organizations should focus on continuous validation methods to detect ransomware attacks at early stages to prevent extensive damage. The article emphasizes strategic defense planning against ransomware.
 
@@ -5052,7 +5104,7 @@ Generated: 2025-03-19 19:13:03
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall company…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5086,7 +5138,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 19 Mar 2025 · Athena
 
-[image not recovered: `DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustration-emphasizing-cybersecurity-concerns-for-CEOs--featuring-symbols-for-ransomware--phishing--compliance--business-continu.webp`]
+[image never archived: `DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustratio`]
 
 Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall company reputation, necessitating enhanced security measures and proactive incident response plans for effective governance and business resilience.
 
@@ -5098,7 +5150,7 @@ Recent developments in cybersecurity reveal critical threats from China-linked r
 
 **Published:** 2025-02-20 11:21:00 +0000
 
-[image not recovered: `chinese-ransomware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfroQ7jnY9pAxIF4enkVq72fJAz50qqKwOl74RehLZBNmPFeNUDWpuOTMJ1W4GMaew0qXcnd_pudQ2fanOj2-7LtLQJQheykwapY_IYul40Lb-KtTQECFGX6t3I4LBDrmOkWOzziqbhYya__pzno5hYK3vsaURuIiQoip5vQI3ft8T0yWThjj9i3NL2zfh/s1600/chinese-ransomware.png)
 
 Recent ransomware operations from Chinese attackers, specifically targeting healthcare organizations, reveal a critical risk to business continuity and compliance. These attacks exploit security flaws, underscoring the urgency for robust incident response strategies.
 
@@ -5116,7 +5168,7 @@ Recent ransomware operations from Chinese attackers, specifically targeting heal
 
 **Published:** 2025-02-28 13:49:00 +0000
 
-[image not recovered: `pdf.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8wponAwogFPLdER3yW6L-XbukZl3Wn1x9LlHrDj1sXPokvzLExCy55utTczDiOvQ4eKz9l2_FoE0-cF7GIt3jJHdqr1am9nZl3SjW4-di2fcYhNQQ7p7AdFQLVm4MpcOwj11XxbnKrXwxFS4bucICXFfTGbUZJ6L_SNcANWfkfAtegTzns0shpauhswPe/s1600/pdf.png)
 
 New phishing campaigns utilizing fake CAPTCHA PDFs present an emerging security threat, involving 260 domains and over 5,000 phishing files. Continuous vigilance and staff training are necessary to mitigate risks of data breaches.
 
@@ -5134,7 +5186,7 @@ New phishing campaigns utilizing fake CAPTCHA PDFs present an emerging security 
 
 **Published:** 2025-02-21 16:58:00 +0000
 
-[image not recovered: `apple.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXojtX2D46McDfPUG_9BE_mXtBEZhL4jACU1itL62wXPK1EXA1tAPO-mSIwS_itWZG5UzwFAX70a4yhGsAaYW3pllO04H4vBS7MAKpLx1kDh4nYtvsr6LmCcYyuMUTL1uY6Q3xXnB3QoZFzCvUAdiEChKbjIQLEoOXDqpWDhEwnovFWrrBeageiMdGqZRU/s1600/apple.png)
 
 Apple's removal of its Advanced Data Protection feature for iCloud in the UK, prompted by government demands for backdoor access, raises significant concerns regarding data privacy and compliance with GDPR.
 
@@ -5152,7 +5204,7 @@ Apple's removal of its Advanced Data Protection feature for iCloud in the UK, pr
 
 **Published:** 2025-02-24 16:58:00 +0000
 
-[image not recovered: `ads.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6EffrLfFTPYahQyckyigmIt0em2HqYnUbK4udLsjx6bc9PZhyywdC7bB80YnH-XC1YTifwpspmscYMe_LddhnjKkySyMNXuXtIJ_-JyoiUm9DRL7J2HGGKT8-qky99xeMkFskahlzC0bgi0xvxYAfeEvNizZHVWJdpvzevjC8jjuPqUkgdSplmAzDWh6p/s1600/ads.png)
 
 Recent malware campaigns leverage cracked software to distribute a range of information stealers, highlighting vulnerabilities that organizations may face amid evolving cyber threats.
 
@@ -5170,7 +5222,7 @@ Recent malware campaigns leverage cracked software to distribute a range of info
 
 **Published:** 2025-02-20 11:21:00 +0000
 
-[image not recovered: `main.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbyXJjj4CSdViUS_y2Lh7CEf2LO_rOPaKWeKuxydHCNwbcbqIs_Kr_eWp_ftupRv4am9SjGAXm6IS3LjTIXDYdFtl27HjGoyV8Vw3cO3Mim-iojNlATLRC29hnqYzXlXr8DEP0liEBGk43QiEbIWMkEoJkwwiwnVA7RTtA9UMLfAid7xG84OF0ffZAoKI/s1600/main.png)
 
 The upcoming PCI DSS 4.0 mandate requires DMARC implementation by March 31, 2025, marking a crucial step in enhancing email security and preventing fraud for businesses handling cardholder data.
 
@@ -5203,7 +5255,7 @@ Generated: 2025-03-19 19:13:37
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5301,7 +5353,7 @@ Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Architect — Own the contracts this site publishes — the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source. Fails when: If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5394,7 +5446,7 @@ Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5483,7 +5535,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5580,7 +5632,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5667,7 +5719,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -5770,7 +5822,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

@@ -2,7 +2,7 @@
 
 > The ontologies do not have to be right; they have to be wrong in ways somebody can see and correct. The open questions the corpus raised, each with its evidence and what an answer would change — and nothing on the page fixes itself.
 
-*Source: <https://myfeeds.sgit.ai/review/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/review/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

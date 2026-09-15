@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: The first MVP of the MyFeeds.ai site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on why each article…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -36,7 +36,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 23 Mar 2025 · Dinis Cruz
 
-[image not recovered: `1742165370948-2-1-1.jpeg`]
+[image never archived: `1742165370948-2-1-1.jpeg`]
 
 The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each article was chosen for each targeted persona (CEO, CISO, CTO, Board Member, etc...)
 

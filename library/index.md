@@ -2,7 +2,7 @@
 
 > Everything recovered from mvp.myfeeds.ai, readable: the long-form posts where the architecture was worked out, and the briefings the pipeline generated for five personas when it ran.
 
-*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

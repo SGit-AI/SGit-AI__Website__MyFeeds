@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: Executive Summary Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in malicious malware…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -38,7 +38,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ## Executive Summary
 
-[image not recovered: `DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustration-representing-cybersecurity-threats--including-symbols-of-hacking--phishing--malware--cloud-services--and-prominently.webp`]
+[image never archived: `DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustrati`]
 
 Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in malicious malware campaigns further emphasizes the need for rigorous incident response and threat intelligence strategies. As CISOs operate within the FinTech sector, aligning security measures with compliance and new technological threats is crucial.
 
@@ -50,7 +50,7 @@ Cybersecurity threats continue to evolve with North Korean hackers targeting fre
 
 **Published:** 2025-02-20 13:37:00 +0000
 
-[image not recovered: `cyberattack.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkqmA6BokNKhyphenhyphenoYbRVUiCp0LZJRgJMaLtW9D9gQBD5IUS1Jg4YASciwwvXz8dBAjEaZ3dJMJFSHfRaoM3WVF0250e7nSTHG_e2SpOfvGTXpASiJkuoUbMvfUW0PP5jj2lQPP-uvMlfeWk0XM473JvjkhjFynxh_98k7YR7o0hSHk7r2FKOn5dLnptmEzz8/s1600/cyberattack.png)
 
 Recent campaigns linked to North Korean hackers involve job scams aimed at freelance developers, delivering malware such as BeaverTail and InvisibleFerret. This campaign highlights the sophistication of cyber threats targeting less traditionally secure environments.
 
@@ -68,7 +68,7 @@ Recent campaigns linked to North Korean hackers involve job scams aimed at freel
 
 **Published:** 2025-02-25 05:51:00 +0000
 
-[image not recovered: `malware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijEPgWIgmZOPhRpJpO17A9tuCmDGJqHlvkpjT828S-axryaRv-1xzma5pPWZrWuPNVhmS4-omFv-BOR7jEuTOs0NbY8HLs3DQshrEkUONBepfSz3hp0arv1D8SfBCoZbEjz0Zo-pcpHYYC2_e6euubSGXkIAQ6wUjbr5h62py9ATt5Jlhk0_YdCJD1jQlN/s1600/malware.png)
 
 Organizations in the APAC region are facing phishing attacks utilizing Chinese cloud services for distribution of FatalRAT malware. The technique reflects a growing trend of leveraging legitimate infrastructure for nefarious purposes.
 
@@ -86,7 +86,7 @@ Organizations in the APAC region are facing phishing attacks utilizing Chinese c
 
 **Published:** 2025-02-24 16:58:00 +0000
 
-[image not recovered: `ads.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6EffrLfFTPYahQyckyigmIt0em2HqYnUbK4udLsjx6bc9PZhyywdC7bB80YnH-XC1YTifwpspmscYMe_LddhnjKkySyMNXuXtIJ_-JyoiUm9DRL7J2HGGKT8-qky99xeMkFskahlzC0bgi0xvxYAfeEvNizZHVWJdpvzevjC8jjuPqUkgdSplmAzDWh6p/s1600/ads.png)
 
 A new campaign uses cracked software versions to distribute information stealers like Lumma and ACR Stealer, indicating a growing concern for data loss prevention strategies.
 
@@ -104,7 +104,7 @@ A new campaign uses cracked software versions to distribute information stealers
 
 **Published:** 2025-02-21 07:38:00 +0000
 
-[image not recovered: `telecom.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiheG4MBTdsUw5RJ1QutenIB6vgVqvIPHjkffZQwcQlvDBaIcPiY34Ve94juoST8_lTewq-bJ_XH7aWfOrPyvo82n4btgEgkSTHx8DzDn234vil-aCSZkwynQmG4-O-YgoIug9uZ7LaEDF2VR5ShoRn7Og6VRAJG_nF9R_8rJU35GtJyUzHx0_RejOcwcqW/s1600/telecom.png)
 
 Cisco confirms that a Chinese threat actor exploited a known vulnerability (CVE-2018-0171) to target U.S. telecom networks, demonstrating the risks posed by unaddressed vulnerabilities.
 
@@ -122,7 +122,7 @@ Cisco confirms that a Chinese threat actor exploited a known vulnerability (CVE-
 
 **Published:** 2025-02-24 11:17:00 +0000
 
-[image not recovered: `rasnomware.png`]
+[[image hosted elsewhere]](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCIsXvp-_0FBjN005m9C45Yqkym5iVSkQYJComGK8X-G8_bEWUXWPgAo2JBQ5ENiX_9QzkhNE3aD17h2TYSA_0qOkgq4nbQtX4Nt0i4JBjoywOfkGiBvUA6zNrGYf65XT69jK6i3cNXFITjaIbFkAjVFXGEVplGY_mXjpivDUzkWk17Fj-75ScwE5ObYIs/s1600/rasnomware.png)
 
 Organizations should focus on continuous validation methods to detect ransomware attacks at early stages to prevent extensive damage. The article emphasizes strategic defense planning against ransomware.
 

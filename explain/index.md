@@ -2,7 +2,7 @@
 
 > One real Portuguese article put through the join, with its working out: the entities, every concern tried, the connections that fired and the verdicts that did not — plus the three defects the first run found in the audience ontology, shown before and after.
 
-*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

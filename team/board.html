@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The board · myfeeds.sgit.ai</title>
 <meta name="description" content="Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.">
-<meta name="generator" content="admin/build/build_pages.py v0.1.7">
+<meta name="generator" content="admin/build/build_pages.py v0.1.8">
 <link rel="canonical" href="https://myfeeds.sgit.ai/team/board.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.">
 <meta property="og:url" content="https://myfeeds.sgit.ai/team/board.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The board","description":"Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs \u2014 the board versions with the repository it tracks.","url":"https://myfeeds.sgit.ai/team/board.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.7","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The board","description":"Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs \u2014 the board versions with the repository it tracks.","url":"https://myfeeds.sgit.ai/team/board.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.8","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -52,8 +52,8 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<a class="ver" href="../admin/versions.html#v0-1-7"
-title="What changed in v0.1.7">v0.1.7</a>
+<a class="ver" href="../admin/versions.html#v0-1-8"
+title="What changed in v0.1.8">v0.1.8</a>
 <nav class="site-nav" aria-label="Sections"><a href="../how-it-works/index.html">How it works</a><a href="../audiences/index.html">Audiences</a><a href="../explain/index.html">Explain</a><a href="../review/index.html">Review</a><a href="../back-office/archive/index.html">The MVP archive</a><a href="../back-office/index.html">Back office</a><a href="../team/index.html">Team</a><a href="../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
@@ -106,26 +106,8 @@ title="What changed in v0.1.7">v0.1.7</a>
 <ul><li><strong>The loop needs a stop.</strong> A routine that publishes daily without anyone reading it will</li></ul>
 <p>eventually publish something wrong with full confidence and a provenance trail. The newsroom has a named human editor of record as the gate; this site should say who holds the equivalent before the routine is armed, not after.</p>
 <p><strong>Done when</strong> a scheduled Routine runs the eight steps end to end on one day&#x27;s articles, the release it cuts passes CI, <code>verify-live.sh</code> confirms it, and the run record says which articles were extracted, which audiences each reached, and what a human changed.</p></div>
-<h2 id="doing">In progress <span class="tag doing">2</span></h2>
+<h2 id="doing">In progress <span class="tag doing">1</span></h2>
 <p>Claimed, with a role behind it.</p>
-<div class="band"><p class="k"><code>team/board/010-recover-remaining.md</code></p><h3>010 · Recover what the archive could not reach</h3><p><span class="tag doing">doing</span> <span class="tag">task</span> owner <a href="roles/librarian.html">librarian</a> · opened 2026-09-14</p><p><code>admin/tools/wayback_archive.py</code> recovered 15 posts and 22 files from <code>mvp.myfeeds.ai</code> and recorded 9 URLs that its own sitemap named and no crawler ever captured. Two of those are writing rather than an index and are therefore genuinely lost from that source: <code>/about/</code> and <code>/ceo-news/</code>.</p>
-<p>They may exist elsewhere. Places to look, in order of likelihood:</p>
-<ul><li>the Ghost export or database backup, if one was kept;</li><li><code>the-cyber-boardroom/myfeeds-ai</code>, which generated the persona posts and may hold the</li></ul>
-<p>source of the pages too;</p>
-<ul><li>LinkedIn, where several of these posts were cross-published — the recovered HTML carries</li></ul>
-<p><code>?trk=article-ssr-frontend-pulse</code> parameters, which is evidence they were syndicated there;</p>
-<ul><li>a second archive (archive.today, Bing or Google cache) that the Internet Archive&#x27;s</li></ul>
-<p>index does not cover.</p>
-<p>Also outstanding: the run used <code>--skip-assets</code>, so the <strong>361 captured images are indexed in the manifest but not downloaded</strong>. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.</p>
-<p><strong>Done when</strong> the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.</p>
-<hr>
-<p><strong>Update, v0.1.7 — images: partially done, and the finish is a re-run.</strong></p>
-<p>The run used <code>--skip-assets</code>, so no images had been downloaded at all and every recovered post rendered a column of markdown source. Both halves are now fixed: the archiver was run without the flag, and the renderer was taught image syntax (see the release note — it had never handled <code><span class="missing-img" title="url">[image not recovered: <code>url</code>]</span></code>, because the inline link rule required non-empty link text).</p>
-<p>At the time of this release the Internet Archive is throttling and the download is <strong>partly complete</strong>. The exact split is printed by the validator on every build — look for the <code>recovered images:</code> note — and shown on each post as an explicit &quot;image not recovered&quot; marker rather than a broken image, so the gap is visible rather than inferred.</p>
-<p><strong>To finish it:</strong> re-run the same command. The archiver skips files already present, so it resumes rather than restarting.</p>
-<pre><code>python3 admin/tools/wayback_archive.py mvp.myfeeds.ai --out back-office/archive --delay 0.25
-python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</code></pre>
-<p><strong>Decided:</strong> the images are served from this repository and the original URL is kept in each image&#x27;s <code>title</code>. The earlier position — leave references pointing at the dead domain so the archive stays verbatim — was wrong in practice: it produced an archive nobody could read. Rewriting a reference and recording it is evidence; rewriting and hiding it is not.</p></div>
 <div class="band"><p class="k"><code>team/board/012-newsroom-brief.md</code></p><h3>012 · Brief filed to the pt.newsroom.sgit.ai team — four requests</h3><p><span class="tag doing">doing</span> <span class="tag">task</span> owner <a href="roles/librarian.html">librarian</a> · opened 2026-09-15</p><p><code>briefs/to-pt-newsroom-2026-09-15.md</code> is filed. Four requests, in value order, each saying whether we can work around it:</p>
 <p>1. A JSON index of published articles with what changed. <strong>We asked for the index rather than RSS</strong> and said why: a feed answers &quot;what is new&quot; but still costs a fetch per article, and a full-content feed duplicates prose we would rather link to. 2. Carry <code>tem_prosa</code> into whatever index is exposed, so we stop inferring &quot;has prose&quot; from the existence of a file. 3. Keep <code>afirmacoes.json</code> beside each article and keep the <code>[[fonte:...]]</code> markers in the prose. We carry both into every audience output; without them a re-framed piece is an assertion with a nicer tone. 4. <strong>The one worth more than the other three combined:</strong> for each published article, the graph node ids it names. They already build a typed graph with named-inverse verbs and a source per node. Consuming their extraction instead of making our own removes the single most dangerous failure mode in this pipeline — a model inventing an entity, after which everything downstream explains a connection that does not exist, convincingly, with a provenance trail.</p>
 <p>We also told them what we do NOT want: a generic article taxonomy designed to serve every downstream consumer, because the audience side has to be shaped by what an audience watches for and that is ours to get wrong.</p>
@@ -151,7 +133,7 @@ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</code
 <p>The reason is real: the commit that <em>carries</em> a version cannot be known while that version is being built — it does not exist yet — and CI tags the release commit at publish time, so the tag is a durable pointer while a hash written at build time would either be wrong or change on every rebuild and break the staleness check.</p>
 <p><strong>Held</strong>, not open, because the obvious fixes are worse than the gap: capturing <code>git rev-parse HEAD</code> at build time records the <em>previous</em> commit under a field that claims to be this one, and having CI write the hash back means a CI-authored commit that exists only on the git side, which breaks the both-remotes-in-sync invariant.</p>
 <p><strong>Reopen when</strong> there is a way to fill <code>commit</code> that is true at the moment it is written — most likely the Historian backfilling the previous release&#x27;s hash in the entry for the next one, which is honest and verifiable.</p></div>
-<h2 id="done">Done <span class="tag done">2</span></h2>
+<h2 id="done">Done <span class="tag done">3</span></h2>
 <p>Closed, with the release that carried it.</p>
 <div class="band"><p class="k"><code>team/board/004-domain.md</code></p><h3>004 · myfeeds.sgit.ai does not resolve yet</h3><p><span class="tag done">done</span> <span class="tag">need</span> owner <a href="roles/devops.html">devops</a> · opened 2026-09-14</p><p><strong>Closed by v0.1.1, and not in the way this card expected.</strong></p>
 <p>As opened: at v0.1.0 the subdomain had no certificate — a request to <code>https://myfeeds.sgit.ai/</code> failed TLS before reaching anything — and this was filed as a need only the human owner could supply, on the assumption that a DNS record was missing.</p>
@@ -166,6 +148,38 @@ python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</code
 <p><strong>Closed 2026-09-15: won&#x27;t fix, and that is the right answer.</strong></p>
 <p>The author&#x27;s call: tagging works fine from v0.1.1 onward, and one missing historical tag is not worth a credential rotation. v0.1.0 remains identifiable by its commit subject and by <code>versions/v0.1.0.json</code>, which is what the versions contract actually requires — the tag was a convenience, not the record. Every release since has tagged normally because their trees carry the current workflow file.</p>
 <p>Recorded rather than deleted, because &quot;we decided not to&quot; is a more useful thing for a future reader to find than silence.</p></div>
+<div class="band"><p class="k"><code>team/board/010-recover-remaining.md</code></p><h3>010 · Recover what the archive could not reach</h3><p><span class="tag done">done</span> <span class="tag">task</span> owner <a href="roles/librarian.html">librarian</a> · opened 2026-09-14</p><p><code>admin/tools/wayback_archive.py</code> recovered 15 posts and 22 files from <code>mvp.myfeeds.ai</code> and recorded 9 URLs that its own sitemap named and no crawler ever captured. Two of those are writing rather than an index and are therefore genuinely lost from that source: <code>/about/</code> and <code>/ceo-news/</code>.</p>
+<p>They may exist elsewhere. Places to look, in order of likelihood:</p>
+<ul><li>the Ghost export or database backup, if one was kept;</li><li><code>the-cyber-boardroom/myfeeds-ai</code>, which generated the persona posts and may hold the</li></ul>
+<p>source of the pages too;</p>
+<ul><li>LinkedIn, where several of these posts were cross-published — the recovered HTML carries</li></ul>
+<p><code>?trk=article-ssr-frontend-pulse</code> parameters, which is evidence they were syndicated there;</p>
+<ul><li>a second archive (archive.today, Bing or Google cache) that the Internet Archive&#x27;s</li></ul>
+<p>index does not cover.</p>
+<p>Also outstanding: the run used <code>--skip-assets</code>, so the <strong>361 captured images are indexed in the manifest but not downloaded</strong>. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.</p>
+<p><strong>Done when</strong> the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.</p>
+<hr>
+<p><strong>Closed v0.1.8 — and the v0.1.7 update above this line was wrong about the numbers.</strong></p>
+<p>The images are done, and &quot;partly complete, re-run to finish&quot; was a misreading of the count. Three different things were being added together:</p>
+<div class="tablewrap"><table><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>92</td><td>served from this repository</td><td>recovered, working</td></tr><tr><td>16</td><td>on the dead domain, <strong>never captured by the Internet Archive</strong></td><td>re-running finds nothing</td></tr><tr><td>51</td><td>embedded from other publishers&#x27; CDNs</td><td>never part of that site at all</td></tr></tbody></table></div>
+<p>The last group is the one that made the number look bad. The persona briefings quote Hacker News articles and embed the screenshots from the original publisher&#x27;s image host — those were never on <code>mvp.myfeeds.ai</code>, so no archive of that site could ever have held them. They are not missing. They are somebody else&#x27;s images, and they are now rendered as a link to the original rather than counted as a loss.</p>
+<p>Of the 105 images the posts actually reference from the dead domain, <strong>89 are here and 16 were never archived</strong>. Those 16 are gone unless a copy exists outside the Internet Archive — most are DALL·E header images for the persona posts, which the MyFeeds engine repository may still hold.</p>
+<p><strong>What was actually done</strong></p>
+<ul><li>Archiver run without <code>--skip-assets</code>; 120 files pulled before archive.org&#x27;s rate limiting</li></ul>
+<p>made further progress pointless.</p>
+<ul><li>The archiver now honours <code>Retry-After</code> and paces the whole run rather than backing off</li></ul>
+<p>per file, because per-file exponential backoff is the wrong shape for a server that is telling you a specific number of seconds to wait.</p>
+<ul><li>Each image renders as one of three honest states rather than one misleading one.</li></ul>
+<p><strong>What is left, and it is not this card:</strong> the 16 never-archived images, if anyone wants to go looking in <code>the-cyber-boardroom/myfeeds-ai</code> for the originals. That is a new card if it matters, not an unfinished part of this one.</p>
+<hr>
+<p><strong>Superseded update from v0.1.7, kept because it was published:</strong></p>
+<p><strong>Update, v0.1.7 — images: partially done, and the finish is a re-run.</strong></p>
+<p>The run used <code>--skip-assets</code>, so no images had been downloaded at all and every recovered post rendered a column of markdown source. Both halves are now fixed: the archiver was run without the flag, and the renderer was taught image syntax (see the release note — it had never handled <code>![](url)</code>, because the inline link rule required non-empty link text).</p>
+<p>At the time of this release the Internet Archive is throttling and the download is <strong>partly complete</strong>. The exact split is printed by the validator on every build — look for the <code>recovered images:</code> note — and shown on each post as an explicit &quot;image not recovered&quot; marker rather than a broken image, so the gap is visible rather than inferred.</p>
+<p><strong>To finish it:</strong> re-run the same command. The archiver skips files already present, so it resumes rather than restarting.</p>
+<pre><code>python3 admin/tools/wayback_archive.py mvp.myfeeds.ai --out back-office/archive --delay 0.25
+python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</code></pre>
+<p><strong>Decided:</strong> the images are served from this repository and the original URL is kept in each image&#x27;s <code>title</code>. The earlier position — leave references pointing at the dead domain so the archive stays verbatim — was wrong in practice: it produced an archive nobody could read. Rewriting a reference and recording it is evidence; rewriting and hiding it is not.</p></div>
 <div class="next"><a href="index.html">← The team</a><a href="prompts.html">Starting prompts →</a></div>
 </main>
 <footer class="site-foot"><div class="inner">
@@ -178,7 +192,7 @@ not before. <a href="../provenance/index.html">What that means, exactly</a>.</p>
 <p><a href="board.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
 <p>The LLM was doing too much.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.7. Part of the
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.8. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../",n=0,t;

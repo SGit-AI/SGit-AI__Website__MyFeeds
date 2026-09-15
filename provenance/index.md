@@ -2,7 +2,7 @@
 
 > Not AI-assisted: the prose, both ontologies, the audience definitions and every classification were produced by a language model and are read by a human after publication rather than before. Who made what, the three places a model can be wrong here in order of damage, and what is not AI-generated.
 
-*Source: <https://myfeeds.sgit.ai/provenance/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/provenance/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -36,7 +36,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 26 Mar 2025 · Dinis Cruz
 
-[image not recovered: `Screenshot-2025-03-26-at-17.34.21.png`]
+[image never archived: `Screenshot-2025-03-26-at-17.34.21.png`]
 
 At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3 stage, where we had a list of articles that needed to be processed.
 

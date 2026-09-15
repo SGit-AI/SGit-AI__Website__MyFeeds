@@ -2,7 +2,7 @@
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I'm building the Semantic Knowledge Graphs and Establishing Provenance, let's look at the current (MVP) process of publishing a new set of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -36,7 +36,7 @@ This is recovered content, reproduced as it was published. Its links point at pa
 
 ↓ recovered article begins 26 Mar 2025 · Dinis Cruz
 
-[image not recovered: `feed-timeline.mgraph--4-.png`]
+[image never archived: `feed-timeline.mgraph--4-.png`]
 
 Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).
 

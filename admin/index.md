@@ -2,7 +2,7 @@
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.7 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.8 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

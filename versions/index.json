@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.7",
+  "current": "v0.1.8",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.8",
+      "date": "2026-09-15",
+      "title": "the image count in the last release was three different things added together, and the renderer could not document its own syntax",
+      "href": "v0.1.8.json"
+    },
     {
       "version": "v0.1.7",
       "date": "2026-09-15",

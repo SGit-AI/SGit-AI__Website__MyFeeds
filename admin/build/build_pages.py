@@ -380,6 +380,48 @@ VERSION_LOG = [
             "disabled."
         ),
     },
+    {
+        "version": "v0.1.8",
+        "date": "2026-09-15",
+        "title": (
+            "the image count in the last release was three different things added "
+            "together, and the renderer could not document its own syntax"
+        ),
+        "summary": (
+            "v0.1.7 reported 70 images as missing and said re-running the archiver would "
+            "fix it. Both halves were wrong. Of the 105 images the recovered posts "
+            "reference from the dead domain, 89 are here and 16 were never captured by "
+            "the Internet Archive at all — re-running finds nothing. The other 51 were "
+            "never part of that site: the persona briefings embed screenshots from the "
+            "original publishers' own image hosts, which no archive of mvp.myfeeds.ai "
+            "could ever have held. Three different things were being counted as one, and "
+            "the one that made the number look bad was the group that was never a loss."
+        ),
+        "changes": [
+            "admin/build/build_pages.py — three image states instead of one: recovered, "
+            "never archived, or hosted elsewhere (rendered as a link to the original)",
+            "admin/build/build_pages.py — md_inline lifts code spans out before every "
+            "other rule and restores them last",
+            "admin/tools/wayback_archive.py — honours Retry-After and paces the whole run "
+            "rather than backing off per file; prints progress",
+            "admin/build/validate.js — the literal-markdown check ignores code spans and "
+            "code blocks; the image note reports the three states separately",
+            "team/board/010 — closed, with the corrected numbers above the wrong ones",
+        ],
+        "corrects": (
+            "v0.1.7's release note and board card 010 both said 70 images were missing "
+            "and that a re-run would recover them. The honest figures are 89 recovered, "
+            "16 never archived and 51 that were never this site's to recover. The wrong "
+            "text stays on the card with the correction above it. Separately, two "
+            "renderer defects found by this site's own prose: a code span containing "
+            "markdown had that markdown rewritten — a board card explaining that "
+            "image syntax had never been handled turned its own example into a link and "
+            "broke the build — and the check that catches literal markdown then flagged "
+            "the correct rendering of a code span as a defect. A renderer that cannot "
+            "document its own syntax is one that will quietly rewrite any example anybody "
+            "ever writes in it."
+        ),
+    },
 ]
 
 NAV = [
@@ -986,28 +1028,40 @@ def load_board() -> list[dict]:
 
 
 def md_inline(text: str) -> str:
-    """The small inline markdown used inside ROLE.md bodies and board cards."""
+    """The small inline markdown used inside ROLE.md bodies, board cards and post text.
+
+    Code spans are lifted out FIRST and put back LAST. Without that, every rule below runs
+    over the inside of a code span and rewrites the very syntax the span exists to show —
+    a board card explaining that ``![](url)`` had never been handled turned that example
+    into a link to a page called "url", and broke the build. A code span means "render
+    this literally", and a renderer that does not honour that cannot document itself.
+    """
+    spans: list[str] = []
+
+    def stash(m: re.Match) -> str:
+        spans.append(m.group(1))
+        return f"\x00CODE{len(spans) - 1}\x00"
+
     out = html.escape(text)
-    out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
+    out = re.sub(r"`([^`]+)`", stash, out)
     out = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", out)
     out = re.sub(r"(?<![\w*])\*([^*\n]+)\*(?![\w*])", r"<em>\1</em>", out)
-    # Images FIRST, and with an alt that may be empty. The link rule below requires
-    # non-empty text, so `![](url)` matched nothing at all and every recovered image
-    # rendered as its own markdown source — which is what a reader saw on every
-    # architecture post in the library.
+    # Images before links: the link rule requires non-empty text and `![](url)` has none,
+    # so it would match nothing and the source would fall through onto the page.
     out = re.sub(
         r"!\[([^\]]*)\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)",
         lambda m: _img(m.group(2), m.group(1)), out)
     out = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', out)
-    return out
+    return re.sub(r"\x00CODE(\d+)\x00",
+                  lambda m: f"<code>{spans[int(m.group(1))]}</code>", out)
 
 
-# Images recovered from the dead domain are served from this repository. The original
-# URL is kept in the title attribute so the page still says where the bytes came from:
-# rewriting a reference without recording it is the thing that makes an archive stop
-# being evidence.
+# Images recovered from the dead domain are served from this repository. The original URL
+# is kept on the element: rewriting a reference without recording it is what makes an
+# archive stop being evidence.
 ARCHIVED_HOST = "https://mvp.myfeeds.ai"
 ARCHIVE_LOCAL = "back-office/archive/mvp.myfeeds.ai"
+IMG_BASE = ""  # set per page by the generator, since pages sit at different depths
 
 
 def _img(src: str, alt: str = "") -> str:
@@ -1015,13 +1069,14 @@ def _img(src: str, alt: str = "") -> str:
 
     Not a plain `<img src>`: the authoring contract forbids a declarative reference to a
     vault path, because inside a sandboxed vault frame it 404s before the bridge installs
-    and the page renders with a column of broken images. `<a href>` is not a declarative
-    fetch, so it passes the contract, works as a link with scripting disabled, and
+    and the page renders a column of broken images. `<a href>` is not a declarative fetch,
+    so it passes the contract, works as a link with scripting disabled, and
     `assets/site.js` turns it into a real image — over the bridge in a vault, directly on
     the static mirror.
 
-    The original URL is kept on the element. Rewriting a reference without recording it
-    is what makes an archive stop being evidence.
+    Three outcomes, and keeping them apart matters: an image we hold, an image the archive
+    never captured (re-running the archiver will not find it), and an image the post
+    embedded from somebody else's CDN, which was never part of this site at all.
     """
     original = src
     if src.startswith(ARCHIVED_HOST):
@@ -1035,13 +1090,15 @@ def _img(src: str, alt: str = "") -> str:
                 f'title="originally {html.escape(original)}">'
                 f'<span class="rimg-ph">image · <code>{html.escape(name)}</code></span></a>'
             )
-    # Not recovered: say so rather than emitting something broken.
-    return (f'<span class="missing-img" title="{html.escape(original)}">'
-            f'[image not recovered: <code>{html.escape(original.rsplit("/", 1)[-1])}'
-            f'</code>]</span>')
-
-
-IMG_BASE = ""  # set per page by the generator, since pages sit at different depths
+        return (
+            f'<span class="missing-img" title="{html.escape(original)}">'
+            f'[image never archived: <code>'
+            f'{html.escape(original.rsplit("/", 1)[-1][:60])}</code>]</span>'
+        )
+    return (
+        f'<span class="offsite-img"><a href="{html.escape(original)}" rel="nofollow">'
+        f'[image hosted elsewhere]</a></span>'
+    )
 
 
 def md_block(text: str, base: str = "") -> str:
