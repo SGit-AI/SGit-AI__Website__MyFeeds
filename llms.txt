@@ -2,7 +2,7 @@
 
 > The LLM was doing too much. Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect. This site is the argument, the recovered record of the first MVP, and the back office behind both.
 
-Site version: v0.1.4. A site in the [sgit.ai](https://sgit.ai) network.
+Site version: v0.1.5. A site in the [sgit.ai](https://sgit.ai) network.
 Every page below is markdown, generated from the same source as the HTML page at
 the same path (swap `.md` for `.html`). Links inside the markdown point at
 markdown, so you can traverse the whole site without parsing HTML.
@@ -27,6 +27,10 @@ every page of this site concatenated into one document.
 
 ## The argument
 - [How it works](/how-it-works/index.md): The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary — each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built.
+- [Six audiences, and what each converts news into](/audiences/index.md): The audience side of the join: six roles with a stated appetite rather than a tone of voice — a founder, an allocator, an executive, a practitioner, a risk owner, and a faithful translation that acts as the control. What separates them is what each converts a piece of news into.
+- [Two ontologies and the join between them](/ontology/index.md): One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
+- [Why this article reached these audiences and not the others](/explain/index.md): One real Portuguese article put through the join, with its working out: the entities, every concern tried, the connections that fired and the verdicts that did not — plus the three defects the first run found in the audience ontology, shown before and after.
+- [The first MVP, in full](/library/index.md): Everything recovered from mvp.myfeeds.ai, readable: the long-form posts where the architecture was worked out, and the briefings the pipeline generated for five personas when it ran.
 
 ## Superseded (v0.1.0–v0.1.2)
 - [Feeds are replaceable. Your reading is not.](/thesis/index.md): Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.

@@ -1,0 +1,143 @@
+{
+  "slug": "dois-nomes-para-os-mesmos-palcos",
+  "title": "Dois nomes para os mesmos palcos",
+  "title_en": "Two names for the same stages",
+  "language": "pt-PT",
+  "date": "2026-09-14",
+  "source_site": "pt.newsroom.sgit.ai",
+  "source_url": "https://pt.newsroom.sgit.ai/artigos/2026/09/14/dois-nomes-para-os-mesmos-palcos/",
+  "source_repo": "SGit-AI/SGit-AI__Website__Newsroom__PT",
+  "source_path": "artigos/2026/09/14/dois-nomes-para-os-mesmos-palcos/",
+  "extraction": {
+    "status": "hand-extracted",
+    "note": "Extracted by hand from the article and its afirmacoes.json, NOT by the pipeline. This is a worked example chosen because the article is real, verified, and carries its claims and frozen sources — so the join can be checked against something that exists. When the pipeline runs against the newsroom, this file is what stage 1 produces and this hand copy is deleted.",
+    "by": "claude-code session, 2026-09-15"
+  },
+  "what_it_says": "Three pages of the same event site, frozen on the same day, name the event's stages two different ways. The agenda and the speakers page say Unicorn Stage, Impact Stage and Workshop Rooms. The sponsorship page says Main Stage, Startup Stage and Workshop Rooms. One of the three names matches; two do not. The article does not say which is right, because nothing in the frozen pages says.",
+  "entities": [
+    {
+      "id": "article",
+      "type": "Article",
+      "label": "Dois nomes para os mesmos palcos"
+    },
+    {
+      "id": "event:startup-summit-lisbon-2026",
+      "type": "Event",
+      "label": "Startup Summit Lisbon 2026",
+      "note": "Opens 17 September 2026."
+    },
+    {
+      "id": "discrepancy:stage-names",
+      "type": "Discrepancy",
+      "label": "the stage names disagree across three pages of one site"
+    },
+    {
+      "id": "source:agenda",
+      "type": "Source",
+      "label": "the frozen agenda page (2026-09-14/agenda)"
+    },
+    {
+      "id": "source:oradores",
+      "type": "Source",
+      "label": "the frozen speakers page (2026-09-14/oradores)"
+    },
+    {
+      "id": "source:patrocinadores",
+      "type": "Source",
+      "label": "the frozen sponsorship page (2026-09-14/patrocinadores)"
+    },
+    {
+      "id": "claim:a1",
+      "type": "Claim",
+      "label": "the agenda names Unicorn Stage, Impact Stage and Workshop Rooms"
+    },
+    {
+      "id": "claim:a2",
+      "type": "Claim",
+      "label": "the speakers page names the same three"
+    },
+    {
+      "id": "claim:a3",
+      "type": "Claim",
+      "label": "the sponsorship page names Main Stage, Startup Stage and Workshop Rooms"
+    }
+  ],
+  "edges": [
+    {
+      "verb": "states",
+      "from": "article",
+      "to": "claim:a1"
+    },
+    {
+      "verb": "states",
+      "from": "article",
+      "to": "claim:a2"
+    },
+    {
+      "verb": "states",
+      "from": "article",
+      "to": "claim:a3"
+    },
+    {
+      "verb": "rests_on",
+      "from": "claim:a1",
+      "to": "source:agenda"
+    },
+    {
+      "verb": "rests_on",
+      "from": "claim:a2",
+      "to": "source:oradores"
+    },
+    {
+      "verb": "rests_on",
+      "from": "claim:a3",
+      "to": "source:patrocinadores"
+    },
+    {
+      "verb": "reveals",
+      "from": "article",
+      "to": "discrepancy:stage-names"
+    },
+    {
+      "verb": "involves",
+      "from": "discrepancy:stage-names",
+      "to": "source:agenda"
+    },
+    {
+      "verb": "involves",
+      "from": "discrepancy:stage-names",
+      "to": "source:patrocinadores"
+    }
+  ],
+  "verification": {
+    "confirmed": 3,
+    "disputed": 0,
+    "not_found": 0
+  },
+  "consequence_connections": [
+    {
+      "audience": "risk",
+      "concern": "accountability",
+      "concern_label": "Who is answerable",
+      "entity": "discrepancy:stage-names",
+      "entity_label": "the stage names disagree across three pages of one site",
+      "entity_type": "Discrepancy",
+      "path": "discrepancy:stage-names --involves--> source:patrocinadores; source:patrocinadores is a page of the event organiser's own site",
+      "reads": "The risk owner watches who is answerable; one organisation published two answers to the same question on its own site, which is a control failure regardless of which answer is right.",
+      "reads_inverse": "This discrepancy makes the event organiser answerable, which the risk owner watches.",
+      "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)"
+    },
+    {
+      "audience": "startups",
+      "concern": "event",
+      "concern_label": "Events worth attending",
+      "entity": "discrepancy:stage-names",
+      "entity_label": "the stage names disagree across three pages of one site",
+      "entity_type": "Discrepancy",
+      "path": "discrepancy:stage-names --involves--> source:agenda --describes--> event:startup-summit-lisbon-2026",
+      "reads": "The founder watches events worth attending; the stage they were told to expect may not be the stage that exists, which matters to anyone printing a schedule, briefing a speaker or buying a sponsorship.",
+      "reads_inverse": "This event's stage naming is unreliable, which the founder attending it needs to know.",
+      "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)"
+    }
+  ]
+}

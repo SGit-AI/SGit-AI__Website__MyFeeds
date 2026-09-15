@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Two ontologies and the join between them · myfeeds.sgit.ai</title>
+<meta name="description" content="One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.">
+<meta name="generator" content="admin/build/build_pages.py v0.1.5">
+<link rel="canonical" href="https://myfeeds.sgit.ai/ontology/index.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="myfeeds.sgit.ai">
+<meta property="og:title" content="Two ontologies and the join between them · myfeeds.sgit.ai">
+<meta property="og:description" content="One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.">
+<meta property="og:url" content="https://myfeeds.sgit.ai/ontology/index.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Two ontologies and the join between them","description":"One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.","url":"https://myfeeds.sgit.ai/ontology/index.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.5","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
+--dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--wide:1180px;--measure:74ch}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14151a;--panel:#1b1d23;
+--panel2:#22242b;--line:#2c2f38;--fg:#e8e6e0;--dim:#a3a7b0;--dim2:#767b86;--accent:#2dd4bf;
+--accent-dk:#5eead4}}
+*,*::before,*::after{box-sizing:border-box}
+.skip{position:absolute;left:-9999px;top:0;background:var(--panel);padding:.6rem 1rem;z-index:99}
+.skip:focus{left:.5rem;top:.5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;
+line-height:1.62}
+img{max-width:100%;height:auto}
+a{color:var(--accent-dk);text-decoration:none}
+main{max-width:var(--wide);margin:0 auto;padding:0 20px 5rem}
+main>*{max-width:var(--measure)}
+main>.grid,main>.band,main>.tablewrap,main>.wide{max-width:none}
+h1{font-size:clamp(1.95rem,1.3rem + 2.4vw,3rem);line-height:1.1;margin:.4rem 0 .6rem}
+h2{margin:3rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .bar{max-width:var(--wide);margin:0 auto;padding:.7rem 20px;display:flex;
+align-items:baseline;gap:1rem;flex-wrap:wrap}
+.site-nav{display:flex;gap:.1rem;flex-wrap:wrap;margin-left:auto;font-size:.88rem}
+.site-nav a{color:var(--dim);padding:.22rem .55rem}
+.site-foot{border-top:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+.site-foot .inner{max-width:var(--wide);margin:0 auto;padding:2.2rem 20px 3rem;display:grid;
+gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));font-size:.86rem}
+.site-foot ul{list-style:none;margin:0;padding:0}
+pre{overflow-x:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="bar">
+<a class="brand" href="../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
+<a class="ver" href="../admin/versions.html#v0-1-5"
+title="What changed in v0.1.5">v0.1.5</a>
+<nav class="site-nav" aria-label="Sections"><a href="../how-it-works/index.html">How it works</a><a href="../audiences/index.html">Audiences</a><a href="../explain/index.html">Explain</a><a href="../back-office/archive/index.html">The MVP archive</a><a href="../back-office/index.html">Back office</a><a href="../team/index.html">Team</a><a href="../admin/index.html">Admin</a></nav>
+</div></header>
+<main id="main">
+<p class="crumb"><a href="../index.html">myfeeds.sgit.ai</a> / The argument</p>
+<p class="kicker">The grammar</p>
+<h1>Two ontologies and the join between them</h1>
+<p class="lede">One ontology says what a piece of news contains. Another says what a role
+watches for. Neither is interesting on its own — the whole value is in the third thing,
+the join, which is where an article meets an audience and a sentence comes out saying why.
+The grammar is adapted from the one
+<a href="https://pt.newsroom.sgit.ai/">pt.newsroom.sgit.ai</a> uses for the Portuguese
+graph, and keeps its hardest rule.</p>
+
+<h2 id="rules">The rules</h2>
+<div class="band"><h3>Every edge is a verb with a distinct named inverse, and both directions read as sentences.</h3><p>An edge you cannot read aloud in both directions is usually two different claims wearing one label.</p></div><div class="band"><h3>No symmetric verb. Where a relation genuinely is symmetric, reify it as a node.</h3><p>A symmetric verb is its own inverse, which means it carries no direction and therefore no information. `contradicts` is the case that matters here: two sources disagreeing is a Discrepancy node, which can then be dated, sourced and pointed at.</p></div><div class="band"><h3>Classification is a published formula or it does not happen.</h3><p>The entire argument of this site is that a recommendation must be checkable. A selection rule nobody can read is the black box in a different coat.</p></div><div class="band"><h3>An article NOT reaching an audience is recorded with the same structure as one that does.</h3><p>Any system can explain what it chose. Explaining what it rejected, and why, is the harder half and the one a reader actually doubts.</p></div>
+
+<h2 id="article">The article ontology</h2>
+<p>What a piece of news contains. Deliberately small: a type earns its place by being something at least one audience watches for, and every type here is named in at least one concern.</p>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Is</th></tr></thead>
+<tbody><tr><td><code>Article</code></td><td>One published piece, in its original language.</td></tr><tr><td><code>Claim</code></td><td>A single assertion the article makes, which walks back to a frozen source.</td></tr><tr><td><code>Source</code></td><td>A frozen, hashed copy of the page a claim rests on. Evidence, not a page of this site.</td></tr><tr><td><code>Organisation</code></td><td>A named company, institution or body.</td></tr><tr><td><code>Person</code></td><td>A named individual, in a professional capacity only.</td></tr><tr><td><code>Event</code></td><td>A dated, located happening: a conference, a deadline, an incident.</td></tr><tr><td><code>Programme</code></td><td>A funding call, accelerator or scheme somebody can apply to.</td></tr><tr><td><code>Instrument</code></td><td>A law, regulation, designation or formal decision.</td></tr><tr><td><code>Obligation</code></td><td>A duty an instrument creates, and who it binds.</td></tr><tr><td><code>Technology</code></td><td>A named product, protocol, model or version.</td></tr><tr><td><code>Weakness</code></td><td>A way something fails or can be made to fail.</td></tr><tr><td><code>Control</code></td><td>A change to a system that reduces a weakness.</td></tr><tr><td><code>Sector</code></td><td>A population of organisations treated as one.</td></tr><tr><td><code>Measure</code></td><td>A count or rate, with the thing it counts and the date it was true.</td></tr><tr><td><code>Money</code></td><td>An amount, with what it was for.</td></tr><tr><td><code>Discrepancy</code></td><td>Two sources answering the same question differently. A node, not an edge, so it can be dated and pointed at.</td></tr></tbody></table></div>
+<h3>Its verbs</h3>
+<div class="tablewrap"><table><thead><tr><th>Verb</th><th>Inverse</th><th>Reads</th><th>And back</th></tr></thead><tbody><tr><td><code>states</code></td><td><code>is_stated_by</code></td><td>Article states Claim</td><td>Claim is stated by Article</td></tr><tr><td><code>rests_on</code></td><td><code>supports</code></td><td>Claim rests on Source</td><td>Source supports Claim</td></tr><tr><td><code>names</code></td><td><code>is_named_in</code></td><td>Claim names Organisation</td><td>Organisation is named in Claim</td></tr><tr><td><code>organises</code></td><td><code>is_organised_by</code></td><td>Organisation organises Event</td><td>Event is organised by Organisation</td></tr><tr><td><code>runs</code></td><td><code>is_run_by</code></td><td>Organisation runs Programme</td><td>Programme is run by Organisation</td></tr><tr><td><code>imposes</code></td><td><code>is_imposed_by</code></td><td>Instrument imposes Obligation</td><td>Obligation is imposed by Instrument</td></tr><tr><td><code>binds</code></td><td><code>is_bound_by</code></td><td>Obligation binds Organisation</td><td>Organisation is bound by Obligation</td></tr><tr><td><code>affects</code></td><td><code>is_affected_by</code></td><td>Weakness affects Technology</td><td>Technology is affected by Weakness</td></tr><tr><td><code>reduces</code></td><td><code>is_reduced_by</code></td><td>Control reduces Weakness</td><td>Weakness is reduced by Control</td></tr><tr><td><code>belongs_to</code></td><td><code>contains</code></td><td>Organisation belongs to Sector</td><td>Sector contains Organisation</td></tr><tr><td><code>counts</code></td><td><code>is_counted_by</code></td><td>Measure counts Sector</td><td>Sector is counted by Measure</td></tr><tr><td><code>reveals</code></td><td><code>is_revealed_by</code></td><td>Article reveals Discrepancy</td><td>Discrepancy is revealed by Article</td></tr><tr><td><code>involves</code></td><td><code>is_involved_in</code></td><td>Discrepancy involves Source</td><td>Source is involved in Discrepancy</td></tr></tbody></table></div>
+
+<h3 id="forbidden">Verbs that are not allowed</h3>
+<p>Naming what is banned, and why, is more useful than naming what is permitted: every one
+of these is a shortcut somebody will reach for.</p>
+<div class="tablewrap"><table><thead><tr><th>Verb</th><th>Why not</th></tr></thead>
+<tbody><tr><td><code>contradicts</code></td><td>Symmetric: A contradicts B is B contradicts A, so it is its own inverse and carries no direction. Use a Discrepancy node, which can also be dated and sourced.</td></tr><tr><td><code>related_to</code></td><td>Says nothing a reader could check, and absorbs every edge that was too much trouble to name properly.</td></tr><tr><td><code>mentions</code></td><td>True of almost every pair and therefore useless for selection. If it matters, the specific verb exists.</td></tr><tr><td><code>is_relevant_to</code></td><td>This is the conclusion, not an edge. Writing it as an edge hides the reasoning the join exists to expose.</td></tr></tbody></table></div>
+
+<h2 id="audience">The audience ontology</h2>
+<p>What a role watches for. Small on purpose: the audience side is the half a human maintains by hand, and a taxonomy nobody can hold in their head stops being maintained and starts being wrong.</p>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Is</th></tr></thead>
+<tbody><tr><td><code>Audience</code></td><td>One of the six roles this site publishes for.</td></tr><tr><td><code>Concern</code></td><td>A thing an audience watches for, declared as the article types that satisfy it.</td></tr><tr><td><code>Currency</code></td><td>What this audience converts a piece of news into. The reason two audiences given the same article produce different pieces rather than different lengths.</td></tr><tr><td><code>Axis</code></td><td>A named spectrum audiences sit on: mechanism wanted, scope, horizon.</td></tr><tr><td><code>Qualifier</code></td><td>A type that must ALSO be present in the article for a concern to fire. The difference between &#x27;this audience cares about source integrity&#x27; and &#x27;this audience cares about source integrity in technical material&#x27;.</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Verb</th><th>Inverse</th><th>Reads</th><th>And back</th></tr></thead><tbody><tr><td><code>watches</code></td><td><code>is_watched_by</code></td><td>Audience watches Concern</td><td>Concern is watched by Audience</td></tr><tr><td><code>pays_in</code></td><td><code>is_currency_of</code></td><td>Audience pays in Currency</td><td>Currency is the currency of Audience</td></tr><tr><td><code>satisfied_by</code></td><td><code>satisfies</code></td><td>Concern is satisfied by Article type</td><td>Article type satisfies Concern</td></tr><tr><td><code>sits_on</code></td><td><code>positions</code></td><td>Audience sits on Axis</td><td>Axis positions Audience</td></tr></tbody></table></div>
+
+<h2 id="join">The join</h2>
+<p>The two worlds meet here, and this is the only part of the system a reader needs to trust. A Connection is a node rather than an edge so that it can be pointed at, dated, disagreed with and — the case that matters — counted when there are none.</p>
+<div class="band">
+<h3>join/v1</h3>
+<p>For every article A and every audience U, a Delivery exists. A concern declaring `requires` is skipped unless A also contains a qualifying type. For each remaining concern C and each entity E in A&#x27;s graph, a match is attempted; every match found becomes a Connection. The Delivery is `reached` if it holds at least one Connection and `withheld` otherwise. Rank counts each ENTITY once, at its strongest match — summing every connection lets one entity score repeatedly through overlapping concerns, which it did the first time this formula ran.</p>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>Match</th><th>Weight</th><th>When</th></tr></thead>
+<tbody><tr><td><code>qualified</code></td><td>0</td><td>A concern declaring `requires` does not fire at all unless the article also contains one of the qualifying types. Applied before any other match.</td></tr><tr><td><code>exact</code></td><td>3</td><td>E&#x27;s type is named directly in C&#x27;s satisfied-by list.</td></tr><tr><td><code>narrower</code></td><td>2</td><td>E&#x27;s type is one hop below a type named in C, in the published taxonomy.</td></tr><tr><td><code>broader</code></td><td>1</td><td>E&#x27;s type is one hop above a type named in C. Weakest match, because a broader thing may not carry the specific consequence the audience is watching for.</td></tr><tr><td><code>consequence</code></td><td>2</td><td>A path of at most two article edges runs from E to something C names — and the path reads as a sentence.</td></tr></tbody></table></div>
+<p><strong>Reached at:</strong> 1 connection.
+One connection is enough to reach, deliberately. Ranking, not filtering, is what handles a weak connection — a feed that silently drops items cannot be audited, and an item at the bottom of a ranked list can be.</p>
+<p><strong>Withheld:</strong> A withheld Delivery records which concerns were tried and why each failed: either the audience watches for types this article has none of, or the only matches available were below threshold. &#x27;Nothing matched&#x27; is not an acceptable reason on its own.</p>
+
+<div class="note">
+<p><strong>Where the model fits, stated plainly.</strong>
+In the running pipeline the matches are PROPOSED by a language model comparing two graphs — that is stage 3 of the MyFeeds architecture. This formula does not replace that; it constrains the shape of what comes back so that every proposed match is recorded with its type, its weight, its two endpoints and a sentence, and can therefore be disagreed with by a human reading the delivery. The model proposes; the formula records and scores; the reader checks. Where the two sides of a match are identical concept ids, no model is needed at all and the match is computed.</p>
+</div>
+
+<p>The formula is not only described here — it is
+<a href="../back-office/tools/index.html"><code>admin/tools/join.py</code></a>, and
+<a href="../explain/index.html">the worked example</a> is its output rather than a
+drawing of what its output would look like.</p>
+
+<div class="next"><a href="../explain/index.html">Watch it run →</a>
+<a href="../audiences/index.html">← The six audiences</a>
+<a href="../data/ontology.json">This page, as JSON</a></div>
+</main>
+<footer class="site-foot"><div class="inner">
+<div><h4>The argument</h4><ul><li><a href="../how-it-works/index.html">How it works — the four stages</a></li><li><a href="../audiences/index.html">The six audiences</a></li><li><a href="../ontology/index.html">The two ontologies</a></li><li><a href="../explain/index.html">A worked example</a></li><li><a href="../library/index.html">The recovered library</a></li><li><a href="../back-office/documents/index.html">The business case</a></li><li><a href="../about/index.html">About &amp; honest edges</a></li></ul></div><div><h4>Superseded</h4><ul><li><a href="../thesis/index.html">Feeds are replaceable (v0.1.0–v0.1.2)</a></li><li><a href="../read-state/index.html">The part nobody exports</a></li><li><a href="../vault/index.html">What a feeds vault holds</a></li><li><a href="../build-order/index.html">What does not exist yet</a></li></ul></div><div><h4>How it is run</h4><ul><li><a href="../team/index.html">The team</a></li><li><a href="../team/board.html">The board</a></li><li><a href="../admin/index.html">How this site is built</a></li><li><a href="../admin/versions.html">Release history</a></li></ul></div><div><h4>Back office</h4><ul><li><a href="../back-office/index.html">Everything it is built from</a></li><li><a href="../back-office/archive/index.html">The recovered MVP archive</a></li><li><a href="../back-office/documents/index.html">Documents</a></li><li><a href="../back-office/tools/index.html">Tools</a></li></ul></div><div><h4>Elsewhere</h4><ul><li><a href="../network/index.html">The sgit.ai network</a></li><li><a href="../about/index.html">About &amp; licence</a></li><li><a href="../llms.txt">llms.txt</a></li><li><a href="../llms-full.txt">llms-full.txt</a></li></ul></div>
+<div><h4>This page</h4>
+<p><a href="index.md">This page as markdown</a> — the bytes it was rendered
+from. Anything rendered here stays one click from its source.</p>
+<p>The LLM was doing too much.</p>
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.5. Part of the
+<a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
+</div></footer>
+<script>(function(){var B="../",n=0,t;
+function applied(){try{return getComputedStyle(document.documentElement)
+.getPropertyValue('--site-css').trim()==='1'}catch(e){return false}}
+function inject(tag,c){if(!c)return;var e=document.createElement(tag);e.textContent=c;
+(tag==='style'?document.head:document.body).appendChild(e);}
+function viaFetch(){fetch(B+'assets/site.css').then(function(r){return r.ok?r.text():''})
+.then(function(c){if(!applied())inject('style',c)}).catch(function(){});
+fetch(B+'assets/site.js').then(function(r){return r.ok?r.text():''})
+.then(function(c){inject('script',c)}).catch(function(){});}
+function viaBridge(sg){if(sg.loadCss&&sg.loadJs){try{sg.loadCss('assets/site.css');
+sg.loadJs('assets/site.js');return true}catch(e){}}
+if(sg.vfs&&sg.vfs.readText){try{Promise.resolve(sg.vfs.readText('assets/site.css'))
+.then(function(c){if(!applied())inject('style',c)});
+Promise.resolve(sg.vfs.readText('assets/site.js')).then(function(c){inject('script',c)});
+return true}catch(e){}}return false;}
+// The two transports are tried concurrently and both are idempotent: fetch starts now so
+// the static mirror is never unstyled, and the bridge is used the moment it appears. The
+// --site-css sentinel in site.css stops the second arrival applying anything twice.
+if(window.sg&&viaBridge(window.sg))return;
+viaFetch();
+window.addEventListener('sg-ready',function(){if(!applied()&&window.sg)viaBridge(window.sg)},
+{once:true});
+t=setInterval(function(){if(window.sg){clearInterval(t);if(!applied())viaBridge(window.sg);}
+else if(++n>40){clearInterval(t);if(!applied())viaFetch();}},50);})();</script>
+</body>
+</html>

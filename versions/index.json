@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.4",
+  "current": "v0.1.5",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.5",
+      "date": "2026-09-15",
+      "title": "the six audiences, the two ontologies and the join between them \u2014 and the first run of the formula finding three defects in its own audience side",
+      "href": "v0.1.5.json"
+    },
     {
       "version": "v0.1.4",
       "date": "2026-09-15",

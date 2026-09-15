@@ -1,4 +1,4 @@
-# myfeeds.sgit.ai — every page, v0.1.4
+# myfeeds.sgit.ai — every page, v0.1.5
 
 > The LLM was doing too much.
 
@@ -14,7 +14,7 @@ the markdown twins of every page, in navigation order.
 
 > Ask one LLM to read fifty articles and pick five for a CISO and it will — and you will never be able to say why. How MyFeeds decomposes that single opaque call into four stages with a semantic knowledge graph between them, so every recommendation carries a provenance trail you can inspect.
 
-*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -112,7 +112,7 @@ MyFeeds ran. The MVP published machine-generated briefings for five personas —
 
 > The four-stage pipeline: entity extraction, persona graph, relevance mapping, personalised summary — each emitting typed JSON, with a semantic knowledge graph where the reasoning used to be hidden. Assembled from the posts that described it as it was built.
 
-*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/how-it-works/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -186,7 +186,7 @@ The engine is public and open source at [the-cyber-boardroom/myfeeds-ai](https:/
 
 > Superseded. Why every feed reader has the durability of its two data sets backwards: the articles can always be fetched again, and the record of what you read exists in exactly one place.
 
-*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/thesis/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -259,7 +259,7 @@ This is the strongest objection, and the answer is that it is nearly free. Read 
 
 > Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -395,7 +395,7 @@ If any of that is wrong, it is wrong in public with a card open against it, whic
 
 > Superseded. The folder layout of a feeds vault: subscriptions, cached items, and state kept deliberately apart — plus why read state merges cleanly across devices and why that makes an encrypted vault with real branches the right container.
 
-*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/vault/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -483,7 +483,7 @@ Once the reading record is a set of files with a published shape rather than row
 
 > Superseded. Everything this site argues for, in build order, with each item marked shipped, argued or unverified — published before the code so the commitments are checkable against what actually gets built.
 
-*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/build-order/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -558,7 +558,7 @@ Not "incomplete" — wrong. If item 2 above turns out to be true and identity ch
 
 > The pipeline: page bodies in admin/content/, one generator, a validator that fails the build on a broken link or a missing markdown twin, and the authoring contract that keeps a vault-hosted page from rendering blank.
 
-*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -688,7 +688,7 @@ One honest note on that contract: the estate's shape includes the commit a versi
 
 > Where this site sits among the sibling sites on *.sgit.ai, which question it owns, and the deconfliction rule that keeps it from restating what a sister site already argues better.
 
-*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/network/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -745,7 +745,7 @@ The network directory on sgit.ai carries one entry per sibling site, written in 
 
 > Whose site this is, how it was written, what it is worth, and the list of things it currently gets to assert without having proven.
 
-*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/about/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -824,7 +824,7 @@ A correction is published above the claim it corrects, and the claim stays, beca
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -888,7 +888,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 ## The board
 
-4 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
+5 open cards. Every card is a markdown file with a status line; the columns are those lines rendered. Nothing runs and nothing is hosted — the board versions with the repository it tracks, which is the same convention [issues-fs.sgit.ai](https://issues-fs.sgit.ai/) argues for at length.
 
 [The board →](board.md) [Starting prompts →](prompts.md) [How the site is built →](../admin/index.md)
 
@@ -905,7 +905,7 @@ A role's Central Claim is the testable assertion it is judged on. The estate's o
 
 > Open work as a kanban of files: needs only the human owner can supply, and tasks an agent can pick up from its starting prompt. Nothing runs — the board versions with the repository it tracks.
 
-*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/board.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -947,7 +947,7 @@ articles, the ontology of each target audience, and the join between them render
 
 **Done when** those three are answered and the contract for an audience view is published here, before the demo exists. That is this estate's order of work and the reason the commitments stay checkable.
 
-## Tasks 3
+## Tasks 4
 
 An agent can pick these up from its starting prompt.
 
@@ -1002,6 +1002,52 @@ index does not cover.
 Also outstanding: the run used `--skip-assets`, so the **361 captured images are indexed in the manifest but not downloaded**. Every recovered post references images on the dead domain, so those links are currently decorative. Re-run without the flag to pull them, and decide separately whether to rewrite the posts to point at local copies — which makes them readable but stops them being verbatim.
 
 **Done when** the two lost pages are either found or declared unrecoverable with the places checked listed, and the image question is decided either way on this card.
+
+`team/board/011-daily-sync.md`
+
+### 011 · The daily routine that syncs this site with pt.newsroom.sgit.ai
+
+todo task owner [devops](roles/devops.md) · opened 2026-09-15
+
+The end state, in the author's words: a daily Claude Code routine that synchronises myfeeds.sgit.ai with `pt.newsroom.sgit.ai`, which itself has agents running on its own interval. A self-maintaining workflow, where this site's job is to take what that newsroom published and put it in front of six audiences with the reasoning attached.
+
+**Why this is a task and not a need.** Everything it depends on now exists: the audiences are defined, the ontology is published, `admin/tools/join.py` runs the formula, and the newsroom publishes its articles as JSON with claims and frozen sources. What is missing is the loop and the extraction step, not a decision.
+
+### The shape
+
+```
+daily, on a Routine:
+  1. pull      pt.newsroom.sgit.ai's published articles (its api/v1 or the repo)
+  2. diff      against admin/content/data/articles/ — new and changed only
+  3. extract   article -> entities + edges, against the published article ontology
+               (stage 1; the only step that needs a model and the only one that can
+               invent something, so its output is reviewed before it is used)
+  4. translate the faithful EN rendering — the control audience, no selection
+  5. join      python3 admin/tools/join.py per article -> data/joins/<slug>.json
+  6. write     one output per reached audience, in that audience's currency
+  7. build     python3 admin/build/build_pages.py && node admin/build/validate.js
+  8. release   bump version.txt, commit "site vX.Y.Z: ...", push dev; CI deploys
+```
+
+### What has to be true before it runs unattended
+
+- **Step 3 is the dangerous one.** Extraction is where a model can name an entity the
+
+article does not contain, and everything downstream will then explain a connection that should not exist. The build already refuses an entity whose type is not in the ontology; it cannot refuse an entity that is well-typed and wrong. Until there is a check for that, a human reads the extraction diff.
+
+- **The newsroom's rule is inherited, not re-implemented.** Every claim there walks back to
+
+a frozen, hashed source. This site must carry those markers through to the audience outputs rather than dropping them in the rewrite — an audience-specific piece with no path back to the frozen bytes is exactly the black box this site argues against.
+
+- **Translation is a claim.** The EN control output is a transcription of somebody else's
+
+words and is checkable as one. Divergences between it and the five re-framed outputs are the site's own evidence that re-framing is not distortion, so it has to be right first.
+
+- **The loop needs a stop.** A routine that publishes daily without anyone reading it will
+
+eventually publish something wrong with full confidence and a provenance trail. The newsroom has a named human editor of record as the gate; this site should say who holds the equivalent before the routine is armed, not after.
+
+**Done when** a scheduled Routine runs the eight steps end to end on one day's articles, the release it cuts passes CI, `verify-live.sh` confirms it, and the run record says which articles were extracted, which audiences each reached, and what a human changed.
 
 ## Held 5
 
@@ -1118,7 +1164,7 @@ So the need was not a need. It was the deploy workflow this site did not have.
 
 > One prompt per recurring task on this site — add a page, publish a contract, cut a release, sweep the claims — each naming the role file that turns a general model into the role that owns the work.
 
-*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/prompts.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1177,7 +1223,7 @@ One prompt per recurring task. Paste into a fresh agent with nothing else; each 
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1190,6 +1236,28 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.5` · 2026-09-15 · [as data](../versions/v0.1.5.json)
+
+### the six audiences, the two ontologies and the join between them — and the first run of the formula finding three defects in its own audience side
+
+The machinery the site had been arguing for now exists as data and as a runnable tool. Six audiences defined as roles with a stated appetite rather than a tone of voice, each converting news into a different currency; an article ontology and an audience ontology, every verb carrying a named inverse that reads as a sentence both ways, with the banned verbs listed and the reason given; and join/v1, the published formula where the two meet, executed by admin/tools/join.py rather than described. The worked example is a real verified article from pt.newsroom.sgit.ai, and the debug view shows every concern tried, not only the ones that fired.
+
+**Corrects.** Nothing from an earlier release, but the first run of join/v1 corrected three things in the audience ontology written hours earlier, and the page shows the before and after rather than the fix alone: a concern matching on Source fired for every article that freezes its sources and put the security practitioner at the top of a story about stage names at a startup event; one entity satisfying two overlapping concerns scored twice and put the executive above the founder on an event story; and a concern called 'something more likely or more expensive' fired on any event at all. Concerns can now be qualified, rank counts each entity once, and the practitioner is correctly withheld.
+
+#### Changes
+
+- admin/content/data/audiences.json — six audiences: the faithful translation (the control), the founder, the allocator, the executive, the practitioner, the risk owner. Three axes, six currencies, concerns declared as article types
+
+- admin/content/data/ontology.json — the article ontology (16 types, 13 verbs, 4 banned), the audience ontology, and join/v1 with its match weights
+
+- admin/tools/join.py — the formula, executed; emits one delivery per audience, reached or withheld, each with its connections and readings
+
+- audiences/, ontology/, explain/, library/ — four new pages; explain/ is the debug view and library/ makes the recovered MVP readable as sections
+
+- api/v1/audiences.json, api/v1/joins.json, data/{audiences,ontology}.json and data/joins/ — the same facts a reader can fetch
+
+- team/board/011 — the daily routine that syncs with pt.newsroom.sgit.ai
 
 `v0.1.4` · 2026-09-15 · [as data](../versions/v0.1.4.json)
 
@@ -1305,6 +1373,766 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 
 ==============================================================================
+# /audiences/index.html
+==============================================================================
+
+# Six audiences, and what each converts news into
+
+> The audience side of the join: six roles with a stated appetite rather than a tone of voice — a founder, an allocator, an executive, a practitioner, a risk owner, and a faithful translation that acts as the control. What separates them is what each converts a piece of news into.
+
+*Source: <https://myfeeds.sgit.ai/audiences/index.html> · site v0.1.5 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The audience side
+
+# Six audiences, and what each converts news into
+
+The same article, read by six roles, should produce six different pieces — not one piece at six lengths. What makes them different is not tone: it is what each role converts a piece of news *into*. A founder turns it into something to do this month; an allocator turns it into evidence about a population; a risk owner turns it into a change in exposure. That is the axis the whole system turns on.
+
+**The first audience is not an audience.** The source material is Portuguese; the first output is a faithful English translation with nothing added, dropped or re-weighted. It is the control: every article reaches it, no selection runs, and it is what the other five are diffed against. Without it there is no way to tell re-framing apart from distortion, because there is nothing to compare against.
+
+## What each one pays in
+
+| Currency | Means | Audience |
+|---|---|---|
+| **A faithful rendering** | Nothing added, nothing dropped, nothing re-weighted. | EN |
+| **Something to act on** | A programme to apply to, an event to attend, a competitor to watch. | Startups |
+| **A signal about a population** | What this says about a sector, a cohort or a policy direction. | Investors |
+| **A financial or reputational consequence** | What it costs, what it earns, what has to be said about it. | C-level |
+| **A technical change** | What to patch, configure, monitor or verify, and by when. | Cyber |
+| **A change in exposure or duty** | What became more likely, who is accountable, what obligation was triggered. | Risk |
+
+## The spectrum
+
+Three axes separate them, and the first is the strongest: **how much mechanism the reader wants**. A practitioner and an executive can want the same story and disagree completely about where it should stop. The second — **scope** — is why the founder and the allocator read like inversions of each other: one cares about a named thing, the other about the population it belongs to.
+
+| Audience | Mechanism | Scope | Horizon | Pays in |
+|---|---|---|---|---|
+| [The faithful translation](#translation-en) | — | — | — | A faithful rendering |
+| [The founder](#startups) | 50% | 15% | 20% | Something to act on |
+| [The allocator](#investors) | 30% | 90% | 85% | A signal about a population |
+| [The executive](#c-level) | 15% | 50% | 50% | A financial or reputational consequence |
+| [The practitioner](#cybersecurity) | 100% | 30% | 10% | A technical change |
+| [The risk owner](#risk) | 25% | 65% | 60% | A change in exposure or duty |
+
+Mechanism: 0% = the consequence only, 100% = the full mechanism. Scope: 0% = one named thing, 100% = a whole population. Horizon: 0% = this week, 100% = several years. The control audience sits on no axis, deliberately.
+
+## The six
+
+00 · pays in **A faithful rendering** · control
+
+### The faithful translation EN
+
+A reader who wants the Portuguese article in English and nothing else — no re-framing, no selection, no emphasis moved. This is the only audience that is not an audience: it is the control. Every article reaches it, no selection formula runs, and its output is the baseline the other five are diffed against. Without it there is no way to tell re-framing apart from distortion, because there is nothing to compare against.
+
+Mechanism wanted
+
+n/a
+
+the consequence only → the full mechanism
+
+Scope
+
+n/a
+
+one named thing → a whole population
+
+Time horizon
+
+n/a
+
+this week → several years
+
+#### Wants
+
+- Every claim the original made, in the order it made them
+
+- Named entities verbatim, in whatever language the source used
+
+- The source markers carried through unchanged
+
+#### Does not want
+
+- Any judgement about what matters
+
+- Any reordering for emphasis
+
+- Anything the original did not say
+
+01 · pays in **Something to act on**
+
+### The founder Startups
+
+Runs a small company and reads to find things to do this month. Narrow and concrete: their own sector, the companies they compete with or sell to, the programmes they can apply to, the events where the right people will be, and the rules that bite at their size rather than at an incumbent's. A market-level pattern is interesting and not actionable, so it loses to a deadline every time.
+
+Mechanism wanted
+
+the consequence only → the full mechanism
+
+Scope
+
+one named thing → a whole population
+
+Time horizon
+
+this week → several years
+
+#### Wants
+
+- Named programmes, deadlines, eligibility
+
+- Events, who will be there, when
+
+- Competitors and adjacent companies by name
+
+- Rules that apply below a size threshold
+
+#### Does not want
+
+- Portfolio-level analysis
+
+- Anything whose earliest consequence is years away
+
+- Mechanism for its own sake
+
+#### Watches for
+
+| Concern | Satisfied by | Only when |
+|---|---|---|
+| Funding programmes and calls | `Programme` `Instrument` | — |
+| Events worth attending | `Event` | — |
+| Companies in the same sector | `Organisation` | — |
+| Obligations that bind small companies | `Obligation` | — |
+
+02 · pays in **A signal about a population**
+
+### The allocator Investors
+
+The founder inverted. Cares about populations rather than instances: a single company's news is worth reading only as evidence about a sector, a cohort or a policy direction. Counts things. A story about one firm is noise; the same story as the fourth instance of a pattern is a thesis. Long horizon, low appetite for mechanism, high appetite for a number that can be tracked across quarters.
+
+Mechanism wanted
+
+the consequence only → the full mechanism
+
+Scope
+
+one named thing → a whole population
+
+Time horizon
+
+this week → several years
+
+#### Wants
+
+- Counts, rates and how they moved
+
+- Policy direction and what it will make cheaper or dearer
+
+- Sector-level shifts, not company-level ones
+
+- Anything that says a market is bigger or smaller than believed
+
+#### Does not want
+
+- Single-company operational detail
+
+- This week's deadline
+
+- Technical mechanism
+
+#### Watches for
+
+| Concern | Satisfied by | Only when |
+|---|---|---|
+| Signals about a sector | `Sector` `Organisation` | — |
+| Policy and regulatory direction | `Instrument` | — |
+| Counts of a population and how they move | `Measure` | — |
+| Money entering or leaving | `Money` | — |
+
+03 · pays in **A financial or reputational consequence**
+
+### The executive C-level
+
+Reads for consequence, in money and reputation, and for what will have to be said to a board next quarter. The lowest appetite for mechanism of any audience here — not because it is beneath them but because it is not the decision they hold. The question behind every item is: does this change what we spend, what we earn, what we owe, or what we will be asked about.
+
+Mechanism wanted
+
+the consequence only → the full mechanism
+
+Scope
+
+one named thing → a whole population
+
+Time horizon
+
+this week → several years
+
+#### Wants
+
+- What it costs or earns, with a number where one exists
+
+- What a board or a regulator will ask
+
+- Competitive position
+
+- What has to be decided, by whom, by when
+
+#### Does not want
+
+- How the technology works
+
+- Implementation detail
+
+- Anything with no consequence to state
+
+#### Watches for
+
+| Concern | Satisfied by | Only when |
+|---|---|---|
+| Cost, revenue and exposure in money | `Money` | — |
+| What a board will ask about | `Discrepancy` `Obligation` | — |
+| Where we stand against named others | `Organisation` | — |
+| Anything that becomes a public question | `Discrepancy` | — |
+
+04 · pays in **A technical change**
+
+### The practitioner Cyber
+
+The most technical reader on this site and the only one who wants the mechanism for its own sake, because the mechanism is what determines whether the thing is exploitable here. Specific technologies, specific versions, specific controls. Converts news into an action on a system: patch, configure, monitor, verify, or decide that it does not apply. Detail that would lose every other audience is the part this one came for.
+
+Mechanism wanted
+
+the consequence only → the full mechanism
+
+Scope
+
+one named thing → a whole population
+
+Time horizon
+
+this week → several years
+
+#### Wants
+
+- Named technologies and versions
+
+- How something actually works or fails
+
+- What to change and by when
+
+- Whether it applies to this estate at all
+
+#### Does not want
+
+- Consequence framed only in money
+
+- Sector-level abstraction
+
+- A summary that drops the specifics
+
+#### Watches for
+
+| Concern | Satisfied by | Only when |
+|---|---|---|
+| Named technologies and versions | `Technology` | — |
+| Weaknesses and how they are reached | `Weakness` | — |
+| Something to change on a system | `Control` | — |
+| Whether published information can be trusted | `Discrepancy` | `Technology` `Weakness` `Control` |
+
+05 · pays in **A change in exposure or duty**
+
+### The risk owner Risk
+
+Non-technical and rigorous, which is an unusual pair and the reason this audience is easy to serve badly. Reads for exposure: what became more likely, what became more expensive if it happens, who is accountable, and what duty was triggered. A technical finding matters only as far as it moves one of those. Cares a great deal about one thing nobody else notices — two sources disagreeing with each other — because an organisation that publishes two answers to the same question has a control failure regardless of which answer is right.
+
+Mechanism wanted
+
+the consequence only → the full mechanism
+
+Scope
+
+one named thing → a whole population
+
+Time horizon
+
+this week → several years
+
+#### Wants
+
+- What changed in likelihood or impact
+
+- Who is accountable and under what instrument
+
+- Obligations with dates attached
+
+- Sources that contradict each other
+
+#### Does not want
+
+- Mechanism beyond what changes the exposure
+
+- Opportunity framing
+
+- Anything with no owner
+
+#### Watches for
+
+| Concern | Satisfied by | Only when |
+|---|---|---|
+| Something more likely or more expensive | `Weakness` | — |
+| Duties, and who they bind | `Obligation` `Instrument` | — |
+| Who is answerable | `Organisation` `Person` | — |
+| Published information that disagrees with itself | `Discrepancy` | — |
+
+[The two ontologies →](../ontology/index.md) [A worked example →](../explain/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/audiences/index.html)*
+
+
+==============================================================================
+# /ontology/index.html
+==============================================================================
+
+# Two ontologies and the join between them
+
+> One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
+
+*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.5 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The grammar
+
+# Two ontologies and the join between them
+
+One ontology says what a piece of news contains. Another says what a role watches for. Neither is interesting on its own — the whole value is in the third thing, the join, which is where an article meets an audience and a sentence comes out saying why. The grammar is adapted from the one [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/) uses for the Portuguese graph, and keeps its hardest rule.
+
+## The rules
+
+### Every edge is a verb with a distinct named inverse, and both directions read as sentences.
+
+An edge you cannot read aloud in both directions is usually two different claims wearing one label.
+
+### No symmetric verb. Where a relation genuinely is symmetric, reify it as a node.
+
+A symmetric verb is its own inverse, which means it carries no direction and therefore no information. `contradicts` is the case that matters here: two sources disagreeing is a Discrepancy node, which can then be dated, sourced and pointed at.
+
+### Classification is a published formula or it does not happen.
+
+The entire argument of this site is that a recommendation must be checkable. A selection rule nobody can read is the black box in a different coat.
+
+### An article NOT reaching an audience is recorded with the same structure as one that does.
+
+Any system can explain what it chose. Explaining what it rejected, and why, is the harder half and the one a reader actually doubts.
+
+## The article ontology
+
+What a piece of news contains. Deliberately small: a type earns its place by being something at least one audience watches for, and every type here is named in at least one concern.
+
+| Type | Is |
+|---|---|
+| `Article` | One published piece, in its original language. |
+| `Claim` | A single assertion the article makes, which walks back to a frozen source. |
+| `Source` | A frozen, hashed copy of the page a claim rests on. Evidence, not a page of this site. |
+| `Organisation` | A named company, institution or body. |
+| `Person` | A named individual, in a professional capacity only. |
+| `Event` | A dated, located happening: a conference, a deadline, an incident. |
+| `Programme` | A funding call, accelerator or scheme somebody can apply to. |
+| `Instrument` | A law, regulation, designation or formal decision. |
+| `Obligation` | A duty an instrument creates, and who it binds. |
+| `Technology` | A named product, protocol, model or version. |
+| `Weakness` | A way something fails or can be made to fail. |
+| `Control` | A change to a system that reduces a weakness. |
+| `Sector` | A population of organisations treated as one. |
+| `Measure` | A count or rate, with the thing it counts and the date it was true. |
+| `Money` | An amount, with what it was for. |
+| `Discrepancy` | Two sources answering the same question differently. A node, not an edge, so it can be dated and pointed at. |
+
+### Its verbs
+
+| Verb | Inverse | Reads | And back |
+|---|---|---|---|
+| `states` | `is_stated_by` | Article states Claim | Claim is stated by Article |
+| `rests_on` | `supports` | Claim rests on Source | Source supports Claim |
+| `names` | `is_named_in` | Claim names Organisation | Organisation is named in Claim |
+| `organises` | `is_organised_by` | Organisation organises Event | Event is organised by Organisation |
+| `runs` | `is_run_by` | Organisation runs Programme | Programme is run by Organisation |
+| `imposes` | `is_imposed_by` | Instrument imposes Obligation | Obligation is imposed by Instrument |
+| `binds` | `is_bound_by` | Obligation binds Organisation | Organisation is bound by Obligation |
+| `affects` | `is_affected_by` | Weakness affects Technology | Technology is affected by Weakness |
+| `reduces` | `is_reduced_by` | Control reduces Weakness | Weakness is reduced by Control |
+| `belongs_to` | `contains` | Organisation belongs to Sector | Sector contains Organisation |
+| `counts` | `is_counted_by` | Measure counts Sector | Sector is counted by Measure |
+| `reveals` | `is_revealed_by` | Article reveals Discrepancy | Discrepancy is revealed by Article |
+| `involves` | `is_involved_in` | Discrepancy involves Source | Source is involved in Discrepancy |
+
+### Verbs that are not allowed
+
+Naming what is banned, and why, is more useful than naming what is permitted: every one of these is a shortcut somebody will reach for.
+
+| Verb | Why not |
+|---|---|
+| `contradicts` | Symmetric: A contradicts B is B contradicts A, so it is its own inverse and carries no direction. Use a Discrepancy node, which can also be dated and sourced. |
+| `related_to` | Says nothing a reader could check, and absorbs every edge that was too much trouble to name properly. |
+| `mentions` | True of almost every pair and therefore useless for selection. If it matters, the specific verb exists. |
+| `is_relevant_to` | This is the conclusion, not an edge. Writing it as an edge hides the reasoning the join exists to expose. |
+
+## The audience ontology
+
+What a role watches for. Small on purpose: the audience side is the half a human maintains by hand, and a taxonomy nobody can hold in their head stops being maintained and starts being wrong.
+
+| Type | Is |
+|---|---|
+| `Audience` | One of the six roles this site publishes for. |
+| `Concern` | A thing an audience watches for, declared as the article types that satisfy it. |
+| `Currency` | What this audience converts a piece of news into. The reason two audiences given the same article produce different pieces rather than different lengths. |
+| `Axis` | A named spectrum audiences sit on: mechanism wanted, scope, horizon. |
+| `Qualifier` | A type that must ALSO be present in the article for a concern to fire. The difference between 'this audience cares about source integrity' and 'this audience cares about source integrity in technical material'. |
+
+| Verb | Inverse | Reads | And back |
+|---|---|---|---|
+| `watches` | `is_watched_by` | Audience watches Concern | Concern is watched by Audience |
+| `pays_in` | `is_currency_of` | Audience pays in Currency | Currency is the currency of Audience |
+| `satisfied_by` | `satisfies` | Concern is satisfied by Article type | Article type satisfies Concern |
+| `sits_on` | `positions` | Audience sits on Axis | Axis positions Audience |
+
+## The join
+
+The two worlds meet here, and this is the only part of the system a reader needs to trust. A Connection is a node rather than an edge so that it can be pointed at, dated, disagreed with and — the case that matters — counted when there are none.
+
+### join/v1
+
+For every article A and every audience U, a Delivery exists. A concern declaring `requires` is skipped unless A also contains a qualifying type. For each remaining concern C and each entity E in A's graph, a match is attempted; every match found becomes a Connection. The Delivery is `reached` if it holds at least one Connection and `withheld` otherwise. Rank counts each ENTITY once, at its strongest match — summing every connection lets one entity score repeatedly through overlapping concerns, which it did the first time this formula ran.
+
+| Match | Weight | When |
+|---|---|---|
+| `qualified` | 0 | A concern declaring `requires` does not fire at all unless the article also contains one of the qualifying types. Applied before any other match. |
+| `exact` | 3 | E's type is named directly in C's satisfied-by list. |
+| `narrower` | 2 | E's type is one hop below a type named in C, in the published taxonomy. |
+| `broader` | 1 | E's type is one hop above a type named in C. Weakest match, because a broader thing may not carry the specific consequence the audience is watching for. |
+| `consequence` | 2 | A path of at most two article edges runs from E to something C names — and the path reads as a sentence. |
+
+**Reached at:** 1 connection. One connection is enough to reach, deliberately. Ranking, not filtering, is what handles a weak connection — a feed that silently drops items cannot be audited, and an item at the bottom of a ranked list can be.
+
+**Withheld:** A withheld Delivery records which concerns were tried and why each failed: either the audience watches for types this article has none of, or the only matches available were below threshold. 'Nothing matched' is not an acceptable reason on its own.
+
+**Where the model fits, stated plainly.** In the running pipeline the matches are PROPOSED by a language model comparing two graphs — that is stage 3 of the MyFeeds architecture. This formula does not replace that; it constrains the shape of what comes back so that every proposed match is recorded with its type, its weight, its two endpoints and a sentence, and can therefore be disagreed with by a human reading the delivery. The model proposes; the formula records and scores; the reader checks. Where the two sides of a match are identical concept ids, no model is needed at all and the match is computed.
+
+The formula is not only described here — it is [`admin/tools/join.py`](../back-office/tools/index.md), and [the worked example](../explain/index.md) is its output rather than a drawing of what its output would look like.
+
+[Watch it run →](../explain/index.md) [← The six audiences](../audiences/index.md) [This page, as JSON](../data/ontology.json)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/ontology/index.html)*
+
+
+==============================================================================
+# /explain/index.html
+==============================================================================
+
+# Why this article reached these audiences and not the others
+
+> One real Portuguese article put through the join, with its working out: the entities, every concern tried, the connections that fired and the verdicts that did not — plus the three defects the first run found in the audience ontology, shown before and after.
+
+*Source: <https://myfeeds.sgit.ai/explain/index.html> · site v0.1.5 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The debug view
+
+# Why this article reached these audiences and not the others
+
+One real article, put through the join and shown with its working out. This is the view that exists to be *checked* rather than read — the one you open when a feed shows you something and you want to know who decided that. Every line below is output from `admin/tools/join.py`, not a drawing of what the output would look like.
+
+## The article
+
+2026-09-14 · pt-PT · [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/artigos/2026/09/14/dois-nomes-para-os-mesmos-palcos/)
+
+### Dois nomes para os mesmos palcos
+
+*Two names for the same stages*
+
+Three pages of the same event site, frozen on the same day, name the event's stages two different ways. The agenda and the speakers page say Unicorn Stage, Impact Stage and Workshop Rooms. The sponsorship page says Main Stage, Startup Stage and Workshop Rooms. One of the three names matches; two do not. The article does not say which is right, because nothing in the frozen pages says.
+
+3 claims confirmed, 0 disputed, 0 not found — re-checked against the frozen sources by the newsroom that published it.
+
+**Extraction status:** Extracted by hand from the article and its afirmacoes.json, NOT by the pipeline. This is a worked example chosen because the article is real, verified, and carries its claims and frozen sources — so the join can be checked against something that exists. When the pipeline runs against the newsroom, this file is what stage 1 produces and this hand copy is deleted.
+
+## What stage 1 pulled out
+
+The article as entities and edges. Every type here is defined in [the article ontology](../ontology/index.md#article), and an entity whose type is not defined stops the build — an unknown type can never match anything, so the article would look uninteresting rather than unreadable.
+
+| Entity | Type | Is |
+|---|---|---|
+| `article` | Article | Dois nomes para os mesmos palcos |
+| `event:startup-summit-lisbon-2026` | Event | Startup Summit Lisbon 2026 |
+| `discrepancy:stage-names` | Discrepancy | the stage names disagree across three pages of one site |
+| `source:agenda` | Source | the frozen agenda page (2026-09-14/agenda) |
+| `source:oradores` | Source | the frozen speakers page (2026-09-14/oradores) |
+| `source:patrocinadores` | Source | the frozen sponsorship page (2026-09-14/patrocinadores) |
+| `claim:a1` | Claim | the agenda names Unicorn Stage, Impact Stage and Workshop Rooms |
+| `claim:a2` | Claim | the speakers page names the same three |
+| `claim:a3` | Claim | the sponsorship page names Main Stage, Startup Stage and Workshop Rooms |
+
+### And how they connect
+
+| From | Verb | To |
+|---|---|---|
+| `article` | **states** | `claim:a1` |
+| `article` | **states** | `claim:a2` |
+| `article` | **states** | `claim:a3` |
+| `claim:a1` | **rests_on** | `source:agenda` |
+| `claim:a2` | **rests_on** | `source:oradores` |
+| `claim:a3` | **rests_on** | `source:patrocinadores` |
+| `article` | **reveals** | `discrepancy:stage-names` |
+| `discrepancy:stage-names` | **involves** | `source:agenda` |
+| `discrepancy:stage-names` | **involves** | `source:patrocinadores` |
+
+## The six verdicts
+
+One delivery per audience, whether or not the article reached it. A withheld delivery carries the same structure as a reached one, because explaining what was rejected is the half a reader actually doubts.
+
+control · always
+
+### The faithful translation
+
+The control audience. Every article reaches it and no selection runs — it is the baseline the other audiences' output is compared against.
+
+reached rank 5
+
+### The founder
+
+2 connection(s) from 1 concern(s).
+
+exact · weight 3
+
+The founder watches events worth attending; the article names Startup Summit Lisbon 2026, which is a Event.
+
+**And back:** Startup Summit Lisbon 2026 satisfies events worth attending, which the founder watches.
+
+consequence · weight 2 · *proposed by the model*
+
+The founder watches events worth attending; the stage they were told to expect may not be the stage that exists, which matters to anyone printing a schedule, briefing a speaker or buying a sponsorship.
+
+**And back:** This event's stage naming is unreliable, which the founder attending it needs to know.
+
+**Path:** `discrepancy:stage-names --involves--> source:agenda --describes--> event:startup-summit-lisbon-2026`
+
+#### Every concern tried
+
+| Concern | Wanted | Hits | Outcome |
+|---|---|---|---|
+| Funding programmes and calls | `Programme` `Instrument` | — | this article has no Programme or Instrument in it |
+| Events worth attending | `Event` | 1 | satisfied |
+| Companies in the same sector | `Organisation` | — | this article has no Organisation in it |
+| Obligations that bind small companies | `Obligation` | — | this article has no Obligation in it |
+
+withheld
+
+### The allocator
+
+None of the concerns this audience watches were satisfied: this article has no Sector or Organisation in it; this article has no Instrument in it; this article has no Measure in it; this article has no Money in it.
+
+#### Every concern tried
+
+| Concern | Wanted | Hits | Outcome |
+|---|---|---|---|
+| Signals about a sector | `Sector` `Organisation` | — | this article has no Sector or Organisation in it |
+| Policy and regulatory direction | `Instrument` | — | this article has no Instrument in it |
+| Counts of a population and how they move | `Measure` | — | this article has no Measure in it |
+| Money entering or leaving | `Money` | — | this article has no Money in it |
+
+reached rank 3
+
+### The executive
+
+2 connection(s) from 2 concern(s).
+
+exact · weight 3
+
+The executive watches what a board will ask about; the article names the stage names disagree across three pages of one site, which is a Discrepancy.
+
+**And back:** the stage names disagree across three pages of one site satisfies what a board will ask about, which the executive watches.
+
+exact · weight 3
+
+The executive watches anything that becomes a public question; the article names the stage names disagree across three pages of one site, which is a Discrepancy.
+
+**And back:** the stage names disagree across three pages of one site satisfies anything that becomes a public question, which the executive watches.
+
+#### Every concern tried
+
+| Concern | Wanted | Hits | Outcome |
+|---|---|---|---|
+| Cost, revenue and exposure in money | `Money` | — | this article has no Money in it |
+| What a board will ask about | `Discrepancy` `Obligation` | 1 | satisfied |
+| Where we stand against named others | `Organisation` | — | this article has no Organisation in it |
+| Anything that becomes a public question | `Discrepancy` | 1 | satisfied |
+
+withheld
+
+### The practitioner
+
+None of the concerns this audience watches were satisfied: this article has no Technology in it; this article has no Weakness in it; this article has no Control in it; this concern only applies where the article is also about Technology or Weakness or Control, and this one is not.
+
+#### Every concern tried
+
+| Concern | Wanted | Hits | Outcome |
+|---|---|---|---|
+| Named technologies and versions | `Technology` | — | this article has no Technology in it |
+| Weaknesses and how they are reached | `Weakness` | — | this article has no Weakness in it |
+| Something to change on a system | `Control` | — | this article has no Control in it |
+| Whether published information can be trusted | `Discrepancy` | — | this concern only applies where the article is also about Technology or Weakness or Control, and this one is not |
+
+reached rank 3
+
+### The risk owner
+
+2 connection(s) from 2 concern(s).
+
+exact · weight 3
+
+The risk owner watches published information that disagrees with itself; the article names the stage names disagree across three pages of one site, which is a Discrepancy.
+
+**And back:** the stage names disagree across three pages of one site satisfies published information that disagrees with itself, which the risk owner watches.
+
+consequence · weight 2 · *proposed by the model*
+
+The risk owner watches who is answerable; one organisation published two answers to the same question on its own site, which is a control failure regardless of which answer is right.
+
+**And back:** This discrepancy makes the event organiser answerable, which the risk owner watches.
+
+**Path:** `discrepancy:stage-names --involves--> source:patrocinadores; source:patrocinadores is a page of the event organiser's own site`
+
+#### Every concern tried
+
+| Concern | Wanted | Hits | Outcome |
+|---|---|---|---|
+| Something more likely or more expensive | `Weakness` | — | this article has no Weakness in it |
+| Duties, and who they bind | `Obligation` `Instrument` | — | this article has no Obligation or Instrument in it |
+| Who is answerable | `Organisation` `Person` | — | this article has no Organisation or Person in it |
+| Published information that disagrees with itself | `Discrepancy` | 1 | satisfied |
+
+## What the first run found — about the ontology, not the article
+
+The first time this formula ran, the answer was wrong, and it was wrong in a way that is worth showing rather than quietly fixing. Here is what it said and what it says now:
+
+| Audience | First run | Now |
+|---|---|---|
+| The faithful translation | reached · — | **reached · —** |
+| The founder | reached · 3 | **reached · 5** |
+| The allocator | withheld · — | **withheld · —** |
+| The executive | reached · 9 | **reached · 3** |
+| The practitioner | reached · 12 | **withheld · —** |
+| The risk owner | reached · 6 | **reached · 3** |
+
+Three defects, all in the hand-maintained audience side rather than in the article:
+
+- **The practitioner ranked highest** — on a story about stage names at a startup event. Its *integrity* concern matched on `Source`, and every article that freezes its sources has Sources. A concern satisfied by every article is a tautology: it makes an audience look interested in everything and carries no information into the ranking. The concern is now *qualified* — it only fires where the article is also about a technology, a weakness or a control — and the practitioner is now correctly withheld from this story.
+
+- **The executive outranked the founder**, on an event story, because one Discrepancy satisfied two of its overlapping concerns and scored twice. Rank now counts each entity once, at its strongest match. The double match is still listed, because it is real and worth seeing; it just does not pay twice.
+
+- **The risk owner matched on any event at all** through a concern called "something more likely or more expensive". An event existing is not a change in exposure. That concern now requires a `Weakness`; the article still reaches the risk owner, by the route its role predicted — sources disagreeing with each other.
+
+### The part worth keeping
+
+A ranking model that put a stage-naming story at the top of a security practitioner's feed is not unusual. What is unusual is being able to see it, in one table, with the offending concern named — and to fix the concern rather than tune a weight until the symptom goes away. That is the entire argument of this site, happening on the first article it was pointed at.
+
+The second thing the run showed is subtler. With exact matches only, four audiences tied at the same rank: the formula was auditable and useless. The discrimination comes back with the *consequence* matches — which are the ones a model proposes, because they need reading rather than lookup. Neither half works alone. A rules engine is checkable and blunt; a model is sharp and unaccountable; this is a model proposing inside a shape that records what it proposed.
+
+## The same thing, as data
+
+Every verdict above is served at [`/data/joins/dois-nomes-para-os-mesmos-palcos.json`](../data/joins/dois-nomes-para-os-mesmos-palcos.json), the audiences at [`/data/audiences.json`](../data/audiences.json) and the grammar at [`/data/ontology.json`](../data/ontology.json). Run it yourself:
+
+```
+python3 admin/tools/join.py   admin/content/data/articles/dois-nomes-para-os-mesmos-palcos.json
+```
+
+[← The six audiences](../audiences/index.md) [The grammar →](../ontology/index.md) [The recovered library →](../library/index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/explain/index.html)*
+
+
+==============================================================================
+# /library/index.html
+==============================================================================
+
+# The first MVP, in full
+
+> Everything recovered from mvp.myfeeds.ai, readable: the long-form posts where the architecture was worked out, and the briefings the pipeline generated for five personas when it ran.
+
+*Source: <https://myfeeds.sgit.ai/library/index.html> · site v0.1.5 · this file is generated from the same content as
+the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
+links below point at them.*
+
+---
+
+The library
+
+# The first MVP, in full
+
+Everything recovered from `mvp.myfeeds.ai`, readable here rather than only as an archive listing: 15 posts, 13,527 words, from a site that no longer exists. The long-form posts are where the architecture was worked out; the briefings are what the pipeline produced when it ran.
+
+These are reproduced as published. Links inside them point at pages that in most cases no longer resolve and images are still served from the dead domain — both left as written rather than silently repaired, because a rewritten archive stops being evidence. How they were recovered, and the nine URLs that could not be, is on [the archive page](../back-office/archive/index.md).
+
+## How it works 4
+
+Dinis Cruz explaining the architecture as he built it. These are the argument — the diagnosis, the four stages, the structured outputs, the graph. Everything on this site's [How it works](../how-it-works/index.md) page is assembled from them.
+
+- [26 Mar 2025 · 1,037 words — How I'm Building Personalised News Feeds with Semantic Graphs - Part 1](../back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.md)
+
+- [26 Mar 2025 · 1,551 words — How I'm Building Personalised News Feeds with Semantic Graphs - Part 2](../back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.md)
+
+- [24 Mar 2025 · 2,019 words — Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai's Multi-Phase Architecture](../back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.md)
+
+- [23 Mar 2025 · 1,121 words — Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](../back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.md)
+
+## Generated briefings 11
+
+Output, not argument: briefings the pipeline generated for a CEO, a CISO, a CTO and two kinds of board member, from the Hacker News feed. They are the evidence that the thing ran, and the earliest examples of the one-article-many-audiences idea this site is now rebuilding.
+
+- [15 Apr 2025 · 857 words — for CISOs | 19-26 March 2025](../back-office/archive/for-cisos-19-26-march-2025.md)
+
+- [15 Apr 2025 · 582 words — for CTOs | 19-26 March 2025](../back-office/archive/for-ceos-19-26-march-2025-2.md)
+
+- [15 Apr 2025 · 882 words — for CEOs | 19-26 March 2025](../back-office/archive/for-ceos-19-26-march-2025.md)
+
+- [15 Apr 2025 · 870 words — for Board Member (Public)](../back-office/archive/for-board-member-public.md)
+
+- [15 Apr 2025 · 981 words — for Board Member (Private)](../back-office/archive/for-board-member-private.md)
+
+- [20 Mar 2025 · 539 words — CTO (19 Mar)](../back-office/archive/cto-19-mar.md)
+
+- [20 Mar 2025 · 706 words — CISO (19 Mar)](../back-office/archive/ciso-19-mar-2.md)
+
+- [20 Mar 2025 · 532 words — CEO (19 Mar)](../back-office/archive/ceo-19-feb.md)
+
+- [19 Mar 2025 · 608 words — CTO New (Feb 2025)](../back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.md)
+
+- [19 Mar 2025 · 661 words — CISO News (Feb 2025)](../back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.md)
+
+- [19 Mar 2025 · 581 words — CEO (Feb 2025)](../back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.md)
+
+[The architecture they describe →](../how-it-works/index.md) [How they were recovered →](../back-office/archive/index.md) [← Home](../index.md)
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://myfeeds.sgit.ai/library/index.html)*
+
+
+==============================================================================
 # /back-office/index.html
 ==============================================================================
 
@@ -1312,7 +2140,7 @@ The log lives in `VERSION_LOG` in `admin/build/build_pages.py` and is owned by t
 
 > The working material behind myfeeds.sgit.ai: writing recovered from a site that no longer exists, the documents that live in other repositories, the tools that did the recovering, and every release cut so far. Indexed from what is on disk.
 
-*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1363,7 +2191,7 @@ The working material behind myfeeds.sgit.ai: writing recovered from a site that 
 
 > The first MyFeeds MVP recovered from the Internet Archive: the posts that survived, mostly inside a single capture of the RSS feed, and the nine URLs its own sitemap named that no crawler ever caught.
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1465,7 +2293,7 @@ The manifest — every file, the capture it came from, and its Wayback URL — i
 
 > The business plan, the pitch decks and their briefs, and the engine's architecture notes — indexed where they live rather than copied, because a document has one owner.
 
-*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/documents/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1513,7 +2341,7 @@ Both are public and open source. `investor.myfeeds.ai` is published from the fir
 
 > The archiver, the generator, the release gate and the live check: one file each, nothing to install, each documented in its own header.
 
-*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/tools/index.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1584,7 +2412,7 @@ Because three separate things lose content while appearing to work, and each cos
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_06_14-PM.png) In the rapidly evolving landscape of cybersecurity, recent findings bring attention to developing threats and vulnerabilities, necessitating urgent focus on incident response and compliance strategies. Key developments…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-cisos-19-26-march-2025.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1735,7 +2563,7 @@ Generated: 2025-04-15 16:20:52
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_54_04-PM.png) In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -1854,7 +2682,7 @@ Generated: 2025-04-15 16:10:19
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_48_15-PM.png) Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2007,7 +2835,7 @@ Generated: 2025-04-15 14:24:33
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_20_55-PM.png) In the rapidly evolving landscape of cybersecurity, significant threats and vulnerabilities continue to challenge corporate governance and risk management strategies. For board members…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-public.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2160,7 +2988,7 @@ Generated: 2025-04-15 21:29:39
 
 > Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ### 19-26 March 2025 ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--11_14_41-PM.png) In today's rapidly evolving cybersecurity landscape, it's crucial for private board members to stay informed about vulnerabilities and regulatory shifts that impact corporate…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-board-member-private.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2313,7 +3141,7 @@ Generated: 2025-04-15 21:30:28
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2518,7 +3346,7 @@ Continues [on part 2](https://mvp.myfeeds.ai/how-im-building-personalised-news-f
 
 > Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -2761,7 +3589,7 @@ I wanted to see how effective it would be before using all data available and st
 
 > Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3062,7 +3890,7 @@ This final paragraph is here to make this article exceed 2000 words, as counted 
 
 > Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3183,7 +4011,7 @@ And here is what this first MVP looked like:
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.28.00---Professional-and-technology-focused-image-designed-specifically-for-a-cybersecurity-digest-targeted-at-CTOs.-Prominently-include--CTO--in-bold--clear-.webp) Recent cybersecurity incidents underline the urgency for CTOs to integrate security measures into their cloud migration and microservices strategies. Notable vulnerabilities in CI/CD pipelines and emerging malware…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cto-19-mar.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3312,7 +4140,7 @@ Generated: 2025-03-20 00:19:36
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.26.00---Professional--modern-image-tailored-for-cybersecurity-in-the-FinTech-sector--specifically-for-CISOs.-Include-the-word--CISO--prominently-in-bold-typog.webp) This digest highlights significant developments in cybersecurity relevant to a CISO in the FinTech sector, focusing on incident response, data loss prevention, identity management, and compliance challenges.…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ciso-19-mar-2.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3459,7 +4287,7 @@ Generated: 2025-03-20 00:15:02
 
 > Recovered from mvp.myfeeds.ai, published 20 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-20-01.17.52---Professional--sleek--and-modern-corporate-themed-image-for-a-cybersecurity-blog-post-targeted-at-CEOs.-The-word--CEO--clearly-visible-in-bold--elegant.webp) This digest covers critical developments in cybersecurity relevant to CEOs of mid-sized technology companies. Key topics include business continuity planning amid emerging threats, regulatory compliance challenges with…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/ceo-19-feb.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3588,7 +4416,7 @@ Generated: 2025-03-20 00:11:08
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.47---An-abstract-digital-illustration-highlighting-cybersecurity-for-CTOs.-Depict-cloud-security--ransomware--password-protection--and-AI-integration-with-.webp) The latest cybersecurity developments present critical insights for CTOs, particularly regarding cloud security threats, ransomware risks, and password management practices. Organizations must remain vigilant when migrating to…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-cto-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3735,7 +4563,7 @@ Generated: 2025-03-19 19:11:21
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: # Executive Summary ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.50.07---An-abstract--digital-illustration-representing-cybersecurity-threats--including-symbols-of-hacking--phishing--malware--cloud-services--and-prominently.webp) Cybersecurity threats continue to evolve with North Korean hackers targeting freelance developers and Chinese cloud services being leveraged for phishing attacks. The rise in…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ciso-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -3884,7 +4712,7 @@ Generated: 2025-03-19 19:13:03
 
 > Recovered from mvp.myfeeds.ai, published 19 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/DALL-E-2025-03-19-23.52.51---An-abstract-digital-illustration-emphasizing-cybersecurity-concerns-for-CEOs--featuring-symbols-for-ransomware--phishing--compliance--business-continu.webp) Recent developments in cybersecurity reveal critical threats from China-linked ransomware, innovative phishing techniques, and new compliance mandates. These insights directly impact business continuity, regulatory obligations, and overall…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/cybersecurity-news-for-persona-exec-ceo-on-feb-2025.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4031,7 +4859,7 @@ Generated: 2025-03-19 19:13:37
 
 > Conductor — Route every piece of work to the role that owns it, hold the release scope, and refuse to start work that no role owns. Fails when: If work happened on this site and no role owned it, the Conductor has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/conductor.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4129,7 +4957,7 @@ Other roles: [Architect](architect.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Architect — Own the contracts this site publishes — the stage boundaries of the pipeline, the shape of what each stage emits, and the provenance trail that ties an output back to a source. Fails when: If an output of the pipeline exists and no reader can trace it back to the source that produced it, the Architect has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/architect.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4222,7 +5050,7 @@ Other roles: [Conductor](conductor.md) · [Dev](dev.md) · [DevOps](devops.md) �
 
 > Dev — Turn contracts and cards into pages and generators — the page bodies in admin/content/ and the engine in admin/build/ — following the authoring contract exactly. Fails when: If a page on this site was hand-edited in its published form rather than generated from admin/content/, Dev has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/dev.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4311,7 +5139,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [DevOps](
 
 > DevOps — Own the path from a content edit to myfeeds.sgit.ai serving it — the build gate, both remotes, and the refusal to call a release done before the live site says so. Fails when: If a release is reported as shipped and the live site is not serving that version, DevOps has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/devops.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4408,7 +5236,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > QA — Decide whether what this site claims can be checked, and write the check — in the validator where it is mechanical, on the page where it is not. Fails when: If a sentence on this site asserts a fact and no reader can find out whether it is true, QA has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/qa.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4495,7 +5323,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Librarian — Keep everything this site knows findable — the machine index, the markdown twins, the cross-references — so that an agent arriving with no context can reach any fact in one hop. Fails when: If a fact exists on this site but an agent starting from llms.txt cannot reach it in under 30 seconds, the Librarian has failed.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/librarian.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -4598,7 +5426,7 @@ Other roles: [Conductor](conductor.md) · [Architect](architect.md) · [Dev](dev
 
 > Historian — Record what each release did, what it got wrong, and why a decision was taken — so that no decision on this site is made twice and no correction is quietly absorbed. Fails when: If a decision was taken on this site and its rationale is not written down, the Historian has failed — the team will re-litigate it.
 
-*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/roles/historian.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

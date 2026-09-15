@@ -1,0 +1,370 @@
+{
+  "id": "myfeeds-audiences",
+  "version": "0.1.0",
+  "note": "The audience side of the join. Each audience is a ROLE with a stated appetite, not a tone of voice: the difference between two audiences is what they convert a piece of news INTO, which is why the same article can reach two of them and say different things, and reach a third not at all.",
+  "axes": [
+    {
+      "id": "depth",
+      "label": "Mechanism wanted",
+      "low": "the consequence only",
+      "high": "the full mechanism",
+      "note": "How much of how-it-works this reader wants. The single strongest separator: a CISO and a board member can want the same story and disagree completely about where it should stop."
+    },
+    {
+      "id": "breadth",
+      "label": "Scope",
+      "low": "one named thing",
+      "high": "a whole population",
+      "note": "A founder cares about their own sector; an allocator cares about the shape of many. These are opposite ends of one axis, which is why their feeds look inverted."
+    },
+    {
+      "id": "horizon",
+      "label": "Time horizon",
+      "low": "this week",
+      "high": "several years",
+      "note": "Not urgency. A slow-moving regulatory signal can be the most important item for a long-horizon reader and noise for a short-horizon one."
+    }
+  ],
+  "currencies": [
+    {
+      "id": "fidelity",
+      "label": "A faithful rendering",
+      "note": "Nothing added, nothing dropped, nothing re-weighted."
+    },
+    {
+      "id": "opportunity",
+      "label": "Something to act on",
+      "note": "A programme to apply to, an event to attend, a competitor to watch."
+    },
+    {
+      "id": "pattern",
+      "label": "A signal about a population",
+      "note": "What this says about a sector, a cohort or a policy direction."
+    },
+    {
+      "id": "money",
+      "label": "A financial or reputational consequence",
+      "note": "What it costs, what it earns, what has to be said about it."
+    },
+    {
+      "id": "control",
+      "label": "A technical change",
+      "note": "What to patch, configure, monitor or verify, and by when."
+    },
+    {
+      "id": "exposure",
+      "label": "A change in exposure or duty",
+      "note": "What became more likely, who is accountable, what obligation was triggered."
+    }
+  ],
+  "audiences": [
+    {
+      "id": "translation-en",
+      "name": "The faithful translation",
+      "short": "EN",
+      "order": 0,
+      "control": true,
+      "currency": "fidelity",
+      "axes": {
+        "depth": null,
+        "breadth": null,
+        "horizon": null
+      },
+      "role": "A reader who wants the Portuguese article in English and nothing else — no re-framing, no selection, no emphasis moved. This is the only audience that is not an audience: it is the control. Every article reaches it, no selection formula runs, and its output is the baseline the other five are diffed against. Without it there is no way to tell re-framing apart from distortion, because there is nothing to compare against.",
+      "wants": [
+        "Every claim the original made, in the order it made them",
+        "Named entities verbatim, in whatever language the source used",
+        "The source markers carried through unchanged"
+      ],
+      "does_not_want": [
+        "Any judgement about what matters",
+        "Any reordering for emphasis",
+        "Anything the original did not say"
+      ],
+      "concerns": []
+    },
+    {
+      "id": "startups",
+      "name": "The founder",
+      "short": "Startups",
+      "order": 1,
+      "currency": "opportunity",
+      "axes": {
+        "depth": 0.5,
+        "breadth": 0.15,
+        "horizon": 0.2
+      },
+      "role": "Runs a small company and reads to find things to do this month. Narrow and concrete: their own sector, the companies they compete with or sell to, the programmes they can apply to, the events where the right people will be, and the rules that bite at their size rather than at an incumbent's. A market-level pattern is interesting and not actionable, so it loses to a deadline every time.",
+      "wants": [
+        "Named programmes, deadlines, eligibility",
+        "Events, who will be there, when",
+        "Competitors and adjacent companies by name",
+        "Rules that apply below a size threshold"
+      ],
+      "does_not_want": [
+        "Portfolio-level analysis",
+        "Anything whose earliest consequence is years away",
+        "Mechanism for its own sake"
+      ],
+      "concerns": [
+        {
+          "id": "funding-programme",
+          "label": "Funding programmes and calls",
+          "match": [
+            "Programme",
+            "Instrument"
+          ]
+        },
+        {
+          "id": "event",
+          "label": "Events worth attending",
+          "match": [
+            "Event"
+          ]
+        },
+        {
+          "id": "peer-company",
+          "label": "Companies in the same sector",
+          "match": [
+            "Organisation"
+          ]
+        },
+        {
+          "id": "small-company-rule",
+          "label": "Obligations that bind small companies",
+          "match": [
+            "Obligation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "investors",
+      "name": "The allocator",
+      "short": "Investors",
+      "order": 2,
+      "currency": "pattern",
+      "axes": {
+        "depth": 0.3,
+        "breadth": 0.9,
+        "horizon": 0.85
+      },
+      "role": "The founder inverted. Cares about populations rather than instances: a single company's news is worth reading only as evidence about a sector, a cohort or a policy direction. Counts things. A story about one firm is noise; the same story as the fourth instance of a pattern is a thesis. Long horizon, low appetite for mechanism, high appetite for a number that can be tracked across quarters.",
+      "wants": [
+        "Counts, rates and how they moved",
+        "Policy direction and what it will make cheaper or dearer",
+        "Sector-level shifts, not company-level ones",
+        "Anything that says a market is bigger or smaller than believed"
+      ],
+      "does_not_want": [
+        "Single-company operational detail",
+        "This week's deadline",
+        "Technical mechanism"
+      ],
+      "concerns": [
+        {
+          "id": "sector-signal",
+          "label": "Signals about a sector",
+          "match": [
+            "Sector",
+            "Organisation"
+          ]
+        },
+        {
+          "id": "policy-direction",
+          "label": "Policy and regulatory direction",
+          "match": [
+            "Instrument"
+          ]
+        },
+        {
+          "id": "population-count",
+          "label": "Counts of a population and how they move",
+          "match": [
+            "Measure"
+          ]
+        },
+        {
+          "id": "capital-flow",
+          "label": "Money entering or leaving",
+          "match": [
+            "Money"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c-level",
+      "name": "The executive",
+      "short": "C-level",
+      "order": 3,
+      "currency": "money",
+      "axes": {
+        "depth": 0.15,
+        "breadth": 0.5,
+        "horizon": 0.5
+      },
+      "role": "Reads for consequence, in money and reputation, and for what will have to be said to a board next quarter. The lowest appetite for mechanism of any audience here — not because it is beneath them but because it is not the decision they hold. The question behind every item is: does this change what we spend, what we earn, what we owe, or what we will be asked about.",
+      "wants": [
+        "What it costs or earns, with a number where one exists",
+        "What a board or a regulator will ask",
+        "Competitive position",
+        "What has to be decided, by whom, by when"
+      ],
+      "does_not_want": [
+        "How the technology works",
+        "Implementation detail",
+        "Anything with no consequence to state"
+      ],
+      "concerns": [
+        {
+          "id": "financial-consequence",
+          "label": "Cost, revenue and exposure in money",
+          "match": [
+            "Money"
+          ]
+        },
+        {
+          "id": "board-question",
+          "label": "What a board will ask about",
+          "match": [
+            "Discrepancy",
+            "Obligation"
+          ]
+        },
+        {
+          "id": "competitive-position",
+          "label": "Where we stand against named others",
+          "match": [
+            "Organisation"
+          ]
+        },
+        {
+          "id": "reputation",
+          "label": "Anything that becomes a public question",
+          "match": [
+            "Discrepancy"
+          ],
+          "note": "Dropped Event: an event existing is not a reputational question. Overlapped with board-question on Discrepancy, which double-counted the same entity into the rank."
+        }
+      ]
+    },
+    {
+      "id": "cybersecurity",
+      "name": "The practitioner",
+      "short": "Cyber",
+      "order": 4,
+      "currency": "control",
+      "axes": {
+        "depth": 1.0,
+        "breadth": 0.3,
+        "horizon": 0.1
+      },
+      "role": "The most technical reader on this site and the only one who wants the mechanism for its own sake, because the mechanism is what determines whether the thing is exploitable here. Specific technologies, specific versions, specific controls. Converts news into an action on a system: patch, configure, monitor, verify, or decide that it does not apply. Detail that would lose every other audience is the part this one came for.",
+      "wants": [
+        "Named technologies and versions",
+        "How something actually works or fails",
+        "What to change and by when",
+        "Whether it applies to this estate at all"
+      ],
+      "does_not_want": [
+        "Consequence framed only in money",
+        "Sector-level abstraction",
+        "A summary that drops the specifics"
+      ],
+      "concerns": [
+        {
+          "id": "technology",
+          "label": "Named technologies and versions",
+          "match": [
+            "Technology"
+          ]
+        },
+        {
+          "id": "weakness",
+          "label": "Weaknesses and how they are reached",
+          "match": [
+            "Weakness"
+          ]
+        },
+        {
+          "id": "control-action",
+          "label": "Something to change on a system",
+          "match": [
+            "Control"
+          ]
+        },
+        {
+          "id": "integrity",
+          "label": "Whether published information can be trusted",
+          "match": [
+            "Discrepancy"
+          ],
+          "note": "Was ['Discrepancy','Source'] at v0.1.0 and matched every article, because every article that freezes its sources has Sources. Caught by the first run of join/v1 — see the findings on /explain/. Now QUALIFIED: source integrity only concerns this audience when the article is also about something technical. Two pages of an event site disagreeing about stage names is a real discrepancy and not a practitioner's problem — it is the risk owner's, and that is where it lands.",
+          "requires": [
+            "Technology",
+            "Weakness",
+            "Control"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "name": "The risk owner",
+      "short": "Risk",
+      "order": 5,
+      "currency": "exposure",
+      "axes": {
+        "depth": 0.25,
+        "breadth": 0.65,
+        "horizon": 0.6
+      },
+      "role": "Non-technical and rigorous, which is an unusual pair and the reason this audience is easy to serve badly. Reads for exposure: what became more likely, what became more expensive if it happens, who is accountable, and what duty was triggered. A technical finding matters only as far as it moves one of those. Cares a great deal about one thing nobody else notices — two sources disagreeing with each other — because an organisation that publishes two answers to the same question has a control failure regardless of which answer is right.",
+      "wants": [
+        "What changed in likelihood or impact",
+        "Who is accountable and under what instrument",
+        "Obligations with dates attached",
+        "Sources that contradict each other"
+      ],
+      "does_not_want": [
+        "Mechanism beyond what changes the exposure",
+        "Opportunity framing",
+        "Anything with no owner"
+      ],
+      "concerns": [
+        {
+          "id": "exposure-change",
+          "label": "Something more likely or more expensive",
+          "match": [
+            "Weakness"
+          ],
+          "note": "Was ['Weakness','Event'] and fired on any event at all, which is not a change in exposure. An Event only moves exposure via a consequence path, which is a consequence match, not an exact one."
+        },
+        {
+          "id": "obligation",
+          "label": "Duties, and who they bind",
+          "match": [
+            "Obligation",
+            "Instrument"
+          ]
+        },
+        {
+          "id": "accountability",
+          "label": "Who is answerable",
+          "match": [
+            "Organisation",
+            "Person"
+          ]
+        },
+        {
+          "id": "source-conflict",
+          "label": "Published information that disagrees with itself",
+          "match": [
+            "Discrepancy"
+          ]
+        }
+      ]
+    }
+  ]
+}

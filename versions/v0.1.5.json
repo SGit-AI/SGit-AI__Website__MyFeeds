@@ -1,0 +1,22 @@
+{
+  "version": "v0.1.5",
+  "date": "2026-09-15",
+  "commit": null,
+  "commit_ref": "refs/tags/v0.1.5",
+  "vault": null,
+  "reconstructed": false,
+  "title": "the six audiences, the two ontologies and the join between them \u2014 and the first run of the formula finding three defects in its own audience side",
+  "summary": "The machinery the site had been arguing for now exists as data and as a runnable tool. Six audiences defined as roles with a stated appetite rather than a tone of voice, each converting news into a different currency; an article ontology and an audience ontology, every verb carrying a named inverse that reads as a sentence both ways, with the banned verbs listed and the reason given; and join/v1, the published formula where the two meet, executed by admin/tools/join.py rather than described. The worked example is a real verified article from pt.newsroom.sgit.ai, and the debug view shows every concern tried, not only the ones that fired.",
+  "changes": [
+    "admin/content/data/audiences.json \u2014 six audiences: the faithful translation (the control), the founder, the allocator, the executive, the practitioner, the risk owner. Three axes, six currencies, concerns declared as article types",
+    "admin/content/data/ontology.json \u2014 the article ontology (16 types, 13 verbs, 4 banned), the audience ontology, and join/v1 with its match weights",
+    "admin/tools/join.py \u2014 the formula, executed; emits one delivery per audience, reached or withheld, each with its connections and readings",
+    "audiences/, ontology/, explain/, library/ \u2014 four new pages; explain/ is the debug view and library/ makes the recovered MVP readable as sections",
+    "api/v1/audiences.json, api/v1/joins.json, data/{audiences,ontology}.json and data/joins/ \u2014 the same facts a reader can fetch",
+    "team/board/011 \u2014 the daily routine that syncs with pt.newsroom.sgit.ai"
+  ],
+  "corrects": "Nothing from an earlier release, but the first run of join/v1 corrected three things in the audience ontology written hours earlier, and the page shows the before and after rather than the fix alone: a concern matching on Source fired for every article that freezes its sources and put the security practitioner at the top of a story about stage names at a startup event; one entity satisfying two overlapping concerns scored twice and put the executive above the founder on an event story; and a concern called 'something more likely or more expensive' fired on any event at all. Concerns can now be qualified, rank counts each entity once, and the practitioner is correctly withheld.",
+  "basis": [],
+  "site": "myfeeds.sgit.ai",
+  "url": "https://myfeeds.sgit.ai/admin/versions.html#v0-1-5"
+}

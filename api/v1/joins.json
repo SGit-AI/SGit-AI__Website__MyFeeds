@@ -1,0 +1,21 @@
+{
+  "version": "v0.1.5",
+  "formula": "join/v1",
+  "joins": [
+    {
+      "article": "dois-nomes-para-os-mesmos-palcos",
+      "title": "Dois nomes para os mesmos palcos",
+      "reached": [
+        "translation-en",
+        "startups",
+        "c-level",
+        "risk"
+      ],
+      "withheld": [
+        "investors",
+        "cybersecurity"
+      ],
+      "href": "https://myfeeds.sgit.ai/data/joins/dois-nomes-para-os-mesmos-palcos.json"
+    }
+  ]
+}

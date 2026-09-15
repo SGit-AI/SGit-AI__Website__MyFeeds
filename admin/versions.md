@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.4 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.5 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,28 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.5` · 2026-09-15 · [as data](../versions/v0.1.5.json)
+
+### the six audiences, the two ontologies and the join between them — and the first run of the formula finding three defects in its own audience side
+
+The machinery the site had been arguing for now exists as data and as a runnable tool. Six audiences defined as roles with a stated appetite rather than a tone of voice, each converting news into a different currency; an article ontology and an audience ontology, every verb carrying a named inverse that reads as a sentence both ways, with the banned verbs listed and the reason given; and join/v1, the published formula where the two meet, executed by admin/tools/join.py rather than described. The worked example is a real verified article from pt.newsroom.sgit.ai, and the debug view shows every concern tried, not only the ones that fired.
+
+**Corrects.** Nothing from an earlier release, but the first run of join/v1 corrected three things in the audience ontology written hours earlier, and the page shows the before and after rather than the fix alone: a concern matching on Source fired for every article that freezes its sources and put the security practitioner at the top of a story about stage names at a startup event; one entity satisfying two overlapping concerns scored twice and put the executive above the founder on an event story; and a concern called 'something more likely or more expensive' fired on any event at all. Concerns can now be qualified, rank counts each entity once, and the practitioner is correctly withheld.
+
+#### Changes
+
+- admin/content/data/audiences.json — six audiences: the faithful translation (the control), the founder, the allocator, the executive, the practitioner, the risk owner. Three axes, six currencies, concerns declared as article types
+
+- admin/content/data/ontology.json — the article ontology (16 types, 13 verbs, 4 banned), the audience ontology, and join/v1 with its match weights
+
+- admin/tools/join.py — the formula, executed; emits one delivery per audience, reached or withheld, each with its connections and readings
+
+- audiences/, ontology/, explain/, library/ — four new pages; explain/ is the debug view and library/ makes the recovered MVP readable as sections
+
+- api/v1/audiences.json, api/v1/joins.json, data/{audiences,ontology}.json and data/joins/ — the same facts a reader can fetch
+
+- team/board/011 — the daily routine that syncs with pt.newsroom.sgit.ai
 
 `v0.1.4` · 2026-09-15 · [as data](../versions/v0.1.4.json)
 

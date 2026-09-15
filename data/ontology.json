@@ -1,0 +1,399 @@
+{
+  "id": "myfeeds-ontology",
+  "version": "0.1.0",
+  "note": "Two ontologies and the join between them. The article side says what a piece of news contains; the audience side says what a role watches for; the join says why one reached the other, and — as importantly — why one did not. Adapted from the grammar pt.newsroom.sgit.ai uses for the Portuguese graph, with its rule kept: every edge is a verb with a distinct named inverse, and a path that does not read as a sentence is a wrong edge.",
+  "rules": [
+    {
+      "id": "named-inverse",
+      "rule": "Every edge is a verb with a distinct named inverse, and both directions read as sentences.",
+      "why": "An edge you cannot read aloud in both directions is usually two different claims wearing one label."
+    },
+    {
+      "id": "no-symmetric",
+      "rule": "No symmetric verb. Where a relation genuinely is symmetric, reify it as a node.",
+      "why": "A symmetric verb is its own inverse, which means it carries no direction and therefore no information. `contradicts` is the case that matters here: two sources disagreeing is a Discrepancy node, which can then be dated, sourced and pointed at."
+    },
+    {
+      "id": "published-formula",
+      "rule": "Classification is a published formula or it does not happen.",
+      "why": "The entire argument of this site is that a recommendation must be checkable. A selection rule nobody can read is the black box in a different coat."
+    },
+    {
+      "id": "withheld-is-a-result",
+      "rule": "An article NOT reaching an audience is recorded with the same structure as one that does.",
+      "why": "Any system can explain what it chose. Explaining what it rejected, and why, is the harder half and the one a reader actually doubts."
+    }
+  ],
+  "article": {
+    "note": "What a piece of news contains. Deliberately small: a type earns its place by being something at least one audience watches for, and every type here is named in at least one concern.",
+    "types": [
+      {
+        "id": "Article",
+        "label": "Article",
+        "definition": "One published piece, in its original language."
+      },
+      {
+        "id": "Claim",
+        "label": "Claim",
+        "definition": "A single assertion the article makes, which walks back to a frozen source."
+      },
+      {
+        "id": "Source",
+        "label": "Source",
+        "definition": "A frozen, hashed copy of the page a claim rests on. Evidence, not a page of this site."
+      },
+      {
+        "id": "Organisation",
+        "label": "Organisation",
+        "definition": "A named company, institution or body."
+      },
+      {
+        "id": "Person",
+        "label": "Person",
+        "definition": "A named individual, in a professional capacity only."
+      },
+      {
+        "id": "Event",
+        "label": "Event",
+        "definition": "A dated, located happening: a conference, a deadline, an incident."
+      },
+      {
+        "id": "Programme",
+        "label": "Programme",
+        "definition": "A funding call, accelerator or scheme somebody can apply to."
+      },
+      {
+        "id": "Instrument",
+        "label": "Instrument",
+        "definition": "A law, regulation, designation or formal decision."
+      },
+      {
+        "id": "Obligation",
+        "label": "Obligation",
+        "definition": "A duty an instrument creates, and who it binds."
+      },
+      {
+        "id": "Technology",
+        "label": "Technology",
+        "definition": "A named product, protocol, model or version."
+      },
+      {
+        "id": "Weakness",
+        "label": "Weakness",
+        "definition": "A way something fails or can be made to fail."
+      },
+      {
+        "id": "Control",
+        "label": "Control",
+        "definition": "A change to a system that reduces a weakness."
+      },
+      {
+        "id": "Sector",
+        "label": "Sector",
+        "definition": "A population of organisations treated as one."
+      },
+      {
+        "id": "Measure",
+        "label": "Measure",
+        "definition": "A count or rate, with the thing it counts and the date it was true."
+      },
+      {
+        "id": "Money",
+        "label": "Money",
+        "definition": "An amount, with what it was for."
+      },
+      {
+        "id": "Discrepancy",
+        "label": "Discrepancy",
+        "definition": "Two sources answering the same question differently. A node, not an edge, so it can be dated and pointed at."
+      }
+    ],
+    "edges": [
+      {
+        "verb": "states",
+        "inverse": "is_stated_by",
+        "domain": "Article",
+        "range": "Claim",
+        "reading": "{s} states {t}",
+        "reading_inverse": "{t} is stated by {s}"
+      },
+      {
+        "verb": "rests_on",
+        "inverse": "supports",
+        "domain": "Claim",
+        "range": "Source",
+        "reading": "{s} rests on {t}",
+        "reading_inverse": "{t} supports {s}"
+      },
+      {
+        "verb": "names",
+        "inverse": "is_named_in",
+        "domain": "Claim",
+        "range": "Organisation",
+        "reading": "{s} names {t}",
+        "reading_inverse": "{t} is named in {s}"
+      },
+      {
+        "verb": "organises",
+        "inverse": "is_organised_by",
+        "domain": "Organisation",
+        "range": "Event",
+        "reading": "{s} organises {t}",
+        "reading_inverse": "{t} is organised by {s}"
+      },
+      {
+        "verb": "runs",
+        "inverse": "is_run_by",
+        "domain": "Organisation",
+        "range": "Programme",
+        "reading": "{s} runs {t}",
+        "reading_inverse": "{t} is run by {s}"
+      },
+      {
+        "verb": "imposes",
+        "inverse": "is_imposed_by",
+        "domain": "Instrument",
+        "range": "Obligation",
+        "reading": "{s} imposes {t}",
+        "reading_inverse": "{t} is imposed by {s}"
+      },
+      {
+        "verb": "binds",
+        "inverse": "is_bound_by",
+        "domain": "Obligation",
+        "range": "Organisation",
+        "reading": "{s} binds {t}",
+        "reading_inverse": "{t} is bound by {s}"
+      },
+      {
+        "verb": "affects",
+        "inverse": "is_affected_by",
+        "domain": "Weakness",
+        "range": "Technology",
+        "reading": "{s} affects {t}",
+        "reading_inverse": "{t} is affected by {s}"
+      },
+      {
+        "verb": "reduces",
+        "inverse": "is_reduced_by",
+        "domain": "Control",
+        "range": "Weakness",
+        "reading": "{s} reduces {t}",
+        "reading_inverse": "{t} is reduced by {s}"
+      },
+      {
+        "verb": "belongs_to",
+        "inverse": "contains",
+        "domain": "Organisation",
+        "range": "Sector",
+        "reading": "{s} belongs to {t}",
+        "reading_inverse": "{t} contains {s}"
+      },
+      {
+        "verb": "counts",
+        "inverse": "is_counted_by",
+        "domain": "Measure",
+        "range": "Sector",
+        "reading": "{s} counts {t}",
+        "reading_inverse": "{t} is counted by {s}"
+      },
+      {
+        "verb": "reveals",
+        "inverse": "is_revealed_by",
+        "domain": "Article",
+        "range": "Discrepancy",
+        "reading": "{s} reveals {t}",
+        "reading_inverse": "{t} is revealed by {s}"
+      },
+      {
+        "verb": "involves",
+        "inverse": "is_involved_in",
+        "domain": "Discrepancy",
+        "range": "Source",
+        "reading": "{s} involves {t}",
+        "reading_inverse": "{t} is involved in {s}"
+      }
+    ],
+    "forbidden": [
+      {
+        "verb": "contradicts",
+        "why": "Symmetric: A contradicts B is B contradicts A, so it is its own inverse and carries no direction. Use a Discrepancy node, which can also be dated and sourced."
+      },
+      {
+        "verb": "related_to",
+        "why": "Says nothing a reader could check, and absorbs every edge that was too much trouble to name properly."
+      },
+      {
+        "verb": "mentions",
+        "why": "True of almost every pair and therefore useless for selection. If it matters, the specific verb exists."
+      },
+      {
+        "verb": "is_relevant_to",
+        "why": "This is the conclusion, not an edge. Writing it as an edge hides the reasoning the join exists to expose."
+      }
+    ]
+  },
+  "audience": {
+    "note": "What a role watches for. Small on purpose: the audience side is the half a human maintains by hand, and a taxonomy nobody can hold in their head stops being maintained and starts being wrong.",
+    "types": [
+      {
+        "id": "Audience",
+        "label": "Audience",
+        "definition": "One of the six roles this site publishes for."
+      },
+      {
+        "id": "Concern",
+        "label": "Concern",
+        "definition": "A thing an audience watches for, declared as the article types that satisfy it."
+      },
+      {
+        "id": "Currency",
+        "label": "Currency",
+        "definition": "What this audience converts a piece of news into. The reason two audiences given the same article produce different pieces rather than different lengths."
+      },
+      {
+        "id": "Axis",
+        "label": "Axis",
+        "definition": "A named spectrum audiences sit on: mechanism wanted, scope, horizon."
+      },
+      {
+        "id": "Qualifier",
+        "label": "Qualifier",
+        "definition": "A type that must ALSO be present in the article for a concern to fire. The difference between 'this audience cares about source integrity' and 'this audience cares about source integrity in technical material'."
+      }
+    ],
+    "edges": [
+      {
+        "verb": "watches",
+        "inverse": "is_watched_by",
+        "domain": "Audience",
+        "range": "Concern",
+        "reading": "{s} watches {t}",
+        "reading_inverse": "{t} is watched by {s}"
+      },
+      {
+        "verb": "pays_in",
+        "inverse": "is_currency_of",
+        "domain": "Audience",
+        "range": "Currency",
+        "reading": "{s} pays in {t}",
+        "reading_inverse": "{t} is the currency of {s}"
+      },
+      {
+        "verb": "satisfied_by",
+        "inverse": "satisfies",
+        "domain": "Concern",
+        "range": "Article type",
+        "reading": "{s} is satisfied by {t}",
+        "reading_inverse": "{t} satisfies {s}"
+      },
+      {
+        "verb": "sits_on",
+        "inverse": "positions",
+        "domain": "Audience",
+        "range": "Axis",
+        "reading": "{s} sits on {t}",
+        "reading_inverse": "{t} positions {s}"
+      }
+    ]
+  },
+  "join": {
+    "note": "The two worlds meet here, and this is the only part of the system a reader needs to trust. A Connection is a node rather than an edge so that it can be pointed at, dated, disagreed with and — the case that matters — counted when there are none.",
+    "types": [
+      {
+        "id": "Delivery",
+        "label": "Delivery",
+        "definition": "One article considered for one audience. Exists whether or not the article reached it: a withheld delivery is a result, not an absence."
+      },
+      {
+        "id": "Connection",
+        "label": "Connection",
+        "definition": "One reason an article reached an audience: which entity, which concern, by what match, and the sentence that says so."
+      }
+    ],
+    "edges": [
+      {
+        "verb": "reaches",
+        "inverse": "receives",
+        "domain": "Article",
+        "range": "Audience",
+        "reading": "{s} reaches {t}",
+        "reading_inverse": "{t} receives {s}"
+      },
+      {
+        "verb": "withheld_from",
+        "inverse": "did_not_receive",
+        "domain": "Article",
+        "range": "Audience",
+        "reading": "{s} is withheld from {t}",
+        "reading_inverse": "{t} did not receive {s}"
+      },
+      {
+        "verb": "explains",
+        "inverse": "is_explained_by",
+        "domain": "Connection",
+        "range": "Delivery",
+        "reading": "{s} explains {t}",
+        "reading_inverse": "{t} is explained by {s}"
+      },
+      {
+        "verb": "starts_at",
+        "inverse": "is_start_of",
+        "domain": "Connection",
+        "range": "Article entity",
+        "reading": "{s} starts at {t}",
+        "reading_inverse": "{t} is the start of {s}"
+      },
+      {
+        "verb": "lands_on",
+        "inverse": "is_landing_of",
+        "domain": "Connection",
+        "range": "Concern",
+        "reading": "{s} lands on {t}",
+        "reading_inverse": "{t} is the landing of {s}"
+      }
+    ],
+    "formula": {
+      "id": "join/v1",
+      "statement": "For every article A and every audience U, a Delivery exists. A concern declaring `requires` is skipped unless A also contains a qualifying type. For each remaining concern C and each entity E in A's graph, a match is attempted; every match found becomes a Connection. The Delivery is `reached` if it holds at least one Connection and `withheld` otherwise. Rank counts each ENTITY once, at its strongest match — summing every connection lets one entity score repeatedly through overlapping concerns, which it did the first time this formula ran.",
+      "matches": [
+        {
+          "id": "qualified",
+          "weight": 0,
+          "when": "A concern declaring `requires` does not fire at all unless the article also contains one of the qualifying types. Applied before any other match.",
+          "reads": "{audience} watches {concern}, but only where the article also concerns {qualifiers}; this one does not."
+        },
+        {
+          "id": "exact",
+          "weight": 3,
+          "when": "E's type is named directly in C's satisfied-by list.",
+          "reads": "{audience} watches {concern}; the article names {entity}, which is a {type}."
+        },
+        {
+          "id": "narrower",
+          "weight": 2,
+          "when": "E's type is one hop below a type named in C, in the published taxonomy.",
+          "reads": "{audience} watches {concern}; {entity} is a kind of {type}."
+        },
+        {
+          "id": "broader",
+          "weight": 1,
+          "when": "E's type is one hop above a type named in C. Weakest match, because a broader thing may not carry the specific consequence the audience is watching for.",
+          "reads": "{audience} watches {concern}; {entity} is the wider category of {type}."
+        },
+        {
+          "id": "consequence",
+          "weight": 2,
+          "when": "A path of at most two article edges runs from E to something C names — and the path reads as a sentence.",
+          "reads": "{audience} watches {concern}; {path}."
+        }
+      ],
+      "withheld_reason": "A withheld Delivery records which concerns were tried and why each failed: either the audience watches for types this article has none of, or the only matches available were below threshold. 'Nothing matched' is not an acceptable reason on its own.",
+      "threshold": {
+        "reached_at": 1,
+        "note": "One connection is enough to reach, deliberately. Ranking, not filtering, is what handles a weak connection — a feed that silently drops items cannot be audited, and an item at the bottom of a ranked list can be."
+      },
+      "honest_note": "In the running pipeline the matches are PROPOSED by a language model comparing two graphs — that is stage 3 of the MyFeeds architecture. This formula does not replace that; it constrains the shape of what comes back so that every proposed match is recorded with its type, its weight, its two endpoints and a sentence, and can therefore be disagreed with by a human reading the delivery. The model proposes; the formula records and scores; the reader checks. Where the two sides of a match are identical concept ids, no model is needed at all and the match is computed."
+    }
+  }
+}

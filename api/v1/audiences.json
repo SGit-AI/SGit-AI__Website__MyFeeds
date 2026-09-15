@@ -1,0 +1,85 @@
+{
+  "version": "v0.1.5",
+  "count": 6,
+  "audiences": [
+    {
+      "id": "translation-en",
+      "name": "The faithful translation",
+      "order": 0,
+      "currency": "fidelity",
+      "control": true,
+      "concerns": [],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#translation-en"
+    },
+    {
+      "id": "startups",
+      "name": "The founder",
+      "order": 1,
+      "currency": "opportunity",
+      "control": false,
+      "concerns": [
+        "funding-programme",
+        "event",
+        "peer-company",
+        "small-company-rule"
+      ],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#startups"
+    },
+    {
+      "id": "investors",
+      "name": "The allocator",
+      "order": 2,
+      "currency": "pattern",
+      "control": false,
+      "concerns": [
+        "sector-signal",
+        "policy-direction",
+        "population-count",
+        "capital-flow"
+      ],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#investors"
+    },
+    {
+      "id": "c-level",
+      "name": "The executive",
+      "order": 3,
+      "currency": "money",
+      "control": false,
+      "concerns": [
+        "financial-consequence",
+        "board-question",
+        "competitive-position",
+        "reputation"
+      ],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#c-level"
+    },
+    {
+      "id": "cybersecurity",
+      "name": "The practitioner",
+      "order": 4,
+      "currency": "control",
+      "control": false,
+      "concerns": [
+        "technology",
+        "weakness",
+        "control-action",
+        "integrity"
+      ],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#cybersecurity"
+    },
+    {
+      "id": "risk",
+      "name": "The risk owner",
+      "order": 5,
+      "currency": "exposure",
+      "control": false,
+      "concerns": [
+        "exposure-change",
+        "obligation",
+        "accountability",
+        "source-conflict"
+      ],
+      "href": "https://myfeeds.sgit.ai/audiences/index.html#risk"
+    }
+  ]
+}

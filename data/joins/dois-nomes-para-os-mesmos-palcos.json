@@ -1,0 +1,359 @@
+{
+  "article": "dois-nomes-para-os-mesmos-palcos",
+  "title": "Dois nomes para os mesmos palcos",
+  "formula": "join/v1",
+  "entity_types": [
+    "Article",
+    "Claim",
+    "Discrepancy",
+    "Event",
+    "Source"
+  ],
+  "deliveries": [
+    {
+      "audience": "translation-en",
+      "audience_name": "The faithful translation",
+      "verdict": "reached",
+      "rank": null,
+      "control": true,
+      "connections": [],
+      "because": "The control audience. Every article reaches it and no selection runs — it is the baseline the other audiences' output is compared against."
+    },
+    {
+      "audience": "startups",
+      "audience_name": "The founder",
+      "verdict": "reached",
+      "rank": 5,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "event:startup-summit-lisbon-2026",
+          "entity_label": "Startup Summit Lisbon 2026",
+          "entity_type": "Event",
+          "concern": "event",
+          "concern_label": "Events worth attending",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The founder watches events worth attending; the article names Startup Summit Lisbon 2026, which is a Event.",
+          "reads_inverse": "Startup Summit Lisbon 2026 satisfies events worth attending, which the founder watches."
+        },
+        {
+          "audience": "startups",
+          "concern": "event",
+          "concern_label": "Events worth attending",
+          "entity": "discrepancy:stage-names",
+          "entity_label": "the stage names disagree across three pages of one site",
+          "entity_type": "Discrepancy",
+          "path": "discrepancy:stage-names --involves--> source:agenda --describes--> event:startup-summit-lisbon-2026",
+          "reads": "The founder watches events worth attending; the stage they were told to expect may not be the stage that exists, which matters to anyone printing a schedule, briefing a speaker or buying a sponsorship.",
+          "reads_inverse": "This event's stage naming is unreliable, which the founder attending it needs to know.",
+          "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)",
+          "match": "consequence",
+          "weight": 2
+        }
+      ],
+      "tried": [
+        {
+          "concern": "funding-programme",
+          "label": "Funding programmes and calls",
+          "wanted": [
+            "Programme",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Programme or Instrument in it"
+        },
+        {
+          "concern": "event",
+          "label": "Events worth attending",
+          "wanted": [
+            "Event"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "peer-company",
+          "label": "Companies in the same sector",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation in it"
+        },
+        {
+          "concern": "small-company-rule",
+          "label": "Obligations that bind small companies",
+          "wanted": [
+            "Obligation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation in it"
+        }
+      ],
+      "because": "2 connection(s) from 1 concern(s)."
+    },
+    {
+      "audience": "investors",
+      "audience_name": "The allocator",
+      "verdict": "withheld",
+      "rank": 0,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [],
+      "tried": [
+        {
+          "concern": "sector-signal",
+          "label": "Signals about a sector",
+          "wanted": [
+            "Sector",
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Sector or Organisation in it"
+        },
+        {
+          "concern": "policy-direction",
+          "label": "Policy and regulatory direction",
+          "wanted": [
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Instrument in it"
+        },
+        {
+          "concern": "population-count",
+          "label": "Counts of a population and how they move",
+          "wanted": [
+            "Measure"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Measure in it"
+        },
+        {
+          "concern": "capital-flow",
+          "label": "Money entering or leaving",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        }
+      ],
+      "because": "None of the concerns this audience watches were satisfied: this article has no Sector or Organisation in it; this article has no Instrument in it; this article has no Measure in it; this article has no Money in it."
+    },
+    {
+      "audience": "c-level",
+      "audience_name": "The executive",
+      "verdict": "reached",
+      "rank": 3,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "discrepancy:stage-names",
+          "entity_label": "the stage names disagree across three pages of one site",
+          "entity_type": "Discrepancy",
+          "concern": "board-question",
+          "concern_label": "What a board will ask about",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The executive watches what a board will ask about; the article names the stage names disagree across three pages of one site, which is a Discrepancy.",
+          "reads_inverse": "the stage names disagree across three pages of one site satisfies what a board will ask about, which the executive watches."
+        },
+        {
+          "entity": "discrepancy:stage-names",
+          "entity_label": "the stage names disagree across three pages of one site",
+          "entity_type": "Discrepancy",
+          "concern": "reputation",
+          "concern_label": "Anything that becomes a public question",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The executive watches anything that becomes a public question; the article names the stage names disagree across three pages of one site, which is a Discrepancy.",
+          "reads_inverse": "the stage names disagree across three pages of one site satisfies anything that becomes a public question, which the executive watches."
+        }
+      ],
+      "tried": [
+        {
+          "concern": "financial-consequence",
+          "label": "Cost, revenue and exposure in money",
+          "wanted": [
+            "Money"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Money in it"
+        },
+        {
+          "concern": "board-question",
+          "label": "What a board will ask about",
+          "wanted": [
+            "Discrepancy",
+            "Obligation"
+          ],
+          "hits": 1,
+          "why_not": null
+        },
+        {
+          "concern": "competitive-position",
+          "label": "Where we stand against named others",
+          "wanted": [
+            "Organisation"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation in it"
+        },
+        {
+          "concern": "reputation",
+          "label": "Anything that becomes a public question",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 1,
+          "why_not": null
+        }
+      ],
+      "because": "2 connection(s) from 2 concern(s)."
+    },
+    {
+      "audience": "cybersecurity",
+      "audience_name": "The practitioner",
+      "verdict": "withheld",
+      "rank": 0,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [],
+      "tried": [
+        {
+          "concern": "technology",
+          "label": "Named technologies and versions",
+          "wanted": [
+            "Technology"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Technology in it"
+        },
+        {
+          "concern": "weakness",
+          "label": "Weaknesses and how they are reached",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Weakness in it"
+        },
+        {
+          "concern": "control-action",
+          "label": "Something to change on a system",
+          "wanted": [
+            "Control"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Control in it"
+        },
+        {
+          "concern": "integrity",
+          "label": "Whether published information can be trusted",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 0,
+          "qualified_out": true,
+          "why_not": "this concern only applies where the article is also about Technology or Weakness or Control, and this one is not"
+        }
+      ],
+      "because": "None of the concerns this audience watches were satisfied: this article has no Technology in it; this article has no Weakness in it; this article has no Control in it; this concern only applies where the article is also about Technology or Weakness or Control, and this one is not."
+    },
+    {
+      "audience": "risk",
+      "audience_name": "The risk owner",
+      "verdict": "reached",
+      "rank": 3,
+      "rank_note": "each entity counted once, at its strongest match",
+      "connections": [
+        {
+          "entity": "discrepancy:stage-names",
+          "entity_label": "the stage names disagree across three pages of one site",
+          "entity_type": "Discrepancy",
+          "concern": "source-conflict",
+          "concern_label": "Published information that disagrees with itself",
+          "match": "exact",
+          "weight": 3,
+          "reads": "The risk owner watches published information that disagrees with itself; the article names the stage names disagree across three pages of one site, which is a Discrepancy.",
+          "reads_inverse": "the stage names disagree across three pages of one site satisfies published information that disagrees with itself, which the risk owner watches."
+        },
+        {
+          "audience": "risk",
+          "concern": "accountability",
+          "concern_label": "Who is answerable",
+          "entity": "discrepancy:stage-names",
+          "entity_label": "the stage names disagree across three pages of one site",
+          "entity_type": "Discrepancy",
+          "path": "discrepancy:stage-names --involves--> source:patrocinadores; source:patrocinadores is a page of the event organiser's own site",
+          "reads": "The risk owner watches who is answerable; one organisation published two answers to the same question on its own site, which is a control failure regardless of which answer is right.",
+          "reads_inverse": "This discrepancy makes the event organiser answerable, which the risk owner watches.",
+          "proposed_by": "model (illustrative — written by hand for this worked example, not produced by a running pipeline)",
+          "match": "consequence",
+          "weight": 2
+        }
+      ],
+      "tried": [
+        {
+          "concern": "exposure-change",
+          "label": "Something more likely or more expensive",
+          "wanted": [
+            "Weakness"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Weakness in it"
+        },
+        {
+          "concern": "obligation",
+          "label": "Duties, and who they bind",
+          "wanted": [
+            "Obligation",
+            "Instrument"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Obligation or Instrument in it"
+        },
+        {
+          "concern": "accountability",
+          "label": "Who is answerable",
+          "wanted": [
+            "Organisation",
+            "Person"
+          ],
+          "hits": 0,
+          "why_not": "this article has no Organisation or Person in it"
+        },
+        {
+          "concern": "source-conflict",
+          "label": "Published information that disagrees with itself",
+          "wanted": [
+            "Discrepancy"
+          ],
+          "hits": 1,
+          "why_not": null
+        }
+      ],
+      "because": "2 connection(s) from 2 concern(s)."
+    }
+  ],
+  "summary": {
+    "reached": [
+      "translation-en",
+      "startups",
+      "c-level",
+      "risk"
+    ],
+    "withheld": [
+      "investors",
+      "cybersecurity"
+    ]
+  },
+  "findings": [
+    {
+      "kind": "ranking-observation",
+      "audience": "startups",
+      "concern": null,
+      "note": "Ranked highest (5) for this article. Worth a human glance: a rank that surprises you is either a real finding or a concern that is too broad, and only reading the connections tells you which."
+    }
+  ]
+}

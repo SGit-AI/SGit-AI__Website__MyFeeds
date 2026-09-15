@@ -1,15 +1,15 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.4",
+  "version": "v0.1.5",
   "generated": "2026-09-15",
   "source": "team/roles/*/ROLE.md",
   "licence": "CC BY 4.0 \u2014 Dinis Cruz, with AI co-authorship (Claude, Anthropic).",
   "totals": {
     "roles": 7,
     "falsifiable_claims": 7,
-    "board_cards": 10,
-    "open_cards": 4,
-    "pages": 39
+    "board_cards": 11,
+    "open_cards": 5,
+    "pages": 43
   },
   "roles": [
     {
@@ -246,6 +246,15 @@
       "kind": "task",
       "opened": "2026-09-14",
       "file": "team/board/010-recover-remaining.md"
+    },
+    {
+      "id": "011",
+      "title": "The daily routine that syncs this site with pt.newsroom.sgit.ai",
+      "status": "todo",
+      "owner": "devops",
+      "kind": "task",
+      "opened": "2026-09-15",
+      "file": "team/board/011-daily-sync.md"
     }
   ]
 }

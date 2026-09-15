@@ -1,11 +1,11 @@
 {
   "site": "myfeeds.sgit.ai",
-  "version": "v0.1.4",
+  "version": "v0.1.5",
   "generated": "2026-09-15",
   "source": "admin/build/build_pages.py",
   "counts": {
-    "pages": 39,
-    "indexed": 17,
+    "pages": 43,
+    "indexed": 21,
     "hidden": 22
   },
   "pages": [
@@ -73,6 +73,26 @@
       "path": "admin/versions.html",
       "section": "Provenance",
       "title": "Release history"
+    },
+    {
+      "path": "audiences/index.html",
+      "section": "The argument",
+      "title": "Six audiences, and what each converts news into"
+    },
+    {
+      "path": "ontology/index.html",
+      "section": "The argument",
+      "title": "Two ontologies and the join between them"
+    },
+    {
+      "path": "explain/index.html",
+      "section": "The argument",
+      "title": "Why this article reached these audiences and not the others"
+    },
+    {
+      "path": "library/index.html",
+      "section": "The argument",
+      "title": "The first MVP, in full"
     },
     {
       "path": "back-office/index.html",

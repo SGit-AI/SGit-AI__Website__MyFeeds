@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import backoffice  # noqa: E402  (same folder; the back-office data module)
+import feeds  # noqa: E402  (audiences, ontology, joins)
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "admin" / "content"
@@ -240,10 +241,57 @@ VERSION_LOG = [
             "CI."
         ),
     },
+    {
+        "version": "v0.1.5",
+        "date": "2026-09-15",
+        "title": (
+            "the six audiences, the two ontologies and the join between them — and the "
+            "first run of the formula finding three defects in its own audience side"
+        ),
+        "summary": (
+            "The machinery the site had been arguing for now exists as data and as a "
+            "runnable tool. Six audiences defined as roles with a stated appetite rather "
+            "than a tone of voice, each converting news into a different currency; an "
+            "article ontology and an audience ontology, every verb carrying a named "
+            "inverse that reads as a sentence both ways, with the banned verbs listed and "
+            "the reason given; and join/v1, the published formula where the two meet, "
+            "executed by admin/tools/join.py rather than described. The worked example is "
+            "a real verified article from pt.newsroom.sgit.ai, and the debug view shows "
+            "every concern tried, not only the ones that fired."
+        ),
+        "changes": [
+            "admin/content/data/audiences.json — six audiences: the faithful translation "
+            "(the control), the founder, the allocator, the executive, the practitioner, "
+            "the risk owner. Three axes, six currencies, concerns declared as article types",
+            "admin/content/data/ontology.json — the article ontology (16 types, 13 verbs, "
+            "4 banned), the audience ontology, and join/v1 with its match weights",
+            "admin/tools/join.py — the formula, executed; emits one delivery per audience, "
+            "reached or withheld, each with its connections and readings",
+            "audiences/, ontology/, explain/, library/ — four new pages; explain/ is the "
+            "debug view and library/ makes the recovered MVP readable as sections",
+            "api/v1/audiences.json, api/v1/joins.json, data/{audiences,ontology}.json and "
+            "data/joins/ — the same facts a reader can fetch",
+            "team/board/011 — the daily routine that syncs with pt.newsroom.sgit.ai",
+        ],
+        "corrects": (
+            "Nothing from an earlier release, but the first run of join/v1 corrected "
+            "three things in the audience ontology written hours earlier, and the page "
+            "shows the before and after rather than the fix alone: a concern matching on "
+            "Source fired for every article that freezes its sources and put the security "
+            "practitioner at the top of a story about stage names at a startup event; one "
+            "entity satisfying two overlapping concerns scored twice and put the executive "
+            "above the founder on an event story; and a concern called 'something more "
+            "likely or more expensive' fired on any event at all. Concerns can now be "
+            "qualified, rank counts each entity once, and the practitioner is correctly "
+            "withheld."
+        ),
+    },
 ]
 
 NAV = [
     ("how-it-works/index.html", "How it works"),
+    ("audiences/index.html", "Audiences"),
+    ("explain/index.html", "Explain"),
     ("back-office/archive/index.html", "The MVP archive"),
     ("back-office/index.html", "Back office"),
     ("team/index.html", "Team"),
@@ -253,7 +301,10 @@ NAV = [
 FOOTER_COLS = [
     ("The argument", [
         ("how-it-works/index.html", "How it works — the four stages"),
-        ("back-office/archive/index.html", "The recovered MVP"),
+        ("audiences/index.html", "The six audiences"),
+        ("ontology/index.html", "The two ontologies"),
+        ("explain/index.html", "A worked example"),
+        ("library/index.html", "The recovered library"),
         ("back-office/documents/index.html", "The business case"),
         ("about/index.html", "About & honest edges"),
     ]),
@@ -1386,6 +1437,414 @@ fallback. Those are written into the tool where somebody modifying it will read 
 """
 
 
+AXIS_BAR = (
+    '<div style="background:var(--panel2);border:1px solid var(--line);border-radius:999px;'
+    'height:8px;position:relative;margin:.3rem 0 .1rem">'
+    '<div style="position:absolute;left:calc({pct}% - 6px);top:-3px;width:12px;height:12px;'
+    'border-radius:50%;background:var(--accent)"></div></div>'
+)
+
+
+def _pct(audience: dict, axis: str) -> str:
+    """An axis value as a percentage, or an em dash for the control audience, which sits
+    on no axis on purpose."""
+    v = audience["axes"].get(axis)
+    return "—" if v is None else f"{v:.0%}"
+
+
+def audiences_body(fd: dict) -> str:
+    au = fd["audiences"]
+    cur = {c["id"]: c for c in au["currencies"]}
+    axes = {a["id"]: a for a in au["axes"]}
+
+    rows = ""
+    for a in sorted(au["audiences"], key=lambda x: x["order"]):
+        ax = ""
+        for aid, axis in axes.items():
+            v = a["axes"].get(aid)
+            ax += (f'<div><small>{html.escape(axis["label"])}</small>'
+                   + (AXIS_BAR.format(pct=int(v * 100)) if v is not None
+                      else '<div style="height:8px;margin:.3rem 0 .1rem;color:var(--dim2)">'
+                           '<small>n/a</small></div>')
+                   + f'<small style="color:var(--dim2)">{html.escape(axis["low"])} → '
+                     f'{html.escape(axis["high"])}</small></div>')
+        rows += (
+            f'<div class="band" id="{a["id"]}">'
+            f'<p class="k">{a["order"]:02d} · pays in <strong>'
+            f'{html.escape(cur[a["currency"]]["label"])}</strong>'
+            + (' · <span class="tag">control</span>' if a.get("control") else "")
+            + f'</p><h3>{html.escape(a["name"])} '
+              f'<span class="tag">{html.escape(a["short"])}</span></h3>'
+            f'<p>{html.escape(a["role"])}</p>'
+            f'<div class="grid" style="gap:.8rem;margin:1rem 0">{ax}</div>'
+            f'<h4>Wants</h4><ul>'
+            + "".join(f"<li>{html.escape(w)}</li>" for w in a["wants"]) + "</ul>"
+            f'<h4>Does not want</h4><ul>'
+            + "".join(f"<li>{html.escape(w)}</li>" for w in a["does_not_want"]) + "</ul>"
+            + (f'<h4>Watches for</h4><div class="tablewrap"><table><thead><tr>'
+               f'<th>Concern</th><th>Satisfied by</th><th>Only when</th></tr></thead><tbody>'
+               + "".join(
+                   f'<tr><td>{html.escape(c["label"])}</td>'
+                   f'<td>{" ".join(f"<code>{html.escape(m)}</code>" for m in c["match"])}</td>'
+                   f'<td>{" ".join(f"<code>{html.escape(m)}</code>" for m in c.get("requires", [])) or "—"}</td>'
+                   f'</tr>' for c in a["concerns"])
+               + "</tbody></table></div>" if a["concerns"] else "")
+            + "</div>"
+        )
+
+    curr = "".join(
+        f'<tr><td><strong>{html.escape(c["label"])}</strong></td>'
+        f'<td>{html.escape(c["note"])}</td>'
+        f'<td>{", ".join(html.escape(a["short"]) for a in au["audiences"] if a["currency"] == c["id"])}</td></tr>'
+        for c in au["currencies"])
+
+    return f"""
+<p class="kicker">The audience side</p>
+<h1>Six audiences, and what each converts news into</h1>
+<p class="lede">The same article, read by six roles, should produce six different pieces —
+not one piece at six lengths. What makes them different is not tone: it is what each role
+converts a piece of news <em>into</em>. A founder turns it into something to do this month;
+an allocator turns it into evidence about a population; a risk owner turns it into a change
+in exposure. That is the axis the whole system turns on.</p>
+
+<div class="note">
+<p><strong>The first audience is not an audience.</strong> The source material is
+Portuguese; the first output is a faithful English translation with nothing added, dropped
+or re-weighted. It is the control: every article reaches it, no selection runs, and it is
+what the other five are diffed against. Without it there is no way to tell re-framing apart
+from distortion, because there is nothing to compare against.</p>
+</div>
+
+<h2 id="currencies">What each one pays in</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Currency</th><th>Means</th><th>Audience</th></tr></thead>
+<tbody>{curr}</tbody></table></div>
+
+<h2 id="spectrum">The spectrum</h2>
+<p>Three axes separate them, and the first is the strongest: <strong>how much mechanism
+the reader wants</strong>. A practitioner and an executive can want the same story and
+disagree completely about where it should stop. The second — <strong>scope</strong> — is
+why the founder and the allocator read like inversions of each other: one cares about a
+named thing, the other about the population it belongs to.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Audience</th><th>Mechanism</th><th>Scope</th><th>Horizon</th><th>Pays in</th></tr></thead>
+<tbody>""" + "".join(
+        f'<tr><td><a href="#{a["id"]}">{html.escape(a["name"])}</a></td>'
+        + "".join(f"<td>{_pct(a, k)}</td>" for k in ("depth", "breadth", "horizon"))
+        + f'<td>{html.escape(cur[a["currency"]]["label"])}</td></tr>'
+        for a in sorted(au["audiences"], key=lambda x: x["order"])) + f"""</tbody></table></div>
+<p><small>Mechanism: 0% = the consequence only, 100% = the full mechanism. Scope: 0% = one
+named thing, 100% = a whole population. Horizon: 0% = this week, 100% = several years.
+The control audience sits on no axis, deliberately.</small></p>
+
+<h2 id="roles">The six</h2>
+{rows}
+
+<div class="next"><a href="../ontology/index.html">The two ontologies →</a>
+<a href="../explain/index.html">A worked example →</a>
+<a href="../index.html">← Home</a></div>
+"""
+
+
+def ontology_body(fd: dict) -> str:
+    o = fd["ontology"]
+
+    def edge_table(edges):
+        return ('<div class="tablewrap"><table><thead><tr><th>Verb</th><th>Inverse</th>'
+                '<th>Reads</th><th>And back</th></tr></thead><tbody>'
+                + "".join(
+                    f'<tr><td><code>{html.escape(e["verb"])}</code></td>'
+                    f'<td><code>{html.escape(e["inverse"])}</code></td>'
+                    f'<td>{html.escape(e["reading"].replace("{s}", e["domain"]).replace("{t}", e["range"]))}</td>'
+                    f'<td>{html.escape(e["reading_inverse"].replace("{s}", e["domain"]).replace("{t}", e["range"]))}</td></tr>'
+                    for e in edges)
+                + "</tbody></table></div>")
+
+    types = "".join(
+        f'<tr><td><code>{html.escape(t["id"])}</code></td><td>{html.escape(t["definition"])}</td></tr>'
+        for t in o["article"]["types"])
+    forbidden = "".join(
+        f'<tr><td><code>{html.escape(f["verb"])}</code></td><td>{html.escape(f["why"])}</td></tr>'
+        for f in o["article"]["forbidden"])
+    rules = "".join(
+        f'<div class="band"><h3>{html.escape(r["rule"])}</h3>'
+        f'<p>{html.escape(r["why"])}</p></div>' for r in o["rules"])
+    f = o["join"]["formula"]
+    matches = "".join(
+        f'<tr><td><code>{html.escape(m["id"])}</code></td><td>{m["weight"]}</td>'
+        f'<td>{html.escape(m["when"])}</td></tr>' for m in f["matches"])
+    atypes = "".join(
+        f'<tr><td><code>{html.escape(t["id"])}</code></td><td>{html.escape(t["definition"])}</td></tr>'
+        for t in o["audience"]["types"])
+
+    return f"""
+<p class="kicker">The grammar</p>
+<h1>Two ontologies and the join between them</h1>
+<p class="lede">One ontology says what a piece of news contains. Another says what a role
+watches for. Neither is interesting on its own — the whole value is in the third thing,
+the join, which is where an article meets an audience and a sentence comes out saying why.
+The grammar is adapted from the one
+<a href="https://pt.newsroom.sgit.ai/">pt.newsroom.sgit.ai</a> uses for the Portuguese
+graph, and keeps its hardest rule.</p>
+
+<h2 id="rules">The rules</h2>
+{rules}
+
+<h2 id="article">The article ontology</h2>
+<p>{html.escape(o["article"]["note"])}</p>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Is</th></tr></thead>
+<tbody>{types}</tbody></table></div>
+<h3>Its verbs</h3>
+{edge_table(o["article"]["edges"])}
+
+<h3 id="forbidden">Verbs that are not allowed</h3>
+<p>Naming what is banned, and why, is more useful than naming what is permitted: every one
+of these is a shortcut somebody will reach for.</p>
+<div class="tablewrap"><table><thead><tr><th>Verb</th><th>Why not</th></tr></thead>
+<tbody>{forbidden}</tbody></table></div>
+
+<h2 id="audience">The audience ontology</h2>
+<p>{html.escape(o["audience"]["note"])}</p>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Is</th></tr></thead>
+<tbody>{atypes}</tbody></table></div>
+{edge_table([e for e in o["audience"]["edges"] if "{{s}}" not in e["range"]])}
+
+<h2 id="join">The join</h2>
+<p>{html.escape(o["join"]["note"])}</p>
+<div class="band">
+<h3>{html.escape(f["id"])}</h3>
+<p>{html.escape(f["statement"])}</p>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>Match</th><th>Weight</th><th>When</th></tr></thead>
+<tbody>{matches}</tbody></table></div>
+<p><strong>Reached at:</strong> {f["threshold"]["reached_at"]} connection.
+{html.escape(f["threshold"]["note"])}</p>
+<p><strong>Withheld:</strong> {html.escape(f["withheld_reason"])}</p>
+
+<div class="note">
+<p><strong>Where the model fits, stated plainly.</strong>
+{html.escape(f["honest_note"])}</p>
+</div>
+
+<p>The formula is not only described here — it is
+<a href="../back-office/tools/index.html"><code>admin/tools/join.py</code></a>, and
+<a href="../explain/index.html">the worked example</a> is its output rather than a
+drawing of what its output would look like.</p>
+
+<div class="next"><a href="../explain/index.html">Watch it run →</a>
+<a href="../audiences/index.html">← The six audiences</a>
+<a href="../data/ontology.json">This page, as JSON</a></div>
+"""
+
+def explain_body(fd: dict) -> str:
+    art = fd["articles"][0]
+    j = fd["joins"].get(art["slug"], {})
+    before = fd["before"]
+    au = {a["id"]: a for a in fd["audiences"]["audiences"]}
+
+    ents = "".join(
+        f'<tr><td><code>{html.escape(e["id"])}</code></td>'
+        f'<td><span class="tag">{html.escape(e["type"])}</span></td>'
+        f'<td>{html.escape(e["label"])}</td></tr>' for e in art["entities"])
+    edges = "".join(
+        f'<tr><td><code>{html.escape(e["from"])}</code></td>'
+        f'<td><strong>{html.escape(e["verb"])}</strong></td>'
+        f'<td><code>{html.escape(e["to"])}</code></td></tr>' for e in art["edges"])
+
+    blocks = ""
+    for d in j.get("deliveries", []):
+        a = au[d["audience"]]
+        reached = d["verdict"] == "reached"
+        head = (f'<span class="tag shipped">reached</span> rank {d["rank"]}'
+                if reached and d["rank"] else
+                ('<span class="tag">control · always</span>' if d.get("control")
+                 else '<span class="tag unverified">withheld</span>'))
+        conns = "".join(
+            f'<div style="border-left:3px solid var(--line2);padding-left:.9rem;margin:.8rem 0">'
+            f'<p class="k">{html.escape(c["match"])} · weight {c["weight"]}'
+            + (f' · <em>proposed by the model</em>' if c.get("proposed_by") else "")
+            + f'</p><p>{html.escape(c["reads"])}</p>'
+            f'<p><small><strong>And back:</strong> {html.escape(c["reads_inverse"])}</small></p>'
+            + (f'<p><small><strong>Path:</strong> <code>{html.escape(c["path"])}</code></small></p>'
+               if c.get("path") else "")
+            + "</div>"
+            for c in d["connections"])
+        tried = "".join(
+            f'<tr><td>{html.escape(t["label"])}</td>'
+            f'<td>{" ".join(f"<code>{html.escape(w)}</code>" for w in t["wanted"])}</td>'
+            f'<td>{t["hits"] or "—"}</td>'
+            f'<td>{html.escape(t["why_not"] or "satisfied")}</td></tr>'
+            for t in d.get("tried", []))
+        blocks += (
+            f'<div class="band" id="to-{d["audience"]}">'
+            f'<p class="k">{head}</p>'
+            f'<h3>{html.escape(d["audience_name"])}</h3>'
+            f'<p>{html.escape(d["because"])}</p>'
+            + (conns or "")
+            + (f'<h4>Every concern tried</h4><div class="tablewrap"><table><thead><tr>'
+               f'<th>Concern</th><th>Wanted</th><th>Hits</th><th>Outcome</th></tr></thead>'
+               f'<tbody>{tried}</tbody></table></div>' if tried else "")
+            + "</div>")
+
+    before_rows = ""
+    if before:
+        now = {d["audience"]: d for d in j.get("deliveries", [])}
+        for d in before["deliveries"]:
+            n = now.get(d["audience"], {})
+            before_rows += (
+                f'<tr><td>{html.escape(d["audience_name"])}</td>'
+                f'<td>{d["verdict"]} · {d["rank"] or "—"}</td>'
+                f'<td><strong>{n.get("verdict", "?")} · {n.get("rank") or "—"}</strong></td></tr>')
+
+    return f"""
+<p class="kicker">The debug view</p>
+<h1>Why this article reached these audiences and not the others</h1>
+<p class="lede">One real article, put through the join and shown with its working out. This
+is the view that exists to be <em>checked</em> rather than read — the one you open when a
+feed shows you something and you want to know who decided that. Every line below is output
+from <code>admin/tools/join.py</code>, not a drawing of what the output would look like.</p>
+
+<h2 id="article">The article</h2>
+<div class="band">
+<p class="k">{html.escape(art["date"])} · {html.escape(art["language"])} ·
+<a href="{html.escape(art["source_url"])}">{html.escape(art["source_site"])}</a></p>
+<h3>{html.escape(art["title"])}</h3>
+<p><em>{html.escape(art["title_en"])}</em></p>
+<p>{html.escape(art["what_it_says"])}</p>
+<p><small>{art["verification"]["confirmed"]} claims confirmed,
+{art["verification"]["disputed"]} disputed, {art["verification"]["not_found"]} not found —
+re-checked against the frozen sources by the newsroom that published it.</small></p>
+</div>
+
+<div class="note"><p><strong>Extraction status:</strong>
+{html.escape(art["extraction"]["note"])}</p></div>
+
+<h2 id="graph">What stage 1 pulled out</h2>
+<p>The article as entities and edges. Every type here is defined in
+<a href="../ontology/index.html#article">the article ontology</a>, and an entity whose type
+is not defined stops the build — an unknown type can never match anything, so the article
+would look uninteresting rather than unreadable.</p>
+<div class="tablewrap"><table><thead><tr><th>Entity</th><th>Type</th><th>Is</th></tr></thead>
+<tbody>{ents}</tbody></table></div>
+<h3>And how they connect</h3>
+<div class="tablewrap"><table><thead><tr><th>From</th><th>Verb</th><th>To</th></tr></thead>
+<tbody>{edges}</tbody></table></div>
+
+<h2 id="deliveries">The six verdicts</h2>
+<p>One delivery per audience, whether or not the article reached it. A withheld delivery
+carries the same structure as a reached one, because explaining what was rejected is the
+half a reader actually doubts.</p>
+{blocks}
+
+<h2 id="findings">What the first run found — about the ontology, not the article</h2>
+<p>The first time this formula ran, the answer was wrong, and it was wrong in a way that
+is worth showing rather than quietly fixing. Here is what it said and what it says now:</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Audience</th><th>First run</th><th>Now</th></tr></thead>
+<tbody>{before_rows}</tbody></table></div>
+
+<p>Three defects, all in the hand-maintained audience side rather than in the article:</p>
+<ul>
+<li><strong>The practitioner ranked highest</strong> — on a story about stage names at a
+startup event. Its <em>integrity</em> concern matched on <code>Source</code>, and every
+article that freezes its sources has Sources. A concern satisfied by every article is a
+tautology: it makes an audience look interested in everything and carries no information
+into the ranking. The concern is now <em>qualified</em> — it only fires where the article
+is also about a technology, a weakness or a control — and the practitioner is now correctly
+withheld from this story.</li>
+<li><strong>The executive outranked the founder</strong>, on an event story, because one
+Discrepancy satisfied two of its overlapping concerns and scored twice. Rank now counts
+each entity once, at its strongest match. The double match is still listed, because it is
+real and worth seeing; it just does not pay twice.</li>
+<li><strong>The risk owner matched on any event at all</strong> through a concern called
+"something more likely or more expensive". An event existing is not a change in exposure.
+That concern now requires a <code>Weakness</code>; the article still reaches the risk owner,
+by the route its role predicted — sources disagreeing with each other.</li>
+</ul>
+
+<div class="band">
+<h3>The part worth keeping</h3>
+<p>A ranking model that put a stage-naming story at the top of a security practitioner's
+feed is not unusual. What is unusual is being able to see it, in one table, with the
+offending concern named — and to fix the concern rather than tune a weight until the
+symptom goes away. That is the entire argument of this site, happening on the first
+article it was pointed at.</p>
+<p>The second thing the run showed is subtler. With exact matches only, four audiences tied
+at the same rank: the formula was auditable and useless. The discrimination comes back with
+the <em>consequence</em> matches — which are the ones a model proposes, because they need
+reading rather than lookup. Neither half works alone. A rules engine is checkable and
+blunt; a model is sharp and unaccountable; this is a model proposing inside a shape that
+records what it proposed.</p>
+</div>
+
+<h2 id="data">The same thing, as data</h2>
+<p>Every verdict above is served at
+<a href="../data/joins/{html.escape(art["slug"])}.json"><code>/data/joins/{html.escape(art["slug"])}.json</code></a>,
+the audiences at <a href="../data/audiences.json"><code>/data/audiences.json</code></a> and
+the grammar at <a href="../data/ontology.json"><code>/data/ontology.json</code></a>. Run it
+yourself:</p>
+<pre><code>python3 admin/tools/join.py \
+  admin/content/data/articles/{html.escape(art["slug"])}.json</code></pre>
+
+<div class="next"><a href="../audiences/index.html">← The six audiences</a>
+<a href="../ontology/index.html">The grammar →</a>
+<a href="../library/index.html">The recovered library →</a></div>
+"""
+
+
+def library_body(arc: dict) -> str:
+    site = arc["sites"][0]
+    posts = site["posts"]
+    groups: dict[str, list] = {}
+    for p in posts:
+        key = "How it works" if "How it works" in (p.get("tags") or []) else "Generated briefings"
+        groups.setdefault(key, []).append(p)
+    out = ""
+    for key in ("How it works", "Generated briefings"):
+        items = groups.get(key, [])
+        if not items:
+            continue
+        cards = "".join(
+            f'<a class="card" href="../back-office/archive/{p["slug"]}.html">'
+            f'<p class="k">{html.escape(p.get("published_human", "undated"))} · '
+            f'{p["words"]:,} words</p><h3>{html.escape(p["title"])}</h3></a>'
+            for p in items)
+        note = ("Dinis Cruz explaining the architecture as he built it. These are the "
+                "argument — the diagnosis, the four stages, the structured outputs, the "
+                "graph. Everything on this site's <a href=\"../how-it-works/index.html\">"
+                "How it works</a> page is assembled from them."
+                if key == "How it works" else
+                "Output, not argument: briefings the pipeline generated for a CEO, a CISO, "
+                "a CTO and two kinds of board member, from the Hacker News feed. They are "
+                "the evidence that the thing ran, and the earliest examples of the "
+                "one-article-many-audiences idea this site is now rebuilding.")
+        out += (f'<h2 id="{slugify(key)}">{html.escape(key)} '
+                f'<span class="tag">{len(items)}</span></h2><p>{note}</p>'
+                f'<div class="grid">{cards}</div>')
+    return f"""
+<p class="kicker">The library</p>
+<h1>The first MVP, in full</h1>
+<p class="lede">Everything recovered from <code>mvp.myfeeds.ai</code>, readable here
+rather than only as an archive listing: {len(posts)} posts,
+{sum(p["words"] for p in posts):,} words, from a site that no longer exists. The long-form
+posts are where the architecture was worked out; the briefings are what the pipeline
+produced when it ran.</p>
+
+<div class="note"><p>These are reproduced as published. Links inside them point at pages
+that in most cases no longer resolve and images are still served from the dead domain —
+both left as written rather than silently repaired, because a rewritten archive stops
+being evidence. How they were recovered, and the nine URLs that could not be, is on
+<a href="../back-office/archive/index.html">the archive page</a>.</p></div>
+
+{out}
+
+<div class="next"><a href="../how-it-works/index.html">The architecture they describe →</a>
+<a href="../back-office/archive/index.html">How they were recovered →</a>
+<a href="../index.html">← Home</a></div>
+"""
+
 # ------------------------------------------------------------------------------- build
 
 
@@ -1441,9 +1900,53 @@ def build() -> int:
     ]
 
     arc = backoffice.load_archive(ROOT)
+    fd = feeds.load_all(ROOT)
     site0 = arc["sites"][0] if arc["sites"] else None
 
     pages += [
+        {
+            "path": "audiences/index.html",
+            "section": "The argument",
+            "title": "Six audiences, and what each converts news into",
+            "desc": (
+                "The audience side of the join: six roles with a stated appetite rather "
+                "than a tone of voice — a founder, an allocator, an executive, a "
+                "practitioner, a risk owner, and a faithful translation that acts as the "
+                "control. What separates them is what each converts a piece of news into."
+            ),
+        },
+        {
+            "path": "ontology/index.html",
+            "section": "The argument",
+            "title": "Two ontologies and the join between them",
+            "desc": (
+                "One ontology for what an article contains, one for what a role watches "
+                "for, and the published formula where they meet. Every verb has a named "
+                "inverse and reads as a sentence both ways; the verbs that are banned are "
+                "listed with the reason."
+            ),
+        },
+        {
+            "path": "explain/index.html",
+            "section": "The argument",
+            "title": "Why this article reached these audiences and not the others",
+            "desc": (
+                "One real Portuguese article put through the join, with its working out: "
+                "the entities, every concern tried, the connections that fired and the "
+                "verdicts that did not — plus the three defects the first run found in "
+                "the audience ontology, shown before and after."
+            ),
+        },
+        {
+            "path": "library/index.html",
+            "section": "The argument",
+            "title": "The first MVP, in full",
+            "desc": (
+                "Everything recovered from mvp.myfeeds.ai, readable: the long-form posts "
+                "where the architecture was worked out, and the briefings the pipeline "
+                "generated for five personas when it ran."
+            ),
+        },
         {
             "path": "back-office/index.html",
             "section": "Back office",
@@ -1487,6 +1990,10 @@ def build() -> int:
     ]
 
     generated = {
+        "audiences/index.html": lambda: audiences_body(fd),
+        "ontology/index.html": lambda: ontology_body(fd),
+        "explain/index.html": lambda: explain_body(fd),
+        "library/index.html": lambda: library_body(arc),
         "back-office/index.html": lambda: backoffice_index_body(arc),
         "back-office/archive/index.html": lambda: archive_index_body(arc),
         "back-office/documents/index.html": documents_body,
@@ -1707,6 +2214,37 @@ def build() -> int:
         ) + "\n",
         encoding="utf-8",
     )
+
+    # The audience/ontology data, published so a reader can fetch the same facts the
+    # pages show. A page showing a number nobody can fetch is asking to be trusted.
+    for name in ("audiences.json", "ontology.json"):
+        (ROOT / "data" / name).write_text(
+            json.dumps(json.loads((CONTENT / "data" / name).read_text(encoding="utf-8")),
+                       indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (ROOT / "api" / "v1").mkdir(parents=True, exist_ok=True)
+    (ROOT / "api" / "v1" / "audiences.json").write_text(
+        json.dumps({
+            "version": SITE_VERSION,
+            "count": len(fd["audiences"]["audiences"]),
+            "audiences": [
+                {"id": a["id"], "name": a["name"], "order": a["order"],
+                 "currency": a["currency"], "control": a.get("control", False),
+                 "concerns": [c["id"] for c in a["concerns"]],
+                 "href": f"{SITE_ORIGIN}/audiences/index.html#{a['id']}"}
+                for a in sorted(fd["audiences"]["audiences"], key=lambda x: x["order"])
+            ],
+        }, indent=2) + "\n", encoding="utf-8")
+    (ROOT / "api" / "v1" / "joins.json").write_text(
+        json.dumps({
+            "version": SITE_VERSION,
+            "formula": fd["ontology"]["join"]["formula"]["id"],
+            "joins": [
+                {"article": k, "title": v["title"],
+                 "reached": v["summary"]["reached"], "withheld": v["summary"]["withheld"],
+                 "href": f"{SITE_ORIGIN}/data/joins/{k}.json"}
+                for k, v in fd["joins"].items()
+            ],
+        }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     # data/site.json — the page inventory as data. The validator reads this rather than
     # re-deriving the list from pages.json plus a hardcoded set of generated paths, which
