@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 2 · myfeeds.sgit.ai</title>
-<meta name="description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I&#x27;m creating the personalised news feeds for multiple personas, we got into the Flow…">
-<meta name="generator" content="admin/build/build_pages.py v0.1.6">
+<meta name="description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I&#x27;m creating the personalised news feeds for multiple personas, we got into the Flow 3…">
+<meta name="generator" content="admin/build/build_pages.py v0.1.7">
 <link rel="canonical" href="https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="myfeeds.sgit.ai">
 <meta property="og:title" content="How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 2 · myfeeds.sgit.ai">
-<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I&#x27;m creating the personalised news feeds for multiple personas, we got into the Flow…">
+<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I&#x27;m creating the personalised news feeds for multiple personas, we got into the Flow 3…">
 <meta property="og:url" content="https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How I'm Building Personalised News Feeds with Semantic Graphs - Part 2","description":"Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.6","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How I'm Building Personalised News Feeds with Semantic Graphs - Part 2","description":"Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.7","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -52,8 +52,8 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<a class="ver" href="../../admin/versions.html#v0-1-6"
-title="What changed in v0.1.6">v0.1.6</a>
+<a class="ver" href="../../admin/versions.html#v0-1-7"
+title="What changed in v0.1.7">v0.1.7</a>
 <nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../audiences/index.html">Audiences</a><a href="../../explain/index.html">Explain</a><a href="../../review/index.html">Review</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
@@ -71,95 +71,104 @@ the site no longer exists</dd>
 The markdown is at <code>back-office/archive/mvp.myfeeds.ai__posts/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.md</code>.</dd>
 </dl>
 
-<div class="note"><p>This is recovered content, reproduced as it was published. Links in
-it point at pages that in many cases no longer resolve, and images are still served from
-the dead domain — both are left exactly as written rather than silently repaired, because
-a rewritten archive is no longer evidence of what was said.</p></div>
+<div class="note"><p>This is recovered content, reproduced as it was published. Its
+links point at pages that in many cases no longer resolve and are left exactly as written.
+Its <strong>images are served from this repository</strong> — the originals were recovered
+from the same archive as the text, and each one carries the URL it came from in its title
+attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An
+image the archive did not capture is marked as missing rather than left broken.</p></div>
 
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png)</p>
+<p class="article-edge"><span>↓ recovered article begins</span>
+<span>26 Mar 2025 ·
+Dinis Cruz</span></p>
+<div class="article-body">
+<p><span class="missing-img" title="https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png">[image not recovered: <code>Screenshot-2025-03-26-at-17.34.21.png</code>]</span></p>
 <p>At the end of <a href="https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/">Part 1</a> of this series of posts on how I&#x27;m creating the personalised news feeds for multiple personas, we got into the Flow 3 stage, where we had a list of articles that needed to be processed.</p>
 <p>For reference here are all the flows that are related to the creation of the article&#x27;s entities:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-76.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-76.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-76.png"><span class="rimg-ph">image · <code>image-76.png</code></span></a></p>
 <p>Let&#x27;s continue with Flow 4.</p>
 <h4 id="flow-4-create-articles">Flow 4 - Create Articles</h4>
 <p>We trigger this flow by invoking to the <em><strong>hacker-news-flows/flow-4-article-step-1-create-article-files</strong></em> endpoint which returns:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-77.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-77.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-77.png"><span class="rimg-ph">image · <code>image-77.png</code></span></a></p>
 <p>There is quite a lot to unpack here, so let&#x27;s look at what the data is telling us:</p>
 <ul><li>&quot;articles_to_process&quot;: 31 - This is the number of articles that are in the current article processing state</li><li>&quot;from_step&quot;: &quot;STEP__1__SAVE__ARTICLE&quot; - This represents the state of this article (before the execution of the flow)</li><li>&quot;next_step&quot;: &quot;STEP__2__MARKDOWN__FOR_ARTICLE&quot; - this is inside the &quot;article&quot; object, and represents the next state for this article (which will be picked up by the next flow)</li><li>&quot;path__file__feed_article&quot;: &quot;2025/03/26/16/articles/5be1365c/feed-article.json&quot; - this is the path of where we will find the json data for this article (created by this flow)</li><li>&quot;article_id&quot;: &quot;5be1365c&quot; - this is one of the most important values here, since this is the unique ID for the current article. This value was created from the UUID provided by the RSS feed</li><li>&quot;path__folder__source&quot;: &quot;2025/03/26/11&quot; and &quot;path__folder__data&quot;: &quot;2025/03/26/16&quot; are also very important values, since they tell us where the article data was retrieved from (i.e. which RSS Feed json object contained this data) and where we are storing all new files. In most cases these will be the same folder, but like in this situation, if there is a delay between the download of the RSS value and the creation calculation of the timeline&#x27;s diff, we will have different values here</li><li>path__file__markdown&quot;: null (and all the other &#x27;null&#x27; paths) - these are the values that will be populated as the multiple flows execute (i.e. in most cases, each flow execution will only update one or a couple of these paths)As we can see by the contents of the response data, there was only one file created in this flow, which was the <strong>2025/03/26/16/articles/5be1365c/feed-article.json</strong> file, and looks like this:</li></ul>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-16.26.53.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-16.26.53.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-16.26.53.png"><span class="rimg-ph">image · <code>Screenshot-2025-03-26-at-16.26.53.png</code></span></a></p>
 <p>This file is actually the exact same content that we have in the article&#x27;s section of the <em><strong>hacker-news/2025/03/26/11/feed-data.json</strong></em> file, but since all the follow-up steps are executed from this file, and as seen above, we could have a situation where the source and data folders don&#x27;t match (note the hour <strong>11</strong> of the source folder <em><strong>2025/03/26/11</strong></em>, vs hour <strong>16</strong> of the data folder we are using to store the created files), it is much better to have the data for this article inside the **2025/03/26/16/articles/{article_id}/* **folder (which is a unique folder for this article)</p>
 <h4 id="flow-5-create-markdown-file">Flow 5 - Create Markdown file</h4>
 <p>Next up is the invocation of *<strong>hacker-news-flows/flow-5-article-step-2-create-article-markdown </strong><em>which is one of the simplest flows here, since all it is doing is creating a markdown version of the </em><strong>feed-article.json</strong>* file shown above</p>
 <p>The invocation response is very similar:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-82.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-82.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-82.png"><span class="rimg-ph">image · <code>image-82.png</code></span></a></p>
 <p>The *<strong>next_step </strong>*represents where we are going next: <strong>STEP__3__LLM__TEXT_TO_ENTITIES </strong>and the ***path__file__markdown* <strong>field now has the value of </strong>&quot;2025/03/26/16/articles/5be1365c/article-markdown.md** which looks like this:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-83.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-83.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-83.png"><span class="rimg-ph">image · <code>image-83.png</code></span></a></p>
 <p>This markdown file will be useful when we need to provide to the final LLM step the contents of the matched articles (for the personalisation of the persona specific security feed)</p>
 <h4 id="flow-6-creating-text-entities-first-use-of-llm">Flow 6 - Creating Text Entities (first use of LLM)</h4>
 <p>The next Flow is the first one to actually make a call to an LLM. The reason we use LLMs here is because this is the only scalable and practical way to extract entities (i.e. Semantic Knowledge Graphs) from some text.</p>
 <p>We execute this flow by invoking the endpoint <em><strong>hacker-news-flows/flow-6-article-step-3-llm-text-to-entities</strong></em>, which provides this response:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-84.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-84.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-84.png"><span class="rimg-ph">image · <code>image-84.png</code></span></a></p>
 <p>There are number of quite interesting things happening here.</p>
 <p>There were two files created :</p>
 <ul><li>text-entities-title.json - containing the entities extracted from the article&#x27;s title</li><li>text-entities-description.json - containing the entities extracted from the article&#x27;s summary/description.... and the duration of this flow was <strong>17.731052</strong> seconds (~18 seconds).</li></ul>
 <p>The duration was quite surprising to me, since I was expecting the LLMs to be much faster in this entities extraction (in this case we are using <em><strong>gpt-4o-mini</strong></em>).</p>
 <p>This is a good example of something that is better to be discovered during an MVP, since it did change some of my original plans of how to execute the entire flow in one go (to be covered by a later post)</p>
 <p>Here is what the <strong>text-entities-title.json </strong>file looks like:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-85.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-85.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-85.png"><span class="rimg-ph">image · <code>image-85.png</code></span></a></p>
 <p>Here is what the <strong>text-entities-description.json</strong> file looks like:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-86.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-86.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-86.png"><span class="rimg-ph">image · <code>image-86.png</code></span></a></p>
 <p>In these files we can see:</p>
 <ul><li>cache_id : representing the reference id we can use to find the full request and response raw data for the LLM call (stored in the LLM Cache deployed in prod)</li><li>duration: this is how long that call took (in this case 8 and 7 seconds)</li><li>text: the text used to extract the entities</li><li>entities: the beginning of the list of entity objectsFor reference here is the schema of this entity object (from the article <a href="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">Building Semantic Knowledge Graphs with LLMs</a> ):</li></ul>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-14.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-17.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-16.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-14.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-14.png"><span class="rimg-ph">image · <code>image-14.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-17.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-17.png"><span class="rimg-ph">image · <code>image-17.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-16.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-16.png"><span class="rimg-ph">image · <code>image-16.png</code></span></a></p>
 <p>As mentioned above, we have an cache_id value, which in this case resolves to the path <strong>gpt-4o-mini/2025/03/26/16/7c69b0c0.json </strong>(also stored in S3), and uses this schema:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-87.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-89.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-88.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-90.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-87.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-87.png"><span class="rimg-ph">image · <code>image-87.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-89.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-89.png"><span class="rimg-ph">image · <code>image-89.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-88.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-88.png"><span class="rimg-ph">image · <code>image-88.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-90.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-90.png"><span class="rimg-ph">image · <code>image-90.png</code></span></a></p>
 <p>... and looks like this:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-91.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-92.png)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-93.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-91.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-91.png"><span class="rimg-ph">image · <code>image-91.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-92.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-92.png"><span class="rimg-ph">image · <code>image-92.png</code></span></a></p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-93.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-93.png"><span class="rimg-ph">image · <code>image-93.png</code></span></a></p>
 <p>This cache file contains really valuable data for the cases where we need to debug or understand exactly what we got from the LLM:</p>
 <ul><li>the llm__request contains the object used to create the llm__payload</li><li>the llm__response is the full response we got from the LLM, which includes the entities object as json and valuable stats like the number of tokens used (this will be very relevant when implementing the billing workflow for the MyFeed.ai and the Cyber Boardroom, where we will pass this cost directly to the customers)</li><li>the llm__payload is the actual json payload that was sent to the LLM, where you can see in there the json representation of the Python objects shown above (i.e. the schema the LLM uses to provide its answer)</li></ul>
 <h4 id="flow-7-create-mgraph-and-visualisations-for-the-text-entities">Flow 7 - Create MGraph and Visualisations for the text entities</h4>
 <p>Next up, we invoke the <em><strong>hacker-news-flows/flow-7-article-step-4-create-text-entities-graphs</strong></em> endpoint, which returns:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-94.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-94.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-94.png"><span class="rimg-ph">image · <code>image-94.png</code></span></a></p>
 <p>In this flow there are 4 new files created (in the screenshot above, you can see highlighted the the two files created from the title&#x27;s entities, and above it, you have the files created for the description&#x27;s entities)</p>
 <ul><li>text-entities-title.mgraph.json - this is the MGraph-Db of the data in the text-entities-title.json (i.e. the data created by the LLMs in Flow 6)</li><li>text-entities-title.png - this is the PNG (i.e. screenshot) of the DOT/Graphgiz visualisation of the text-entities-title.mgraph.json fileHere is what the text-entities-title.mgraph.json file looks like:</li></ul>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-95.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-95.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-95.png"><span class="rimg-ph">image · <code>image-95.png</code></span></a></p>
 <p>Here is what the <em><strong>text-entities-title.png</strong></em> file looks like, created from the text:</p>
 <blockquote><p>&quot;Microsoft Adds Inline Data Protection to Edge for Business to Block GenAI Data Leaks&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-96.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-96.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-96.png"><span class="rimg-ph">image · <code>image-96.png</code></span></a></p>
 <p>Here is the visualisation of the MGraph created from this article&#x27;s description text:</p>
 <blockquote><p>&quot;Microsoft on Monday announced a new feature called inline data protection for its enterprise-focused Edge for Business web browser.\nThe native data security control is designed to prevent employees from sharing sensitive company-related data into consumer generative artificial intelligence (GenAI) apps like OpenAI ChatGPT, Google Gemini, and DeepSeek. The list will be expanded over time to&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-97.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-97.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-97.png"><span class="rimg-ph">image · <code>image-97.png</code></span></a></p>
 <p>Let&#x27;s take a look a couple more text entities graphs:</p>
 <blockquote><p>&quot;Unpatched Windows Zero-Day Flaw Exploited by 11 State-Sponsored Threat Groups Since 2017&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-98.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-98.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-98.png"><span class="rimg-ph">image · <code>image-98.png</code></span></a></p>
 <blockquote><p>&quot;CISA Warns of Active Exploitation in GitHub Action Supply Chain Compromise&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-99.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-99.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-99.png"><span class="rimg-ph">image · <code>image-99.png</code></span></a></p>
 <blockquote><p>&quot;Apache Tomcat Vulnerability Actively Exploited Just 30 Hours After Public Disclosure&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-100.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-100.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-100.png"><span class="rimg-ph">image · <code>image-100.png</code></span></a></p>
 <p>... in this example of the Apache vulnerability, note how from the description graph we also get a node for the CVE:</p>
 <blockquote><p>&quot;A recently disclosed security flaw impacting Apache Tomcat has come under active exploitation in the wild following the release&amp;nbsp;of a public proof-of-concept (PoC) a mere 30 hours after public disclosure.\nThe vulnerability, tracked as CVE-2025-24813, affects the below versions -\n\nApache Tomcat 11.0.0-M1 to 11.0.2\nApache Tomcat 10.1.0-M1 to 10.1.34\nApache Tomcat 9.0.0-M1 to 9.0.98\n\nIt&quot;</p></blockquote>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-101.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-101.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-101.png"><span class="rimg-ph">image · <code>image-101.png</code></span></a></p>
 <p>Let&#x27;s continue with the flow executions for the original article</p>
 <h4 id="flow-8-merge-text-entities-graphs">Flow 8 - Merge text entities graphs</h4>
 <p>As we saw above, there is good data in both the text and description entities text MGraphs, so by invoking the <em><strong>hacker-news-flows/flow-8-article-step-5-merge-text-entities-graphs</strong></em> endpoint, we create a new MGraph and visualisation containing both sets of entities.</p>
 <p>Here is the response we get from Flow 8:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-102.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-102.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-102.png"><span class="rimg-ph">image · <code>image-102.png</code></span></a></p>
 <p>... where we can see two new files created:</p>
 <ul><li>text-entities.mgraph.json - the MGraph of both sets of text entities (title+ description)</li><li>text-entities.png - the visualisation of the text-entities.mgraph.jsonAlthough the <strong>text-entities.mgraph.json</strong> looks just like the other MGraphs, there is a major difference (in addition to being the merge of both text and description entities):</li></ul>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-103.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-103.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-103.png"><span class="rimg-ph">image · <code>image-103.png</code></span></a></p>
 <p>As we can see by its visualisation in <strong>text-entities.png </strong>file (below), the merged MGraph contains only the direct <strong>Entity</strong> relationships (i.e. the stronger connections in the original text entities).</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-104.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-104.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-104.png"><span class="rimg-ph">image · <code>image-104.png</code></span></a></p>
 <p>I did this during the current MVP to keep the size of the graph smaller.</p>
 <p>I wanted to see how effective it would be before using all data available and starting to improve the Ontology and Taxonomy</p>
 <hr>
 <p>.... to be continued on part 3....</p>
+</div>
+<p class="article-edge"><span>↑ recovered article ends</span>
+<span>this site's words resume</span></p>
 
 <div class="next"><a href="index.html">← All recovered posts</a>
 <a href="../index.html">Back office →</a></div>
@@ -174,7 +183,7 @@ not before. <a href="../../provenance/index.html">What that means, exactly</a>.<
 <p><a href="how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
 <p>The LLM was doing too much.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.6. Part of the
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.7. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../../",n=0,t;

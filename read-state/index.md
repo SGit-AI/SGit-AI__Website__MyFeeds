@@ -2,7 +2,7 @@
 
 > Superseded. OPML moves your subscriptions between readers and carries no read state at all. What read state actually is, why it has never had an interchange format, and read-state/v1 — a contract published before anything implements it.
 
-*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/read-state/index.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

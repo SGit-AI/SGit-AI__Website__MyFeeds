@@ -1,8 +1,8 @@
 # Building Semantic Knowledge Graphs with LLMs: Inside MyFeeds.ai's Multi-Phase Architecture
 
-> Recovered from mvp.myfeeds.ai, published 24 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png) The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry…
+> Recovered from mvp.myfeeds.ai, published 24 Mar 2025: The post Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP) mentions the use of LLMs to go from an RSS Feed entry all…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,23 +32,25 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/cc8800d3-ac07-43a3-9485-53d7a87b7770.png)
+↓ recovered article begins 24 Mar 2025 · Dinis Cruz
+
+[image not recovered: `cc8800d3-ac07-43a3-9485-53d7a87b7770.png`]
 
 The post [Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) mentions the use of LLMs to go from an RSS Feed entry all the way to an personalised blog post, but **what do those entities look like?** and more importantly,** how do we have provenance, explainability and determinism from** this workflow?
 
 Let's take for example the [CEO (19 Mar)](https://mvp.myfeeds.ai/ceo-19-feb/) post which looked like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image.png)
+[image · `image.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image.png)
 
 As you can see, the intro text is focused on the CEO persona, and in the 50x available articles from [the Hacker News](https://thehackernews.com/?ref=mvp.myfeeds.ai) RSS feed used, the [Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025](https://thehackernews.com/2025/03/bcdr-2025-trends-and-challenges-for-msps-and-it-teams.html?ref=mvp.myfeeds.ai) article was selected, which looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-1.png)
+[image · `image-1.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-1.png)
 
 Since we are using the [RSS feed](https://feeds.feedburner.com/TheHackersNews?ref=mvp.myfeeds.ai), it all starts with the XML content:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-2.png)
+[image · `image-2.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-2.png)
 
 > Note: In this first MVP we are only using the text of the title "Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025" (I also created a similar workflow using the description, but the title was already working quite well)
 
@@ -62,15 +64,15 @@ On the personalisation path, the first thing I tried was to create a prompt that
 
 - a description of the desired output (for example a news digest)This was easily done by converting the RSS content into a 'prompt friendly' text based representation:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-3.png)
+[image · `image-3.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-3.png)
 
 .... which I could easily add to one of my [Cyber Boardroom](https://www.thecyberboardroom.com/?ref=mvp.myfeeds.ai) personas (in this case a CEO):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-4.png)
+[image · `image-4.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-4.png)
 
 .... resulting in something like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-5.png)
+[image · `image-5.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-5.png)
 
 Although this kinda works, when using the 50x RSS articles and asking the LLM to pick the most relevant 5x, I had a large number of very important problems, challenges and concerns: (which btw are the same ones faced by the companies/services that have been trying to create personalised news feed, with limited success) :
 
@@ -90,7 +92,7 @@ But the problem I always had when I created large graphs (for example when using
 
 As explained in [detail here](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/) in mvp.MyFeeds.ai uses 4 stages of LLM processing:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-6.png)
+[image · `image-6.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-6.png)
 
 Let's look at each of these stages in action
 
@@ -98,33 +100,33 @@ Let's look at each of these stages in action
 
 From the feed's RSS the following JSON file is created which is basically a representation of a Python object with the same fields:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-7.png)
+[image · `image-7.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-7.png)
 
 From this data the two fields that we are going to use is the **article_obj_id** (in this case *"6feb1978"*) and the **title** value (in this case *"Future-Proofing Business Continuity: BCDR Trends and Challenges for 2025"*)
 
 Here is [the System Prompt](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/providers/cyber_security/hacker_news/llms/prompts/LLM__Prompt__Extract_Entities.py?ref=mvp.myfeeds.ai#L10-L22) for this first LLM call:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-11.png)
+[image · `image-11.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-11.png)
 
 What is very important and powerful is that for these calls we are using OpenAI's [structured outputs](https://platform.openai.com/docs/guides/structured-outputs?ref=mvp.myfeeds.ai) where we are able to create set of Python classes which are then provided as the schema to be used by the LLM responses (i.e. we don't get raw text back from the LLM call, we get nicely typed JSON/Python objects)
 
 Here are the [classes](https://github.com/owasp-sbot/MGraph-DB/blob/a6b4875a8e54794ee577527ea86212efdf73fb35/mgraph_db/providers/graph_rag/schemas/Schema__Graph_RAG__Entity__LLM.py?ref=mvp.myfeeds.ai) (from the [MGraph-DB](https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai) project) used in this 'entity text extraction' LLM:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-14.png)
+[image · `image-14.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-14.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-17.png)
+[image · `image-17.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-17.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-16.png)
+[image · `image-16.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-16.png)
 
 Which look like this (when created by the LLM)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-18.png)
+[image · `image-18.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-18.png)
 
 > Note: at the moment (for this first MVP) we are not providing the LLMs any Ontology or Taxonomy to follow, we are basically letting the LLM pick the best relationships, which it already does a pretty good job at. But as we move into a much more deterministic output, based on human feedback, we will be providing a much more explicit set of entities and relationships to use
 
 The next step is to convert this JSON/Python object into a [MGraph-DB](https://github.com/owasp-sbot/MGraph-DB?ref=mvp.myfeeds.ai) object (i.e. nodes and edges), which looks like this
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-19.png)
+[image · `image-19.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-19.png)
 
 > Note: MGraph-DB is the Serverless Graph database that I recently published which provides a critical part of this workflow (in this case the ability to easily manipulate and merge those JSON objects as nodes and edges). For more details see: MGraph-AI - A Memory-First Graph Database for GenAI and Serverless Apps
 
@@ -132,11 +134,11 @@ One of the areas that I always put a lot of coding effort in, is the visualisati
 
 So in this case, here is the DOT/Graphviz visualisation all the relationships extracted:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-20.png)
+[image · `image-20.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-20.png)
 
 For reference here is the graph for the *"Critical Authentication Bypass Vulnerability Discovered in Moxa PT Switches" *which is another one of the articles shown in the CEO post
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-21.png)
+[image · `image-21.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-21.png)
 
 *"*
 
@@ -144,7 +146,7 @@ But since we can't really feed these JSON or Images to an LLM (well ... we could
 
 The image below shows the graph tree for this article in the middle of the bigger graph tree text (which is the one that contains all 50x articles from the RSS feed, that is then used in Phase 3)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-34.png)
+[image · `image-34.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-34.png)
 
 > Note: when working with LLMs it is very important to think about the best way to 'communicate' with the LLMs, which in this case was about how to create a representation of the graphs nodes and edges in a format that the LLMs can understand (while preserving the nodes and edges relationships), and in this case the simple tree view you can see above did the trick.
 
@@ -152,31 +154,31 @@ The image below shows the graph tree for this article in the middle of the bigge
 
 Next step is to create the equivalent graph for the target persona, in this case the CEO, which starts with this (for now [hard-coded](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/schemas/Default_Data__My_Feeds__Personas.py?ref=mvp.myfeeds.ai)) CEO description:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-23.png)
+[image · `image-23.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-23.png)
 
 Then using this [LLM prompt](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/888483ed1f74e9a6eba3bee575ea9974cfeb7da5/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Extract_Entities.py?ref=mvp.myfeeds.ai):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-24.png)
+[image · `image-24.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-24.png)
 
 ... and these schemas:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-26.png)
+[image · `image-26.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-26.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-27.png)
+[image · `image-27.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-27.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-28.png)
+[image · `image-28.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-28.png)
 
 ... we get these set of entities mappings
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-25.png)
+[image · `image-25.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-25.png)
 
 ... which looks like this
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-29.png)
+[image · `image-29.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-29.png)
 
 ... and like this, when using the MGraph-DB Tree_Values exporter to create an LLM friendly representation:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-30.png)
+[image · `image-30.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-30.png)
 
 #### Phase 3: Relevance Mapping
 
@@ -186,19 +188,19 @@ Once we have the entities for the Article and for the Persona, the key question 
 
 Using [this system prompt](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Connect_Entities.py?ref=mvp.myfeeds.ai):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-31.png)
+[image · `image-31.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-31.png)
 
 ... and this user prompt (where we will include the previously created "Personas Graph Tree" and the "50x articles Graph Tree") :
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-35.png)
+[image · `image-35.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-35.png)
 
 ... and [this schema](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Connected_Entities.py?ref=mvp.myfeeds.ai):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-32.png)
+[image · `image-32.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-32.png)
 
 ... we get these mappings:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-33.png)
+[image · `image-33.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-33.png)
 
 In the image above we can see that we are looking at the mappings for the article_id for this RSS article (in this case. "6feb1978"), with 3 entities matches and an an overall score of 8.5
 
@@ -208,7 +210,7 @@ What is very important here are the **persona_entity** and the **article_entity*
 
 Also important is that in the JSON/Python file created by this Phase 3, we also include the markdown text of the original article:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-36.png)
+[image · `image-36.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-36.png)
 
 This is done in order to make it easy (and efficient) for the Phase 4 workflow prompt creation step
 
@@ -220,45 +222,45 @@ The final use of the LLMs is in the translation of the selected articles (and co
 
 Using this [system prompt](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/LLM__Prompt__Personas__Create_Digest.py?ref=mvp.myfeeds.ai):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-37.png)
+[image · `image-37.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-37.png)
 
 ... and this user prompt:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-38.png)
+[image · `image-38.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-38.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-40.png)
+[image · `image-40.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-40.png)
 
 ... and this [schema](https://github.com/the-cyber-boardroom/myfeeds_ai/blob/dev/myfeeds_ai/personas/llms/Schema__Persona__Digest_Articles.py?ref=mvp.myfeeds.ai):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-42.png)
+[image · `image-42.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-42.png)
 
 ... we get this JSON/Python object:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-43.png)
+[image · `image-43.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-43.png)
 
 What is very powerful here is that, as before, we are not getting raw text from the LLM , we are getting a set of nicely structured JSON/Python objects which can then be used to create the output in a much more controlled and effective way.
 
 For example the workflow that executes this Phase 4, also creates for this persona the HTML:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-44.png)
+[image · `image-44.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-44.png)
 
 ... and the Markdown code:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-45.png)
+[image · `image-45.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-45.png)
 
 This is what the HTML looks like (when loaded directly from the S3 bucket used to hold all the files shown here):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-46.png)
+[image · `image-46.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-46.png)
 
 #### Ghost Publishing
 
 The final step is to publish this article using the Ghost platform:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-47.png)
+[image · `image-47.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-47.png)
 
 ... to [https://mvp.myfeeds.ai/ceo-19-feb/](https://mvp.myfeeds.ai/ceo-19-feb/) , which looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-48.png)
+[image · `image-48.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-48.png)
 
 > Note: in this first MVP, the publishing was done manually (i.e. copy and paste of the persona's HTML shown above), but the key reason I picked the Ghost platform was because it has a really good API, which will make this step easy to implement
 
@@ -286,7 +288,9 @@ Thanks for reading, please [subscribe to the mvp.myfeeds.ai](https://mvp.myfeeds
 
 This final paragraph is here to make this article exceed 2000 words, as counted by the Ghost word counter to the right hand side of the editor
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-49-1-1.png)
+[image · `image-49-1-1.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-49-1-1.png)
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

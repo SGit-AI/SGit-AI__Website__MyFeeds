@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1 · myfeeds.sgit.ai</title>
-<meta name="description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I&#x27;m building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let&#x27;s look at the current (MVP) process of publishing a new set…">
-<meta name="generator" content="admin/build/build_pages.py v0.1.6">
+<meta name="description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I&#x27;m building the Semantic Knowledge Graphs and Establishing Provenance, let&#x27;s look at the current (MVP) process of publishing a new set of…">
+<meta name="generator" content="admin/build/build_pages.py v0.1.7">
 <link rel="canonical" href="https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cg fill='none' stroke='%23faf9f5' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M10 22h.01'/%3E%3Cpath d='M10 16a6 6 0 0 1 6 6'/%3E%3Cpath d='M10 10a12 12 0 0 1 12 12'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="myfeeds.sgit.ai">
 <meta property="og:title" content="How I&#x27;m Building Personalised News Feeds with Semantic Graphs - Part 1 · myfeeds.sgit.ai">
-<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I&#x27;m building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let&#x27;s look at the current (MVP) process of publishing a new set…">
+<meta property="og:description" content="Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I&#x27;m building the Semantic Knowledge Graphs and Establishing Provenance, let&#x27;s look at the current (MVP) process of publishing a new set of…">
 <meta property="og:url" content="https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How I'm Building Personalised News Feeds with Semantic Graphs - Part 1","description":"Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.6","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How I'm Building Personalised News Feeds with Semantic Graphs - Part 1","description":"Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I'm building the Semantic Knowledge Graphs and Establishing Provenance, let's look at the current (MVP) process of publishing a new set of\u2026","url":"https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html","isPartOf":{"@type":"WebSite","name":"myfeeds.sgit.ai","url":"https://myfeeds.sgit.ai/"},"inLanguage":"en","version":"v0.1.7","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Dinis Cruz"}}</script>
 <style>:root{--bg:#faf9f5;--panel:#fff;--panel2:#f2f0e9;--line:#e5e1d5;--fg:#1c1d21;--dim:#5c5f66;
 --dim2:#8a8d94;--accent:#0f766e;--accent-dk:#115e59;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -52,8 +52,8 @@ table{border-collapse:collapse;width:100%}</style>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="bar">
 <a class="brand" href="../../index.html"><b>myfeeds</b><span class="tld">.sgit.ai</span></a>
-<a class="ver" href="../../admin/versions.html#v0-1-6"
-title="What changed in v0.1.6">v0.1.6</a>
+<a class="ver" href="../../admin/versions.html#v0-1-7"
+title="What changed in v0.1.7">v0.1.7</a>
 <nav class="site-nav" aria-label="Sections"><a href="../../how-it-works/index.html">How it works</a><a href="../../audiences/index.html">Audiences</a><a href="../../explain/index.html">Explain</a><a href="../../review/index.html">Review</a><a href="../../back-office/archive/index.html">The MVP archive</a><a href="../../back-office/index.html">Back office</a><a href="../../team/index.html">Team</a><a href="../../admin/index.html">Admin</a></nav>
 </div></header>
 <main id="main">
@@ -71,47 +71,53 @@ the site no longer exists</dd>
 The markdown is at <code>back-office/archive/mvp.myfeeds.ai__posts/publishing-a-new-personalised-set-of-posts-part-1.md</code>.</dd>
 </dl>
 
-<div class="note"><p>This is recovered content, reproduced as it was published. Links in
-it point at pages that in many cases no longer resolve, and images are still served from
-the dead domain — both are left exactly as written rather than silently repaired, because
-a rewritten archive is no longer evidence of what was said.</p></div>
+<div class="note"><p>This is recovered content, reproduced as it was published. Its
+links point at pages that in many cases no longer resolve and are left exactly as written.
+Its <strong>images are served from this repository</strong> — the originals were recovered
+from the same archive as the text, and each one carries the URL it came from in its title
+attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An
+image the archive did not capture is marked as missing rather than left broken.</p></div>
 
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png)</p>
+<p class="article-edge"><span>↓ recovered article begins</span>
+<span>26 Mar 2025 ·
+Dinis Cruz</span></p>
+<div class="article-body">
+<p><span class="missing-img" title="https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png">[image not recovered: <code>feed-timeline.mgraph--4-.png</code>]</span></p>
 <p>Following the technical explanation of how I&#x27;m building the <a href="https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/">Semantic Knowledge Graphs</a> and <a href="https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/">Establishing Provenance</a>, let&#x27;s look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).</p>
 <p>The whole process is managed via a FastAPI service running on a serverless function (in this case AWS Lambda)</p>
 <p>I&#x27;m using the <a href="https://github.com/owasp-sbot/OSBot-Fast-API?ref=mvp.myfeeds.ai">OSBot-Fast-API</a> open source package, which makes it super easy to create these serverless functions (easier than using FastAPI directly)</p>
 <p>Here are the default methods that are added when you create and deploy an OSBot-Fast-API project</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-50.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-50.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-50.png"><span class="rimg-ph">image · <code>image-50.png</code></span></a></p>
 <p>In the <a href="https://mvp.myfeeds.ai/">mvp.MyFeeds.ai</a> service, we have a set of APIs for Personas:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-53.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-53.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-53.png"><span class="rimg-ph">image · <code>image-53.png</code></span></a></p>
 <p>... for <a href="https://thehackernews.com/?ref=mvp.myfeeds.ai">The Hacker News</a> flows:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-52.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-52.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-52.png"><span class="rimg-ph">image · <code>image-52.png</code></span></a></p>
 <p>... for the Hacker News articles:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-54.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-54.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-54.png"><span class="rimg-ph">image · <code>image-54.png</code></span></a></p>
 <p>... for the Hacker News files:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-55.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-55.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-55.png"><span class="rimg-ph">image · <code>image-55.png</code></span></a></p>
 <p>... and for the <a href="https://open-security-summit.org/?ref=mvp.myfeeds.ai">Open Security Summit</a> data (although that is not relevant in this article :) )</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-56.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-56.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-56.png"><span class="rimg-ph">image · <code>image-56.png</code></span></a></p>
 <h4 id="looking-at-the-current-articles">Looking at the current articles</h4>
 <p>Looking at the <em><strong>hacker-news-articles/current-articles</strong></em> article data, we can see that every article in there is currently on Step_9 (the current last step)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-57.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-57.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-57.png"><span class="rimg-ph">image · <code>image-57.png</code></span></a></p>
 <p>What we need is a new set of articles to process, so let&#x27;s see how that is currently done.</p>
 <h4 id="flow-1-downloading-the-rss-feed">Flow 1 - Downloading the RSS feed</h4>
 <p>We start the full workflow by invoking the endpoint <em><strong>hacker-news-flows/flow-1-download-rss-feed</strong></em> which downloads the RSS feed and converts it into an JSON file</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-67.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-67.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-67.png"><span class="rimg-ph">image · <code>image-67.png</code></span></a></p>
 <p>Here is what the <em><strong>feed-data.json</strong></em> file looks like</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-68.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-68.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-68.png"><span class="rimg-ph">image · <code>image-68.png</code></span></a></p>
 <h4 id="flow-2-creating-the-timeline">Flow 2 - Creating the timeline</h4>
 <p>Next we need to create the MGraph Timeline, which is done by invoking the *<strong>hacker-news-flows/flow-2-create-articles-timeline </strong>*endpoint:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-61.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-61.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-61.png"><span class="rimg-ph">image · <code>image-61.png</code></span></a></p>
 <p>The output confirms that all went as planned and that the following 3 files were created:</p>
 <ul><li>hacker_news_timeline - this is the MGraph-DB of the timelines (i.e date/time values) of the 50 articles processed. This file is called feed-timeline.mgraph.json</li><li>hacker_news_timeline_dot_code - this is the DOT Language code (see diagrams as code) created by the MGraph Dot_Exporter. This file is called feed-timeline.mgraph.dot</li><li>hacker_news_timeline_png - this is the Graphviz visualiastion of the DOT code, created by a Serverless function that is fully configured to convert DOT code into PNGs (i.e. images). This file is called feed-timeline.mgraph.pngAll 3 files were stored twice in the cloud storage (in this case S3):</li></ul>
 <ul><li>in the /latest/* folder (overwriting the previous version)</li><li>in the 2025/03/26/11/<em> folder (ensuring we have a copy of this action). This is an hour specific folder, which in this case is /2025/03/26/11/</em> (representing the 11th hour of the day 26 of March in 2025, i.e. the time I&#x27;m writing this article)Here is what the MGraph of the timeline looks like:</li></ul>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-65.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-65.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-65.png"><span class="rimg-ph">image · <code>image-65.png</code></span></a></p>
 <p>Here is the DOT language</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-66.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-66.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-66.png"><span class="rimg-ph">image · <code>image-66.png</code></span></a></p>
 <p>And much more interesting and useful, here is what the PNG of the timeline looks like:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-59.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-59.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-59.png"><span class="rimg-ph">image · <code>image-59.png</code></span></a></p>
 <p>The MGraph above is quite an important one, since it shows the power of the MGraph-DB in creating a graph made of 50x timestamps (i.e. date/time values).</p>
 <p>Note how easy it is to find what happened at a particular year, month, day or hour (the nodes at the bottom represent an article)</p>
 <p>For more details about this MGraph timeline technology, and how it evolved during multiple coding iterations, see:</p>
@@ -121,27 +127,30 @@ a rewritten archive is no longer evidence of what was said.</p></div>
 <ul><li>OSBot-Utils Flow System Documentation (PDF with the technical details)</li><li>Example of using Flows and Tasks in the IDE</li><li>Source code in GitHub</li></ul>
 <h4 id="flow-3-extract-new-articles">Flow 3 - Extract new Articles</h4>
 <p>Now that we have an updated timeline, the next step is to call the <em><strong>hacker-news-flows/flow-3-flow-extract-new-articles</strong></em> endpoint with the date to use as current_path (i.e. the new baseline time for creating the MGraph Diff)</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-75.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-75.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-75.png"><span class="rimg-ph">image · <code>image-75.png</code></span></a></p>
 <p>Here is the invocation response:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-64.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-64.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-64.png"><span class="rimg-ph">image · <code>image-64.png</code></span></a></p>
 <p>The first file that we can see in the response (created in two locations as before) is the *<strong>feed-timeline-diff.json</strong>, <em>which is a really good example of the power of graphs to answer a simple but important question: </em>&quot;Since the last analysis, which articles were added and removed from the RSS Feed?*&quot;</p>
 <p>To see how this was done, look at the values of the *<strong>path_previous </strong><em>and </em><strong>path_current</strong>* also present in the response data.</p>
 <p>In this case we have:</p>
 <ul><li>2025/03/19/21 - which is the 21st hour of the 19th of March 2025</li><li>2025/03/26/11 - which is the 11th hour of the 26th of March 2025This is where the practice to keep two copies of the files created really helps.</li></ul>
 <p>The file in the *<strong>/latest/</strong> <em>folder has long been overwritten by more recent executions</em>, <em>but since we still have the files in the</em> **2025/03/19/21/<em> </em><strong>folder, we can take a look at the file</strong>* 2025/03/19/21/feed-timeline.mgraph.png ***to see what the timeline MGraph looked like at that time:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-69.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-69.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-69.png"><span class="rimg-ph">image · <code>image-69.png</code></span></a></p>
 <p>For reference, here is the current timeline file *<strong>2025/03/26/11/feed-timeline.mgraph.png </strong>*looks like</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-70.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-70.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-70.png"><span class="rimg-ph">image · <code>image-70.png</code></span></a></p>
 <p>What we need is a diff of these two graphs.</p>
 <p>The MGraph files of these visualisations was used to create the <em><strong>feed-timeline-diff.json</strong></em> file, which looks like this:</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-71.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-71.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-71.png"><span class="rimg-ph">image · <code>image-71.png</code></span></a></p>
 <p>... and</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-72.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-72.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-72.png"><span class="rimg-ph">image · <code>image-72.png</code></span></a></p>
 <p>This is a MGraph Timeline-Diff object, which contains two main sections: <strong>added_values</strong> and <strong>removed_values</strong>, which in practice are the nodes added and removed between those two graphs.</p>
 <p>This data is then used to update the <strong>latest/articles-current.json</strong> files which now contains the entries for the articles ids listed in the <strong>added_values </strong>in the <strong>Step_1__Save__Article </strong>step (and empty data in those *<strong>path_</strong>** variables</p>
-<p>![](https://mvp.myfeeds.ai/content/images/2025/03/image-73.png)</p>
+<p><a class="rimg" href="../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-73.png" data-alt="" title="originally https://mvp.myfeeds.ai/content/images/2025/03/image-73.png"><span class="rimg-ph">image · <code>image-73.png</code></span></a></p>
 <hr>
 <p>Continues <a href="https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/">on part 2</a></p>
+</div>
+<p class="article-edge"><span>↑ recovered article ends</span>
+<span>this site's words resume</span></p>
 
 <div class="next"><a href="index.html">← All recovered posts</a>
 <a href="../index.html">Back office →</a></div>
@@ -156,7 +165,7 @@ not before. <a href="../../provenance/index.html">What that means, exactly</a>.<
 <p><a href="publishing-a-new-personalised-set-of-posts-part-1.md">This page as markdown</a> — the bytes it was rendered
 from. Anything rendered here stays one click from its source.</p>
 <p>The LLM was doing too much.</p>
-<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.6. Part of the
+<p><small>CC BY 4.0 — Dinis Cruz, with AI co-authorship (Claude, Anthropic).<br>Site v0.1.7. Part of the
 <a href="https://sgit.ai/network/index.html">sgit.ai network</a>.</small></p></div>
 </div></footer>
 <script>(function(){var B="../../",n=0,t;

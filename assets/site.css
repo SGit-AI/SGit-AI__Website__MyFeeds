@@ -168,3 +168,46 @@ dl.fields dd{margin:0}
   .site-nav{font-size:.82rem;width:100%;margin-left:0}
   main{padding-bottom:3.5rem}
 }
+
+
+/* ---------- recovered article ----------
+   A post recovered from a dead site is not this site's writing, and it should not look
+   like it. The body sits on its own slightly recessed surface with a marked edge, so a
+   reader scrolling in from the page chrome can see where somebody else's words start and
+   stop without reading a disclaimer to find out. */
+.article-body{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-left:4px solid color-mix(in srgb,var(--accent) 45%,transparent);
+  border-radius:12px;
+  padding:1.6rem 1.8rem;
+  margin:1.8rem 0;
+  box-shadow:var(--shadow);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme=light]) .article-body{background:var(--panel2)}
+}
+.article-body > :first-child{margin-top:0}
+.article-body > :last-child{margin-bottom:0}
+.article-body h2{border-top:1px solid var(--line);padding-top:1rem;margin-top:2rem}
+.article-body a.rimg{display:block;margin:1.4rem auto;text-align:center;border:0}
+.article-body .rimg-ph{
+  display:inline-block;font-family:var(--mono);font-size:.78rem;color:var(--dim2);
+  background:var(--panel2);border:1px dashed var(--line2);border-radius:8px;
+  padding:.7rem 1rem;
+}
+.article-body img{
+  display:block;max-width:100%;height:auto;margin:1.4rem auto;
+  border:1px solid var(--line);border-radius:8px;background:var(--panel2);
+}
+.article-body pre{margin-inline:0}
+.article-body .missing-img{
+  display:inline-block;font-size:.82rem;color:var(--dim2);background:var(--panel2);
+  border:1px dashed var(--line2);border-radius:6px;padding:.25rem .6rem;margin:.4rem 0;
+}
+.article-edge{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.76rem;color:var(--dim2);font-family:var(--mono);
+  margin:.2rem .2rem -.6rem;
+}
+@media (max-width:640px){.article-body{padding:1.1rem 1.15rem}}

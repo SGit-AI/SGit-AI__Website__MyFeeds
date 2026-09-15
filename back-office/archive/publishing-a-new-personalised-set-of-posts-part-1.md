@@ -1,8 +1,8 @@
 # How I'm Building Personalised News Feeds with Semantic Graphs - Part 1
 
-> Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png) Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set…
+> Recovered from mvp.myfeeds.ai, published 26 Mar 2025: Following the technical explanation of how I'm building the Semantic Knowledge Graphs and Establishing Provenance, let's look at the current (MVP) process of publishing a new set of…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/publishing-a-new-personalised-set-of-posts-part-1.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,9 +32,11 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/publishing-a-new-personalised-set-of-posts-part-1.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/feed-timeline.mgraph--4-.png)
+↓ recovered article begins 26 Mar 2025 · Dinis Cruz
+
+[image not recovered: `feed-timeline.mgraph--4-.png`]
 
 Following the technical explanation of how I'm building the [Semantic Knowledge Graphs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) and [Establishing Provenance](https://mvp.myfeeds.ai/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp/), let's look at the current (MVP) process of publishing a new set of personalised posts for multiple personas (CEO, CISO, CTO, and Board Members).
 
@@ -44,33 +46,33 @@ I'm using the [OSBot-Fast-API](https://github.com/owasp-sbot/OSBot-Fast-API?ref=
 
 Here are the default methods that are added when you create and deploy an OSBot-Fast-API project
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-50.png)
+[image · `image-50.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-50.png)
 
 In the [mvp.MyFeeds.ai](https://mvp.myfeeds.ai/) service, we have a set of APIs for Personas:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-53.png)
+[image · `image-53.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-53.png)
 
 ... for [The Hacker News](https://thehackernews.com/?ref=mvp.myfeeds.ai) flows:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-52.png)
+[image · `image-52.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-52.png)
 
 ... for the Hacker News articles:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-54.png)
+[image · `image-54.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-54.png)
 
 ... for the Hacker News files:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-55.png)
+[image · `image-55.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-55.png)
 
 ... and for the [Open Security Summit](https://open-security-summit.org/?ref=mvp.myfeeds.ai) data (although that is not relevant in this article :) )
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-56.png)
+[image · `image-56.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-56.png)
 
 #### Looking at the current articles
 
 Looking at the ***hacker-news-articles/current-articles*** article data, we can see that every article in there is currently on Step_9 (the current last step)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-57.png)
+[image · `image-57.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-57.png)
 
 What we need is a new set of articles to process, so let's see how that is currently done.
 
@@ -78,17 +80,17 @@ What we need is a new set of articles to process, so let's see how that is curre
 
 We start the full workflow by invoking the endpoint ***hacker-news-flows/flow-1-download-rss-feed*** which downloads the RSS feed and converts it into an JSON file
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-67.png)
+[image · `image-67.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-67.png)
 
 Here is what the ***feed-data.json*** file looks like
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-68.png)
+[image · `image-68.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-68.png)
 
 #### Flow 2 - Creating the timeline
 
 Next we need to create the MGraph Timeline, which is done by invoking the ***hacker-news-flows/flow-2-create-articles-timeline ***endpoint:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-61.png)
+[image · `image-61.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-61.png)
 
 The output confirms that all went as planned and that the following 3 files were created:
 
@@ -102,15 +104,15 @@ The output confirms that all went as planned and that the following 3 files were
 
 - in the 2025/03/26/11/* folder (ensuring we have a copy of this action). This is an hour specific folder, which in this case is /2025/03/26/11/* (representing the 11th hour of the day 26 of March in 2025, i.e. the time I'm writing this article)Here is what the MGraph of the timeline looks like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-65.png)
+[image · `image-65.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-65.png)
 
 Here is the DOT language
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-66.png)
+[image · `image-66.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-66.png)
 
 And much more interesting and useful, here is what the PNG of the timeline looks like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-59.png)
+[image · `image-59.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-59.png)
 
 The MGraph above is quite an important one, since it shows the power of the MGraph-DB in creating a graph made of 50x timestamps (i.e. date/time values).
 
@@ -148,11 +150,11 @@ For more details about this Flows/Tasks see:
 
 Now that we have an updated timeline, the next step is to call the ***hacker-news-flows/flow-3-flow-extract-new-articles*** endpoint with the date to use as current_path (i.e. the new baseline time for creating the MGraph Diff)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-75.png)
+[image · `image-75.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-75.png)
 
 Here is the invocation response:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-64.png)
+[image · `image-64.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-64.png)
 
 The first file that we can see in the response (created in two locations as before) is the ***feed-timeline-diff.json**, *which is a really good example of the power of graphs to answer a simple but important question: *"Since the last analysis, which articles were added and removed from the RSS Feed?*"
 
@@ -166,31 +168,33 @@ In this case we have:
 
 The file in the ***/latest/** *folder has long been overwritten by more recent executions*, *but since we still have the files in the* **2025/03/19/21/* ***folder, we can take a look at the file*** 2025/03/19/21/feed-timeline.mgraph.png ***to see what the timeline MGraph looked like at that time:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-69.png)
+[image · `image-69.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-69.png)
 
 For reference, here is the current timeline file ***2025/03/26/11/feed-timeline.mgraph.png ***looks like
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-70.png)
+[image · `image-70.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-70.png)
 
 What we need is a diff of these two graphs.
 
 The MGraph files of these visualisations was used to create the ***feed-timeline-diff.json*** file, which looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-71.png)
+[image · `image-71.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-71.png)
 
 ... and
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-72.png)
+[image · `image-72.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-72.png)
 
 This is a MGraph Timeline-Diff object, which contains two main sections: **added_values** and **removed_values**, which in practice are the nodes added and removed between those two graphs.
 
 This data is then used to update the **latest/articles-current.json** files which now contains the entries for the articles ids listed in the **added_values **in the **Step_1__Save__Article **step (and empty data in those ***path_**** variables
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-73.png)
+[image · `image-73.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-73.png)
 
 ---
 
 Continues [on part 2](https://mvp.myfeeds.ai/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2/)
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

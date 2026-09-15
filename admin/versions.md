@@ -2,7 +2,7 @@
 
 > Every release of this site: version, date, and what it did — including what an earlier version got wrong, where one did.
 
-*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/admin/versions.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -15,6 +15,26 @@ Provenance
 Every release of this site: the version, the date, what it did, and what an earlier version got wrong where one did. A version log that reads as an unbroken sequence of improvements is a version log that is lying.
 
 Each entry is also served as data at `/versions/<version>.json`, indexed by [`/versions/index.json`](../versions/index.json), so a script can check a claim about a release without rendering a page. The version badge in the navigation links to the entry for the version you are looking at, not to this page generally.
+
+`v0.1.7` · 2026-09-15 · [as data](../versions/v0.1.7.json)
+
+### the recovered posts get their images back, which took fixing two unrelated bugs and resolving a conflict with the authoring contract
+
+Every architecture post in the library had been showing raw markdown where its images should be, since the recovery. Two independent causes. The archiver had been run with --skip-assets, so no image had ever been downloaded. And the inline-markdown renderer had never handled image syntax at all: its link rule required non-empty link text, and `[image not recovered: `url`]` has none, so the pattern matched nothing and the source fell through to the page. Neither failed loudly; both were visible only to a human looking at a page.
+
+**Corrects.** A decision from v0.1.3. The archive pages said images were 'left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence'. The principle is right and the application was wrong: it produced an archive nobody could read, which is not evidence either. Images are now served from this repository with the original URL kept in each image's title — rewritten AND recorded. Separately, pointing an <img src> at the local copies broke the authoring contract, because a declarative reference to a vault path 404s inside a sandboxed frame before the bridge installs; the validator caught it before it shipped. Images are emitted as links that JavaScript upgrades, which passes the contract, works in a vault, works on the static mirror, and degrades to a working link with scripting disabled.
+
+#### Changes
+
+- back-office/archive/mvp.myfeeds.ai/content/ — the archived images, downloaded. Partial at this release: the Internet Archive is throttling, and the archiver resumes on a re-run (board card 010)
+
+- admin/build/build_pages.py — markdown images render; post descriptions are stripped to prose, because a post opening with an image had put `[image not recovered: `…png`]` into its own meta description and JSON-LD
+
+- assets/site.js — upgrades recovered image links into images, over the vault bridge where one exists and directly otherwise
+
+- assets/site.css — a recovered article now sits on its own recessed surface with a marked edge, so somebody else's words are visibly not this site's
+
+- admin/build/validate.js — three checks: no markdown rendered as literal source inside <main>, every image resolves locally or is explicitly marked not recovered, and none still points off-site
 
 `v0.1.6` · 2026-09-15 · [as data](../versions/v0.1.6.json)
 

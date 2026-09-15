@@ -1,8 +1,8 @@
 # for CTOs | 19-26 March 2025
 
-> Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_54_04-PM.png) In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD…
+> Recovered from mvp.myfeeds.ai, published 15 Apr 2025: In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD pipelines…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025-2.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,9 +32,11 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/for-ceos-19-26-march-2025-2.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_54_04-PM.png)
+↓ recovered article begins 15 Apr 2025 · Athena
+
+[image not recovered: `ChatGPT-Image-Apr-15--2025--10_54_04-PM.png`]
 
 In the rapid evolution of technology-driven enterprises, remaining vigilant against cyber threats has never been more crucial. Recent reports spotlight critical vulnerabilities impacting core tools in CI/CD pipelines and highlight emerging threats within cloud migration environments. Understanding the implications of these developments is essential for driving secure innovation while maintaining system integrity.
 
@@ -58,7 +60,7 @@ For the CTO steering a technology-focused enterprise, these developments mandate
 
 **Published:** 2025-03-24 11:35:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMLMmGnaFj02bQOVNInRxWU6pojgOefyyTEjP07OmmhXLsmLTyO1FAdQ5mF9uGyCOdvcQewKKxPdJ_rM-P6vEtvz0nS2t43-8Mdug0vURvQ9niaQ59YaXIMNNE7ZqwnkHad4Q1TZAw3Z6uUGX5CWeJw-NlDm_PD8WSNKLAvf_rm3xwv_6ym6KZyVLoxHDA/s1600/recap.png)
+[image not recovered: `recap.png`]
 
 A covert alteration in a GitHub Action component led to a widespread supply chain breach, affecting deployment automation and highlighting security vulnerabilities within CI/CD pipelines.
 
@@ -74,7 +76,7 @@ A covert alteration in a GitHub Action component led to a widespread supply chai
 
 **Published:** 2025-03-21 05:09:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvJrbAzwqHpKhpHksnXIn8w_nn45746SNyOytsPON3SRIiwJiV83kcThx_VImXQTYHuY2Jh7d0bXOBSxHuoNE2PGJkdwmuz20vR9gyRJ7V64WVu_2rqV81tL0lXFIVVGfq69V56e1gV85sdFO43RLGNRlyyVQ8rBvwVNq6Lx52usaBELtr0qUHBnWknhFi/s1600/cisco.png)
+[image not recovered: `cisco.png`]
 
 Active attempts to exploit patched vulnerabilities in Cisco's Smart Licensing Utility underline the need for urgency in addressing technical debt and security patching during cloud migrations.
 
@@ -90,7 +92,7 @@ Active attempts to exploit patched vulnerabilities in Cisco's Smart Licensing Ut
 
 **Published:** 2025-03-24 18:55:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyjHlwsnUepUlWpwFiKweqPP3vCKOcnbee6MnlDwVTWs_TYiFbWPIfYBJ0fN0x3HCC7hHcHeo4sFNLoWMce5ZM9-F16BeQ05Ol7yBhOP5v8hyPCJbY6DwPgEh1o-Ky3nszcSPE0s1XKxnRnGIpdixE4T4VFOpYrc4CedZ2xtSwVUNW3HBbvmYG6lFqlcMZ/s1600/cluster.png)
+[image not recovered: `cluster.png`]
 
 Five critical flaws in the Kubernetes Ingress NGINX Controller could permit unauthenticated remote code execution, jeopardizing over 6,500 clusters and core cloud operations.
 
@@ -105,6 +107,8 @@ Five critical flaws in the Kubernetes Ingress NGINX Controller could permit unau
 ---
 
 Generated: 2025-04-15 16:10:19
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

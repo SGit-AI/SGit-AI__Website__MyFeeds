@@ -2,7 +2,7 @@
 
 > The agentic team behind myfeeds.sgit.ai: the roles as files, the failure condition each is judged on, the rules they share, and the board where the open work is. Generated from team/roles/*/ROLE.md.
 
-*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/team/index.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

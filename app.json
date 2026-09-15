@@ -3,7 +3,7 @@
   "present": true,
   "auto_open": true,
   "title": "myfeeds.sgit.ai",
-  "version": "v0.1.6",
+  "version": "v0.1.7",
   "permissions": {},
   "permissions_note": "Deny by default: this app requests nothing. It renders static pages read from the vault, and reads require no grant. If a future release needs a permission, add it here with the reason it exists."
 }

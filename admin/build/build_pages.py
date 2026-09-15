@@ -334,6 +334,52 @@ VERSION_LOG = [
             "now reports the whole distribution and lets a reader find it."
         ),
     },
+    {
+        "version": "v0.1.7",
+        "date": "2026-09-15",
+        "title": (
+            "the recovered posts get their images back, which took fixing two unrelated "
+            "bugs and resolving a conflict with the authoring contract"
+        ),
+        "summary": (
+            "Every architecture post in the library had been showing raw markdown where "
+            "its images should be, since the recovery. Two independent causes. The "
+            "archiver had been run with --skip-assets, so no image had ever been "
+            "downloaded. And the inline-markdown renderer had never handled image syntax "
+            "at all: its link rule required non-empty link text, and `![](url)` has none, "
+            "so the pattern matched nothing and the source fell through to the page. "
+            "Neither failed loudly; both were visible only to a human looking at a page."
+        ),
+        "changes": [
+            "back-office/archive/mvp.myfeeds.ai/content/ — the archived images, "
+            "downloaded. Partial at this release: the Internet Archive is throttling, and "
+            "the archiver resumes on a re-run (board card 010)",
+            "admin/build/build_pages.py — markdown images render; post descriptions are "
+            "stripped to prose, because a post opening with an image had put "
+            "`![](https://…png)` into its own meta description and JSON-LD",
+            "assets/site.js — upgrades recovered image links into images, over the vault "
+            "bridge where one exists and directly otherwise",
+            "assets/site.css — a recovered article now sits on its own recessed surface "
+            "with a marked edge, so somebody else's words are visibly not this site's",
+            "admin/build/validate.js — three checks: no markdown rendered as literal "
+            "source inside <main>, every image resolves locally or is explicitly marked "
+            "not recovered, and none still points off-site",
+        ],
+        "corrects": (
+            "A decision from v0.1.3. The archive pages said images were 'left exactly as "
+            "written rather than silently repaired, because a rewritten archive is no "
+            "longer evidence'. The principle is right and the application was wrong: it "
+            "produced an archive nobody could read, which is not evidence either. Images "
+            "are now served from this repository with the original URL kept in each "
+            "image's title — rewritten AND recorded. Separately, pointing an <img src> at "
+            "the local copies broke the authoring contract, because a declarative "
+            "reference to a vault path 404s inside a sandboxed frame before the bridge "
+            "installs; the validator caught it before it shipped. Images are emitted as "
+            "links that JavaScript upgrades, which passes the contract, works in a vault, "
+            "works on the static mirror, and degrades to a working link with scripting "
+            "disabled."
+        ),
+    },
 ]
 
 NAV = [
@@ -945,8 +991,57 @@ def md_inline(text: str) -> str:
     out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
     out = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", out)
     out = re.sub(r"(?<![\w*])\*([^*\n]+)\*(?![\w*])", r"<em>\1</em>", out)
+    # Images FIRST, and with an alt that may be empty. The link rule below requires
+    # non-empty text, so `![](url)` matched nothing at all and every recovered image
+    # rendered as its own markdown source — which is what a reader saw on every
+    # architecture post in the library.
+    out = re.sub(
+        r"!\[([^\]]*)\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)",
+        lambda m: _img(m.group(2), m.group(1)), out)
     out = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', out)
     return out
+
+
+# Images recovered from the dead domain are served from this repository. The original
+# URL is kept in the title attribute so the page still says where the bytes came from:
+# rewriting a reference without recording it is the thing that makes an archive stop
+# being evidence.
+ARCHIVED_HOST = "https://mvp.myfeeds.ai"
+ARCHIVE_LOCAL = "back-office/archive/mvp.myfeeds.ai"
+
+
+def _img(src: str, alt: str = "") -> str:
+    """A recovered image, as a LINK that JavaScript upgrades to an <img>.
+
+    Not a plain `<img src>`: the authoring contract forbids a declarative reference to a
+    vault path, because inside a sandboxed vault frame it 404s before the bridge installs
+    and the page renders with a column of broken images. `<a href>` is not a declarative
+    fetch, so it passes the contract, works as a link with scripting disabled, and
+    `assets/site.js` turns it into a real image — over the bridge in a vault, directly on
+    the static mirror.
+
+    The original URL is kept on the element. Rewriting a reference without recording it
+    is what makes an archive stop being evidence.
+    """
+    original = src
+    if src.startswith(ARCHIVED_HOST):
+        rel = src[len(ARCHIVED_HOST):].lstrip("/")
+        if (ROOT / ARCHIVE_LOCAL / rel).exists():
+            local = f"{IMG_BASE}{ARCHIVE_LOCAL}/{rel}"
+            name = rel.rsplit("/", 1)[-1]
+            return (
+                f'<a class="rimg" href="{html.escape(local)}" '
+                f'data-alt="{html.escape(alt)}" '
+                f'title="originally {html.escape(original)}">'
+                f'<span class="rimg-ph">image · <code>{html.escape(name)}</code></span></a>'
+            )
+    # Not recovered: say so rather than emitting something broken.
+    return (f'<span class="missing-img" title="{html.escape(original)}">'
+            f'[image not recovered: <code>{html.escape(original.rsplit("/", 1)[-1])}'
+            f'</code>]</span>')
+
+
+IMG_BASE = ""  # set per page by the generator, since pages sit at different depths
 
 
 def md_block(text: str, base: str = "") -> str:
@@ -1416,12 +1511,21 @@ the site no longer exists</dd>
 The markdown is at <code>{html.escape(post["file"])}</code>.</dd>
 </dl>
 
-<div class="note"><p>This is recovered content, reproduced as it was published. Links in
-it point at pages that in many cases no longer resolve, and images are still served from
-the dead domain — both are left exactly as written rather than silently repaired, because
-a rewritten archive is no longer evidence of what was said.</p></div>
+<div class="note"><p>This is recovered content, reproduced as it was published. Its
+links point at pages that in many cases no longer resolve and are left exactly as written.
+Its <strong>images are served from this repository</strong> — the originals were recovered
+from the same archive as the text, and each one carries the URL it came from in its title
+attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An
+image the archive did not capture is marked as missing rather than left broken.</p></div>
 
+<p class="article-edge"><span>↓ recovered article begins</span>
+<span>{html.escape(post.get("published_human", "undated"))} ·
+{html.escape(post.get("author") or "unattributed")}</span></p>
+<div class="article-body">
 {md_block(post["body"])}
+</div>
+<p class="article-edge"><span>↑ recovered article ends</span>
+<span>this site's words resume</span></p>
 
 <div class="next"><a href="index.html">← All recovered posts</a>
 <a href="../index.html">Back office →</a></div>
@@ -1512,6 +1616,17 @@ AXIS_BAR = (
     '<div style="position:absolute;left:calc({pct}% - 6px);top:-3px;width:12px;height:12px;'
     'border-radius:50%;background:var(--accent)"></div></div>'
 )
+
+
+def _prose_excerpt(body: str, words: int) -> str:
+    """The first words of a post, as prose. A description is read by a search engine and
+    a social card, and several recovered posts open with an image, so taking the raw
+    markdown put `![](https://…png)` into every one of their meta tags."""
+    t = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", body)          # images
+    t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", t)           # links -> their text
+    t = re.sub(r"[#*`>_]+", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    return " ".join(t.split()[:words])
 
 
 def _pct(audience: dict, axis: str) -> str:
@@ -2295,7 +2410,7 @@ def build() -> int:
                 "desc": (
                     f"Recovered from mvp.myfeeds.ai, published "
                     f"{post.get('published_human', 'undated')}: "
-                    + " ".join(post["body"].split()[:28]) + "…"
+                    + _prose_excerpt(post["body"], 28) + "…"
                 ),
                 "hidden": True,
             })
@@ -2330,8 +2445,10 @@ def build() -> int:
             raise SystemExit(f"build: duplicate page path {path}")
         seen.add(path)
         if path in generated:
+            globals()["IMG_BASE"] = rel_prefix(path)
             body = generated[path]()
         else:
+            globals()["IMG_BASE"] = rel_prefix(path)
             src = CONTENT / path
             if not src.exists():
                 raise SystemExit(f"build: no body for {path} (expected {src})")

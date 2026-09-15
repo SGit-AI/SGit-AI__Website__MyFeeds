@@ -1,8 +1,8 @@
 # Establishing Provenance and Deterministic Behaviour in an LLM-Powered News Feed (first MyFeeds.ai MVP)
 
-> Recovered from mvp.myfeeds.ai, published 23 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg) The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each…
+> Recovered from mvp.myfeeds.ai, published 23 Mar 2025: The first MVP of the MyFeeds.ai site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on why each article…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,9 +32,11 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/establishing-provenance-and-deterministic-behaviour-in-an-llm-powered-news-feed-first-myfeeds-mvp.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1-1.jpeg)
+↓ recovered article begins 23 Mar 2025 · Dinis Cruz
+
+[image not recovered: `1742165370948-2-1-1.jpeg`]
 
 The first MVP of the [MyFeeds.ai](https://mvp.myfeeds.ai/) site shows an example of personalised cyber security news feeds based on Semantic Knowledge Graphs, which provide provenance on *why* each article was chosen for each targeted persona (CEO, CISO, CTO, Board Member, etc...)
 
@@ -50,7 +52,7 @@ Each article is then analysed semantically and converted using an LLM into a **k
 
 In other words, the system extracts the who, what, and how of the story and encodes those facts into a graph data structure. Each article yields its own graph in JSON format, capturing the essential concepts in machine-readable form.
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1.jpeg)
+[image · `1742165370948-2-1.jpeg`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/1742165370948-2-1.jpeg)
 
 *Figure: A visualisation of a semantic knowledge graph generated from 50 Hacker News article titles (553 nodes, 1451 edges)​ Even with just titles and summaries, the graph forms a dense web of interconnected entities, illustrating how much structured information can be derived from raw text.*
 
@@ -102,11 +104,13 @@ In an era of black-box AI, MyFeeds’ focus on determinism and provenance, shows
 
 And here is what this first MVP looked like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-23-at-01.28.45-4-1.png)
+[image · `Screenshot-2025-03-23-at-01.28.45-4-1.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-23-at-01.28.45-4-1.png)
 
 ---
 
 *by Dinis Cruz and ChatGPT Deep Research*
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

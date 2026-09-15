@@ -1,8 +1,8 @@
 # How I'm Building Personalised News Feeds with Semantic Graphs - Part 2
 
-> Recovered from mvp.myfeeds.ai, published 26 Mar 2025: ![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png) At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow…
+> Recovered from mvp.myfeeds.ai, published 26 Mar 2025: At the end of Part 1 of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,15 +32,17 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/how-im-building-personalised-news-feeds-with-semantic-graphs-part-2.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-17.34.21.png)
+↓ recovered article begins 26 Mar 2025 · Dinis Cruz
+
+[image not recovered: `Screenshot-2025-03-26-at-17.34.21.png`]
 
 At the end of [Part 1](https://mvp.myfeeds.ai/publishing-a-new-personalised-set-of-posts-part-1/) of this series of posts on how I'm creating the personalised news feeds for multiple personas, we got into the Flow 3 stage, where we had a list of articles that needed to be processed.
 
 For reference here are all the flows that are related to the creation of the article's entities:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-76.png)
+[image · `image-76.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-76.png)
 
 Let's continue with Flow 4.
 
@@ -48,7 +50,7 @@ Let's continue with Flow 4.
 
 We trigger this flow by invoking to the ***hacker-news-flows/flow-4-article-step-1-create-article-files*** endpoint which returns:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-77.png)
+[image · `image-77.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-77.png)
 
 There is quite a lot to unpack here, so let's look at what the data is telling us:
 
@@ -66,7 +68,7 @@ There is quite a lot to unpack here, so let's look at what the data is telling u
 
 - path__file__markdown": null (and all the other 'null' paths) - these are the values that will be populated as the multiple flows execute (i.e. in most cases, each flow execution will only update one or a couple of these paths)As we can see by the contents of the response data, there was only one file created in this flow, which was the **2025/03/26/16/articles/5be1365c/feed-article.json** file, and looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-16.26.53.png)
+[image · `Screenshot-2025-03-26-at-16.26.53.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/Screenshot-2025-03-26-at-16.26.53.png)
 
 This file is actually the exact same content that we have in the article's section of the ***hacker-news/2025/03/26/11/feed-data.json*** file, but since all the follow-up steps are executed from this file, and as seen above, we could have a situation where the source and data folders don't match (note the hour **11** of the source folder ***2025/03/26/11***, vs hour **16** of the data folder we are using to store the created files), it is much better to have the data for this article inside the **2025/03/26/16/articles/{article_id}/* **folder (which is a unique folder for this article)
 
@@ -76,11 +78,11 @@ Next up is the invocation of ***hacker-news-flows/flow-5-article-step-2-create-a
 
 The invocation response is very similar:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-82.png)
+[image · `image-82.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-82.png)
 
 The ***next_step ***represents where we are going next: **STEP__3__LLM__TEXT_TO_ENTITIES **and the ***path__file__markdown* **field now has the value of **"2025/03/26/16/articles/5be1365c/article-markdown.md** which looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-83.png)
+[image · `image-83.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-83.png)
 
 This markdown file will be useful when we need to provide to the final LLM step the contents of the matched articles (for the personalisation of the persona specific security feed)
 
@@ -90,7 +92,7 @@ The next Flow is the first one to actually make a call to an LLM. The reason we 
 
 We execute this flow by invoking the endpoint ***hacker-news-flows/flow-6-article-step-3-llm-text-to-entities***, which provides this response:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-84.png)
+[image · `image-84.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-84.png)
 
 There are number of quite interesting things happening here.
 
@@ -106,11 +108,11 @@ This is a good example of something that is better to be discovered during an MV
 
 Here is what the **text-entities-title.json **file looks like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-85.png)
+[image · `image-85.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-85.png)
 
 Here is what the **text-entities-description.json** file looks like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-86.png)
+[image · `image-86.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-86.png)
 
 In these files we can see:
 
@@ -122,29 +124,29 @@ In these files we can see:
 
 - entities: the beginning of the list of entity objectsFor reference here is the schema of this entity object (from the article [Building Semantic Knowledge Graphs with LLMs](https://mvp.myfeeds.ai/building-semantic-knowledge-graphs-with-llms-inside-myfeeds-ais-multi-phase-architecture/) ):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-14.png)
+[image · `image-14.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-14.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-17.png)
+[image · `image-17.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-17.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-16.png)
+[image · `image-16.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-16.png)
 
 As mentioned above, we have an cache_id value, which in this case resolves to the path **gpt-4o-mini/2025/03/26/16/7c69b0c0.json **(also stored in S3), and uses this schema:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-87.png)
+[image · `image-87.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-87.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-89.png)
+[image · `image-89.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-89.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-88.png)
+[image · `image-88.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-88.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-90.png)
+[image · `image-90.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-90.png)
 
 ... and looks like this:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-91.png)
+[image · `image-91.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-91.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-92.png)
+[image · `image-92.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-92.png)
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-93.png)
+[image · `image-93.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-93.png)
 
 This cache file contains really valuable data for the cases where we need to debug or understand exactly what we got from the LLM:
 
@@ -158,7 +160,7 @@ This cache file contains really valuable data for the cases where we need to deb
 
 Next up, we invoke the ***hacker-news-flows/flow-7-article-step-4-create-text-entities-graphs*** endpoint, which returns:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-94.png)
+[image · `image-94.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-94.png)
 
 In this flow there are 4 new files created (in the screenshot above, you can see highlighted the the two files created from the title's entities, and above it, you have the files created for the description's entities)
 
@@ -166,39 +168,39 @@ In this flow there are 4 new files created (in the screenshot above, you can see
 
 - text-entities-title.png - this is the PNG (i.e. screenshot) of the DOT/Graphgiz visualisation of the text-entities-title.mgraph.json fileHere is what the text-entities-title.mgraph.json file looks like:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-95.png)
+[image · `image-95.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-95.png)
 
 Here is what the ***text-entities-title.png*** file looks like, created from the text:
 
 > "Microsoft Adds Inline Data Protection to Edge for Business to Block GenAI Data Leaks"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-96.png)
+[image · `image-96.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-96.png)
 
 Here is the visualisation of the MGraph created from this article's description text:
 
 > "Microsoft on Monday announced a new feature called inline data protection for its enterprise-focused Edge for Business web browser.\nThe native data security control is designed to prevent employees from sharing sensitive company-related data into consumer generative artificial intelligence (GenAI) apps like OpenAI ChatGPT, Google Gemini, and DeepSeek. The list will be expanded over time to"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-97.png)
+[image · `image-97.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-97.png)
 
 Let's take a look a couple more text entities graphs:
 
 > "Unpatched Windows Zero-Day Flaw Exploited by 11 State-Sponsored Threat Groups Since 2017"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-98.png)
+[image · `image-98.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-98.png)
 
 > "CISA Warns of Active Exploitation in GitHub Action Supply Chain Compromise"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-99.png)
+[image · `image-99.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-99.png)
 
 > "Apache Tomcat Vulnerability Actively Exploited Just 30 Hours After Public Disclosure"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-100.png)
+[image · `image-100.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-100.png)
 
 ... in this example of the Apache vulnerability, note how from the description graph we also get a node for the CVE:
 
 > "A recently disclosed security flaw impacting Apache Tomcat has come under active exploitation in the wild following the release&nbsp;of a public proof-of-concept (PoC) a mere 30 hours after public disclosure.\nThe vulnerability, tracked as CVE-2025-24813, affects the below versions -\n\nApache Tomcat 11.0.0-M1 to 11.0.2\nApache Tomcat 10.1.0-M1 to 10.1.34\nApache Tomcat 9.0.0-M1 to 9.0.98\n\nIt"
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-101.png)
+[image · `image-101.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-101.png)
 
 Let's continue with the flow executions for the original article
 
@@ -208,7 +210,7 @@ As we saw above, there is good data in both the text and description entities te
 
 Here is the response we get from Flow 8:
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-102.png)
+[image · `image-102.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-102.png)
 
 ... where we can see two new files created:
 
@@ -216,11 +218,11 @@ Here is the response we get from Flow 8:
 
 - text-entities.png - the visualisation of the text-entities.mgraph.jsonAlthough the **text-entities.mgraph.json** looks just like the other MGraphs, there is a major difference (in addition to being the merge of both text and description entities):
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-103.png)
+[image · `image-103.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-103.png)
 
 As we can see by its visualisation in **text-entities.png **file (below), the merged MGraph contains only the direct **Entity** relationships (i.e. the stronger connections in the original text entities).
 
-![](https://mvp.myfeeds.ai/content/images/2025/03/image-104.png)
+[image · `image-104.png`](../../back-office/archive/mvp.myfeeds.ai/content/images/2025/03/image-104.png)
 
 I did this during the current MVP to keep the size of the graph smaller.
 
@@ -229,6 +231,8 @@ I wanted to see how effective it would be before using all data available and st
 ---
 
 .... to be continued on part 3....
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

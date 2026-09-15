@@ -2,7 +2,7 @@
 
 > One ontology for what an article contains, one for what a role watches for, and the published formula where they meet. Every verb has a named inverse and reads as a sentence both ways; the verbs that are banned are listed with the reason.
 
-*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/ontology/index.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 

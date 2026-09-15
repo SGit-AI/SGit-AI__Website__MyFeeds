@@ -361,6 +361,49 @@ if (exists('assets/site.css')) {
   check(opens === closes, `assets/site.css: ${opens} { against ${closes} } — unbalanced`);
 }
 
+// ------------------------------------------------------- recovered content actually renders
+
+// Markdown image syntax rendered as literal text on every recovered architecture post for
+// two releases, because the inline-markdown link rule required non-empty link text and
+// `![](url)` has none — so it matched nothing and fell through as source. Nothing failed;
+// it just looked wrong to a human and to nobody else.
+for (const [p, html] of bodies) {
+  // Scope to <main>: a description built from a post body legitimately mentions markdown
+  // before it is cleaned, and head metadata is not rendered content.
+  const mainOnly = (html.match(/<main id="main">([\s\S]*?)<\/main>/) || ['', ''])[1];
+  const raw = [...mainOnly.matchAll(/!\[[^\]]*\]\([^)]*\)/g)];
+  check(raw.length === 0,
+    `${p}: ${raw.length} markdown image(s) rendered as literal source, not as <img>`);
+  const rawLinks = [...mainOnly.matchAll(/(^|[^!])\[[^\]]+\]\(https?:[^)]*\)/g)];
+  check(rawLinks.length === 0,
+    `${p}: ${rawLinks.length} markdown link(s) rendered as literal source`);
+}
+
+// Every image a recovered post points at is either in this repository or is explicitly
+// marked as not recovered. A broken <img> is the one outcome that is not allowed, because
+// it looks identical to an image that simply failed to load this once.
+{
+  const archiveRoot = 'back-office/archive/mvp.myfeeds.ai';
+  let local = 0, missing = 0;
+  for (const [p, html] of bodies) {
+    for (const m of [...html.matchAll(/<img[^>]*\bsrc="([^"]+)"/g),
+                     ...html.matchAll(/<a class="rimg" href="([^"]+)"/g)]) {
+      const src = m[1];
+      if (/^(https?:|data:)/.test(src)) {
+        failures.push(`${p}: recovered image still points off-site (${src})`);
+        continue;
+      }
+      const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(p), src));
+      check(exists(resolved), `${p}: <img> points at a file that is not here (${resolved})`);
+      if (resolved.startsWith(archiveRoot)) local++;
+    }
+    missing += (html.match(/class="missing-img"/g) || []).length;
+  }
+  if (local || missing) {
+    notes.push(`recovered images: ${local} served from this repository, ${missing} marked not recovered`);
+  }
+}
+
 // --------------------------------------------------------------- AI provenance is stated
 
 // The site is written by a model. Saying so once, somewhere, is not disclosure: a reader

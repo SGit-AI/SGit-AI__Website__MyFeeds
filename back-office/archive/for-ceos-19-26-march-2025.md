@@ -1,8 +1,8 @@
 # for CEOs | 19-26 March 2025
 
-> Recovered from mvp.myfeeds.ai, published 15 Apr 2025: ![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_48_15-PM.png) Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of…
+> Recovered from mvp.myfeeds.ai, published 15 Apr 2025: Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of a…
 
-*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.6 · this file is generated from the same content as
+*Source: <https://myfeeds.sgit.ai/back-office/archive/for-ceos-19-26-march-2025.html> · site v0.1.7 · this file is generated from the same content as
 the page, so the two cannot drift. Every page on this site has a `.md` twin; internal
 links below point at them.*
 
@@ -32,9 +32,11 @@ Recovered from the archive
 
 : From a capture of the site's RSS feed, which carried the full body. The markdown is at `back-office/archive/mvp.myfeeds.ai__posts/for-ceos-19-26-march-2025.md`.
 
-This is recovered content, reproduced as it was published. Links in it point at pages that in many cases no longer resolve, and images are still served from the dead domain — both are left exactly as written rather than silently repaired, because a rewritten archive is no longer evidence of what was said.
+This is recovered content, reproduced as it was published. Its links point at pages that in many cases no longer resolve and are left exactly as written. Its **images are served from this repository** — the originals were recovered from the same archive as the text, and each one carries the URL it came from in its title attribute, so the reference is rewritten and recorded rather than rewritten and hidden. An image the archive did not capture is marked as missing rather than left broken.
 
-![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_48_15-PM.png)
+↓ recovered article begins 15 Apr 2025 · Athena
+
+[image not recovered: `ChatGPT-Image-Apr-15--2025--10_48_15-PM.png`]
 
 Recent developments in cybersecurity underscore the crucial importance of robust business continuity plans and heightened compliance monitoring as cyber threats continue to evolve. As the CEO of a mid-sized tech company, navigating these challenges alongside digital transformation efforts is essential to safeguarding company assets, maintaining shareholder trust, and ensuring compliance with regulatory standards.
 
@@ -58,7 +60,7 @@ Addressing emerging cyber threats and ensuring business continuity through robus
 
 **Published:** 2025-03-20 11:25:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhK15A8I2t-L1pvBtpctTjQlAK36bzjisflZV44oEKUrns33WM20e1LG2kUqm_UaGKJS_Tq6EfTawSeC_LZ_gdnl7oLmH5veRm6hlyDFyKj5p2qM-M2aMePE0pmu9urreOaJezzJnACWDSlsmsT900DSOtbzrVa3gosBi7_Pl87AzvG0xL8E5vOZ3MZLc4/s1600/crashplan.jpg)
+[image not recovered: `crashplan.jpg`]
 
 The article underscores the necessity of integrating business continuity with cybersecurity through frameworks like Microsoft's shared responsibility model. This approach is crucial for managing cloud-based assets, aligning with strategic digital transformation goals, and ensuring comprehensive protection against cyber threats.
 
@@ -74,7 +76,7 @@ The article underscores the necessity of integrating business continuity with cy
 
 **Published:** 2025-03-20 10:00:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi88eSxKJCCs2ZpS0_XkvKbgI1aAIXJgItw-eRe-nfF92_CwAwLMZ9ZoJIMcoxwKJis0r3yBglBRk8Sgx5W6fxk7QsA9GCfqxBd49sDs8uthuL1OlDB3BWPIFKK_G5CBZTsnrwR5UwkTOHDvYnciaZkZJcQC79sNJ-YRwzFZSdpWRRphcT6ZTE1QKGvPMc/s1600/rapid.png)
+[image not recovered: `rapid.png`]
 
 The article emphasizes that continuous compliance monitoring is essential for mid-sized tech companies like yours to meet evolving regulatory standards. This is crucial in the context of expanding IT capabilities and managing business continuity under cybersecurity risks.
 
@@ -90,7 +92,7 @@ The article emphasizes that continuous compliance monitoring is essential for mi
 
 **Published:** 2025-03-26 04:56:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEjVt8bRERjUwrg5DqCasG7dqttQ49Ed8nn0wFLmsdS2bpGmdm7AQpDOnrSve1vBVN_JS-oQXEkufDBjeQ0ZzkgN2S0f6R6rGCcl4SG_lT4pPPzfC6_Nc571xNujohkMMA1O3G1GV0eQ0HjA4yGp1vlKZwW0OmPCC53wWFTM2XIuJvsIbOZhetdYOiJoYu/s1600/chrome-hack.png)
+[image not recovered: `chrome-hack.png`]
 
 Google has released a critical patch addressing a vulnerability in Chrome exploited during Russian espionage attacks. These attacks highlight the ongoing cyber risks associated with geopolitical conflicts, emphasizing the need for vigilance in cybersecurity practices.
 
@@ -106,7 +108,7 @@ Google has released a critical patch addressing a vulnerability in Chrome exploi
 
 **Published:** 2025-03-24 09:17:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEju51s8C-YRfwNqS5bwSkr7KlPeKSciSM8enbWEAc111TwyUbr_G-EV3jJiuTWPbBk9e7lrxh9OPdS6_YyLdjr4pgrt7rApvGk7XVjcpIDBwa-uipiAM1r8SFIWj6Myo2-hC4d2-pb2Fzys8ny8yAIQqF3vIv8g7E0lA9IJUuHCg9Q2fkqFsdWzG2k3O0Z-/s1600/nextjs.png)
+[image not recovered: `nextjs.png`]
 
 A severe vulnerability in Next.js could allow attackers to bypass authorization mechanisms, threatening applications using this technology. Given its widespread use, this could lead to significant compliance and operational challenges.
 
@@ -122,7 +124,7 @@ A severe vulnerability in Next.js could allow attackers to bypass authorization 
 
 **Published:** 2025-03-20 09:43:00 +0000
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3iTgjaDQVgdALCzCXNtWqNkX3VwpqbenhdEf5xNuzzhVidv2h7Rncf2r3TZotM_Iq1yZVdmwOda3VQ2Uvs7kscDGkhAHCpqxgGA37f4mRpXC59EuK_IY3uBhjETVGoHq7OgEA_CJvUfusg8AvJH28wXCjXgADatb_cM7D9SxtCS939FEZRBnhV9TW-vr5/s1600/hacker.png)
+[image not recovered: `hacker.png`]
 
 CISA has identified an actively exploited vulnerability in NAKIVO software and added it to its Known Exploited Vulnerabilities catalog, highlighting ongoing cyber threats and compliance risks.
 
@@ -138,7 +140,9 @@ CISA has identified an actively exploited vulnerability in NAKIVO software and a
 
 Generated: 2025-04-15 14:24:33
 
-![](https://mvp.myfeeds.ai/content/images/2025/04/ChatGPT-Image-Apr-15--2025--10_41_16-PM-1.png)
+[image not recovered: `ChatGPT-Image-Apr-15--2025--10_41_16-PM-1.png`]
+
+↑ recovered article ends this site's words resume
 
 [← All recovered posts](index.md) [Back office →](../index.md)
 

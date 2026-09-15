@@ -1,8 +1,14 @@
 {
   "site": "myfeeds.sgit.ai",
-  "current": "v0.1.6",
+  "current": "v0.1.7",
   "source": "VERSION_LOG in admin/build/build_pages.py",
   "versions": [
+    {
+      "version": "v0.1.7",
+      "date": "2026-09-15",
+      "title": "the recovered posts get their images back, which took fixing two unrelated bugs and resolving a conflict with the authoring contract",
+      "href": "v0.1.7.json"
+    },
     {
       "version": "v0.1.6",
       "date": "2026-09-15",
